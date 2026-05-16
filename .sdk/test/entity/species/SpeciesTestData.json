@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "species": {
+      "SPECIES00": {
+        "average_height": "s96",
+        "average_lifespan": "s97",
+        "classification": "s98",
+        "created": "s99",
+        "designation": "s9a",
+        "edited": "s9b",
+        "eye_color": "s9c",
+        "film": [],
+        "hair_color": "s9e",
+        "homeworld": "s9f",
+        "language": "sa0",
+        "name": "sa1",
+        "person": [],
+        "skin_color": "sa3",
+        "url": "sa4"
+      },
+      "SPECIES01": {
+        "average_height": "s12c",
+        "average_lifespan": "s12d",
+        "classification": "s12e",
+        "created": "s12f",
+        "designation": "s130",
+        "edited": "s131",
+        "eye_color": "s132",
+        "film": [],
+        "hair_color": "s134",
+        "homeworld": "s135",
+        "language": "s136",
+        "name": "s137",
+        "person": [],
+        "skin_color": "s139",
+        "url": "s13a"
+      },
+      "SPECIES02": {
+        "average_height": "s1c2",
+        "average_lifespan": "s1c3",
+        "classification": "s1c4",
+        "created": "s1c5",
+        "designation": "s1c6",
+        "edited": "s1c7",
+        "eye_color": "s1c8",
+        "film": [],
+        "hair_color": "s1ca",
+        "homeworld": "s1cb",
+        "language": "s1cc",
+        "name": "s1cd",
+        "person": [],
+        "skin_color": "s1cf",
+        "url": "s1d0"
+      }
+    }
+  },
+  "new": {
+    "species": {
+      "species_ref01": {
+        "average_height": "s258",
+        "average_lifespan": "s259",
+        "classification": "s25a",
+        "created": "s25b",
+        "designation": "s25c",
+        "edited": "s25d",
+        "eye_color": "s25e",
+        "film": [],
+        "hair_color": "s260",
+        "homeworld": "s261",
+        "language": "s262",
+        "name": "s263",
+        "person": [],
+        "skin_color": "s265",
+        "url": "s266"
+      }
+    }
+  }
+}

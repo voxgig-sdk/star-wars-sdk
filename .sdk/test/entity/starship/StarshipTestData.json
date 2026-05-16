@@ -1,0 +1,90 @@
+{
+  "existing": {
+    "starship": {
+      "STARSHIP00": {
+        "cargo_capacity": "sb4",
+        "consumable": "sb5",
+        "cost_in_credit": "sb6",
+        "created": "sb7",
+        "crew": "sb8",
+        "edited": "sb9",
+        "film": [],
+        "hyperdrive_rating": "sbb",
+        "length": "sbc",
+        "manufacturer": "sbd",
+        "max_atmosphering_speed": "sbe",
+        "mglt": "sbf",
+        "model": "sc0",
+        "name": "sc1",
+        "passenger": "sc2",
+        "pilot": [],
+        "starship_class": "sc4",
+        "url": "sc5"
+      },
+      "STARSHIP01": {
+        "cargo_capacity": "s168",
+        "consumable": "s169",
+        "cost_in_credit": "s16a",
+        "created": "s16b",
+        "crew": "s16c",
+        "edited": "s16d",
+        "film": [],
+        "hyperdrive_rating": "s16f",
+        "length": "s170",
+        "manufacturer": "s171",
+        "max_atmosphering_speed": "s172",
+        "mglt": "s173",
+        "model": "s174",
+        "name": "s175",
+        "passenger": "s176",
+        "pilot": [],
+        "starship_class": "s178",
+        "url": "s179"
+      },
+      "STARSHIP02": {
+        "cargo_capacity": "s21c",
+        "consumable": "s21d",
+        "cost_in_credit": "s21e",
+        "created": "s21f",
+        "crew": "s220",
+        "edited": "s221",
+        "film": [],
+        "hyperdrive_rating": "s223",
+        "length": "s224",
+        "manufacturer": "s225",
+        "max_atmosphering_speed": "s226",
+        "mglt": "s227",
+        "model": "s228",
+        "name": "s229",
+        "passenger": "s22a",
+        "pilot": [],
+        "starship_class": "s22c",
+        "url": "s22d"
+      }
+    }
+  },
+  "new": {
+    "starship": {
+      "starship_ref01": {
+        "cargo_capacity": "s2d0",
+        "consumable": "s2d1",
+        "cost_in_credit": "s2d2",
+        "created": "s2d3",
+        "crew": "s2d4",
+        "edited": "s2d5",
+        "film": [],
+        "hyperdrive_rating": "s2d7",
+        "length": "s2d8",
+        "manufacturer": "s2d9",
+        "max_atmosphering_speed": "s2da",
+        "mglt": "s2db",
+        "model": "s2dc",
+        "name": "s2dd",
+        "passenger": "s2de",
+        "pilot": [],
+        "starship_class": "s2e0",
+        "url": "s2e1"
+      }
+    }
+  }
+}

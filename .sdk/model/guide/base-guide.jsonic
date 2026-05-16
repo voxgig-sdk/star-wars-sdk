@@ -1,0 +1,65 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 7
+  metrics: count: path: 12
+  metrics: count: method: 12
+
+  entity: film: {
+    path: "/films": {
+      op: list: method: *GET
+    }
+    path: "/films/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: people_list: {
+  }
+
+  entity: person: {
+    path: "/people": {
+      op: list: method: *GET
+    }
+    path: "/people/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: planet: {
+    path: "/planets": {
+      op: list: method: *GET
+    }
+    path: "/planets/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: species: {
+    path: "/species": {
+      op: list: method: *GET
+    }
+    path: "/species/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: starship: {
+    path: "/starships": {
+      op: list: method: *GET
+    }
+    path: "/starships/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: vehicle: {
+    path: "/vehicles": {
+      op: list: method: *GET
+    }
+    path: "/vehicles/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+}

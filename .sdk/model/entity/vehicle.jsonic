@@ -1,0 +1,170 @@
+# Entity: vehicle
+
+main: kit: entity: vehicle: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "cargo_capacity"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "consumable"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "cost_in_credit"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "created"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "crew"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "edited"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "film"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "length"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "manufacturer"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "max_atmosphering_speed"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "model"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "passenger"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "pilot"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "vehicle_class"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "vehicle"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "search"
+                orig: "search"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/vehicles"
+          parts: [
+            "vehicles"
+          ]
+          select: {
+            exist: [
+              "page"
+              "search"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/vehicles/{id}"
+          parts: [
+            "vehicles"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

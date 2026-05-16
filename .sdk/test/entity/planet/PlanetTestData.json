@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "planet": {
+      "PLANET00": {
+        "climate": "s8c",
+        "created": "s8d",
+        "diameter": "s8e",
+        "edited": "s8f",
+        "film": [],
+        "gravity": "s91",
+        "name": "s92",
+        "orbital_period": "s93",
+        "population": "s94",
+        "resident": [],
+        "rotation_period": "s96",
+        "surface_water": "s97",
+        "terrain": "s98",
+        "url": "s99"
+      },
+      "PLANET01": {
+        "climate": "s118",
+        "created": "s119",
+        "diameter": "s11a",
+        "edited": "s11b",
+        "film": [],
+        "gravity": "s11d",
+        "name": "s11e",
+        "orbital_period": "s11f",
+        "population": "s120",
+        "resident": [],
+        "rotation_period": "s122",
+        "surface_water": "s123",
+        "terrain": "s124",
+        "url": "s125"
+      },
+      "PLANET02": {
+        "climate": "s1a4",
+        "created": "s1a5",
+        "diameter": "s1a6",
+        "edited": "s1a7",
+        "film": [],
+        "gravity": "s1a9",
+        "name": "s1aa",
+        "orbital_period": "s1ab",
+        "population": "s1ac",
+        "resident": [],
+        "rotation_period": "s1ae",
+        "surface_water": "s1af",
+        "terrain": "s1b0",
+        "url": "s1b1"
+      }
+    }
+  },
+  "new": {
+    "planet": {
+      "planet_ref01": {
+        "climate": "s230",
+        "created": "s231",
+        "diameter": "s232",
+        "edited": "s233",
+        "film": [],
+        "gravity": "s235",
+        "name": "s236",
+        "orbital_period": "s237",
+        "population": "s238",
+        "resident": [],
+        "rotation_period": "s23a",
+        "surface_water": "s23b",
+        "terrain": "s23c",
+        "url": "s23d"
+      }
+    }
+  }
+}

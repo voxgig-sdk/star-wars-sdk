@@ -1,0 +1,170 @@
+# Entity: person
+
+main: kit: entity: person: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "birth_year"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "created"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "edited"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "eye_color"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "film"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "gender"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "hair_color"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "height"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "homeworld"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "mass"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "skin_color"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "species"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "starship"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "vehicle"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "person"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "search"
+                orig: "search"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/people"
+          parts: [
+            "people"
+          ]
+          select: {
+            exist: [
+              "page"
+              "search"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/people/{id}"
+          parts: [
+            "people"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

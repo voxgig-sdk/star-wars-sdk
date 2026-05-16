@@ -1,0 +1,10 @@
+# Entity: people_list
+
+main: kit: entity: people_list: {
+
+  alias: field: {}
+
+  name: "people_list"
+
+
+}

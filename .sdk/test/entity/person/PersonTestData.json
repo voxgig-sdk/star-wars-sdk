@@ -1,0 +1,82 @@
+{
+  "existing": {
+    "person": {
+      "PERSON00": {
+        "birth_year": "sa0",
+        "created": "sa1",
+        "edited": "sa2",
+        "eye_color": "sa3",
+        "film": [],
+        "gender": "sa5",
+        "hair_color": "sa6",
+        "height": "sa7",
+        "homeworld": "sa8",
+        "mass": "sa9",
+        "name": "saa",
+        "skin_color": "sab",
+        "species": [],
+        "starship": [],
+        "url": "sae",
+        "vehicle": []
+      },
+      "PERSON01": {
+        "birth_year": "s140",
+        "created": "s141",
+        "edited": "s142",
+        "eye_color": "s143",
+        "film": [],
+        "gender": "s145",
+        "hair_color": "s146",
+        "height": "s147",
+        "homeworld": "s148",
+        "mass": "s149",
+        "name": "s14a",
+        "skin_color": "s14b",
+        "species": [],
+        "starship": [],
+        "url": "s14e",
+        "vehicle": []
+      },
+      "PERSON02": {
+        "birth_year": "s1e0",
+        "created": "s1e1",
+        "edited": "s1e2",
+        "eye_color": "s1e3",
+        "film": [],
+        "gender": "s1e5",
+        "hair_color": "s1e6",
+        "height": "s1e7",
+        "homeworld": "s1e8",
+        "mass": "s1e9",
+        "name": "s1ea",
+        "skin_color": "s1eb",
+        "species": [],
+        "starship": [],
+        "url": "s1ee",
+        "vehicle": []
+      }
+    }
+  },
+  "new": {
+    "person": {
+      "person_ref01": {
+        "birth_year": "s280",
+        "created": "s281",
+        "edited": "s282",
+        "eye_color": "s283",
+        "film": [],
+        "gender": "s285",
+        "hair_color": "s286",
+        "height": "s287",
+        "homeworld": "s288",
+        "mass": "s289",
+        "name": "s28a",
+        "skin_color": "s28b",
+        "species": [],
+        "starship": [],
+        "url": "s28e",
+        "vehicle": []
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  point: "warning"
+  when: 1778892246864
+  note: "No paths defined for entity=people_list"
+  entm: {
+    name: "people_list"
+    orig: "PeopleList"
+    path: {
+    }
+  }
+
+}

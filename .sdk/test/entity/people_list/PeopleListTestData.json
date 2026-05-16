@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "people_list": {
+      "PEOPLE_LIST00": {},
+      "PEOPLE_LIST01": {},
+      "PEOPLE_LIST02": {}
+    }
+  },
+  "new": {
+    "people_list": {
+      "people_list_ref01": {}
+    }
+  }
+}

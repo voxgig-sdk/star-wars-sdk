@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "film": {
+      "FILM00": {
+        "character": [],
+        "created": "s8d",
+        "director": "s8e",
+        "edited": "s8f",
+        "episode_id": "EPISODE01",
+        "opening_crawl": "s91",
+        "planet": [],
+        "producer": "s93",
+        "release_date": "s94",
+        "species": [],
+        "starship": [],
+        "title": "s97",
+        "url": "s98",
+        "vehicle": []
+      },
+      "FILM01": {
+        "character": [],
+        "created": "s119",
+        "director": "s11a",
+        "edited": "s11b",
+        "episode_id": "EPISODE01",
+        "opening_crawl": "s11d",
+        "planet": [],
+        "producer": "s11f",
+        "release_date": "s120",
+        "species": [],
+        "starship": [],
+        "title": "s123",
+        "url": "s124",
+        "vehicle": []
+      },
+      "FILM02": {
+        "character": [],
+        "created": "s1a5",
+        "director": "s1a6",
+        "edited": "s1a7",
+        "episode_id": "EPISODE01",
+        "opening_crawl": "s1a9",
+        "planet": [],
+        "producer": "s1ab",
+        "release_date": "s1ac",
+        "species": [],
+        "starship": [],
+        "title": "s1af",
+        "url": "s1b0",
+        "vehicle": []
+      }
+    }
+  },
+  "new": {
+    "film": {
+      "film_ref01": {
+        "character": [],
+        "created": "s231",
+        "director": "s232",
+        "edited": "s233",
+        "episode_id": "EPISODE01",
+        "opening_crawl": "s235",
+        "planet": [],
+        "producer": "s237",
+        "release_date": "s238",
+        "species": [],
+        "starship": [],
+        "title": "s23b",
+        "url": "s23c",
+        "vehicle": []
+      }
+    }
+  }
+}

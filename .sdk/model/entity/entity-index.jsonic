@@ -1,0 +1,9 @@
+# Entity Models
+
+@"film.jsonic"
+@"people_list.jsonic"
+@"person.jsonic"
+@"planet.jsonic"
+@"species.jsonic"
+@"starship.jsonic"
+@"vehicle.jsonic"

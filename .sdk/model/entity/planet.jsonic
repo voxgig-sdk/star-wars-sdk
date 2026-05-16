@@ -1,0 +1,160 @@
+# Entity: planet
+
+main: kit: entity: planet: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "climate"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "created"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "diameter"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "edited"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "film"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "gravity"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "orbital_period"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "population"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "resident"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "rotation_period"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "surface_water"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "terrain"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "planet"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "search"
+                orig: "search"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/planets"
+          parts: [
+            "planets"
+          ]
+          select: {
+            exist: [
+              "page"
+              "search"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/planets/{id}"
+          parts: [
+            "planets"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,82 @@
+{
+  "existing": {
+    "vehicle": {
+      "VEHICLE00": {
+        "cargo_capacity": "sa0",
+        "consumable": "sa1",
+        "cost_in_credit": "sa2",
+        "created": "sa3",
+        "crew": "sa4",
+        "edited": "sa5",
+        "film": [],
+        "length": "sa7",
+        "manufacturer": "sa8",
+        "max_atmosphering_speed": "sa9",
+        "model": "saa",
+        "name": "sab",
+        "passenger": "sac",
+        "pilot": [],
+        "url": "sae",
+        "vehicle_class": "saf"
+      },
+      "VEHICLE01": {
+        "cargo_capacity": "s140",
+        "consumable": "s141",
+        "cost_in_credit": "s142",
+        "created": "s143",
+        "crew": "s144",
+        "edited": "s145",
+        "film": [],
+        "length": "s147",
+        "manufacturer": "s148",
+        "max_atmosphering_speed": "s149",
+        "model": "s14a",
+        "name": "s14b",
+        "passenger": "s14c",
+        "pilot": [],
+        "url": "s14e",
+        "vehicle_class": "s14f"
+      },
+      "VEHICLE02": {
+        "cargo_capacity": "s1e0",
+        "consumable": "s1e1",
+        "cost_in_credit": "s1e2",
+        "created": "s1e3",
+        "crew": "s1e4",
+        "edited": "s1e5",
+        "film": [],
+        "length": "s1e7",
+        "manufacturer": "s1e8",
+        "max_atmosphering_speed": "s1e9",
+        "model": "s1ea",
+        "name": "s1eb",
+        "passenger": "s1ec",
+        "pilot": [],
+        "url": "s1ee",
+        "vehicle_class": "s1ef"
+      }
+    }
+  },
+  "new": {
+    "vehicle": {
+      "vehicle_ref01": {
+        "cargo_capacity": "s280",
+        "consumable": "s281",
+        "cost_in_credit": "s282",
+        "created": "s283",
+        "crew": "s284",
+        "edited": "s285",
+        "film": [],
+        "length": "s287",
+        "manufacturer": "s288",
+        "max_atmosphering_speed": "s289",
+        "model": "s28a",
+        "name": "s28b",
+        "passenger": "s28c",
+        "pilot": [],
+        "url": "s28e",
+        "vehicle_class": "s28f"
+      }
+    }
+  }
+}
