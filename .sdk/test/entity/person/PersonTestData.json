@@ -17,7 +17,8 @@
         "species": [],
         "starship": [],
         "url": "sae",
-        "vehicle": []
+        "vehicle": [],
+        "id": "PERSON00"
       },
       "PERSON01": {
         "birth_year": "s140",
@@ -35,7 +36,8 @@
         "species": [],
         "starship": [],
         "url": "s14e",
-        "vehicle": []
+        "vehicle": [],
+        "id": "PERSON01"
       },
       "PERSON02": {
         "birth_year": "s1e0",
@@ -53,7 +55,8 @@
         "species": [],
         "starship": [],
         "url": "s1ee",
-        "vehicle": []
+        "vehicle": [],
+        "id": "PERSON02"
       }
     }
   },

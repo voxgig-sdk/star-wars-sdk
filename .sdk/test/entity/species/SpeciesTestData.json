@@ -16,7 +16,8 @@
         "name": "sa1",
         "person": [],
         "skin_color": "sa3",
-        "url": "sa4"
+        "url": "sa4",
+        "id": "SPECIES00"
       },
       "SPECIES01": {
         "average_height": "s12c",
@@ -33,7 +34,8 @@
         "name": "s137",
         "person": [],
         "skin_color": "s139",
-        "url": "s13a"
+        "url": "s13a",
+        "id": "SPECIES01"
       },
       "SPECIES02": {
         "average_height": "s1c2",
@@ -50,7 +52,8 @@
         "name": "s1cd",
         "person": [],
         "skin_color": "s1cf",
-        "url": "s1d0"
+        "url": "s1d0",
+        "id": "SPECIES02"
       }
     }
   },

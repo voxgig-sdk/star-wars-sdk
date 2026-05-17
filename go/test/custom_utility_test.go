@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/star-wars-sdk"
+	sdk "github.com/voxgig-sdk/star-wars-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

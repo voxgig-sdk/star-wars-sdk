@@ -1,10 +1,10 @@
 package voxgigstarwarssdk
 
 import (
-	"github.com/voxgig-sdk/star-wars-sdk/core"
-	"github.com/voxgig-sdk/star-wars-sdk/entity"
-	"github.com/voxgig-sdk/star-wars-sdk/feature"
-	_ "github.com/voxgig-sdk/star-wars-sdk/utility"
+	"github.com/voxgig-sdk/star-wars-sdk/go/core"
+	"github.com/voxgig-sdk/star-wars-sdk/go/entity"
+	"github.com/voxgig-sdk/star-wars-sdk/go/feature"
+	_ "github.com/voxgig-sdk/star-wars-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

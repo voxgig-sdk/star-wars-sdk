@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/star-wars-sdk"
-	"github.com/voxgig-sdk/star-wars-sdk/core"
+	sdk "github.com/voxgig-sdk/star-wars-sdk/go"
+	"github.com/voxgig-sdk/star-wars-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/star-wars-sdk/go/utility/struct"
 )
 
 func TestVehicleEntity(t *testing.T) {

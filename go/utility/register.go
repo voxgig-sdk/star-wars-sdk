@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/star-wars-sdk/core"
+import "github.com/voxgig-sdk/star-wars-sdk/go/core"
 
 func init() {
 	core.UtilityRegistrar = registerAll

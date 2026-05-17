@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/star-wars-sdk/core"
+	"github.com/voxgig-sdk/star-wars-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/star-wars-sdk/go/utility/struct"
 )
 
 type FilmEntity struct {

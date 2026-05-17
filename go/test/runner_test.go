@@ -12,9 +12,9 @@ import (
 	"sync"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/star-wars-sdk"
+	sdk "github.com/voxgig-sdk/star-wars-sdk/go"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/star-wars-sdk/go/utility/struct"
 )
 
 var envLocalOnce sync.Once

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/star-wars-sdk"
-	"github.com/voxgig-sdk/star-wars-sdk/core"
+	sdk "github.com/voxgig-sdk/star-wars-sdk/go"
+	"github.com/voxgig-sdk/star-wars-sdk/go/core"
 )
 
 func TestPlanetDirect(t *testing.T) {

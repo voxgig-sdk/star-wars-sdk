@@ -19,7 +19,8 @@
         "passenger": "sc2",
         "pilot": [],
         "starship_class": "sc4",
-        "url": "sc5"
+        "url": "sc5",
+        "id": "STARSHIP00"
       },
       "STARSHIP01": {
         "cargo_capacity": "s168",
@@ -39,7 +40,8 @@
         "passenger": "s176",
         "pilot": [],
         "starship_class": "s178",
-        "url": "s179"
+        "url": "s179",
+        "id": "STARSHIP01"
       },
       "STARSHIP02": {
         "cargo_capacity": "s21c",
@@ -59,7 +61,8 @@
         "passenger": "s22a",
         "pilot": [],
         "starship_class": "s22c",
-        "url": "s22d"
+        "url": "s22d",
+        "id": "STARSHIP02"
       }
     }
   },

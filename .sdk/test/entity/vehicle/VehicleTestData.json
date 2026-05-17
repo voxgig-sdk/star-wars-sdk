@@ -17,7 +17,8 @@
         "passenger": "sac",
         "pilot": [],
         "url": "sae",
-        "vehicle_class": "saf"
+        "vehicle_class": "saf",
+        "id": "VEHICLE00"
       },
       "VEHICLE01": {
         "cargo_capacity": "s140",
@@ -35,7 +36,8 @@
         "passenger": "s14c",
         "pilot": [],
         "url": "s14e",
-        "vehicle_class": "s14f"
+        "vehicle_class": "s14f",
+        "id": "VEHICLE01"
       },
       "VEHICLE02": {
         "cargo_capacity": "s1e0",
@@ -53,7 +55,8 @@
         "passenger": "s1ec",
         "pilot": [],
         "url": "s1ee",
-        "vehicle_class": "s1ef"
+        "vehicle_class": "s1ef",
+        "id": "VEHICLE02"
       }
     }
   },
