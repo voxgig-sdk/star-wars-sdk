@@ -92,7 +92,6 @@ function film_basic_setup($extra)
         "STARWARS_TEST_FILM_ENTID" => $idmap,
         "STARWARS_TEST_LIVE" => "FALSE",
         "STARWARS_TEST_EXPLAIN" => "FALSE",
-        "STARWARS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +103,6 @@ function film_basic_setup($extra)
     if ($env["STARWARS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["STARWARS_APIKEY"],
             ],
             $extra ?? [],
         ]);

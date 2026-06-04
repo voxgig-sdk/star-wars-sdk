@@ -98,7 +98,6 @@ def _planet_basic_setup(extra):
         "STARWARS_TEST_PLANET_ENTID": idmap,
         "STARWARS_TEST_LIVE": "FALSE",
         "STARWARS_TEST_EXPLAIN": "FALSE",
-        "STARWARS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +108,6 @@ def _planet_basic_setup(extra):
     if env.get("STARWARS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STARWARS_APIKEY"),
             },
             extra or {},
         ])

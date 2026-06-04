@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://swapi.dev/api',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },

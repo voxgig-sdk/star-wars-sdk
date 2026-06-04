@@ -116,14 +116,12 @@ def film_direct_setup(mockres)
   env = Runner.env_override({
     "STARWARS_TEST_FILM_ENTID" => {},
     "STARWARS_TEST_LIVE" => "FALSE",
-    "STARWARS_APIKEY" => "NONE",
   })
 
   live = env["STARWARS_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["STARWARS_APIKEY"],
     }
     client = StarWarsSDK.new(merged_opts)
     return {

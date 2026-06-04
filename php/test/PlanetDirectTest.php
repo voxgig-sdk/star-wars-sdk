@@ -123,14 +123,12 @@ function planet_direct_setup($mockres)
     $env = Runner::env_override([
         "STARWARS_TEST_PLANET_ENTID" => [],
         "STARWARS_TEST_LIVE" => "FALSE",
-        "STARWARS_APIKEY" => "NONE",
     ]);
 
     $live = $env["STARWARS_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["STARWARS_APIKEY"],
         ];
         $client = new StarWarsSDK($merged_opts);
         return [

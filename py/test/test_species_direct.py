@@ -109,14 +109,12 @@ def _species_direct_setup(mockres):
     env = runner.env_override({
         "STARWARS_TEST_SPECIES_ENTID": {},
         "STARWARS_TEST_LIVE": "FALSE",
-        "STARWARS_APIKEY": "NONE",
     })
 
     live = env.get("STARWARS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("STARWARS_APIKEY"),
         }
         client = StarWarsSDK(merged_opts)
         return {

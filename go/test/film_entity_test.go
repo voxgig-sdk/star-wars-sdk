@@ -129,7 +129,6 @@ func filmBasicSetup(extra map[string]any) *entityTestSetup {
 		"STARWARS_TEST_FILM_ENTID": idmap,
 		"STARWARS_TEST_LIVE":      "FALSE",
 		"STARWARS_TEST_EXPLAIN":   "FALSE",
-		"STARWARS_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["STARWARS_TEST_FILM_ENTID"])
@@ -140,7 +139,6 @@ func filmBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["STARWARS_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["STARWARS_APIKEY"],
 			},
 			extra,
 		})

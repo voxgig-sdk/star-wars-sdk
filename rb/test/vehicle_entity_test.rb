@@ -89,7 +89,6 @@ def vehicle_basic_setup(extra)
     "STARWARS_TEST_VEHICLE_ENTID" => idmap,
     "STARWARS_TEST_LIVE" => "FALSE",
     "STARWARS_TEST_EXPLAIN" => "FALSE",
-    "STARWARS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +100,6 @@ def vehicle_basic_setup(extra)
   if env["STARWARS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["STARWARS_APIKEY"],
       },
       extra || {},
     ])

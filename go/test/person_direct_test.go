@@ -194,14 +194,12 @@ func personDirectSetup(mockres any) *personDirectSetupResult {
 	env := envOverride(map[string]any{
 		"STARWARS_TEST_PERSON_ENTID": map[string]any{},
 		"STARWARS_TEST_LIVE":    "FALSE",
-		"STARWARS_APIKEY":       "NONE",
 	})
 
 	live := env["STARWARS_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["STARWARS_APIKEY"],
 		}
 		client := sdk.NewStarWarsSDK(mergedOpts)
 

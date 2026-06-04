@@ -20,9 +20,7 @@ loading a specific record.
 <?php
 require_once 'starwars_sdk.php';
 
-$client = new StarWarsSDK([
-    "apikey" => getenv("STAR-WARS_APIKEY"),
-]);
+$client = new StarWarsSDK([]);
 ```
 
 ### 2. List films
@@ -127,7 +125,6 @@ Create a `.env.local` file at the project root:
 
 ```
 STAR-WARS_TEST_LIVE=TRUE
-STAR-WARS_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,7 +147,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
