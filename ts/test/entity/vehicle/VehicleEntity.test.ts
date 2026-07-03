@@ -114,6 +114,7 @@ function basicSetup(extra?: any) {
     'STAR_WARS_TEST_VEHICLE_ENTID': idmap,
     'STAR_WARS_TEST_LIVE': 'FALSE',
     'STAR_WARS_TEST_EXPLAIN': 'FALSE',
+    'STAR_WARS_APIKEY': 'NONE',
   })
 
   idmap = env['STAR_WARS_TEST_VEHICLE_ENTID']
@@ -123,6 +124,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new StarWarsSDK(merge([
       {
+        apikey: env.STAR_WARS_APIKEY,
       },
       extra
     ]))

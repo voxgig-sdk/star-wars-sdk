@@ -17,35 +17,7 @@ main: {
       ]
       title: "Star Wars API"
       version: "1.0.0"
-      tagline: "Query Star Wars films, people, planets, species, starships, and vehicles over a plain HTTP/JSON API"
-      homepage: "https://swapi.dev/"
-      docs_url: "https://swapi.dev/documentation"
-      license_short: "Data is drawn from the public Star Wars canon; the API itself is a free community project with no formal licence stated"
-      license_md: `- No formal licence is published on the SWAPI homepage.
-- Star Wars names, characters and related material are trademarks of Lucasfilm Ltd.; SWAPI is an unofficial fan project.
-- Treat all returned data as informational only and credit \`swapi.dev\` when redistributing.`
-      about_md: `The [Star Wars API](https://swapi.dev/) (SWAPI) is a community-built read-only HTTP API that exposes structured data about the Star Wars universe — films, characters, planets, species, starships and vehicles — served as JSON over \`https://swapi.dev/api\`.
-
-What you get from the API:
-
-- Films, with title, episode, opening crawl, director, producer and release date.
-- People (characters), with attributes like name, height, mass, hair/eye colour, birth year and homeworld.
-- Planets, with climate, terrain, gravity, population and orbital/rotation periods.
-- Species, with classification, language, average lifespan and designation.
-- Starships and vehicles, with model, manufacturer, cost, crew, passengers, cargo capacity and hyperdrive rating.
-- Cross-references between resources (e.g. a film links to its people, planets, species, starships and vehicles).
-
-SWAPI is read-only and requires no authentication or API key. Responses are paginated JSON and the service is HTTP-only with no documented quota. Note that the public swapi.dev host has had periods of unreliability, so consumers should handle non-2xx responses gracefully.`
-      entity_desc: {
-        film: "A Star Wars feature film resource exposed under `/films/` with title, episode, crawl, director, producer and release date."
-        people_list: "Paginated collection of characters available at `/people/`."
-        person: "An individual Star Wars character at `/people/{id}/` with biographical and physical attributes plus links to films, species, starships and vehicles."
-        planet: "A planet resource at `/planets/{id}/` covering climate, terrain, gravity, diameter, population and orbital data."
-        species: "A sentient species at `/species/{id}/` with classification, designation, average height/lifespan, language and homeworld."
-        starship: "A hyperdrive-capable ship at `/starships/{id}/` with model, manufacturer, crew, passengers, cargo capacity and hyperdrive rating."
-        vehicle: "A non-hyperdrive craft at `/vehicles/{id}/` with model, manufacturer, crew, passengers and cargo capacity."
-      }
-      auth: false
     }
   }
 }
+

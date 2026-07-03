@@ -1,23 +1,8 @@
 # StarWars SDK
 
-Query Star Wars films, people, planets, species, starships, and vehicles over a plain HTTP/JSON API
+Star Wars API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Star Wars API
-
-The [Star Wars API](https://swapi.dev/) (SWAPI) is a community-built read-only HTTP API that exposes structured data about the Star Wars universe — films, characters, planets, species, starships and vehicles — served as JSON over `https://swapi.dev/api`.
-
-What you get from the API:
-
-- Films, with title, episode, opening crawl, director, producer and release date.
-- People (characters), with attributes like name, height, mass, hair/eye colour, birth year and homeworld.
-- Planets, with climate, terrain, gravity, population and orbital/rotation periods.
-- Species, with classification, language, average lifespan and designation.
-- Starships and vehicles, with model, manufacturer, cost, crew, passengers, cargo capacity and hyperdrive rating.
-- Cross-references between resources (e.g. a film links to its people, planets, species, starships and vehicles).
-
-SWAPI is read-only and requires no authentication or API key. Responses are paginated JSON and the service is HTTP-only with no documented quota. Note that the public swapi.dev host has had periods of unreliability, so consumers should handle non-2xx responses gracefully.
 
 ## Try it
 
@@ -51,29 +36,31 @@ gem install star-wars-sdk
 luarocks install star-wars-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { StarWarsSDK } from 'star-wars'
 
-const client = new StarWarsSDK({})
+const client = new StarWarsSDK({
+  apikey: process.env.STAR-WARS_APIKEY,
+})
 
 // List all films
 const films = await client.Film().list()
+console.log(films.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -103,13 +90,13 @@ The API exposes 7 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Film** | A Star Wars feature film resource exposed under `/films/` with title, episode, crawl, director, producer and release date. | `/films` |
-| **PeopleList** | Paginated collection of characters available at `/people/`. | `` |
-| **Person** | An individual Star Wars character at `/people/{id}/` with biographical and physical attributes plus links to films, species, starships and vehicles. | `/people` |
-| **Planet** | A planet resource at `/planets/{id}/` covering climate, terrain, gravity, diameter, population and orbital data. | `/planets` |
-| **Species** | A sentient species at `/species/{id}/` with classification, designation, average height/lifespan, language and homeworld. | `/species` |
-| **Starship** | A hyperdrive-capable ship at `/starships/{id}/` with model, manufacturer, crew, passengers, cargo capacity and hyperdrive rating. | `/starships` |
-| **Vehicle** | A non-hyperdrive craft at `/vehicles/{id}/` with model, manufacturer, crew, passengers and cargo capacity. | `/vehicles` |
+| **Film** |  | `/films` |
+| **PeopleList** |  | `` |
+| **Person** |  | `/people` |
+| **Planet** |  | `/planets` |
+| **Species** |  | `/species` |
+| **Starship** |  | `/starships` |
+| **Vehicle** |  | `/vehicles` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -119,17 +106,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from starwars_sdk import StarWarsSDK
 
-client = StarWarsSDK({})
+client = StarWarsSDK({
+    "apikey": os.environ.get("STAR-WARS_APIKEY"),
+})
 
 # List all films
-films, err = client.Film(None).list(None, None)
+films, err = client.Film().list()
+print(films)
 
 # Load a specific film
-film, err = client.Film(None).load(
-    {"id": "example_id"}, None
-)
+film, err = client.Film().load({"id": "example_id"})
+print(film)
 ```
 
 ### PHP
@@ -138,15 +128,17 @@ film, err = client.Film(None).load(
 <?php
 require_once 'starwars_sdk.php';
 
-$client = new StarWarsSDK([]);
+$client = new StarWarsSDK([
+    "apikey" => getenv("STAR-WARS_APIKEY"),
+]);
 
 // List all films
-[$films, $err] = $client->Film(null)->list(null, null);
+[$films, $err] = $client->Film()->list();
+print_r($films);
 
 // Load a specific film
-[$film, $err] = $client->Film(null)->load(
-    ["id" => "example_id"], null
-);
+[$film, $err] = $client->Film()->load(["id" => "example_id"]);
+print_r($film);
 ```
 
 ### Golang
@@ -154,10 +146,13 @@ $client = new StarWarsSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/star-wars-sdk/go"
 
-client := sdk.NewStarWarsSDK(map[string]any{})
+client := sdk.NewStarWarsSDK(map[string]any{
+    "apikey": os.Getenv("STAR-WARS_APIKEY"),
+})
 
 // List all films
 films, err := client.Film(nil).List(nil, nil)
+fmt.Println(films)
 ```
 
 ### Ruby
@@ -165,15 +160,17 @@ films, err := client.Film(nil).List(nil, nil)
 ```ruby
 require_relative "StarWars_sdk"
 
-client = StarWarsSDK.new({})
+client = StarWarsSDK.new({
+  "apikey" => ENV["STAR-WARS_APIKEY"],
+})
 
 # List all films
-films, err = client.Film(nil).list(nil, nil)
+films, err = client.Film().list
+puts films
 
 # Load a specific film
-film, err = client.Film(nil).load(
-  { "id" => "example_id" }, nil
-)
+film, err = client.Film().load({ "id" => "example_id" })
+puts film
 ```
 
 ### Lua
@@ -181,15 +178,17 @@ film, err = client.Film(nil).load(
 ```lua
 local sdk = require("star-wars_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("STAR-WARS_APIKEY"),
+})
 
 -- List all films
-local films, err = client:Film(nil):list(nil, nil)
+local films, err = client:Film():list()
+print(films)
 
 -- Load a specific film
-local film, err = client:Film(nil):load(
-  { id = "example_id" }, nil
-)
+local film, err = client:Film():load({ id = "example_id" })
+print(film)
 ```
 
 ## Unit testing in offline mode
@@ -208,25 +207,21 @@ const result = await client.Film().load({ id: 'test01' })
 ### Python
 
 ```python
-client = StarWarsSDK.test(None, None)
-result, err = client.Film(None).load(
-    {"id": "test01"}, None
-)
+client = StarWarsSDK.test()
+result, err = client.Film().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = StarWarsSDK::test(null, null);
-[$result, $err] = $client->Film(null)->load(
-    ["id" => "test01"], null
-);
+$client = StarWarsSDK::test();
+[$result, $err] = $client->Film()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Film(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -235,19 +230,15 @@ result, err := client.Film(nil).Load(
 ### Ruby
 
 ```ruby
-client = StarWarsSDK.test(nil, nil)
-result, err = client.Film(nil).load(
-  { "id" => "test01" }, nil
-)
+client = StarWarsSDK.test
+result, err = client.Film().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Film(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Film():load({ id = "test01" })
 ```
 
 ## How it works
@@ -351,15 +342,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Star Wars API
-
-- Upstream: [https://swapi.dev/](https://swapi.dev/)
-- API docs: [https://swapi.dev/documentation](https://swapi.dev/documentation)
-
-- No formal licence is published on the SWAPI homepage.
-- Star Wars names, characters and related material are trademarks of Lucasfilm Ltd.; SWAPI is an unofficial fan project.
-- Treat all returned data as informational only and credit `swapi.dev` when redistributing.
 
 ---
 

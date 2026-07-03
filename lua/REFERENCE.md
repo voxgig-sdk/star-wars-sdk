@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -137,7 +137,7 @@ local film = client:Film(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Film(nil):list(nil, nil)
+local results, err = client:Film():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -145,7 +145,7 @@ local results, err = client:Film(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Film(nil):load({ id = "film_id" }, nil)
+local result, err = client:Film():load({ id = "film_id" })
 ```
 
 ### Common Methods
@@ -248,7 +248,7 @@ local person = client:Person(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Person(nil):list(nil, nil)
+local results, err = client:Person():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -256,7 +256,7 @@ local results, err = client:Person(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Person(nil):load({ id = "person_id" }, nil)
+local result, err = client:Person():load({ id = "person_id" })
 ```
 
 ### Common Methods
@@ -321,7 +321,7 @@ local planet = client:Planet(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Planet(nil):list(nil, nil)
+local results, err = client:Planet():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -329,7 +329,7 @@ local results, err = client:Planet(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Planet(nil):load({ id = "planet_id" }, nil)
+local result, err = client:Planet():load({ id = "planet_id" })
 ```
 
 ### Common Methods
@@ -395,7 +395,7 @@ local species = client:Species(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Species(nil):list(nil, nil)
+local results, err = client:Species():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -403,7 +403,7 @@ local results, err = client:Species(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Species(nil):load({ id = "species_id" }, nil)
+local result, err = client:Species():load({ id = "species_id" })
 ```
 
 ### Common Methods
@@ -472,7 +472,7 @@ local starship = client:Starship(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Starship(nil):list(nil, nil)
+local results, err = client:Starship():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -480,7 +480,7 @@ local results, err = client:Starship(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Starship(nil):load({ id = "starship_id" }, nil)
+local result, err = client:Starship():load({ id = "starship_id" })
 ```
 
 ### Common Methods
@@ -547,7 +547,7 @@ local vehicle = client:Vehicle(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Vehicle(nil):list(nil, nil)
+local results, err = client:Vehicle():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -555,7 +555,7 @@ local results, err = client:Vehicle(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Vehicle(nil):load({ id = "vehicle_id" }, nil)
+local result, err = client:Vehicle():load({ id = "vehicle_id" })
 ```
 
 ### Common Methods
