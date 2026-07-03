@@ -10,7 +10,7 @@ The Lua SDK for the StarWars API — an entity-oriented client using Lua convent
 
 ## Install
 ```bash
-luarocks install star-wars-sdk
+luarocks install voxgig-sdk-star-wars
 ```
 
 If the module is not yet published, add the source directory to

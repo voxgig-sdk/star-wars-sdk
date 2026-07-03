@@ -10,7 +10,7 @@ The Python SDK for the StarWars API — an entity-oriented client following Pyth
 
 ## Install
 ```bash
-pip install star-wars-sdk
+pip install voxgig-sdk-star-wars
 ```
 
 Or install from source:

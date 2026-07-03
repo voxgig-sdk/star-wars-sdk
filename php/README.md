@@ -10,7 +10,7 @@ The PHP SDK for the StarWars API — an entity-oriented client using PHP convent
 
 ## Install
 ```bash
-composer require voxgig/star-wars-sdk
+composer require voxgig-sdk/star-wars
 ```
 
 

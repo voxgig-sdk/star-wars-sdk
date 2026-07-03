@@ -10,7 +10,7 @@ The TypeScript SDK for the StarWars API — a type-safe, entity-oriented client 
 
 ## Install
 ```bash
-npm install star-wars
+npm install @voxgig-sdk/star-wars
 ```
 ## Tutorial: your first API call
 

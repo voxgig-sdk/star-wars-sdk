@@ -10,13 +10,13 @@ The Ruby SDK for the StarWars API — an entity-oriented client using idiomatic 
 
 ## Install
 ```bash
-gem install star-wars-sdk
+gem install voxgig-sdk-star-wars
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "star-wars-sdk"
+gem "voxgig-sdk-star-wars"
 ```
 
 Then run:
