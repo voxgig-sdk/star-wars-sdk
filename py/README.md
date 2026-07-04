@@ -31,24 +31,28 @@ from starwars_sdk import StarWarsSDK
 client = StarWarsSDK()
 ```
 
-### 2. List films
+### 2. List film records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.film.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    films = client.Film().list({})
+    for film in films:
+        print(film)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a film
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.film.load({"id": "example_id"})
-    print(result)
+    film = client.Film().load({"id": "example_id"})
+    print(film)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = StarWarsSDK.test()
 
-result = client.film.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+film = client.Film().load({"id": "test01"})
+# film contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -382,7 +387,7 @@ API path: `/vehicles`
 
 ### Film
 
-Create an instance: `const film = client.film`
+Create an instance: `film = client.Film()`
 
 #### Operations
 
@@ -412,25 +417,25 @@ Create an instance: `const film = client.film`
 
 #### Example: Load
 
-```ts
-const film = await client.film.load({ id: 'film_id' })
+```python
+film = client.Film().load({"id": "film_id"})
 ```
 
 #### Example: List
 
-```ts
-const films = await client.film.list()
+```python
+films = client.Film().list({})
 ```
 
 
 ### PeopleList
 
-Create an instance: `const people_list = client.people_list`
+Create an instance: `people_list = client.PeopleList()`
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `person = client.Person()`
 
 #### Operations
 
@@ -462,20 +467,20 @@ Create an instance: `const person = client.person`
 
 #### Example: Load
 
-```ts
-const person = await client.person.load({ id: 'person_id' })
+```python
+person = client.Person().load({"id": "person_id"})
 ```
 
 #### Example: List
 
-```ts
-const persons = await client.person.list()
+```python
+persons = client.Person().list({})
 ```
 
 
 ### Planet
 
-Create an instance: `const planet = client.planet`
+Create an instance: `planet = client.Planet()`
 
 #### Operations
 
@@ -505,20 +510,20 @@ Create an instance: `const planet = client.planet`
 
 #### Example: Load
 
-```ts
-const planet = await client.planet.load({ id: 'planet_id' })
+```python
+planet = client.Planet().load({"id": "planet_id"})
 ```
 
 #### Example: List
 
-```ts
-const planets = await client.planet.list()
+```python
+planets = client.Planet().list({})
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.species`
+Create an instance: `species = client.Species()`
 
 #### Operations
 
@@ -549,20 +554,20 @@ Create an instance: `const species = client.species`
 
 #### Example: Load
 
-```ts
-const species = await client.species.load({ id: 'species_id' })
+```python
+species = client.Species().load({"id": "species_id"})
 ```
 
 #### Example: List
 
-```ts
-const speciess = await client.species.list()
+```python
+speciess = client.Species().list({})
 ```
 
 
 ### Starship
 
-Create an instance: `const starship = client.starship`
+Create an instance: `starship = client.Starship()`
 
 #### Operations
 
@@ -596,20 +601,20 @@ Create an instance: `const starship = client.starship`
 
 #### Example: Load
 
-```ts
-const starship = await client.starship.load({ id: 'starship_id' })
+```python
+starship = client.Starship().load({"id": "starship_id"})
 ```
 
 #### Example: List
 
-```ts
-const starships = await client.starship.list()
+```python
+starships = client.Starship().list({})
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.vehicle`
+Create an instance: `vehicle = client.Vehicle()`
 
 #### Operations
 
@@ -641,14 +646,14 @@ Create an instance: `const vehicle = client.vehicle`
 
 #### Example: Load
 
-```ts
-const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
+```python
+vehicle = client.Vehicle().load({"id": "vehicle_id"})
 ```
 
 #### Example: List
 
-```ts
-const vehicles = await client.vehicle.list()
+```python
+vehicles = client.Vehicle().list({})
 ```
 
 
@@ -722,7 +727,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-film = client.film
+film = client.Film()
 film.load({"id": "example_id"})
 
 # film.data_get() now returns the loaded film data

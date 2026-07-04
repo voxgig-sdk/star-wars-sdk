@@ -104,7 +104,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## FilmEntity
 
 ```python
-film = client.film
+film = client.Film()
 ```
 
 ### Fields
@@ -133,7 +133,9 @@ film = client.film
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.film.list({})
+results = client.Film().list({})
+for film in results:
+    print(film)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -141,7 +143,7 @@ results = client.film.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.film.load({"id": "film_id"})
+result = client.Film().load({"id": "film_id"})
 ```
 
 ### Common Methods
@@ -176,7 +178,7 @@ Return the entity name.
 ## PeopleListEntity
 
 ```python
-people_list = client.people_list
+people_list = client.PeopleList()
 ```
 
 ### Common Methods
@@ -211,7 +213,7 @@ Return the entity name.
 ## PersonEntity
 
 ```python
-person = client.person
+person = client.Person()
 ```
 
 ### Fields
@@ -242,7 +244,9 @@ person = client.person
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.person.list({})
+results = client.Person().list({})
+for person in results:
+    print(person)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -250,7 +254,7 @@ results = client.person.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.person.load({"id": "person_id"})
+result = client.Person().load({"id": "person_id"})
 ```
 
 ### Common Methods
@@ -285,7 +289,7 @@ Return the entity name.
 ## PlanetEntity
 
 ```python
-planet = client.planet
+planet = client.Planet()
 ```
 
 ### Fields
@@ -314,7 +318,9 @@ planet = client.planet
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.planet.list({})
+results = client.Planet().list({})
+for planet in results:
+    print(planet)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -322,7 +328,7 @@ results = client.planet.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.planet.load({"id": "planet_id"})
+result = client.Planet().load({"id": "planet_id"})
 ```
 
 ### Common Methods
@@ -357,7 +363,7 @@ Return the entity name.
 ## SpeciesEntity
 
 ```python
-species = client.species
+species = client.Species()
 ```
 
 ### Fields
@@ -387,7 +393,9 @@ species = client.species
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.species.list({})
+results = client.Species().list({})
+for species in results:
+    print(species)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -395,7 +403,7 @@ results = client.species.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.species.load({"id": "species_id"})
+result = client.Species().load({"id": "species_id"})
 ```
 
 ### Common Methods
@@ -430,7 +438,7 @@ Return the entity name.
 ## StarshipEntity
 
 ```python
-starship = client.starship
+starship = client.Starship()
 ```
 
 ### Fields
@@ -463,7 +471,9 @@ starship = client.starship
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.starship.list({})
+results = client.Starship().list({})
+for starship in results:
+    print(starship)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -471,7 +481,7 @@ results = client.starship.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.starship.load({"id": "starship_id"})
+result = client.Starship().load({"id": "starship_id"})
 ```
 
 ### Common Methods
@@ -506,7 +516,7 @@ Return the entity name.
 ## VehicleEntity
 
 ```python
-vehicle = client.vehicle
+vehicle = client.Vehicle()
 ```
 
 ### Fields
@@ -537,7 +547,9 @@ vehicle = client.vehicle
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.vehicle.list({})
+results = client.Vehicle().list({})
+for vehicle in results:
+    print(vehicle)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -545,7 +557,7 @@ results = client.vehicle.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.vehicle.load({"id": "vehicle_id"})
+result = client.Vehicle().load({"id": "vehicle_id"})
 ```
 
 ### Common Methods

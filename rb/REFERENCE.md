@@ -110,7 +110,7 @@ same parameters as `direct()`. Raises on error.
 ## FilmEntity
 
 ```ruby
-film = client.film
+film = client.Film
 ```
 
 ### Fields
@@ -139,7 +139,7 @@ film = client.film
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.film.list(nil)
+results = client.Film.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -147,7 +147,7 @@ results = client.film.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.film.load({ "id" => "film_id" })
+result = client.Film.load({ "id" => "film_id" })
 ```
 
 ### Common Methods
@@ -183,7 +183,7 @@ Return the entity name.
 ## PeopleListEntity
 
 ```ruby
-people_list = client.people_list
+people_list = client.PeopleList
 ```
 
 ### Common Methods
@@ -219,7 +219,7 @@ Return the entity name.
 ## PersonEntity
 
 ```ruby
-person = client.person
+person = client.Person
 ```
 
 ### Fields
@@ -250,7 +250,7 @@ person = client.person
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.person.list(nil)
+results = client.Person.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -258,7 +258,7 @@ results = client.person.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.person.load({ "id" => "person_id" })
+result = client.Person.load({ "id" => "person_id" })
 ```
 
 ### Common Methods
@@ -294,7 +294,7 @@ Return the entity name.
 ## PlanetEntity
 
 ```ruby
-planet = client.planet
+planet = client.Planet
 ```
 
 ### Fields
@@ -323,7 +323,7 @@ planet = client.planet
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.planet.list(nil)
+results = client.Planet.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -331,7 +331,7 @@ results = client.planet.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.planet.load({ "id" => "planet_id" })
+result = client.Planet.load({ "id" => "planet_id" })
 ```
 
 ### Common Methods
@@ -367,7 +367,7 @@ Return the entity name.
 ## SpeciesEntity
 
 ```ruby
-species = client.species
+species = client.Species
 ```
 
 ### Fields
@@ -397,7 +397,7 @@ species = client.species
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.species.list(nil)
+results = client.Species.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -405,7 +405,7 @@ results = client.species.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.species.load({ "id" => "species_id" })
+result = client.Species.load({ "id" => "species_id" })
 ```
 
 ### Common Methods
@@ -441,7 +441,7 @@ Return the entity name.
 ## StarshipEntity
 
 ```ruby
-starship = client.starship
+starship = client.Starship
 ```
 
 ### Fields
@@ -474,7 +474,7 @@ starship = client.starship
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.starship.list(nil)
+results = client.Starship.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -482,7 +482,7 @@ results = client.starship.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.starship.load({ "id" => "starship_id" })
+result = client.Starship.load({ "id" => "starship_id" })
 ```
 
 ### Common Methods
@@ -518,7 +518,7 @@ Return the entity name.
 ## VehicleEntity
 
 ```ruby
-vehicle = client.vehicle
+vehicle = client.Vehicle
 ```
 
 ### Fields
@@ -549,7 +549,7 @@ vehicle = client.vehicle
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.vehicle.list(nil)
+results = client.Vehicle.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -557,7 +557,7 @@ results = client.vehicle.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.vehicle.load({ "id" => "vehicle_id" })
+result = client.Vehicle.load({ "id" => "vehicle_id" })
 ```
 
 ### Common Methods

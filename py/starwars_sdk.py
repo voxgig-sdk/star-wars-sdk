@@ -220,121 +220,51 @@ class StarWarsSDK:
         }
 
 
-    @property
-    def film(self):
-        """Idiomatic facade: client.film.list() / client.film.load({"id": ...})."""
-        from entity.film_entity import FilmEntity
-        cached = getattr(self, "_film", None)
-        if cached is None:
-            cached = FilmEntity(self, None)
-            self._film = cached
-        return cached
-
-    def Film(self, data=None):
-        # Deprecated: use client.film instead.
+    def Film(self, data=None) -> "FilmEntity":
+        """Entity factory: client.Film().list({}) / client.Film().load({"id": ...})."""
         from entity.film_entity import FilmEntity
         return FilmEntity(self, data)
 
 
-    @property
-    def people_list(self):
-        """Idiomatic facade: client.people_list.list() / client.people_list.load({"id": ...})."""
-        from entity.people_list_entity import PeopleListEntity
-        cached = getattr(self, "_people_list", None)
-        if cached is None:
-            cached = PeopleListEntity(self, None)
-            self._people_list = cached
-        return cached
-
-    def PeopleList(self, data=None):
-        # Deprecated: use client.people_list instead.
+    def PeopleList(self, data=None) -> "PeopleListEntity":
+        """Entity factory: client.PeopleList().list({}) / client.PeopleList().load({"id": ...})."""
         from entity.people_list_entity import PeopleListEntity
         return PeopleListEntity(self, data)
 
 
-    @property
-    def person(self):
-        """Idiomatic facade: client.person.list() / client.person.load({"id": ...})."""
-        from entity.person_entity import PersonEntity
-        cached = getattr(self, "_person", None)
-        if cached is None:
-            cached = PersonEntity(self, None)
-            self._person = cached
-        return cached
-
-    def Person(self, data=None):
-        # Deprecated: use client.person instead.
+    def Person(self, data=None) -> "PersonEntity":
+        """Entity factory: client.Person().list({}) / client.Person().load({"id": ...})."""
         from entity.person_entity import PersonEntity
         return PersonEntity(self, data)
 
 
-    @property
-    def planet(self):
-        """Idiomatic facade: client.planet.list() / client.planet.load({"id": ...})."""
-        from entity.planet_entity import PlanetEntity
-        cached = getattr(self, "_planet", None)
-        if cached is None:
-            cached = PlanetEntity(self, None)
-            self._planet = cached
-        return cached
-
-    def Planet(self, data=None):
-        # Deprecated: use client.planet instead.
+    def Planet(self, data=None) -> "PlanetEntity":
+        """Entity factory: client.Planet().list({}) / client.Planet().load({"id": ...})."""
         from entity.planet_entity import PlanetEntity
         return PlanetEntity(self, data)
 
 
-    @property
-    def species(self):
-        """Idiomatic facade: client.species.list() / client.species.load({"id": ...})."""
-        from entity.species_entity import SpeciesEntity
-        cached = getattr(self, "_species", None)
-        if cached is None:
-            cached = SpeciesEntity(self, None)
-            self._species = cached
-        return cached
-
-    def Species(self, data=None):
-        # Deprecated: use client.species instead.
+    def Species(self, data=None) -> "SpeciesEntity":
+        """Entity factory: client.Species().list({}) / client.Species().load({"id": ...})."""
         from entity.species_entity import SpeciesEntity
         return SpeciesEntity(self, data)
 
 
-    @property
-    def starship(self):
-        """Idiomatic facade: client.starship.list() / client.starship.load({"id": ...})."""
-        from entity.starship_entity import StarshipEntity
-        cached = getattr(self, "_starship", None)
-        if cached is None:
-            cached = StarshipEntity(self, None)
-            self._starship = cached
-        return cached
-
-    def Starship(self, data=None):
-        # Deprecated: use client.starship instead.
+    def Starship(self, data=None) -> "StarshipEntity":
+        """Entity factory: client.Starship().list({}) / client.Starship().load({"id": ...})."""
         from entity.starship_entity import StarshipEntity
         return StarshipEntity(self, data)
 
 
-    @property
-    def vehicle(self):
-        """Idiomatic facade: client.vehicle.list() / client.vehicle.load({"id": ...})."""
-        from entity.vehicle_entity import VehicleEntity
-        cached = getattr(self, "_vehicle", None)
-        if cached is None:
-            cached = VehicleEntity(self, None)
-            self._vehicle = cached
-        return cached
-
-    def Vehicle(self, data=None):
-        # Deprecated: use client.vehicle instead.
+    def Vehicle(self, data=None) -> "VehicleEntity":
+        """Entity factory: client.Vehicle().list({}) / client.Vehicle().load({"id": ...})."""
         from entity.vehicle_entity import VehicleEntity
         return VehicleEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "StarWarsSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -354,3 +284,15 @@ class StarWarsSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.film_entity import FilmEntity
+    from entity.people_list_entity import PeopleListEntity
+    from entity.person_entity import PersonEntity
+    from entity.planet_entity import PlanetEntity
+    from entity.species_entity import SpeciesEntity
+    from entity.starship_entity import StarshipEntity
+    from entity.vehicle_entity import VehicleEntity

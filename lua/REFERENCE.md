@@ -107,7 +107,7 @@ same parameters as `direct()`.
 ## FilmEntity
 
 ```lua
-local film = client:film(nil)
+local film = client:Film(nil)
 ```
 
 ### Fields
@@ -136,7 +136,7 @@ local film = client:film(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:film():list()
+local results, err = client:Film():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -144,7 +144,7 @@ local results, err = client:film():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:film():load({ id = "film_id" })
+local result, err = client:Film():load({ id = "film_id" })
 ```
 
 ### Common Methods
@@ -180,7 +180,7 @@ Return the entity name.
 ## PeopleListEntity
 
 ```lua
-local people_list = client:people_list(nil)
+local people_list = client:PeopleList(nil)
 ```
 
 ### Common Methods
@@ -216,7 +216,7 @@ Return the entity name.
 ## PersonEntity
 
 ```lua
-local person = client:person(nil)
+local person = client:Person(nil)
 ```
 
 ### Fields
@@ -247,7 +247,7 @@ local person = client:person(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:person():list()
+local results, err = client:Person():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -255,7 +255,7 @@ local results, err = client:person():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:person():load({ id = "person_id" })
+local result, err = client:Person():load({ id = "person_id" })
 ```
 
 ### Common Methods
@@ -291,7 +291,7 @@ Return the entity name.
 ## PlanetEntity
 
 ```lua
-local planet = client:planet(nil)
+local planet = client:Planet(nil)
 ```
 
 ### Fields
@@ -320,7 +320,7 @@ local planet = client:planet(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:planet():list()
+local results, err = client:Planet():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -328,7 +328,7 @@ local results, err = client:planet():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:planet():load({ id = "planet_id" })
+local result, err = client:Planet():load({ id = "planet_id" })
 ```
 
 ### Common Methods
@@ -364,7 +364,7 @@ Return the entity name.
 ## SpeciesEntity
 
 ```lua
-local species = client:species(nil)
+local species = client:Species(nil)
 ```
 
 ### Fields
@@ -394,7 +394,7 @@ local species = client:species(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:species():list()
+local results, err = client:Species():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -402,7 +402,7 @@ local results, err = client:species():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:species():load({ id = "species_id" })
+local result, err = client:Species():load({ id = "species_id" })
 ```
 
 ### Common Methods
@@ -438,7 +438,7 @@ Return the entity name.
 ## StarshipEntity
 
 ```lua
-local starship = client:starship(nil)
+local starship = client:Starship(nil)
 ```
 
 ### Fields
@@ -471,7 +471,7 @@ local starship = client:starship(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:starship():list()
+local results, err = client:Starship():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -479,7 +479,7 @@ local results, err = client:starship():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:starship():load({ id = "starship_id" })
+local result, err = client:Starship():load({ id = "starship_id" })
 ```
 
 ### Common Methods
@@ -515,7 +515,7 @@ Return the entity name.
 ## VehicleEntity
 
 ```lua
-local vehicle = client:vehicle(nil)
+local vehicle = client:Vehicle(nil)
 ```
 
 ### Fields
@@ -546,7 +546,7 @@ local vehicle = client:vehicle(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:vehicle():list()
+local results, err = client:Vehicle():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -554,7 +554,7 @@ local results, err = client:vehicle():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:vehicle():load({ id = "vehicle_id" })
+local result, err = client:Vehicle():load({ id = "vehicle_id" })
 ```
 
 ### Common Methods

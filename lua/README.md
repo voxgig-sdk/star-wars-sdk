@@ -31,26 +31,26 @@ local sdk = require("star-wars_sdk")
 local client = sdk.new()
 ```
 
-### 2. List films
+### 2. List film records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:film():list()
+local films, err = client:Film():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(films) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load a film
 
 ```lua
-local result, err = client:film():load({ id = "example_id" })
+local film, err = client:Film():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(film)
 ```
 
 
@@ -96,8 +96,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:film():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Film():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -203,17 +203,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local film, err = client:Film():load({ id = "example_id" })
+    if err then error(err) end
+    -- film is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -380,7 +385,7 @@ API path: `/vehicles`
 
 ### Film
 
-Create an instance: `const film = client.film`
+Create an instance: `local film = client:Film(nil)`
 
 #### Operations
 
@@ -410,25 +415,25 @@ Create an instance: `const film = client.film`
 
 #### Example: Load
 
-```ts
-const film = await client.film.load({ id: 'film_id' })
+```lua
+local film, err = client:Film():load({ id = "film_id" })
 ```
 
 #### Example: List
 
-```ts
-const films = await client.film.list()
+```lua
+local films, err = client:Film():list()
 ```
 
 
 ### PeopleList
 
-Create an instance: `const people_list = client.people_list`
+Create an instance: `local people_list = client:PeopleList(nil)`
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `local person = client:Person(nil)`
 
 #### Operations
 
@@ -460,20 +465,20 @@ Create an instance: `const person = client.person`
 
 #### Example: Load
 
-```ts
-const person = await client.person.load({ id: 'person_id' })
+```lua
+local person, err = client:Person():load({ id = "person_id" })
 ```
 
 #### Example: List
 
-```ts
-const persons = await client.person.list()
+```lua
+local persons, err = client:Person():list()
 ```
 
 
 ### Planet
 
-Create an instance: `const planet = client.planet`
+Create an instance: `local planet = client:Planet(nil)`
 
 #### Operations
 
@@ -503,20 +508,20 @@ Create an instance: `const planet = client.planet`
 
 #### Example: Load
 
-```ts
-const planet = await client.planet.load({ id: 'planet_id' })
+```lua
+local planet, err = client:Planet():load({ id = "planet_id" })
 ```
 
 #### Example: List
 
-```ts
-const planets = await client.planet.list()
+```lua
+local planets, err = client:Planet():list()
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.species`
+Create an instance: `local species = client:Species(nil)`
 
 #### Operations
 
@@ -547,20 +552,20 @@ Create an instance: `const species = client.species`
 
 #### Example: Load
 
-```ts
-const species = await client.species.load({ id: 'species_id' })
+```lua
+local species, err = client:Species():load({ id = "species_id" })
 ```
 
 #### Example: List
 
-```ts
-const speciess = await client.species.list()
+```lua
+local speciess, err = client:Species():list()
 ```
 
 
 ### Starship
 
-Create an instance: `const starship = client.starship`
+Create an instance: `local starship = client:Starship(nil)`
 
 #### Operations
 
@@ -594,20 +599,20 @@ Create an instance: `const starship = client.starship`
 
 #### Example: Load
 
-```ts
-const starship = await client.starship.load({ id: 'starship_id' })
+```lua
+local starship, err = client:Starship():load({ id = "starship_id" })
 ```
 
 #### Example: List
 
-```ts
-const starships = await client.starship.list()
+```lua
+local starships, err = client:Starship():list()
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.vehicle`
+Create an instance: `local vehicle = client:Vehicle(nil)`
 
 #### Operations
 
@@ -639,14 +644,14 @@ Create an instance: `const vehicle = client.vehicle`
 
 #### Example: Load
 
-```ts
-const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
+```lua
+local vehicle, err = client:Vehicle():load({ id = "vehicle_id" })
 ```
 
 #### Example: List
 
-```ts
-const vehicles = await client.vehicle.list()
+```lua
+local vehicles, err = client:Vehicle():list()
 ```
 
 
@@ -721,7 +726,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local film = client:film()
+local film = client:Film()
 film:load({ id = "example_id" })
 
 -- film:data_get() now returns the loaded film data

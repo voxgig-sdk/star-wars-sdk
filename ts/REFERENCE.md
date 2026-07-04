@@ -181,7 +181,7 @@ Alias for `StarWarsSDK.test()`.
 ## FilmEntity
 
 ```ts
-const film = client.film
+const film = client.Film()
 ```
 
 ### Fields
@@ -210,7 +210,7 @@ const film = client.film
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.film.list()
+const results = await client.Film().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -218,7 +218,7 @@ const results = await client.film.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.film.load({ id: 'film_id' })
+const result = await client.Film().load({ id: 'film_id' })
 ```
 
 ### Common Methods
@@ -252,7 +252,7 @@ Return a copy of the entity options.
 ## PeopleListEntity
 
 ```ts
-const people_list = client.people_list
+const people_list = client.PeopleList()
 ```
 
 ### Common Methods
@@ -286,7 +286,7 @@ Return a copy of the entity options.
 ## PersonEntity
 
 ```ts
-const person = client.person
+const person = client.Person()
 ```
 
 ### Fields
@@ -317,7 +317,7 @@ const person = client.person
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.person.list()
+const results = await client.Person().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -325,7 +325,7 @@ const results = await client.person.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.person.load({ id: 'person_id' })
+const result = await client.Person().load({ id: 'person_id' })
 ```
 
 ### Common Methods
@@ -359,7 +359,7 @@ Return a copy of the entity options.
 ## PlanetEntity
 
 ```ts
-const planet = client.planet
+const planet = client.Planet()
 ```
 
 ### Fields
@@ -388,7 +388,7 @@ const planet = client.planet
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.planet.list()
+const results = await client.Planet().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -396,7 +396,7 @@ const results = await client.planet.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.planet.load({ id: 'planet_id' })
+const result = await client.Planet().load({ id: 'planet_id' })
 ```
 
 ### Common Methods
@@ -430,7 +430,7 @@ Return a copy of the entity options.
 ## SpeciesEntity
 
 ```ts
-const species = client.species
+const species = client.Species()
 ```
 
 ### Fields
@@ -460,7 +460,7 @@ const species = client.species
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.species.list()
+const results = await client.Species().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -468,7 +468,7 @@ const results = await client.species.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.species.load({ id: 'species_id' })
+const result = await client.Species().load({ id: 'species_id' })
 ```
 
 ### Common Methods
@@ -502,7 +502,7 @@ Return a copy of the entity options.
 ## StarshipEntity
 
 ```ts
-const starship = client.starship
+const starship = client.Starship()
 ```
 
 ### Fields
@@ -535,7 +535,7 @@ const starship = client.starship
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.starship.list()
+const results = await client.Starship().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -543,7 +543,7 @@ const results = await client.starship.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.starship.load({ id: 'starship_id' })
+const result = await client.Starship().load({ id: 'starship_id' })
 ```
 
 ### Common Methods
@@ -577,7 +577,7 @@ Return a copy of the entity options.
 ## VehicleEntity
 
 ```ts
-const vehicle = client.vehicle
+const vehicle = client.Vehicle()
 ```
 
 ### Fields
@@ -608,7 +608,7 @@ const vehicle = client.vehicle
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.vehicle.list()
+const results = await client.Vehicle().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -616,7 +616,7 @@ const results = await client.vehicle.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.vehicle.load({ id: 'vehicle_id' })
+const result = await client.Vehicle().load({ id: 'vehicle_id' })
 ```
 
 ### Common Methods

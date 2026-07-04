@@ -28,16 +28,14 @@ require_relative "StarWars_sdk"
 client = StarWarsSDK.new
 ```
 
-### 2. List films
+### 2. List film records
 
 ```ruby
 begin
-  result = client.film.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Film records — iterate directly.
+  films = client.Film.list
+  films.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.film.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Film record (raises on error).
+  film = client.Film.load({ "id" => "example_id" })
+  puts film
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = StarWarsSDK.test
+client = StarWarsSDK.test({
+  "entity" => { "film" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.film.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+film = client.Film.load({ "id" => "test01" })
+puts film
 ```
 
 ### Use a custom fetch function
@@ -386,7 +389,7 @@ API path: `/vehicles`
 
 ### Film
 
-Create an instance: `const film = client.film`
+Create an instance: `film = client.Film`
 
 #### Operations
 
@@ -416,25 +419,27 @@ Create an instance: `const film = client.film`
 
 #### Example: Load
 
-```ts
-const film = await client.film.load({ id: 'film_id' })
+```ruby
+# load returns the bare Film record (raises on error).
+film = client.Film.load({ "id" => "film_id" })
 ```
 
 #### Example: List
 
-```ts
-const films = await client.film.list()
+```ruby
+# list returns an Array of Film records (raises on error).
+films = client.Film.list
 ```
 
 
 ### PeopleList
 
-Create an instance: `const people_list = client.people_list`
+Create an instance: `people_list = client.PeopleList`
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `person = client.Person`
 
 #### Operations
 
@@ -466,20 +471,22 @@ Create an instance: `const person = client.person`
 
 #### Example: Load
 
-```ts
-const person = await client.person.load({ id: 'person_id' })
+```ruby
+# load returns the bare Person record (raises on error).
+person = client.Person.load({ "id" => "person_id" })
 ```
 
 #### Example: List
 
-```ts
-const persons = await client.person.list()
+```ruby
+# list returns an Array of Person records (raises on error).
+persons = client.Person.list
 ```
 
 
 ### Planet
 
-Create an instance: `const planet = client.planet`
+Create an instance: `planet = client.Planet`
 
 #### Operations
 
@@ -509,20 +516,22 @@ Create an instance: `const planet = client.planet`
 
 #### Example: Load
 
-```ts
-const planet = await client.planet.load({ id: 'planet_id' })
+```ruby
+# load returns the bare Planet record (raises on error).
+planet = client.Planet.load({ "id" => "planet_id" })
 ```
 
 #### Example: List
 
-```ts
-const planets = await client.planet.list()
+```ruby
+# list returns an Array of Planet records (raises on error).
+planets = client.Planet.list
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.species`
+Create an instance: `species = client.Species`
 
 #### Operations
 
@@ -553,20 +562,22 @@ Create an instance: `const species = client.species`
 
 #### Example: Load
 
-```ts
-const species = await client.species.load({ id: 'species_id' })
+```ruby
+# load returns the bare Species record (raises on error).
+species = client.Species.load({ "id" => "species_id" })
 ```
 
 #### Example: List
 
-```ts
-const speciess = await client.species.list()
+```ruby
+# list returns an Array of Species records (raises on error).
+speciess = client.Species.list
 ```
 
 
 ### Starship
 
-Create an instance: `const starship = client.starship`
+Create an instance: `starship = client.Starship`
 
 #### Operations
 
@@ -600,20 +611,22 @@ Create an instance: `const starship = client.starship`
 
 #### Example: Load
 
-```ts
-const starship = await client.starship.load({ id: 'starship_id' })
+```ruby
+# load returns the bare Starship record (raises on error).
+starship = client.Starship.load({ "id" => "starship_id" })
 ```
 
 #### Example: List
 
-```ts
-const starships = await client.starship.list()
+```ruby
+# list returns an Array of Starship records (raises on error).
+starships = client.Starship.list
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.vehicle`
+Create an instance: `vehicle = client.Vehicle`
 
 #### Operations
 
@@ -645,14 +658,16 @@ Create an instance: `const vehicle = client.vehicle`
 
 #### Example: Load
 
-```ts
-const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
+```ruby
+# load returns the bare Vehicle record (raises on error).
+vehicle = client.Vehicle.load({ "id" => "vehicle_id" })
 ```
 
 #### Example: List
 
-```ts
-const vehicles = await client.vehicle.list()
+```ruby
+# list returns an Array of Vehicle records (raises on error).
+vehicles = client.Vehicle.list
 ```
 
 
@@ -727,7 +742,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-film = client.film
+film = client.Film
 film.load({ "id" => "example_id" })
 
 # film.data_get now returns the loaded film data

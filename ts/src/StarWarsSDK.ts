@@ -210,98 +210,49 @@ class StarWarsSDK {
 
 
 
-  _film?: FilmEntity
-
-  // Idiomatic facade: `client.film.list()` / `client.film.load({ id })`.
-  get film(): FilmEntity {
-    return (this._film ??= new FilmEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.film` instead. */
+  // Entity access: `client.Film().list()` / `client.Film().load({ id })`.
   Film(data?: any) {
     const self = this
     return new FilmEntity(self,data)
   }
 
 
-  _people_list?: PeopleListEntity
-
-  // Idiomatic facade: `client.people_list.list()` / `client.people_list.load({ id })`.
-  get people_list(): PeopleListEntity {
-    return (this._people_list ??= new PeopleListEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.people_list` instead. */
+  // Entity access: `client.PeopleList().list()` / `client.PeopleList().load({ id })`.
   PeopleList(data?: any) {
     const self = this
     return new PeopleListEntity(self,data)
   }
 
 
-  _person?: PersonEntity
-
-  // Idiomatic facade: `client.person.list()` / `client.person.load({ id })`.
-  get person(): PersonEntity {
-    return (this._person ??= new PersonEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.person` instead. */
+  // Entity access: `client.Person().list()` / `client.Person().load({ id })`.
   Person(data?: any) {
     const self = this
     return new PersonEntity(self,data)
   }
 
 
-  _planet?: PlanetEntity
-
-  // Idiomatic facade: `client.planet.list()` / `client.planet.load({ id })`.
-  get planet(): PlanetEntity {
-    return (this._planet ??= new PlanetEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.planet` instead. */
+  // Entity access: `client.Planet().list()` / `client.Planet().load({ id })`.
   Planet(data?: any) {
     const self = this
     return new PlanetEntity(self,data)
   }
 
 
-  _species?: SpeciesEntity
-
-  // Idiomatic facade: `client.species.list()` / `client.species.load({ id })`.
-  get species(): SpeciesEntity {
-    return (this._species ??= new SpeciesEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.species` instead. */
+  // Entity access: `client.Species().list()` / `client.Species().load({ id })`.
   Species(data?: any) {
     const self = this
     return new SpeciesEntity(self,data)
   }
 
 
-  _starship?: StarshipEntity
-
-  // Idiomatic facade: `client.starship.list()` / `client.starship.load({ id })`.
-  get starship(): StarshipEntity {
-    return (this._starship ??= new StarshipEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.starship` instead. */
+  // Entity access: `client.Starship().list()` / `client.Starship().load({ id })`.
   Starship(data?: any) {
     const self = this
     return new StarshipEntity(self,data)
   }
 
 
-  _vehicle?: VehicleEntity
-
-  // Idiomatic facade: `client.vehicle.list()` / `client.vehicle.load({ id })`.
-  get vehicle(): VehicleEntity {
-    return (this._vehicle ??= new VehicleEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.vehicle` instead. */
+  // Entity access: `client.Vehicle().list()` / `client.Vehicle().load({ id })`.
   Vehicle(data?: any) {
     const self = this
     return new VehicleEntity(self,data)

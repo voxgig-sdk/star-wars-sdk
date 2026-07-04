@@ -26,9 +26,11 @@ import { StarWarsSDK } from '@voxgig-sdk/star-wars'
 
 const client = new StarWarsSDK()
 
-// List all films
-const films = await client.film.list()
-console.log(films.data)
+// List all films (returns Film[])
+const films = await client.Film().list()
+for (const film of films) {
+  console.log(film)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -89,12 +91,13 @@ from starwars_sdk import StarWarsSDK
 
 client = StarWarsSDK()
 
-# List all films
-films = client.film.list()
-print(films)
+# List all films (returns a list, raises on error)
+films = client.Film().list({})
+for film in films:
+    print(film)
 
-# Load a specific film
-film = client.film.load({"id": "example_id"})
+# Load a specific film (returns the record, raises on error)
+film = client.Film().load({"id": "example_id"})
 print(film)
 ```
 
@@ -106,12 +109,12 @@ require_once 'starwars_sdk.php';
 
 $client = new StarWarsSDK();
 
-// List all films (throws on error)
-$films = $client->film()->list();
+// List all films (returns an array; throws on error)
+$films = $client->Film()->list();
 print_r($films);
 
-// Load a specific film
-$film = $client->film()->load(["id" => "example_id"]);
+// Load a specific film (returns the bare record; throws on error)
+$film = $client->Film()->load(["id" => "example_id"]);
 print_r($film);
 ```
 
@@ -134,12 +137,12 @@ require_relative "StarWars_sdk"
 
 client = StarWarsSDK.new
 
-# List all films
-films = client.film.list
+# List all films (returns an Array; raises on error)
+films = client.Film.list
 puts films
 
-# Load a specific film
-film = client.film.load({ "id" => "example_id" })
+# Load a specific film (returns the bare record; raises on error)
+film = client.Film.load({ "id" => "example_id" })
 puts film
 ```
 
@@ -151,11 +154,11 @@ local sdk = require("star-wars_sdk")
 local client = sdk.new()
 
 -- List all films
-local films, err = client:film():list()
+local films, err = client:Film():list()
 print(films)
 
 -- Load a specific film
-local film, err = client:film():load({ id = "example_id" })
+local film, err = client:Film():load({ id = "example_id" })
 print(film)
 ```
 
@@ -168,22 +171,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = StarWarsSDK.test()
-const result = await client.film.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const film = await client.Film().load({ id: 'test01' })
+// film is a bare Film populated with mock data
+console.log(film)
 ```
 
 ### Python
 
 ```python
 client = StarWarsSDK.test()
-result = client.film.load({"id": "test01"})
+film = client.Film().load({"id": "test01"})
+print(film)
 ```
 
 ### PHP
 
 ```php
-$client = StarWarsSDK::test();
-$result = $client->film()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = StarWarsSDK::test([
+    "entity" => ["film" => ["test01" => ["id" => "test01"]]],
+]);
+$film = $client->Film()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -198,15 +206,18 @@ result, err := client.Film(nil).Load(
 ### Ruby
 
 ```ruby
-client = StarWarsSDK.test
-result = client.film.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = StarWarsSDK.test({
+  "entity" => { "film" => { "test01" => { "id" => "test01" } } },
+})
+film = client.Film.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:film():load({ id = "test01" })
+local result, err = client:Film():load({ id = "test01" })
 ```
 
 ## How it works
@@ -254,6 +265,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

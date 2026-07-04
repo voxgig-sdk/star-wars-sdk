@@ -4,278 +4,263 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Film:
-    character: Optional[list] = None
-    created: Optional[str] = None
-    director: Optional[str] = None
-    edited: Optional[str] = None
-    episode_id: Optional[int] = None
-    opening_crawl: Optional[str] = None
-    planet: Optional[list] = None
-    producer: Optional[str] = None
-    release_date: Optional[str] = None
-    species: Optional[list] = None
-    starship: Optional[list] = None
-    title: Optional[str] = None
-    url: Optional[str] = None
-    vehicle: Optional[list] = None
+class Film(TypedDict, total=False):
+    character: list
+    created: str
+    director: str
+    edited: str
+    episode_id: int
+    opening_crawl: str
+    planet: list
+    producer: str
+    release_date: str
+    species: list
+    starship: list
+    title: str
+    url: str
+    vehicle: list
 
 
-@dataclass
-class FilmLoadMatch:
+class FilmLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class FilmListMatch:
-    character: Optional[list] = None
-    created: Optional[str] = None
-    director: Optional[str] = None
-    edited: Optional[str] = None
-    episode_id: Optional[int] = None
-    opening_crawl: Optional[str] = None
-    planet: Optional[list] = None
-    producer: Optional[str] = None
-    release_date: Optional[str] = None
-    species: Optional[list] = None
-    starship: Optional[list] = None
-    title: Optional[str] = None
-    url: Optional[str] = None
-    vehicle: Optional[list] = None
+class FilmListMatch(TypedDict, total=False):
+    character: list
+    created: str
+    director: str
+    edited: str
+    episode_id: int
+    opening_crawl: str
+    planet: list
+    producer: str
+    release_date: str
+    species: list
+    starship: list
+    title: str
+    url: str
+    vehicle: list
 
 
-@dataclass
-class PeopleList:
+class PeopleList(TypedDict):
     pass
 
 
-@dataclass
-class Person:
-    birth_year: Optional[str] = None
-    created: Optional[str] = None
-    edited: Optional[str] = None
-    eye_color: Optional[str] = None
-    film: Optional[list] = None
-    gender: Optional[str] = None
-    hair_color: Optional[str] = None
-    height: Optional[str] = None
-    homeworld: Optional[str] = None
-    mass: Optional[str] = None
-    name: Optional[str] = None
-    skin_color: Optional[str] = None
-    species: Optional[list] = None
-    starship: Optional[list] = None
-    url: Optional[str] = None
-    vehicle: Optional[list] = None
+class Person(TypedDict, total=False):
+    birth_year: str
+    created: str
+    edited: str
+    eye_color: str
+    film: list
+    gender: str
+    hair_color: str
+    height: str
+    homeworld: str
+    mass: str
+    name: str
+    skin_color: str
+    species: list
+    starship: list
+    url: str
+    vehicle: list
 
 
-@dataclass
-class PersonLoadMatch:
+class PersonLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class PersonListMatch:
-    birth_year: Optional[str] = None
-    created: Optional[str] = None
-    edited: Optional[str] = None
-    eye_color: Optional[str] = None
-    film: Optional[list] = None
-    gender: Optional[str] = None
-    hair_color: Optional[str] = None
-    height: Optional[str] = None
-    homeworld: Optional[str] = None
-    mass: Optional[str] = None
-    name: Optional[str] = None
-    skin_color: Optional[str] = None
-    species: Optional[list] = None
-    starship: Optional[list] = None
-    url: Optional[str] = None
-    vehicle: Optional[list] = None
+class PersonListMatch(TypedDict, total=False):
+    birth_year: str
+    created: str
+    edited: str
+    eye_color: str
+    film: list
+    gender: str
+    hair_color: str
+    height: str
+    homeworld: str
+    mass: str
+    name: str
+    skin_color: str
+    species: list
+    starship: list
+    url: str
+    vehicle: list
 
 
-@dataclass
-class Planet:
-    climate: Optional[str] = None
-    created: Optional[str] = None
-    diameter: Optional[str] = None
-    edited: Optional[str] = None
-    film: Optional[list] = None
-    gravity: Optional[str] = None
-    name: Optional[str] = None
-    orbital_period: Optional[str] = None
-    population: Optional[str] = None
-    resident: Optional[list] = None
-    rotation_period: Optional[str] = None
-    surface_water: Optional[str] = None
-    terrain: Optional[str] = None
-    url: Optional[str] = None
+class Planet(TypedDict, total=False):
+    climate: str
+    created: str
+    diameter: str
+    edited: str
+    film: list
+    gravity: str
+    name: str
+    orbital_period: str
+    population: str
+    resident: list
+    rotation_period: str
+    surface_water: str
+    terrain: str
+    url: str
 
 
-@dataclass
-class PlanetLoadMatch:
+class PlanetLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class PlanetListMatch:
-    climate: Optional[str] = None
-    created: Optional[str] = None
-    diameter: Optional[str] = None
-    edited: Optional[str] = None
-    film: Optional[list] = None
-    gravity: Optional[str] = None
-    name: Optional[str] = None
-    orbital_period: Optional[str] = None
-    population: Optional[str] = None
-    resident: Optional[list] = None
-    rotation_period: Optional[str] = None
-    surface_water: Optional[str] = None
-    terrain: Optional[str] = None
-    url: Optional[str] = None
+class PlanetListMatch(TypedDict, total=False):
+    climate: str
+    created: str
+    diameter: str
+    edited: str
+    film: list
+    gravity: str
+    name: str
+    orbital_period: str
+    population: str
+    resident: list
+    rotation_period: str
+    surface_water: str
+    terrain: str
+    url: str
 
 
-@dataclass
-class Species:
-    average_height: Optional[str] = None
-    average_lifespan: Optional[str] = None
-    classification: Optional[str] = None
-    created: Optional[str] = None
-    designation: Optional[str] = None
-    edited: Optional[str] = None
-    eye_color: Optional[str] = None
-    film: Optional[list] = None
-    hair_color: Optional[str] = None
-    homeworld: Optional[str] = None
-    language: Optional[str] = None
-    name: Optional[str] = None
-    person: Optional[list] = None
-    skin_color: Optional[str] = None
-    url: Optional[str] = None
+class Species(TypedDict, total=False):
+    average_height: str
+    average_lifespan: str
+    classification: str
+    created: str
+    designation: str
+    edited: str
+    eye_color: str
+    film: list
+    hair_color: str
+    homeworld: str
+    language: str
+    name: str
+    person: list
+    skin_color: str
+    url: str
 
 
-@dataclass
-class SpeciesLoadMatch:
+class SpeciesLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class SpeciesListMatch:
-    average_height: Optional[str] = None
-    average_lifespan: Optional[str] = None
-    classification: Optional[str] = None
-    created: Optional[str] = None
-    designation: Optional[str] = None
-    edited: Optional[str] = None
-    eye_color: Optional[str] = None
-    film: Optional[list] = None
-    hair_color: Optional[str] = None
-    homeworld: Optional[str] = None
-    language: Optional[str] = None
-    name: Optional[str] = None
-    person: Optional[list] = None
-    skin_color: Optional[str] = None
-    url: Optional[str] = None
+class SpeciesListMatch(TypedDict, total=False):
+    average_height: str
+    average_lifespan: str
+    classification: str
+    created: str
+    designation: str
+    edited: str
+    eye_color: str
+    film: list
+    hair_color: str
+    homeworld: str
+    language: str
+    name: str
+    person: list
+    skin_color: str
+    url: str
 
 
-@dataclass
-class Starship:
-    cargo_capacity: Optional[str] = None
-    consumable: Optional[str] = None
-    cost_in_credit: Optional[str] = None
-    created: Optional[str] = None
-    crew: Optional[str] = None
-    edited: Optional[str] = None
-    film: Optional[list] = None
-    hyperdrive_rating: Optional[str] = None
-    length: Optional[str] = None
-    manufacturer: Optional[str] = None
-    max_atmosphering_speed: Optional[str] = None
-    mglt: Optional[str] = None
-    model: Optional[str] = None
-    name: Optional[str] = None
-    passenger: Optional[str] = None
-    pilot: Optional[list] = None
-    starship_class: Optional[str] = None
-    url: Optional[str] = None
+class Starship(TypedDict, total=False):
+    cargo_capacity: str
+    consumable: str
+    cost_in_credit: str
+    created: str
+    crew: str
+    edited: str
+    film: list
+    hyperdrive_rating: str
+    length: str
+    manufacturer: str
+    max_atmosphering_speed: str
+    mglt: str
+    model: str
+    name: str
+    passenger: str
+    pilot: list
+    starship_class: str
+    url: str
 
 
-@dataclass
-class StarshipLoadMatch:
+class StarshipLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class StarshipListMatch:
-    cargo_capacity: Optional[str] = None
-    consumable: Optional[str] = None
-    cost_in_credit: Optional[str] = None
-    created: Optional[str] = None
-    crew: Optional[str] = None
-    edited: Optional[str] = None
-    film: Optional[list] = None
-    hyperdrive_rating: Optional[str] = None
-    length: Optional[str] = None
-    manufacturer: Optional[str] = None
-    max_atmosphering_speed: Optional[str] = None
-    mglt: Optional[str] = None
-    model: Optional[str] = None
-    name: Optional[str] = None
-    passenger: Optional[str] = None
-    pilot: Optional[list] = None
-    starship_class: Optional[str] = None
-    url: Optional[str] = None
+class StarshipListMatch(TypedDict, total=False):
+    cargo_capacity: str
+    consumable: str
+    cost_in_credit: str
+    created: str
+    crew: str
+    edited: str
+    film: list
+    hyperdrive_rating: str
+    length: str
+    manufacturer: str
+    max_atmosphering_speed: str
+    mglt: str
+    model: str
+    name: str
+    passenger: str
+    pilot: list
+    starship_class: str
+    url: str
 
 
-@dataclass
-class Vehicle:
-    cargo_capacity: Optional[str] = None
-    consumable: Optional[str] = None
-    cost_in_credit: Optional[str] = None
-    created: Optional[str] = None
-    crew: Optional[str] = None
-    edited: Optional[str] = None
-    film: Optional[list] = None
-    length: Optional[str] = None
-    manufacturer: Optional[str] = None
-    max_atmosphering_speed: Optional[str] = None
-    model: Optional[str] = None
-    name: Optional[str] = None
-    passenger: Optional[str] = None
-    pilot: Optional[list] = None
-    url: Optional[str] = None
-    vehicle_class: Optional[str] = None
+class Vehicle(TypedDict, total=False):
+    cargo_capacity: str
+    consumable: str
+    cost_in_credit: str
+    created: str
+    crew: str
+    edited: str
+    film: list
+    length: str
+    manufacturer: str
+    max_atmosphering_speed: str
+    model: str
+    name: str
+    passenger: str
+    pilot: list
+    url: str
+    vehicle_class: str
 
 
-@dataclass
-class VehicleLoadMatch:
+class VehicleLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class VehicleListMatch:
-    cargo_capacity: Optional[str] = None
-    consumable: Optional[str] = None
-    cost_in_credit: Optional[str] = None
-    created: Optional[str] = None
-    crew: Optional[str] = None
-    edited: Optional[str] = None
-    film: Optional[list] = None
-    length: Optional[str] = None
-    manufacturer: Optional[str] = None
-    max_atmosphering_speed: Optional[str] = None
-    model: Optional[str] = None
-    name: Optional[str] = None
-    passenger: Optional[str] = None
-    pilot: Optional[list] = None
-    url: Optional[str] = None
-    vehicle_class: Optional[str] = None
-
+class VehicleListMatch(TypedDict, total=False):
+    cargo_capacity: str
+    consumable: str
+    cost_in_credit: str
+    created: str
+    crew: str
+    edited: str
+    film: list
+    length: str
+    manufacturer: str
+    max_atmosphering_speed: str
+    model: str
+    name: str
+    passenger: str
+    pilot: list
+    url: str
+    vehicle_class: str

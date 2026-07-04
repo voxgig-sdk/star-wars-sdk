@@ -28,25 +28,28 @@ import { StarWarsSDK } from '@voxgig-sdk/star-wars'
 const client = new StarWarsSDK()
 ```
 
-### 2. List films
+### 2. List film records
+
+`list()` resolves to an array of Film objects — iterate it directly:
 
 ```ts
-const result = await client.film.list()
+const films = await client.Film().list()
 
-if (result.ok) {
-  for (const item of result.data) {
-    console.log(item.id, item.name)
-  }
+for (const film of films) {
+  console.log(film)
 }
 ```
 
 ### 3. Load a film
 
-```ts
-const result = await client.film.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const film = await client.Film().load({ id: 'example_id' })
+  console.log(film)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -64,6 +67,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -92,9 +98,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = StarWarsSDK.test()
 
-const result = await client.film.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const film = await client.Film().load({ id: 'test01' })
+// film is a bare entity populated with mock response data
+console.log(film)
 ```
 
 You can also use the instance method:
@@ -109,7 +115,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.film
+const entity = client.Film()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -210,29 +216,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): StarWarsSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -427,7 +434,7 @@ API path: `/vehicles`
 
 ### Film
 
-Create an instance: `const film = client.film`
+Create an instance: `const film = client.Film()`
 
 #### Operations
 
@@ -458,24 +465,24 @@ Create an instance: `const film = client.film`
 #### Example: Load
 
 ```ts
-const film = await client.film.load({ id: 'film_id' })
+const film = await client.Film().load({ id: 'film_id' })
 ```
 
 #### Example: List
 
 ```ts
-const films = await client.film.list()
+const films = await client.Film().list()
 ```
 
 
 ### PeopleList
 
-Create an instance: `const people_list = client.people_list`
+Create an instance: `const people_list = client.PeopleList()`
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `const person = client.Person()`
 
 #### Operations
 
@@ -508,19 +515,19 @@ Create an instance: `const person = client.person`
 #### Example: Load
 
 ```ts
-const person = await client.person.load({ id: 'person_id' })
+const person = await client.Person().load({ id: 'person_id' })
 ```
 
 #### Example: List
 
 ```ts
-const persons = await client.person.list()
+const persons = await client.Person().list()
 ```
 
 
 ### Planet
 
-Create an instance: `const planet = client.planet`
+Create an instance: `const planet = client.Planet()`
 
 #### Operations
 
@@ -551,19 +558,19 @@ Create an instance: `const planet = client.planet`
 #### Example: Load
 
 ```ts
-const planet = await client.planet.load({ id: 'planet_id' })
+const planet = await client.Planet().load({ id: 'planet_id' })
 ```
 
 #### Example: List
 
 ```ts
-const planets = await client.planet.list()
+const planets = await client.Planet().list()
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.species`
+Create an instance: `const species = client.Species()`
 
 #### Operations
 
@@ -595,19 +602,19 @@ Create an instance: `const species = client.species`
 #### Example: Load
 
 ```ts
-const species = await client.species.load({ id: 'species_id' })
+const species = await client.Species().load({ id: 'species_id' })
 ```
 
 #### Example: List
 
 ```ts
-const speciess = await client.species.list()
+const speciess = await client.Species().list()
 ```
 
 
 ### Starship
 
-Create an instance: `const starship = client.starship`
+Create an instance: `const starship = client.Starship()`
 
 #### Operations
 
@@ -642,19 +649,19 @@ Create an instance: `const starship = client.starship`
 #### Example: Load
 
 ```ts
-const starship = await client.starship.load({ id: 'starship_id' })
+const starship = await client.Starship().load({ id: 'starship_id' })
 ```
 
 #### Example: List
 
 ```ts
-const starships = await client.starship.list()
+const starships = await client.Starship().list()
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.vehicle`
+Create an instance: `const vehicle = client.Vehicle()`
 
 #### Operations
 
@@ -687,13 +694,13 @@ Create an instance: `const vehicle = client.vehicle`
 #### Example: Load
 
 ```ts
-const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
+const vehicle = await client.Vehicle().load({ id: 'vehicle_id' })
 ```
 
 #### Example: List
 
 ```ts
-const vehicles = await client.vehicle.list()
+const vehicles = await client.Vehicle().list()
 ```
 
 
@@ -764,7 +771,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const film = client.film
+const film = client.Film()
 await film.load({ id: "example_id" })
 
 // film.data() now returns the loaded film data

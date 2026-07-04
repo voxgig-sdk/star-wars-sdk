@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:film():list() / client:film():load({ id = ... })
-function StarWarsSDK:film(data)
+-- Idiomatic facade: client:Film():list() / client:Film():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsSDK:Film(data)
   local EntityMod = require("entity.film_entity")
   if data == nil then
     if self._film == nil then
@@ -256,15 +257,10 @@ function StarWarsSDK:film(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:film() instead.
-function StarWarsSDK:Film(data)
-  local EntityMod = require("entity.film_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:people_list():list() / client:people_list():load({ id = ... })
-function StarWarsSDK:people_list(data)
+-- Idiomatic facade: client:PeopleList():list() / client:PeopleList():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsSDK:PeopleList(data)
   local EntityMod = require("entity.people_list_entity")
   if data == nil then
     if self._people_list == nil then
@@ -275,15 +271,10 @@ function StarWarsSDK:people_list(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:people_list() instead.
-function StarWarsSDK:PeopleList(data)
-  local EntityMod = require("entity.people_list_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:person():list() / client:person():load({ id = ... })
-function StarWarsSDK:person(data)
+-- Idiomatic facade: client:Person():list() / client:Person():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsSDK:Person(data)
   local EntityMod = require("entity.person_entity")
   if data == nil then
     if self._person == nil then
@@ -294,15 +285,10 @@ function StarWarsSDK:person(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:person() instead.
-function StarWarsSDK:Person(data)
-  local EntityMod = require("entity.person_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:planet():list() / client:planet():load({ id = ... })
-function StarWarsSDK:planet(data)
+-- Idiomatic facade: client:Planet():list() / client:Planet():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsSDK:Planet(data)
   local EntityMod = require("entity.planet_entity")
   if data == nil then
     if self._planet == nil then
@@ -313,15 +299,10 @@ function StarWarsSDK:planet(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:planet() instead.
-function StarWarsSDK:Planet(data)
-  local EntityMod = require("entity.planet_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:species():list() / client:species():load({ id = ... })
-function StarWarsSDK:species(data)
+-- Idiomatic facade: client:Species():list() / client:Species():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsSDK:Species(data)
   local EntityMod = require("entity.species_entity")
   if data == nil then
     if self._species == nil then
@@ -332,15 +313,10 @@ function StarWarsSDK:species(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:species() instead.
-function StarWarsSDK:Species(data)
-  local EntityMod = require("entity.species_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:starship():list() / client:starship():load({ id = ... })
-function StarWarsSDK:starship(data)
+-- Idiomatic facade: client:Starship():list() / client:Starship():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsSDK:Starship(data)
   local EntityMod = require("entity.starship_entity")
   if data == nil then
     if self._starship == nil then
@@ -351,15 +327,10 @@ function StarWarsSDK:starship(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:starship() instead.
-function StarWarsSDK:Starship(data)
-  local EntityMod = require("entity.starship_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:vehicle():list() / client:vehicle():load({ id = ... })
-function StarWarsSDK:vehicle(data)
+-- Idiomatic facade: client:Vehicle():list() / client:Vehicle():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function StarWarsSDK:Vehicle(data)
   local EntityMod = require("entity.vehicle_entity")
   if data == nil then
     if self._vehicle == nil then
@@ -367,12 +338,6 @@ function StarWarsSDK:vehicle(data)
     end
     return self._vehicle
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:vehicle() instead.
-function StarWarsSDK:Vehicle(data)
-  local EntityMod = require("entity.vehicle_entity")
   return EntityMod.new(self, data)
 end
 

@@ -29,18 +29,16 @@ require_once 'starwars_sdk.php';
 $client = new StarWarsSDK();
 ```
 
-### 2. List films
+### 2. List film records
 
 ```php
 try {
-    $result = $client->film()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Film records — iterate directly.
+    $films = $client->Film()->list();
+    foreach ($films as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->film()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Film record (throws on error).
+    $film = $client->Film()->load(["id" => "example_id"]);
+    print_r($film);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = StarWarsSDK::test();
+$client = StarWarsSDK::test([
+    "entity" => ["film" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->film()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$film = $client->Film()->load(["id" => "test01"]);
+print_r($film);
 ```
 
 ### Use a custom fetch function
@@ -391,7 +394,7 @@ API path: `/vehicles`
 
 ### Film
 
-Create an instance: `const film = client.film`
+Create an instance: `$film = $client->Film();`
 
 #### Operations
 
@@ -421,25 +424,27 @@ Create an instance: `const film = client.film`
 
 #### Example: Load
 
-```ts
-const film = await client.film.load({ id: 'film_id' })
+```php
+// load() returns the bare Film record (throws on error).
+$film = $client->Film()->load(["id" => "film_id"]);
 ```
 
 #### Example: List
 
-```ts
-const films = await client.film.list()
+```php
+// list() returns an array of Film records (throws on error).
+$films = $client->Film()->list();
 ```
 
 
 ### PeopleList
 
-Create an instance: `const people_list = client.people_list`
+Create an instance: `$people_list = $client->PeopleList();`
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `$person = $client->Person();`
 
 #### Operations
 
@@ -471,20 +476,22 @@ Create an instance: `const person = client.person`
 
 #### Example: Load
 
-```ts
-const person = await client.person.load({ id: 'person_id' })
+```php
+// load() returns the bare Person record (throws on error).
+$person = $client->Person()->load(["id" => "person_id"]);
 ```
 
 #### Example: List
 
-```ts
-const persons = await client.person.list()
+```php
+// list() returns an array of Person records (throws on error).
+$persons = $client->Person()->list();
 ```
 
 
 ### Planet
 
-Create an instance: `const planet = client.planet`
+Create an instance: `$planet = $client->Planet();`
 
 #### Operations
 
@@ -514,20 +521,22 @@ Create an instance: `const planet = client.planet`
 
 #### Example: Load
 
-```ts
-const planet = await client.planet.load({ id: 'planet_id' })
+```php
+// load() returns the bare Planet record (throws on error).
+$planet = $client->Planet()->load(["id" => "planet_id"]);
 ```
 
 #### Example: List
 
-```ts
-const planets = await client.planet.list()
+```php
+// list() returns an array of Planet records (throws on error).
+$planets = $client->Planet()->list();
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.species`
+Create an instance: `$species = $client->Species();`
 
 #### Operations
 
@@ -558,20 +567,22 @@ Create an instance: `const species = client.species`
 
 #### Example: Load
 
-```ts
-const species = await client.species.load({ id: 'species_id' })
+```php
+// load() returns the bare Species record (throws on error).
+$species = $client->Species()->load(["id" => "species_id"]);
 ```
 
 #### Example: List
 
-```ts
-const speciess = await client.species.list()
+```php
+// list() returns an array of Species records (throws on error).
+$speciess = $client->Species()->list();
 ```
 
 
 ### Starship
 
-Create an instance: `const starship = client.starship`
+Create an instance: `$starship = $client->Starship();`
 
 #### Operations
 
@@ -605,20 +616,22 @@ Create an instance: `const starship = client.starship`
 
 #### Example: Load
 
-```ts
-const starship = await client.starship.load({ id: 'starship_id' })
+```php
+// load() returns the bare Starship record (throws on error).
+$starship = $client->Starship()->load(["id" => "starship_id"]);
 ```
 
 #### Example: List
 
-```ts
-const starships = await client.starship.list()
+```php
+// list() returns an array of Starship records (throws on error).
+$starships = $client->Starship()->list();
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.vehicle`
+Create an instance: `$vehicle = $client->Vehicle();`
 
 #### Operations
 
@@ -650,14 +663,16 @@ Create an instance: `const vehicle = client.vehicle`
 
 #### Example: Load
 
-```ts
-const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
+```php
+// load() returns the bare Vehicle record (throws on error).
+$vehicle = $client->Vehicle()->load(["id" => "vehicle_id"]);
 ```
 
 #### Example: List
 
-```ts
-const vehicles = await client.vehicle.list()
+```php
+// list() returns an array of Vehicle records (throws on error).
+$vehicles = $client->Vehicle()->list();
 ```
 
 
@@ -732,7 +747,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$film = $client->film();
+$film = $client->Film();
 $film->load(["id" => "example_id"]);
 
 // $film->dataGet() now returns the loaded film data
