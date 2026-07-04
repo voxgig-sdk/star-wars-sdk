@@ -50,14 +50,12 @@ class FilmEntityTest extends TestCase
         $film_ref01_ent = $client->Film(null);
         $film_ref01_match = [];
 
-        [$film_ref01_list_result, $err] = $film_ref01_ent->list($film_ref01_match, null);
-        $this->assertNull($err);
+        $film_ref01_list_result = $film_ref01_ent->list($film_ref01_match, null);
         $this->assertIsArray($film_ref01_list_result);
 
         // LOAD
         $film_ref01_match_dt0 = [];
-        [$film_ref01_data_dt0_loaded, $err] = $film_ref01_ent->load($film_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $film_ref01_data_dt0_loaded = $film_ref01_ent->load($film_ref01_match_dt0, null);
         $this->assertNotNull($film_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function film_basic_setup($extra)
         "STARWARS_TEST_FILM_ENTID" => $idmap,
         "STARWARS_TEST_LIVE" => "FALSE",
         "STARWARS_TEST_EXPLAIN" => "FALSE",
-        "STARWARS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function film_basic_setup($extra)
     if ($env["STARWARS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["STARWARS_APIKEY"],
             ],
             $extra ?? [],
         ]);

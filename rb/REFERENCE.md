@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -78,9 +77,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -94,14 +95,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -109,7 +110,7 @@ same parameters as `direct()`.
 ## FilmEntity
 
 ```ruby
-film = client.Film
+film = client.film
 ```
 
 ### Fields
@@ -133,20 +134,20 @@ film = client.Film
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Film.list(nil)
+results = client.film.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Film.load({ "id" => "film_id" })
+result = client.film.load({ "id" => "film_id" })
 ```
 
 ### Common Methods
@@ -182,7 +183,7 @@ Return the entity name.
 ## PeopleListEntity
 
 ```ruby
-people_list = client.PeopleList
+people_list = client.people_list
 ```
 
 ### Common Methods
@@ -218,7 +219,7 @@ Return the entity name.
 ## PersonEntity
 
 ```ruby
-person = client.Person
+person = client.person
 ```
 
 ### Fields
@@ -244,20 +245,20 @@ person = client.Person
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Person.list(nil)
+results = client.person.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Person.load({ "id" => "person_id" })
+result = client.person.load({ "id" => "person_id" })
 ```
 
 ### Common Methods
@@ -293,7 +294,7 @@ Return the entity name.
 ## PlanetEntity
 
 ```ruby
-planet = client.Planet
+planet = client.planet
 ```
 
 ### Fields
@@ -317,20 +318,20 @@ planet = client.Planet
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Planet.list(nil)
+results = client.planet.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Planet.load({ "id" => "planet_id" })
+result = client.planet.load({ "id" => "planet_id" })
 ```
 
 ### Common Methods
@@ -366,7 +367,7 @@ Return the entity name.
 ## SpeciesEntity
 
 ```ruby
-species = client.Species
+species = client.species
 ```
 
 ### Fields
@@ -391,20 +392,20 @@ species = client.Species
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Species.list(nil)
+results = client.species.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Species.load({ "id" => "species_id" })
+result = client.species.load({ "id" => "species_id" })
 ```
 
 ### Common Methods
@@ -440,7 +441,7 @@ Return the entity name.
 ## StarshipEntity
 
 ```ruby
-starship = client.Starship
+starship = client.starship
 ```
 
 ### Fields
@@ -468,20 +469,20 @@ starship = client.Starship
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Starship.list(nil)
+results = client.starship.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Starship.load({ "id" => "starship_id" })
+result = client.starship.load({ "id" => "starship_id" })
 ```
 
 ### Common Methods
@@ -517,7 +518,7 @@ Return the entity name.
 ## VehicleEntity
 
 ```ruby
-vehicle = client.Vehicle
+vehicle = client.vehicle
 ```
 
 ### Fields
@@ -543,20 +544,20 @@ vehicle = client.Vehicle
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Vehicle.list(nil)
+results = client.vehicle.list(nil)
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Vehicle.load({ "id" => "vehicle_id" })
+result = client.vehicle.load({ "id" => "vehicle_id" })
 ```
 
 ### Common Methods

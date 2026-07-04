@@ -9,11 +9,9 @@ The Python SDK for the StarWars API — an entity-oriented client following Pyth
 
 
 ## Install
-```bash
-pip install voxgig-sdk-star-wars
-```
-
-Or install from source:
+This package is not yet published to PyPI. Install it from the GitHub
+release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/star-wars-sdk/releases)) or
+from a source checkout:
 
 ```bash
 pip install -e .
@@ -28,34 +26,31 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from starwars_sdk import StarWarsSDK
 
-client = StarWarsSDK({
-    "apikey": os.environ.get("STAR-WARS_APIKEY"),
-})
+client = StarWarsSDK()
 ```
 
 ### 2. List films
 
 ```python
-result, err = client.Film().list()
-if err:
-    raise Exception(err)
-
-if isinstance(result, list):
+try:
+    result = client.film.list()
     for item in result:
         d = item.data_get()
         print(d["id"], d["name"])
+except Exception as err:
+    print(f"list failed: {err}")
 ```
 
 ### 3. Load a film
 
 ```python
-result, err = client.Film().load({"id": "example_id"})
-if err:
-    raise Exception(err)
-print(result)
+try:
+    result = client.film.load({"id": "example_id"})
+    print(result)
+except Exception as err:
+    print(f"load failed: {err}")
 ```
 
 
@@ -66,29 +61,28 @@ print(result)
 For endpoints not covered by entity methods:
 
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
+else:
+    print(result["err"])     # error value
 ```
 
 ### Prepare a request without sending it
 
 ```python
-fetchdef, err = client.prepare({
+# prepare() returns the fetch definition and raises on error.
+fetchdef = client.prepare({
     "path": "/api/resource/{id}",
     "method": "DELETE",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 print(fetchdef["url"])
 print(fetchdef["method"])
@@ -102,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```python
 client = StarWarsSDK.test()
 
-result, err = client.StarWars().load({"id": "test01"})
+result = client.film.load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -132,8 +126,7 @@ client = StarWarsSDK({
 Create a `.env.local` file at the project root:
 
 ```
-STAR-WARS_TEST_LIVE=TRUE
-STAR-WARS_APIKEY=<your-key>
+STAR_WARS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -157,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
@@ -179,8 +171,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | --- | --- | --- |
 | `options_map` | `() -> dict` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Film` | `(data) -> FilmEntity` | Create a Film entity instance. |
 | `PeopleList` | `(data) -> PeopleListEntity` | Create a PeopleList entity instance. |
 | `Person` | `(data) -> PersonEntity` | Create a Person entity instance. |
@@ -195,11 +187,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> (any, err)` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> (any, err)` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> (any, err)` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> (any, err)` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> (any, err)` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -209,8 +201,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`dict` with these keys:
+Entity operations return the bare result data (a `dict` for single-entity
+ops, a `list` for `list`) and raise on error. Wrap calls in
+`try`/`except` to handle failures.
+
+The `direct()` escape hatch never raises — it returns a result `dict`
+you branch on via `result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -386,7 +382,7 @@ API path: `/vehicles`
 
 ### Film
 
-Create an instance: `const film = client.Film()`
+Create an instance: `const film = client.film`
 
 #### Operations
 
@@ -417,24 +413,24 @@ Create an instance: `const film = client.Film()`
 #### Example: Load
 
 ```ts
-const film = await client.Film().load({ id: 'film_id' })
+const film = await client.film.load({ id: 'film_id' })
 ```
 
 #### Example: List
 
 ```ts
-const films = await client.Film().list()
+const films = await client.film.list()
 ```
 
 
 ### PeopleList
 
-Create an instance: `const people_list = client.PeopleList()`
+Create an instance: `const people_list = client.people_list`
 
 
 ### Person
 
-Create an instance: `const person = client.Person()`
+Create an instance: `const person = client.person`
 
 #### Operations
 
@@ -467,19 +463,19 @@ Create an instance: `const person = client.Person()`
 #### Example: Load
 
 ```ts
-const person = await client.Person().load({ id: 'person_id' })
+const person = await client.person.load({ id: 'person_id' })
 ```
 
 #### Example: List
 
 ```ts
-const persons = await client.Person().list()
+const persons = await client.person.list()
 ```
 
 
 ### Planet
 
-Create an instance: `const planet = client.Planet()`
+Create an instance: `const planet = client.planet`
 
 #### Operations
 
@@ -510,19 +506,19 @@ Create an instance: `const planet = client.Planet()`
 #### Example: Load
 
 ```ts
-const planet = await client.Planet().load({ id: 'planet_id' })
+const planet = await client.planet.load({ id: 'planet_id' })
 ```
 
 #### Example: List
 
 ```ts
-const planets = await client.Planet().list()
+const planets = await client.planet.list()
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.Species()`
+Create an instance: `const species = client.species`
 
 #### Operations
 
@@ -554,19 +550,19 @@ Create an instance: `const species = client.Species()`
 #### Example: Load
 
 ```ts
-const species = await client.Species().load({ id: 'species_id' })
+const species = await client.species.load({ id: 'species_id' })
 ```
 
 #### Example: List
 
 ```ts
-const speciess = await client.Species().list()
+const speciess = await client.species.list()
 ```
 
 
 ### Starship
 
-Create an instance: `const starship = client.Starship()`
+Create an instance: `const starship = client.starship`
 
 #### Operations
 
@@ -601,19 +597,19 @@ Create an instance: `const starship = client.Starship()`
 #### Example: Load
 
 ```ts
-const starship = await client.Starship().load({ id: 'starship_id' })
+const starship = await client.starship.load({ id: 'starship_id' })
 ```
 
 #### Example: List
 
 ```ts
-const starships = await client.Starship().list()
+const starships = await client.starship.list()
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.Vehicle()`
+Create an instance: `const vehicle = client.vehicle`
 
 #### Operations
 
@@ -646,13 +642,13 @@ Create an instance: `const vehicle = client.Vehicle()`
 #### Example: Load
 
 ```ts
-const vehicle = await client.Vehicle().load({ id: 'vehicle_id' })
+const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
 ```
 
 #### Example: List
 
 ```ts
-const vehicles = await client.Vehicle().list()
+const vehicles = await client.vehicle.list()
 ```
 
 
@@ -726,11 +722,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moon = client.Moon()
-moon.load({"planet_id": "earth", "id": "luna"})
+film = client.film
+film.load({"id": "example_id"})
 
-# moon.data_get() now returns the loaded moon data
-# moon.match_get() returns the last match criteria
+# film.data_get() now returns the loaded film data
+# film.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

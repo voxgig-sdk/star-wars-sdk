@@ -50,14 +50,12 @@ class TestVehicleEntity:
         vehicle_ref01_ent = client.Vehicle(None)
         vehicle_ref01_match = {}
 
-        vehicle_ref01_list_result, err = vehicle_ref01_ent.list(vehicle_ref01_match, None)
-        assert err is None
+        vehicle_ref01_list_result = vehicle_ref01_ent.list(vehicle_ref01_match, None)
         assert isinstance(vehicle_ref01_list_result, list)
 
         # LOAD
         vehicle_ref01_match_dt0 = {}
-        vehicle_ref01_data_dt0_loaded, err = vehicle_ref01_ent.load(vehicle_ref01_match_dt0, None)
-        assert err is None
+        vehicle_ref01_data_dt0_loaded = vehicle_ref01_ent.load(vehicle_ref01_match_dt0, None)
         assert vehicle_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _vehicle_basic_setup(extra):
         "STARWARS_TEST_VEHICLE_ENTID": idmap,
         "STARWARS_TEST_LIVE": "FALSE",
         "STARWARS_TEST_EXPLAIN": "FALSE",
-        "STARWARS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _vehicle_basic_setup(extra):
     if env.get("STARWARS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STARWARS_APIKEY"),
             },
             extra or {},
         ])

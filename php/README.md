@@ -9,9 +9,10 @@ The PHP SDK for the StarWars API — an entity-oriented client using PHP convent
 
 
 ## Install
-```bash
-composer require voxgig-sdk/star-wars
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/star-wars-sdk/releases](https://github.com/voxgig-sdk/star-wars-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,31 +26,34 @@ loading a specific record.
 <?php
 require_once 'starwars_sdk.php';
 
-$client = new StarWarsSDK([
-    "apikey" => getenv("STAR-WARS_APIKEY"),
-]);
+$client = new StarWarsSDK();
 ```
 
 ### 2. List films
 
 ```php
-[$result, $err] = $client->Film()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->film()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
 ### 3. Load a film
 
 ```php
-[$result, $err] = $client->Film()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->film()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +64,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +102,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = StarWarsSDK::test();
 
-[$result, $err] = $client->StarWars()->load(["id" => "test01"]);
+$result = $client->film()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +136,7 @@ $client = new StarWarsSDK([
 Create a `.env.local` file at the project root:
 
 ```
-STAR-WARS_TEST_LIVE=TRUE
-STAR-WARS_APIKEY=<your-key>
+STAR_WARS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -153,7 +159,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -205,8 +210,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -382,7 +391,7 @@ API path: `/vehicles`
 
 ### Film
 
-Create an instance: `const film = client.Film()`
+Create an instance: `const film = client.film`
 
 #### Operations
 
@@ -413,24 +422,24 @@ Create an instance: `const film = client.Film()`
 #### Example: Load
 
 ```ts
-const film = await client.Film().load({ id: 'film_id' })
+const film = await client.film.load({ id: 'film_id' })
 ```
 
 #### Example: List
 
 ```ts
-const films = await client.Film().list()
+const films = await client.film.list()
 ```
 
 
 ### PeopleList
 
-Create an instance: `const people_list = client.PeopleList()`
+Create an instance: `const people_list = client.people_list`
 
 
 ### Person
 
-Create an instance: `const person = client.Person()`
+Create an instance: `const person = client.person`
 
 #### Operations
 
@@ -463,19 +472,19 @@ Create an instance: `const person = client.Person()`
 #### Example: Load
 
 ```ts
-const person = await client.Person().load({ id: 'person_id' })
+const person = await client.person.load({ id: 'person_id' })
 ```
 
 #### Example: List
 
 ```ts
-const persons = await client.Person().list()
+const persons = await client.person.list()
 ```
 
 
 ### Planet
 
-Create an instance: `const planet = client.Planet()`
+Create an instance: `const planet = client.planet`
 
 #### Operations
 
@@ -506,19 +515,19 @@ Create an instance: `const planet = client.Planet()`
 #### Example: Load
 
 ```ts
-const planet = await client.Planet().load({ id: 'planet_id' })
+const planet = await client.planet.load({ id: 'planet_id' })
 ```
 
 #### Example: List
 
 ```ts
-const planets = await client.Planet().list()
+const planets = await client.planet.list()
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.Species()`
+Create an instance: `const species = client.species`
 
 #### Operations
 
@@ -550,19 +559,19 @@ Create an instance: `const species = client.Species()`
 #### Example: Load
 
 ```ts
-const species = await client.Species().load({ id: 'species_id' })
+const species = await client.species.load({ id: 'species_id' })
 ```
 
 #### Example: List
 
 ```ts
-const speciess = await client.Species().list()
+const speciess = await client.species.list()
 ```
 
 
 ### Starship
 
-Create an instance: `const starship = client.Starship()`
+Create an instance: `const starship = client.starship`
 
 #### Operations
 
@@ -597,19 +606,19 @@ Create an instance: `const starship = client.Starship()`
 #### Example: Load
 
 ```ts
-const starship = await client.Starship().load({ id: 'starship_id' })
+const starship = await client.starship.load({ id: 'starship_id' })
 ```
 
 #### Example: List
 
 ```ts
-const starships = await client.Starship().list()
+const starships = await client.starship.list()
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.Vehicle()`
+Create an instance: `const vehicle = client.vehicle`
 
 #### Operations
 
@@ -642,13 +651,13 @@ Create an instance: `const vehicle = client.Vehicle()`
 #### Example: Load
 
 ```ts
-const vehicle = await client.Vehicle().load({ id: 'vehicle_id' })
+const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
 ```
 
 #### Example: List
 
 ```ts
-const vehicles = await client.Vehicle().list()
+const vehicles = await client.vehicle.list()
 ```
 
 
@@ -723,11 +732,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$film = $client->film();
+$film->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $film->dataGet() now returns the loaded film data
+// $film->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -45,6 +45,7 @@ class StarshipEntity
     end
   end
 
+  # @return [Starship, Hash] the current Starship data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class StarshipEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Starship fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Starship.
+  #
+  # @param reqmatch [StarshipLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Starship, Hash] the loaded Starship; raises StarWarsError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class StarshipEntity
 
 
   
+  # List Starship items matching the given filter.
+  #
+  # @param reqmatch [StarshipListMatch, Hash, nil] match filter (any subset of Starship fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Starship>, Array] the matching Starship items; raises StarWarsError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

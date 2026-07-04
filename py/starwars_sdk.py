@@ -144,16 +144,23 @@ class StarWarsSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class StarWarsSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,45 +212,122 @@ class StarWarsSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def film(self):
+        """Idiomatic facade: client.film.list() / client.film.load({"id": ...})."""
+        from entity.film_entity import FilmEntity
+        cached = getattr(self, "_film", None)
+        if cached is None:
+            cached = FilmEntity(self, None)
+            self._film = cached
+        return cached
 
     def Film(self, data=None):
+        # Deprecated: use client.film instead.
         from entity.film_entity import FilmEntity
         return FilmEntity(self, data)
 
 
+    @property
+    def people_list(self):
+        """Idiomatic facade: client.people_list.list() / client.people_list.load({"id": ...})."""
+        from entity.people_list_entity import PeopleListEntity
+        cached = getattr(self, "_people_list", None)
+        if cached is None:
+            cached = PeopleListEntity(self, None)
+            self._people_list = cached
+        return cached
+
     def PeopleList(self, data=None):
+        # Deprecated: use client.people_list instead.
         from entity.people_list_entity import PeopleListEntity
         return PeopleListEntity(self, data)
 
 
+    @property
+    def person(self):
+        """Idiomatic facade: client.person.list() / client.person.load({"id": ...})."""
+        from entity.person_entity import PersonEntity
+        cached = getattr(self, "_person", None)
+        if cached is None:
+            cached = PersonEntity(self, None)
+            self._person = cached
+        return cached
+
     def Person(self, data=None):
+        # Deprecated: use client.person instead.
         from entity.person_entity import PersonEntity
         return PersonEntity(self, data)
 
 
+    @property
+    def planet(self):
+        """Idiomatic facade: client.planet.list() / client.planet.load({"id": ...})."""
+        from entity.planet_entity import PlanetEntity
+        cached = getattr(self, "_planet", None)
+        if cached is None:
+            cached = PlanetEntity(self, None)
+            self._planet = cached
+        return cached
+
     def Planet(self, data=None):
+        # Deprecated: use client.planet instead.
         from entity.planet_entity import PlanetEntity
         return PlanetEntity(self, data)
 
 
+    @property
+    def species(self):
+        """Idiomatic facade: client.species.list() / client.species.load({"id": ...})."""
+        from entity.species_entity import SpeciesEntity
+        cached = getattr(self, "_species", None)
+        if cached is None:
+            cached = SpeciesEntity(self, None)
+            self._species = cached
+        return cached
+
     def Species(self, data=None):
+        # Deprecated: use client.species instead.
         from entity.species_entity import SpeciesEntity
         return SpeciesEntity(self, data)
 
 
+    @property
+    def starship(self):
+        """Idiomatic facade: client.starship.list() / client.starship.load({"id": ...})."""
+        from entity.starship_entity import StarshipEntity
+        cached = getattr(self, "_starship", None)
+        if cached is None:
+            cached = StarshipEntity(self, None)
+            self._starship = cached
+        return cached
+
     def Starship(self, data=None):
+        # Deprecated: use client.starship instead.
         from entity.starship_entity import StarshipEntity
         return StarshipEntity(self, data)
 
 
+    @property
+    def vehicle(self):
+        """Idiomatic facade: client.vehicle.list() / client.vehicle.load({"id": ...})."""
+        from entity.vehicle_entity import VehicleEntity
+        cached = getattr(self, "_vehicle", None)
+        if cached is None:
+            cached = VehicleEntity(self, None)
+            self._vehicle = cached
+        return cached
+
     def Vehicle(self, data=None):
+        # Deprecated: use client.vehicle instead.
         from entity.vehicle_entity import VehicleEntity
         return VehicleEntity(self, data)
 

@@ -1,0 +1,148 @@
+-- Typed models for the StarWars SDK (LuaLS annotations).
+--
+-- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+-- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+-- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
+-- edit by hand.
+
+---@class Film
+---@field character? table
+---@field created? string
+---@field director? string
+---@field edited? string
+---@field episode_id? number
+---@field opening_crawl? string
+---@field planet? table
+---@field producer? string
+---@field release_date? string
+---@field species? table
+---@field starship? table
+---@field title? string
+---@field url? string
+---@field vehicle? table
+
+---@class FilmLoadMatch
+---@field id number
+
+---@class FilmListMatch
+
+---@class PeopleList
+
+---@class Person
+---@field birth_year? string
+---@field created? string
+---@field edited? string
+---@field eye_color? string
+---@field film? table
+---@field gender? string
+---@field hair_color? string
+---@field height? string
+---@field homeworld? string
+---@field mass? string
+---@field name? string
+---@field skin_color? string
+---@field species? table
+---@field starship? table
+---@field url? string
+---@field vehicle? table
+
+---@class PersonLoadMatch
+---@field id number
+
+---@class PersonListMatch
+
+---@class Planet
+---@field climate? string
+---@field created? string
+---@field diameter? string
+---@field edited? string
+---@field film? table
+---@field gravity? string
+---@field name? string
+---@field orbital_period? string
+---@field population? string
+---@field resident? table
+---@field rotation_period? string
+---@field surface_water? string
+---@field terrain? string
+---@field url? string
+
+---@class PlanetLoadMatch
+---@field id number
+
+---@class PlanetListMatch
+
+---@class Species
+---@field average_height? string
+---@field average_lifespan? string
+---@field classification? string
+---@field created? string
+---@field designation? string
+---@field edited? string
+---@field eye_color? string
+---@field film? table
+---@field hair_color? string
+---@field homeworld? string
+---@field language? string
+---@field name? string
+---@field person? table
+---@field skin_color? string
+---@field url? string
+
+---@class SpeciesLoadMatch
+---@field id number
+
+---@class SpeciesListMatch
+
+---@class Starship
+---@field cargo_capacity? string
+---@field consumable? string
+---@field cost_in_credit? string
+---@field created? string
+---@field crew? string
+---@field edited? string
+---@field film? table
+---@field hyperdrive_rating? string
+---@field length? string
+---@field manufacturer? string
+---@field max_atmosphering_speed? string
+---@field mglt? string
+---@field model? string
+---@field name? string
+---@field passenger? string
+---@field pilot? table
+---@field starship_class? string
+---@field url? string
+
+---@class StarshipLoadMatch
+---@field id number
+
+---@class StarshipListMatch
+
+---@class Vehicle
+---@field cargo_capacity? string
+---@field consumable? string
+---@field cost_in_credit? string
+---@field created? string
+---@field crew? string
+---@field edited? string
+---@field film? table
+---@field length? string
+---@field manufacturer? string
+---@field max_atmosphering_speed? string
+---@field model? string
+---@field name? string
+---@field passenger? string
+---@field pilot? table
+---@field url? string
+---@field vehicle_class? string
+
+---@class VehicleLoadMatch
+---@field id number
+
+---@class VehicleListMatch
+
+local M = {}
+
+return M

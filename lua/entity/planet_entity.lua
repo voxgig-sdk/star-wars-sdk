@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch PlanetLoadMatch
+---@param ctrl? table
+---@return Planet
+---@return string? err
 function PlanetEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch PlanetListMatch
+---@param ctrl? table
+---@return Planet[]
+---@return string? err
 function PlanetEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -50,14 +50,12 @@ class PlanetEntityTest extends TestCase
         $planet_ref01_ent = $client->Planet(null);
         $planet_ref01_match = [];
 
-        [$planet_ref01_list_result, $err] = $planet_ref01_ent->list($planet_ref01_match, null);
-        $this->assertNull($err);
+        $planet_ref01_list_result = $planet_ref01_ent->list($planet_ref01_match, null);
         $this->assertIsArray($planet_ref01_list_result);
 
         // LOAD
         $planet_ref01_match_dt0 = [];
-        [$planet_ref01_data_dt0_loaded, $err] = $planet_ref01_ent->load($planet_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $planet_ref01_data_dt0_loaded = $planet_ref01_ent->load($planet_ref01_match_dt0, null);
         $this->assertNotNull($planet_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function planet_basic_setup($extra)
         "STARWARS_TEST_PLANET_ENTID" => $idmap,
         "STARWARS_TEST_LIVE" => "FALSE",
         "STARWARS_TEST_EXPLAIN" => "FALSE",
-        "STARWARS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function planet_basic_setup($extra)
     if ($env["STARWARS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["STARWARS_APIKEY"],
             ],
             $extra ?? [],
         ]);

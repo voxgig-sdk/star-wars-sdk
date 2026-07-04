@@ -85,6 +85,27 @@ func (e *PeopleListEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an PeopleList; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *PeopleListEntity) DataTyped(data ...PeopleList) PeopleList {
+	if len(data) > 0 {
+		return typedFrom[PeopleList](e.Data(asMap(data[0])))
+	}
+	return typedFrom[PeopleList](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through PeopleList (all fields
+// optional at the wire level).
+func (e *PeopleListEntity) MatchTyped(match ...PeopleList) PeopleList {
+	if len(match) > 0 {
+		return typedFrom[PeopleList](e.Match(asMap(match[0])))
+	}
+	return typedFrom[PeopleList](e.Match())
+}
+
 func (e *PeopleListEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }

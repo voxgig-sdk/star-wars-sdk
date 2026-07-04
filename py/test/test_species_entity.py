@@ -50,14 +50,12 @@ class TestSpeciesEntity:
         species_ref01_ent = client.Species(None)
         species_ref01_match = {}
 
-        species_ref01_list_result, err = species_ref01_ent.list(species_ref01_match, None)
-        assert err is None
+        species_ref01_list_result = species_ref01_ent.list(species_ref01_match, None)
         assert isinstance(species_ref01_list_result, list)
 
         # LOAD
         species_ref01_match_dt0 = {}
-        species_ref01_data_dt0_loaded, err = species_ref01_ent.load(species_ref01_match_dt0, None)
-        assert err is None
+        species_ref01_data_dt0_loaded = species_ref01_ent.load(species_ref01_match_dt0, None)
         assert species_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _species_basic_setup(extra):
         "STARWARS_TEST_SPECIES_ENTID": idmap,
         "STARWARS_TEST_LIVE": "FALSE",
         "STARWARS_TEST_EXPLAIN": "FALSE",
-        "STARWARS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _species_basic_setup(extra):
     if env.get("STARWARS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STARWARS_APIKEY"),
             },
             extra or {},
         ])

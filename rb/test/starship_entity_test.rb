@@ -43,14 +43,12 @@ class StarshipEntityTest < Minitest::Test
     starship_ref01_ent = client.Starship(nil)
     starship_ref01_match = {}
 
-    starship_ref01_list_result, err = starship_ref01_ent.list(starship_ref01_match, nil)
-    assert_nil err
+    starship_ref01_list_result = starship_ref01_ent.list(starship_ref01_match, nil)
     assert starship_ref01_list_result.is_a?(Array)
 
     # LOAD
     starship_ref01_match_dt0 = {}
-    starship_ref01_data_dt0_loaded, err = starship_ref01_ent.load(starship_ref01_match_dt0, nil)
-    assert_nil err
+    starship_ref01_data_dt0_loaded = starship_ref01_ent.load(starship_ref01_match_dt0, nil)
     assert !starship_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def starship_basic_setup(extra)
     "STARWARS_TEST_STARSHIP_ENTID" => idmap,
     "STARWARS_TEST_LIVE" => "FALSE",
     "STARWARS_TEST_EXPLAIN" => "FALSE",
-    "STARWARS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def starship_basic_setup(extra)
   if env["STARWARS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["STARWARS_APIKEY"],
       },
       extra || {},
     ])

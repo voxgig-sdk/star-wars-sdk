@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -108,7 +107,7 @@ same parameters as `direct()`.
 ## FilmEntity
 
 ```lua
-local film = client:Film(nil)
+local film = client:film(nil)
 ```
 
 ### Fields
@@ -137,7 +136,7 @@ local film = client:Film(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Film():list()
+local results, err = client:film():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -145,7 +144,7 @@ local results, err = client:Film():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Film():load({ id = "film_id" })
+local result, err = client:film():load({ id = "film_id" })
 ```
 
 ### Common Methods
@@ -181,7 +180,7 @@ Return the entity name.
 ## PeopleListEntity
 
 ```lua
-local people_list = client:PeopleList(nil)
+local people_list = client:people_list(nil)
 ```
 
 ### Common Methods
@@ -217,7 +216,7 @@ Return the entity name.
 ## PersonEntity
 
 ```lua
-local person = client:Person(nil)
+local person = client:person(nil)
 ```
 
 ### Fields
@@ -248,7 +247,7 @@ local person = client:Person(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Person():list()
+local results, err = client:person():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -256,7 +255,7 @@ local results, err = client:Person():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Person():load({ id = "person_id" })
+local result, err = client:person():load({ id = "person_id" })
 ```
 
 ### Common Methods
@@ -292,7 +291,7 @@ Return the entity name.
 ## PlanetEntity
 
 ```lua
-local planet = client:Planet(nil)
+local planet = client:planet(nil)
 ```
 
 ### Fields
@@ -321,7 +320,7 @@ local planet = client:Planet(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Planet():list()
+local results, err = client:planet():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -329,7 +328,7 @@ local results, err = client:Planet():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Planet():load({ id = "planet_id" })
+local result, err = client:planet():load({ id = "planet_id" })
 ```
 
 ### Common Methods
@@ -365,7 +364,7 @@ Return the entity name.
 ## SpeciesEntity
 
 ```lua
-local species = client:Species(nil)
+local species = client:species(nil)
 ```
 
 ### Fields
@@ -395,7 +394,7 @@ local species = client:Species(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Species():list()
+local results, err = client:species():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -403,7 +402,7 @@ local results, err = client:Species():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Species():load({ id = "species_id" })
+local result, err = client:species():load({ id = "species_id" })
 ```
 
 ### Common Methods
@@ -439,7 +438,7 @@ Return the entity name.
 ## StarshipEntity
 
 ```lua
-local starship = client:Starship(nil)
+local starship = client:starship(nil)
 ```
 
 ### Fields
@@ -472,7 +471,7 @@ local starship = client:Starship(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Starship():list()
+local results, err = client:starship():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -480,7 +479,7 @@ local results, err = client:Starship():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Starship():load({ id = "starship_id" })
+local result, err = client:starship():load({ id = "starship_id" })
 ```
 
 ### Common Methods
@@ -516,7 +515,7 @@ Return the entity name.
 ## VehicleEntity
 
 ```lua
-local vehicle = client:Vehicle(nil)
+local vehicle = client:vehicle(nil)
 ```
 
 ### Fields
@@ -547,7 +546,7 @@ local vehicle = client:Vehicle(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Vehicle():list()
+local results, err = client:vehicle():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -555,7 +554,7 @@ local results, err = client:Vehicle():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Vehicle():load({ id = "vehicle_id" })
+local result, err = client:vehicle():load({ id = "vehicle_id" })
 ```
 
 ### Common Methods

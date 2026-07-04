@@ -245,36 +245,57 @@ func (sdk *StarWarsSDK) Direct(fetchargs map[string]any) (map[string]any, error)
 }
 
 
+// Film returns a Film entity bound to this client.
+// Idiomatic usage: client.Film(nil).List(nil, nil) or
+// client.Film(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsSDK) Film(data map[string]any) StarWarsEntity {
 	return NewFilmEntityFunc(sdk, data)
 }
 
 
+// PeopleList returns a PeopleList entity bound to this client.
+// Idiomatic usage: client.PeopleList(nil).List(nil, nil) or
+// client.PeopleList(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsSDK) PeopleList(data map[string]any) StarWarsEntity {
 	return NewPeopleListEntityFunc(sdk, data)
 }
 
 
+// Person returns a Person entity bound to this client.
+// Idiomatic usage: client.Person(nil).List(nil, nil) or
+// client.Person(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsSDK) Person(data map[string]any) StarWarsEntity {
 	return NewPersonEntityFunc(sdk, data)
 }
 
 
+// Planet returns a Planet entity bound to this client.
+// Idiomatic usage: client.Planet(nil).List(nil, nil) or
+// client.Planet(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsSDK) Planet(data map[string]any) StarWarsEntity {
 	return NewPlanetEntityFunc(sdk, data)
 }
 
 
+// Species returns a Species entity bound to this client.
+// Idiomatic usage: client.Species(nil).List(nil, nil) or
+// client.Species(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsSDK) Species(data map[string]any) StarWarsEntity {
 	return NewSpeciesEntityFunc(sdk, data)
 }
 
 
+// Starship returns a Starship entity bound to this client.
+// Idiomatic usage: client.Starship(nil).List(nil, nil) or
+// client.Starship(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsSDK) Starship(data map[string]any) StarWarsEntity {
 	return NewStarshipEntityFunc(sdk, data)
 }
 
 
+// Vehicle returns a Vehicle entity bound to this client.
+// Idiomatic usage: client.Vehicle(nil).List(nil, nil) or
+// client.Vehicle(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *StarWarsSDK) Vehicle(data map[string]any) StarWarsEntity {
 	return NewVehicleEntityFunc(sdk, data)
 }

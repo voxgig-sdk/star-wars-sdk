@@ -50,14 +50,12 @@ class StarshipEntityTest extends TestCase
         $starship_ref01_ent = $client->Starship(null);
         $starship_ref01_match = [];
 
-        [$starship_ref01_list_result, $err] = $starship_ref01_ent->list($starship_ref01_match, null);
-        $this->assertNull($err);
+        $starship_ref01_list_result = $starship_ref01_ent->list($starship_ref01_match, null);
         $this->assertIsArray($starship_ref01_list_result);
 
         // LOAD
         $starship_ref01_match_dt0 = [];
-        [$starship_ref01_data_dt0_loaded, $err] = $starship_ref01_ent->load($starship_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $starship_ref01_data_dt0_loaded = $starship_ref01_ent->load($starship_ref01_match_dt0, null);
         $this->assertNotNull($starship_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function starship_basic_setup($extra)
         "STARWARS_TEST_STARSHIP_ENTID" => $idmap,
         "STARWARS_TEST_LIVE" => "FALSE",
         "STARWARS_TEST_EXPLAIN" => "FALSE",
-        "STARWARS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function starship_basic_setup($extra)
     if ($env["STARWARS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["STARWARS_APIKEY"],
             ],
             $extra ?? [],
         ]);

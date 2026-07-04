@@ -9,9 +9,12 @@ The TypeScript SDK for the StarWars API — a type-safe, entity-oriented client 
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/star-wars
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/star-wars-sdk/releases](https://github.com/voxgig-sdk/star-wars-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { StarWarsSDK } from 'star-wars'
+import { StarWarsSDK } from '@voxgig-sdk/star-wars'
 
-const client = new StarWarsSDK({
-  apikey: process.env.STAR-WARS_APIKEY,
-})
+const client = new StarWarsSDK()
 ```
 
 ### 2. List films
 
 ```ts
-const result = await client.Film().list()
+const result = await client.film.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a film
 
 ```ts
-const result = await client.Film().load({ id: 'example_id' })
+const result = await client.film.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = StarWarsSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.film.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new StarWarsSDK({ apikey: '...' })
+const client = new StarWarsSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.film
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new StarWarsSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new StarWarsSDK({
 Create a `.env.local` file at the project root:
 
 ```
-STAR-WARS_TEST_LIVE=TRUE
-STAR-WARS_APIKEY=<your-key>
+STAR_WARS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new StarWarsSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new StarWarsSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -430,7 +427,7 @@ API path: `/vehicles`
 
 ### Film
 
-Create an instance: `const film = client.Film()`
+Create an instance: `const film = client.film`
 
 #### Operations
 
@@ -461,24 +458,24 @@ Create an instance: `const film = client.Film()`
 #### Example: Load
 
 ```ts
-const film = await client.Film().load({ id: 'film_id' })
+const film = await client.film.load({ id: 'film_id' })
 ```
 
 #### Example: List
 
 ```ts
-const films = await client.Film().list()
+const films = await client.film.list()
 ```
 
 
 ### PeopleList
 
-Create an instance: `const people_list = client.PeopleList()`
+Create an instance: `const people_list = client.people_list`
 
 
 ### Person
 
-Create an instance: `const person = client.Person()`
+Create an instance: `const person = client.person`
 
 #### Operations
 
@@ -511,19 +508,19 @@ Create an instance: `const person = client.Person()`
 #### Example: Load
 
 ```ts
-const person = await client.Person().load({ id: 'person_id' })
+const person = await client.person.load({ id: 'person_id' })
 ```
 
 #### Example: List
 
 ```ts
-const persons = await client.Person().list()
+const persons = await client.person.list()
 ```
 
 
 ### Planet
 
-Create an instance: `const planet = client.Planet()`
+Create an instance: `const planet = client.planet`
 
 #### Operations
 
@@ -554,19 +551,19 @@ Create an instance: `const planet = client.Planet()`
 #### Example: Load
 
 ```ts
-const planet = await client.Planet().load({ id: 'planet_id' })
+const planet = await client.planet.load({ id: 'planet_id' })
 ```
 
 #### Example: List
 
 ```ts
-const planets = await client.Planet().list()
+const planets = await client.planet.list()
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.Species()`
+Create an instance: `const species = client.species`
 
 #### Operations
 
@@ -598,19 +595,19 @@ Create an instance: `const species = client.Species()`
 #### Example: Load
 
 ```ts
-const species = await client.Species().load({ id: 'species_id' })
+const species = await client.species.load({ id: 'species_id' })
 ```
 
 #### Example: List
 
 ```ts
-const speciess = await client.Species().list()
+const speciess = await client.species.list()
 ```
 
 
 ### Starship
 
-Create an instance: `const starship = client.Starship()`
+Create an instance: `const starship = client.starship`
 
 #### Operations
 
@@ -645,19 +642,19 @@ Create an instance: `const starship = client.Starship()`
 #### Example: Load
 
 ```ts
-const starship = await client.Starship().load({ id: 'starship_id' })
+const starship = await client.starship.load({ id: 'starship_id' })
 ```
 
 #### Example: List
 
 ```ts
-const starships = await client.Starship().list()
+const starships = await client.starship.list()
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.Vehicle()`
+Create an instance: `const vehicle = client.vehicle`
 
 #### Operations
 
@@ -690,13 +687,13 @@ Create an instance: `const vehicle = client.Vehicle()`
 #### Example: Load
 
 ```ts
-const vehicle = await client.Vehicle().load({ id: 'vehicle_id' })
+const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
 ```
 
 #### Example: List
 
 ```ts
-const vehicles = await client.Vehicle().list()
+const vehicles = await client.vehicle.list()
 ```
 
 
@@ -757,7 +754,7 @@ star-wars/
 Import the SDK from the package root:
 
 ```ts
-import { StarWarsSDK } from 'star-wars'
+import { StarWarsSDK } from '@voxgig-sdk/star-wars'
 ```
 
 ### Entity state
@@ -767,11 +764,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const film = client.film
+await film.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// film.data() now returns the loaded film data
+// film.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

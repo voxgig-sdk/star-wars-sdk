@@ -43,14 +43,12 @@ class VehicleEntityTest < Minitest::Test
     vehicle_ref01_ent = client.Vehicle(nil)
     vehicle_ref01_match = {}
 
-    vehicle_ref01_list_result, err = vehicle_ref01_ent.list(vehicle_ref01_match, nil)
-    assert_nil err
+    vehicle_ref01_list_result = vehicle_ref01_ent.list(vehicle_ref01_match, nil)
     assert vehicle_ref01_list_result.is_a?(Array)
 
     # LOAD
     vehicle_ref01_match_dt0 = {}
-    vehicle_ref01_data_dt0_loaded, err = vehicle_ref01_ent.load(vehicle_ref01_match_dt0, nil)
-    assert_nil err
+    vehicle_ref01_data_dt0_loaded = vehicle_ref01_ent.load(vehicle_ref01_match_dt0, nil)
     assert !vehicle_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def vehicle_basic_setup(extra)
     "STARWARS_TEST_VEHICLE_ENTID" => idmap,
     "STARWARS_TEST_LIVE" => "FALSE",
     "STARWARS_TEST_EXPLAIN" => "FALSE",
-    "STARWARS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def vehicle_basic_setup(extra)
   if env["STARWARS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["STARWARS_APIKEY"],
       },
       extra || {},
     ])

@@ -43,14 +43,12 @@ class FilmEntityTest < Minitest::Test
     film_ref01_ent = client.Film(nil)
     film_ref01_match = {}
 
-    film_ref01_list_result, err = film_ref01_ent.list(film_ref01_match, nil)
-    assert_nil err
+    film_ref01_list_result = film_ref01_ent.list(film_ref01_match, nil)
     assert film_ref01_list_result.is_a?(Array)
 
     # LOAD
     film_ref01_match_dt0 = {}
-    film_ref01_data_dt0_loaded, err = film_ref01_ent.load(film_ref01_match_dt0, nil)
-    assert_nil err
+    film_ref01_data_dt0_loaded = film_ref01_ent.load(film_ref01_match_dt0, nil)
     assert !film_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def film_basic_setup(extra)
     "STARWARS_TEST_FILM_ENTID" => idmap,
     "STARWARS_TEST_LIVE" => "FALSE",
     "STARWARS_TEST_EXPLAIN" => "FALSE",
-    "STARWARS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def film_basic_setup(extra)
   if env["STARWARS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["STARWARS_APIKEY"],
       },
       extra || {},
     ])

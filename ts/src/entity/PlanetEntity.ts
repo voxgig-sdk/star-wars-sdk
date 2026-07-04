@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Planet,
+  PlanetLoadMatch,
+  PlanetListMatch,
+} from '../StarWarsTypes'
 
 // TODO: needs Entity superclass
-class PlanetEntity extends StarWarsEntityBase {
+class PlanetEntity extends StarWarsEntityBase<Planet> {
 
   constructor(client: StarWarsSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class PlanetEntity extends StarWarsEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: PlanetLoadMatch, ctrl?: Control): Promise<Planet> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class PlanetEntity extends StarWarsEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Planet> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: PlanetListMatch, ctrl?: Control): Promise<Planet[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class PlanetEntity extends StarWarsEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Planet[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

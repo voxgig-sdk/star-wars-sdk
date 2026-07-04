@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch StarshipLoadMatch
+---@param ctrl? table
+---@return Starship
+---@return string? err
 function StarshipEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch StarshipListMatch
+---@param ctrl? table
+---@return Starship[]
+---@return string? err
 function StarshipEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

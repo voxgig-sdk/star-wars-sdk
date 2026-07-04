@@ -50,14 +50,12 @@ class PersonEntityTest extends TestCase
         $person_ref01_ent = $client->Person(null);
         $person_ref01_match = [];
 
-        [$person_ref01_list_result, $err] = $person_ref01_ent->list($person_ref01_match, null);
-        $this->assertNull($err);
+        $person_ref01_list_result = $person_ref01_ent->list($person_ref01_match, null);
         $this->assertIsArray($person_ref01_list_result);
 
         // LOAD
         $person_ref01_match_dt0 = [];
-        [$person_ref01_data_dt0_loaded, $err] = $person_ref01_ent->load($person_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $person_ref01_data_dt0_loaded = $person_ref01_ent->load($person_ref01_match_dt0, null);
         $this->assertNotNull($person_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function person_basic_setup($extra)
         "STARWARS_TEST_PERSON_ENTID" => $idmap,
         "STARWARS_TEST_LIVE" => "FALSE",
         "STARWARS_TEST_EXPLAIN" => "FALSE",
-        "STARWARS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function person_basic_setup($extra)
     if ($env["STARWARS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["STARWARS_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -136,14 +136,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'STARWARS_TEST_PERSON_ENTID': {},
     'STARWARS_TEST_LIVE': 'FALSE',
-    'STARWARS_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.STARWARS_TEST_LIVE
 
   if (live) {
     const client = new StarWarsSDK({
-      apikey: env.STARWARS_APIKEY,
     })
 
     let idmap: any = env['STARWARS_TEST_PERSON_ENTID']

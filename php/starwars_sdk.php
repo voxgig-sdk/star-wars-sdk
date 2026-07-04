@@ -103,7 +103,7 @@ class StarWarsSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class StarWarsSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class StarWarsSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,66 +216,143 @@ class StarWarsSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Film($data = null)
+    private $_film = null;
+
+    // Idiomatic facade: $client->film()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Film() (PHP method
+    // names are case-insensitive).
+    public function film($data = null)
     {
         require_once __DIR__ . '/entity/film_entity.php';
+        if ($data === null) {
+            if ($this->_film === null) {
+                $this->_film = new FilmEntity($this, null);
+            }
+            return $this->_film;
+        }
         return new FilmEntity($this, $data);
     }
 
 
-    public function PeopleList($data = null)
+    private $_people_list = null;
+
+    // Idiomatic facade: $client->people_list()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias PeopleList() (PHP method
+    // names are case-insensitive).
+    public function people_list($data = null)
     {
         require_once __DIR__ . '/entity/people_list_entity.php';
+        if ($data === null) {
+            if ($this->_people_list === null) {
+                $this->_people_list = new PeopleListEntity($this, null);
+            }
+            return $this->_people_list;
+        }
         return new PeopleListEntity($this, $data);
     }
 
 
-    public function Person($data = null)
+    private $_person = null;
+
+    // Idiomatic facade: $client->person()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Person() (PHP method
+    // names are case-insensitive).
+    public function person($data = null)
     {
         require_once __DIR__ . '/entity/person_entity.php';
+        if ($data === null) {
+            if ($this->_person === null) {
+                $this->_person = new PersonEntity($this, null);
+            }
+            return $this->_person;
+        }
         return new PersonEntity($this, $data);
     }
 
 
-    public function Planet($data = null)
+    private $_planet = null;
+
+    // Idiomatic facade: $client->planet()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Planet() (PHP method
+    // names are case-insensitive).
+    public function planet($data = null)
     {
         require_once __DIR__ . '/entity/planet_entity.php';
+        if ($data === null) {
+            if ($this->_planet === null) {
+                $this->_planet = new PlanetEntity($this, null);
+            }
+            return $this->_planet;
+        }
         return new PlanetEntity($this, $data);
     }
 
 
-    public function Species($data = null)
+    private $_species = null;
+
+    // Idiomatic facade: $client->species()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Species() (PHP method
+    // names are case-insensitive).
+    public function species($data = null)
     {
         require_once __DIR__ . '/entity/species_entity.php';
+        if ($data === null) {
+            if ($this->_species === null) {
+                $this->_species = new SpeciesEntity($this, null);
+            }
+            return $this->_species;
+        }
         return new SpeciesEntity($this, $data);
     }
 
 
-    public function Starship($data = null)
+    private $_starship = null;
+
+    // Idiomatic facade: $client->starship()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Starship() (PHP method
+    // names are case-insensitive).
+    public function starship($data = null)
     {
         require_once __DIR__ . '/entity/starship_entity.php';
+        if ($data === null) {
+            if ($this->_starship === null) {
+                $this->_starship = new StarshipEntity($this, null);
+            }
+            return $this->_starship;
+        }
         return new StarshipEntity($this, $data);
     }
 
 
-    public function Vehicle($data = null)
+    private $_vehicle = null;
+
+    // Idiomatic facade: $client->vehicle()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Vehicle() (PHP method
+    // names are case-insensitive).
+    public function vehicle($data = null)
     {
         require_once __DIR__ . '/entity/vehicle_entity.php';
+        if ($data === null) {
+            if ($this->_vehicle === null) {
+                $this->_vehicle = new VehicleEntity($this, null);
+            }
+            return $this->_vehicle;
+        }
         return new VehicleEntity($this, $data);
     }
 

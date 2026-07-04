@@ -9,12 +9,9 @@ The Lua SDK for the StarWars API — an entity-oriented client using Lua convent
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-star-wars
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/star-wars-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("star-wars_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("STAR-WARS_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List films
 
 ```lua
-local result, err = client:Film():list()
+local result, err = client:film():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -53,7 +48,7 @@ end
 ### 3. Load a film
 
 ```lua
-local result, err = client:Film():load({ id = "example_id" })
+local result, err = client:film():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:StarWars():load({ id = "test01" })
+local result, err = client:film():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -134,8 +129,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-STAR-WARS_TEST_LIVE=TRUE
-STAR-WARS_APIKEY=<your-key>
+STAR_WARS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -158,7 +152,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -387,7 +380,7 @@ API path: `/vehicles`
 
 ### Film
 
-Create an instance: `const film = client.Film()`
+Create an instance: `const film = client.film`
 
 #### Operations
 
@@ -418,24 +411,24 @@ Create an instance: `const film = client.Film()`
 #### Example: Load
 
 ```ts
-const film = await client.Film().load({ id: 'film_id' })
+const film = await client.film.load({ id: 'film_id' })
 ```
 
 #### Example: List
 
 ```ts
-const films = await client.Film().list()
+const films = await client.film.list()
 ```
 
 
 ### PeopleList
 
-Create an instance: `const people_list = client.PeopleList()`
+Create an instance: `const people_list = client.people_list`
 
 
 ### Person
 
-Create an instance: `const person = client.Person()`
+Create an instance: `const person = client.person`
 
 #### Operations
 
@@ -468,19 +461,19 @@ Create an instance: `const person = client.Person()`
 #### Example: Load
 
 ```ts
-const person = await client.Person().load({ id: 'person_id' })
+const person = await client.person.load({ id: 'person_id' })
 ```
 
 #### Example: List
 
 ```ts
-const persons = await client.Person().list()
+const persons = await client.person.list()
 ```
 
 
 ### Planet
 
-Create an instance: `const planet = client.Planet()`
+Create an instance: `const planet = client.planet`
 
 #### Operations
 
@@ -511,19 +504,19 @@ Create an instance: `const planet = client.Planet()`
 #### Example: Load
 
 ```ts
-const planet = await client.Planet().load({ id: 'planet_id' })
+const planet = await client.planet.load({ id: 'planet_id' })
 ```
 
 #### Example: List
 
 ```ts
-const planets = await client.Planet().list()
+const planets = await client.planet.list()
 ```
 
 
 ### Species
 
-Create an instance: `const species = client.Species()`
+Create an instance: `const species = client.species`
 
 #### Operations
 
@@ -555,19 +548,19 @@ Create an instance: `const species = client.Species()`
 #### Example: Load
 
 ```ts
-const species = await client.Species().load({ id: 'species_id' })
+const species = await client.species.load({ id: 'species_id' })
 ```
 
 #### Example: List
 
 ```ts
-const speciess = await client.Species().list()
+const speciess = await client.species.list()
 ```
 
 
 ### Starship
 
-Create an instance: `const starship = client.Starship()`
+Create an instance: `const starship = client.starship`
 
 #### Operations
 
@@ -602,19 +595,19 @@ Create an instance: `const starship = client.Starship()`
 #### Example: Load
 
 ```ts
-const starship = await client.Starship().load({ id: 'starship_id' })
+const starship = await client.starship.load({ id: 'starship_id' })
 ```
 
 #### Example: List
 
 ```ts
-const starships = await client.Starship().list()
+const starships = await client.starship.list()
 ```
 
 
 ### Vehicle
 
-Create an instance: `const vehicle = client.Vehicle()`
+Create an instance: `const vehicle = client.vehicle`
 
 #### Operations
 
@@ -647,13 +640,13 @@ Create an instance: `const vehicle = client.Vehicle()`
 #### Example: Load
 
 ```ts
-const vehicle = await client.Vehicle().load({ id: 'vehicle_id' })
+const vehicle = await client.vehicle.load({ id: 'vehicle_id' })
 ```
 
 #### Example: List
 
 ```ts
-const vehicles = await client.Vehicle().list()
+const vehicles = await client.vehicle.list()
 ```
 
 
@@ -728,11 +721,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local film = client:film()
+film:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- film:data_get() now returns the loaded film data
+-- film:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

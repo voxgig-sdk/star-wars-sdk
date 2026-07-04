@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `$options` | `array` | SDK configuration options. |
-| `$options["apikey"]` | `string` | API key for authentication. |
 | `$options["base"]` | `string` | Base URL for API requests. |
 | `$options["prefix"]` | `string` | URL prefix appended after base. |
 | `$options["suffix"]` | `string` | URL suffix appended after path. |
@@ -80,7 +79,10 @@ Return a copy of the SDK utility object.
 
 #### `direct(array $fetchargs = []): array`
 
-Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+Make a direct HTTP request to any API endpoint. This is the raw-HTTP escape
+hatch: it does **not** throw. It returns a result array
+`["ok" => bool, "status" => int, "headers" => array, "data" => mixed]`, or
+`["ok" => false, "err" => \Exception]` on failure. Branch on `$result["ok"]`.
 
 **Parameters:**
 
@@ -94,11 +96,12 @@ Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
 | `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
 | `$fetchargs["ctrl"]` | `array` | Control options. |
 
-**Returns:** `array [$result, $err]`
+**Returns:** `array` — the result dict (see above); never throws.
 
-#### `prepare(array $fetchargs = []): array`
+#### `prepare(array $fetchargs = []): mixed`
 
-Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+Prepare a fetch definition without sending the request. Returns the
+`$fetchdef` array. Throws on error.
 
 
 ---
@@ -106,7 +109,7 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 ## FilmEntity
 
 ```php
-$film = $client->Film();
+$film = $client->film();
 ```
 
 ### Fields
@@ -130,20 +133,20 @@ $film = $client->Film();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Film()->list([]);
+$results = $client->film()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Film()->load(["id" => "film_id"]);
+$result = $client->film()->load(["id" => "film_id"]);
 ```
 
 ### Common Methods
@@ -179,7 +182,7 @@ Return the entity name.
 ## PeopleListEntity
 
 ```php
-$people_list = $client->PeopleList();
+$people_list = $client->people_list();
 ```
 
 ### Common Methods
@@ -215,7 +218,7 @@ Return the entity name.
 ## PersonEntity
 
 ```php
-$person = $client->Person();
+$person = $client->person();
 ```
 
 ### Fields
@@ -241,20 +244,20 @@ $person = $client->Person();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Person()->list([]);
+$results = $client->person()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Person()->load(["id" => "person_id"]);
+$result = $client->person()->load(["id" => "person_id"]);
 ```
 
 ### Common Methods
@@ -290,7 +293,7 @@ Return the entity name.
 ## PlanetEntity
 
 ```php
-$planet = $client->Planet();
+$planet = $client->planet();
 ```
 
 ### Fields
@@ -314,20 +317,20 @@ $planet = $client->Planet();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Planet()->list([]);
+$results = $client->planet()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Planet()->load(["id" => "planet_id"]);
+$result = $client->planet()->load(["id" => "planet_id"]);
 ```
 
 ### Common Methods
@@ -363,7 +366,7 @@ Return the entity name.
 ## SpeciesEntity
 
 ```php
-$species = $client->Species();
+$species = $client->species();
 ```
 
 ### Fields
@@ -388,20 +391,20 @@ $species = $client->Species();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Species()->list([]);
+$results = $client->species()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Species()->load(["id" => "species_id"]);
+$result = $client->species()->load(["id" => "species_id"]);
 ```
 
 ### Common Methods
@@ -437,7 +440,7 @@ Return the entity name.
 ## StarshipEntity
 
 ```php
-$starship = $client->Starship();
+$starship = $client->starship();
 ```
 
 ### Fields
@@ -465,20 +468,20 @@ $starship = $client->Starship();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Starship()->list([]);
+$results = $client->starship()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Starship()->load(["id" => "starship_id"]);
+$result = $client->starship()->load(["id" => "starship_id"]);
 ```
 
 ### Common Methods
@@ -514,7 +517,7 @@ Return the entity name.
 ## VehicleEntity
 
 ```php
-$vehicle = $client->Vehicle();
+$vehicle = $client->vehicle();
 ```
 
 ### Fields
@@ -540,20 +543,20 @@ $vehicle = $client->Vehicle();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Vehicle()->list([]);
+$results = $client->vehicle()->list([]);
 ```
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Vehicle()->load(["id" => "vehicle_id"]);
+$result = $client->vehicle()->load(["id" => "vehicle_id"]);
 ```
 
 ### Common Methods

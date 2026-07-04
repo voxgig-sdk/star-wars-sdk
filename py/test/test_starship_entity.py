@@ -50,14 +50,12 @@ class TestStarshipEntity:
         starship_ref01_ent = client.Starship(None)
         starship_ref01_match = {}
 
-        starship_ref01_list_result, err = starship_ref01_ent.list(starship_ref01_match, None)
-        assert err is None
+        starship_ref01_list_result = starship_ref01_ent.list(starship_ref01_match, None)
         assert isinstance(starship_ref01_list_result, list)
 
         # LOAD
         starship_ref01_match_dt0 = {}
-        starship_ref01_data_dt0_loaded, err = starship_ref01_ent.load(starship_ref01_match_dt0, None)
-        assert err is None
+        starship_ref01_data_dt0_loaded = starship_ref01_ent.load(starship_ref01_match_dt0, None)
         assert starship_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _starship_basic_setup(extra):
         "STARWARS_TEST_STARSHIP_ENTID": idmap,
         "STARWARS_TEST_LIVE": "FALSE",
         "STARWARS_TEST_EXPLAIN": "FALSE",
-        "STARWARS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _starship_basic_setup(extra):
     if env.get("STARWARS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STARWARS_APIKEY"),
             },
             extra or {},
         ])

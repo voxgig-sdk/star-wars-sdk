@@ -50,14 +50,12 @@ class TestPlanetEntity:
         planet_ref01_ent = client.Planet(None)
         planet_ref01_match = {}
 
-        planet_ref01_list_result, err = planet_ref01_ent.list(planet_ref01_match, None)
-        assert err is None
+        planet_ref01_list_result = planet_ref01_ent.list(planet_ref01_match, None)
         assert isinstance(planet_ref01_list_result, list)
 
         # LOAD
         planet_ref01_match_dt0 = {}
-        planet_ref01_data_dt0_loaded, err = planet_ref01_ent.load(planet_ref01_match_dt0, None)
-        assert err is None
+        planet_ref01_data_dt0_loaded = planet_ref01_ent.load(planet_ref01_match_dt0, None)
         assert planet_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _planet_basic_setup(extra):
         "STARWARS_TEST_PLANET_ENTID": idmap,
         "STARWARS_TEST_LIVE": "FALSE",
         "STARWARS_TEST_EXPLAIN": "FALSE",
-        "STARWARS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _planet_basic_setup(extra):
     if env.get("STARWARS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STARWARS_APIKEY"),
             },
             extra or {},
         ])

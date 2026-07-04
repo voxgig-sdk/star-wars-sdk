@@ -50,14 +50,12 @@ class TestFilmEntity:
         film_ref01_ent = client.Film(None)
         film_ref01_match = {}
 
-        film_ref01_list_result, err = film_ref01_ent.list(film_ref01_match, None)
-        assert err is None
+        film_ref01_list_result = film_ref01_ent.list(film_ref01_match, None)
         assert isinstance(film_ref01_list_result, list)
 
         # LOAD
         film_ref01_match_dt0 = {}
-        film_ref01_data_dt0_loaded, err = film_ref01_ent.load(film_ref01_match_dt0, None)
-        assert err is None
+        film_ref01_data_dt0_loaded = film_ref01_ent.load(film_ref01_match_dt0, None)
         assert film_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _film_basic_setup(extra):
         "STARWARS_TEST_FILM_ENTID": idmap,
         "STARWARS_TEST_LIVE": "FALSE",
         "STARWARS_TEST_EXPLAIN": "FALSE",
-        "STARWARS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _film_basic_setup(extra):
     if env.get("STARWARS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("STARWARS_APIKEY"),
             },
             extra or {},
         ])

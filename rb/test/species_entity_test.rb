@@ -43,14 +43,12 @@ class SpeciesEntityTest < Minitest::Test
     species_ref01_ent = client.Species(nil)
     species_ref01_match = {}
 
-    species_ref01_list_result, err = species_ref01_ent.list(species_ref01_match, nil)
-    assert_nil err
+    species_ref01_list_result = species_ref01_ent.list(species_ref01_match, nil)
     assert species_ref01_list_result.is_a?(Array)
 
     # LOAD
     species_ref01_match_dt0 = {}
-    species_ref01_data_dt0_loaded, err = species_ref01_ent.load(species_ref01_match_dt0, nil)
-    assert_nil err
+    species_ref01_data_dt0_loaded = species_ref01_ent.load(species_ref01_match_dt0, nil)
     assert !species_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def species_basic_setup(extra)
     "STARWARS_TEST_SPECIES_ENTID" => idmap,
     "STARWARS_TEST_LIVE" => "FALSE",
     "STARWARS_TEST_EXPLAIN" => "FALSE",
-    "STARWARS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def species_basic_setup(extra)
   if env["STARWARS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["STARWARS_APIKEY"],
       },
       extra || {},
     ])

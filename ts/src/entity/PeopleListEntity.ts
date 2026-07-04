@@ -14,9 +14,12 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  PeopleList,
+} from '../StarWarsTypes'
 
 // TODO: needs Entity superclass
-class PeopleListEntity extends StarWarsEntityBase {
+class PeopleListEntity extends StarWarsEntityBase<PeopleList> {
 
   constructor(client: StarWarsSDK, entopts: any) {
     super(client, entopts)
