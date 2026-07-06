@@ -8,7 +8,7 @@ Complete API reference for the StarWars Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'star-wars_sdk'
+require_relative 'StarWars_sdk'
 
 client = StarWarsSDK.new(options)
 ```
@@ -117,29 +117,29 @@ film = client.Film
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | ``$ARRAY`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `director` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `episode_id` | ``$INTEGER`` | No |  |
-| `opening_crawl` | ``$STRING`` | No |  |
-| `planet` | ``$ARRAY`` | No |  |
-| `producer` | ``$STRING`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `species` | ``$ARRAY`` | No |  |
-| `starship` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle` | ``$ARRAY`` | No |  |
+| `character` | `Array` | No |  |
+| `created` | `String` | No |  |
+| `director` | `String` | No |  |
+| `edited` | `String` | No |  |
+| `episode_id` | `Integer` | No |  |
+| `opening_crawl` | `String` | No |  |
+| `planet` | `Array` | No |  |
+| `producer` | `String` | No |  |
+| `release_date` | `String` | No |  |
+| `species` | `Array` | No |  |
+| `starship` | `Array` | No |  |
+| `title` | `String` | No |  |
+| `url` | `String` | No |  |
+| `vehicle` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Film.list(nil)
+results = client.Film.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -226,31 +226,31 @@ person = client.Person
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `birth_year` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `eye_color` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `hair_color` | ``$STRING`` | No |  |
-| `height` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `mass` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `skin_color` | ``$STRING`` | No |  |
-| `species` | ``$ARRAY`` | No |  |
-| `starship` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle` | ``$ARRAY`` | No |  |
+| `birth_year` | `String` | No |  |
+| `created` | `String` | No |  |
+| `edited` | `String` | No |  |
+| `eye_color` | `String` | No |  |
+| `film` | `Array` | No |  |
+| `gender` | `String` | No |  |
+| `hair_color` | `String` | No |  |
+| `height` | `String` | No |  |
+| `homeworld` | `String` | No |  |
+| `mass` | `String` | No |  |
+| `name` | `String` | No |  |
+| `skin_color` | `String` | No |  |
+| `species` | `Array` | No |  |
+| `starship` | `Array` | No |  |
+| `url` | `String` | No |  |
+| `vehicle` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Person.list(nil)
+results = client.Person.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -301,29 +301,29 @@ planet = client.Planet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `climate` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `diameter` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `gravity` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `orbital_period` | ``$STRING`` | No |  |
-| `population` | ``$STRING`` | No |  |
-| `resident` | ``$ARRAY`` | No |  |
-| `rotation_period` | ``$STRING`` | No |  |
-| `surface_water` | ``$STRING`` | No |  |
-| `terrain` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `climate` | `String` | No |  |
+| `created` | `String` | No |  |
+| `diameter` | `String` | No |  |
+| `edited` | `String` | No |  |
+| `film` | `Array` | No |  |
+| `gravity` | `String` | No |  |
+| `name` | `String` | No |  |
+| `orbital_period` | `String` | No |  |
+| `population` | `String` | No |  |
+| `resident` | `Array` | No |  |
+| `rotation_period` | `String` | No |  |
+| `surface_water` | `String` | No |  |
+| `terrain` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Planet.list(nil)
+results = client.Planet.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -374,30 +374,30 @@ species = client.Species
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average_height` | ``$STRING`` | No |  |
-| `average_lifespan` | ``$STRING`` | No |  |
-| `classification` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `designation` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `eye_color` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `hair_color` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `person` | ``$ARRAY`` | No |  |
-| `skin_color` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `average_height` | `String` | No |  |
+| `average_lifespan` | `String` | No |  |
+| `classification` | `String` | No |  |
+| `created` | `String` | No |  |
+| `designation` | `String` | No |  |
+| `edited` | `String` | No |  |
+| `eye_color` | `String` | No |  |
+| `film` | `Array` | No |  |
+| `hair_color` | `String` | No |  |
+| `homeworld` | `String` | No |  |
+| `language` | `String` | No |  |
+| `name` | `String` | No |  |
+| `person` | `Array` | No |  |
+| `skin_color` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Species.list(nil)
+results = client.Species.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -448,33 +448,33 @@ starship = client.Starship
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` | No |  |
-| `consumable` | ``$STRING`` | No |  |
-| `cost_in_credit` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `hyperdrive_rating` | ``$STRING`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `max_atmosphering_speed` | ``$STRING`` | No |  |
-| `mglt` | ``$STRING`` | No |  |
-| `model` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `passenger` | ``$STRING`` | No |  |
-| `pilot` | ``$ARRAY`` | No |  |
-| `starship_class` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `cargo_capacity` | `String` | No |  |
+| `consumable` | `String` | No |  |
+| `cost_in_credit` | `String` | No |  |
+| `created` | `String` | No |  |
+| `crew` | `String` | No |  |
+| `edited` | `String` | No |  |
+| `film` | `Array` | No |  |
+| `hyperdrive_rating` | `String` | No |  |
+| `length` | `String` | No |  |
+| `manufacturer` | `String` | No |  |
+| `max_atmosphering_speed` | `String` | No |  |
+| `mglt` | `String` | No |  |
+| `model` | `String` | No |  |
+| `name` | `String` | No |  |
+| `passenger` | `String` | No |  |
+| `pilot` | `Array` | No |  |
+| `starship_class` | `String` | No |  |
+| `url` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Starship.list(nil)
+results = client.Starship.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -525,31 +525,31 @@ vehicle = client.Vehicle
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` | No |  |
-| `consumable` | ``$STRING`` | No |  |
-| `cost_in_credit` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `max_atmosphering_speed` | ``$STRING`` | No |  |
-| `model` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `passenger` | ``$STRING`` | No |  |
-| `pilot` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle_class` | ``$STRING`` | No |  |
+| `cargo_capacity` | `String` | No |  |
+| `consumable` | `String` | No |  |
+| `cost_in_credit` | `String` | No |  |
+| `created` | `String` | No |  |
+| `crew` | `String` | No |  |
+| `edited` | `String` | No |  |
+| `film` | `Array` | No |  |
+| `length` | `String` | No |  |
+| `manufacturer` | `String` | No |  |
+| `max_atmosphering_speed` | `String` | No |  |
+| `model` | `String` | No |  |
+| `name` | `String` | No |  |
+| `passenger` | `String` | No |  |
+| `pilot` | `Array` | No |  |
+| `url` | `String` | No |  |
+| `vehicle_class` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Vehicle.list(nil)
+results = client.Vehicle.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

@@ -4,6 +4,8 @@
 
 The Golang SDK for the StarWars API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Film(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -58,12 +60,41 @@ func main() {
     }
 
     // Load a single film — the value is the loaded record.
-    film, err := client.Film(nil).Load(map[string]any{"id": "example_id"}, nil)
+    film, err := client.Film(nil).Load(map[string]any{"id": 1}, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(film)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+films, err := client.Film(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = films
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -113,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-film, err := client.Film(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+film, err := client.Film(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(film) // the loaded mock data
+fmt.Println(film) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -212,9 +243,6 @@ All entities implement the `StarWarsEntity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -227,16 +255,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    film, err := client.Film(nil).Load(map[string]any{"id": "example_id"}, nil)
+    film, err := client.Film(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // film is the loaded record
+    // film is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -419,20 +447,20 @@ Create an instance: `film := client.Film(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | ``$ARRAY`` |  |
-| `created` | ``$STRING`` |  |
-| `director` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `episode_id` | ``$INTEGER`` |  |
-| `opening_crawl` | ``$STRING`` |  |
-| `planet` | ``$ARRAY`` |  |
-| `producer` | ``$STRING`` |  |
-| `release_date` | ``$STRING`` |  |
-| `species` | ``$ARRAY`` |  |
-| `starship` | ``$ARRAY`` |  |
-| `title` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
-| `vehicle` | ``$ARRAY`` |  |
+| `character` | `[]any` |  |
+| `created` | `string` |  |
+| `director` | `string` |  |
+| `edited` | `string` |  |
+| `episode_id` | `int` |  |
+| `opening_crawl` | `string` |  |
+| `planet` | `[]any` |  |
+| `producer` | `string` |  |
+| `release_date` | `string` |  |
+| `species` | `[]any` |  |
+| `starship` | `[]any` |  |
+| `title` | `string` |  |
+| `url` | `string` |  |
+| `vehicle` | `[]any` |  |
 
 #### Example: Load
 
@@ -475,22 +503,22 @@ Create an instance: `person := client.Person(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `birth_year` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `eye_color` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `gender` | ``$STRING`` |  |
-| `hair_color` | ``$STRING`` |  |
-| `height` | ``$STRING`` |  |
-| `homeworld` | ``$STRING`` |  |
-| `mass` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `skin_color` | ``$STRING`` |  |
-| `species` | ``$ARRAY`` |  |
-| `starship` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
-| `vehicle` | ``$ARRAY`` |  |
+| `birth_year` | `string` |  |
+| `created` | `string` |  |
+| `edited` | `string` |  |
+| `eye_color` | `string` |  |
+| `film` | `[]any` |  |
+| `gender` | `string` |  |
+| `hair_color` | `string` |  |
+| `height` | `string` |  |
+| `homeworld` | `string` |  |
+| `mass` | `string` |  |
+| `name` | `string` |  |
+| `skin_color` | `string` |  |
+| `species` | `[]any` |  |
+| `starship` | `[]any` |  |
+| `url` | `string` |  |
+| `vehicle` | `[]any` |  |
 
 #### Example: Load
 
@@ -528,20 +556,20 @@ Create an instance: `planet := client.Planet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `climate` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `diameter` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `gravity` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `orbital_period` | ``$STRING`` |  |
-| `population` | ``$STRING`` |  |
-| `resident` | ``$ARRAY`` |  |
-| `rotation_period` | ``$STRING`` |  |
-| `surface_water` | ``$STRING`` |  |
-| `terrain` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `climate` | `string` |  |
+| `created` | `string` |  |
+| `diameter` | `string` |  |
+| `edited` | `string` |  |
+| `film` | `[]any` |  |
+| `gravity` | `string` |  |
+| `name` | `string` |  |
+| `orbital_period` | `string` |  |
+| `population` | `string` |  |
+| `resident` | `[]any` |  |
+| `rotation_period` | `string` |  |
+| `surface_water` | `string` |  |
+| `terrain` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -579,21 +607,21 @@ Create an instance: `species := client.Species(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `average_height` | ``$STRING`` |  |
-| `average_lifespan` | ``$STRING`` |  |
-| `classification` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `designation` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `eye_color` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `hair_color` | ``$STRING`` |  |
-| `homeworld` | ``$STRING`` |  |
-| `language` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `person` | ``$ARRAY`` |  |
-| `skin_color` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `average_height` | `string` |  |
+| `average_lifespan` | `string` |  |
+| `classification` | `string` |  |
+| `created` | `string` |  |
+| `designation` | `string` |  |
+| `edited` | `string` |  |
+| `eye_color` | `string` |  |
+| `film` | `[]any` |  |
+| `hair_color` | `string` |  |
+| `homeworld` | `string` |  |
+| `language` | `string` |  |
+| `name` | `string` |  |
+| `person` | `[]any` |  |
+| `skin_color` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -631,24 +659,24 @@ Create an instance: `starship := client.Starship(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` |  |
-| `consumable` | ``$STRING`` |  |
-| `cost_in_credit` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `crew` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `hyperdrive_rating` | ``$STRING`` |  |
-| `length` | ``$STRING`` |  |
-| `manufacturer` | ``$STRING`` |  |
-| `max_atmosphering_speed` | ``$STRING`` |  |
-| `mglt` | ``$STRING`` |  |
-| `model` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `passenger` | ``$STRING`` |  |
-| `pilot` | ``$ARRAY`` |  |
-| `starship_class` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `cargo_capacity` | `string` |  |
+| `consumable` | `string` |  |
+| `cost_in_credit` | `string` |  |
+| `created` | `string` |  |
+| `crew` | `string` |  |
+| `edited` | `string` |  |
+| `film` | `[]any` |  |
+| `hyperdrive_rating` | `string` |  |
+| `length` | `string` |  |
+| `manufacturer` | `string` |  |
+| `max_atmosphering_speed` | `string` |  |
+| `mglt` | `string` |  |
+| `model` | `string` |  |
+| `name` | `string` |  |
+| `passenger` | `string` |  |
+| `pilot` | `[]any` |  |
+| `starship_class` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -686,22 +714,22 @@ Create an instance: `vehicle := client.Vehicle(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` |  |
-| `consumable` | ``$STRING`` |  |
-| `cost_in_credit` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `crew` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `length` | ``$STRING`` |  |
-| `manufacturer` | ``$STRING`` |  |
-| `max_atmosphering_speed` | ``$STRING`` |  |
-| `model` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `passenger` | ``$STRING`` |  |
-| `pilot` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
-| `vehicle_class` | ``$STRING`` |  |
+| `cargo_capacity` | `string` |  |
+| `consumable` | `string` |  |
+| `cost_in_credit` | `string` |  |
+| `created` | `string` |  |
+| `crew` | `string` |  |
+| `edited` | `string` |  |
+| `film` | `[]any` |  |
+| `length` | `string` |  |
+| `manufacturer` | `string` |  |
+| `max_atmosphering_speed` | `string` |  |
+| `model` | `string` |  |
+| `name` | `string` |  |
+| `passenger` | `string` |  |
+| `pilot` | `[]any` |  |
+| `url` | `string` |  |
+| `vehicle_class` | `string` |  |
 
 #### Example: Load
 
@@ -724,12 +752,16 @@ fmt.Println(vehicles) // the array of records
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -746,9 +778,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -789,14 +821,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 film := client.Film(nil)
-film.Load(map[string]any{"id": "example_id"}, nil)
+film.List(nil, nil)
 
-// film.Data() now returns the loaded film data
+// film.Data() now returns the film data from the last list
 // film.Match() returns the last match criteria
 ```
 

@@ -37,7 +37,7 @@ class FilmLoadMatch
     public int $id;
 }
 
-/** Match filter for Film#list (any subset of Film fields). */
+/** Request payload for Film#list. */
 class FilmListMatch
 {
     public ?array $character = null;
@@ -88,7 +88,7 @@ class PersonLoadMatch
     public int $id;
 }
 
-/** Match filter for Person#list (any subset of Person fields). */
+/** Request payload for Person#list. */
 class PersonListMatch
 {
     public ?string $birth_year = null;
@@ -134,7 +134,7 @@ class PlanetLoadMatch
     public int $id;
 }
 
-/** Match filter for Planet#list (any subset of Planet fields). */
+/** Request payload for Planet#list. */
 class PlanetListMatch
 {
     public ?string $climate = null;
@@ -179,7 +179,7 @@ class SpeciesLoadMatch
     public int $id;
 }
 
-/** Match filter for Species#list (any subset of Species fields). */
+/** Request payload for Species#list. */
 class SpeciesListMatch
 {
     public ?string $average_height = null;
@@ -228,7 +228,7 @@ class StarshipLoadMatch
     public int $id;
 }
 
-/** Match filter for Starship#list (any subset of Starship fields). */
+/** Request payload for Starship#list. */
 class StarshipListMatch
 {
     public ?string $cargo_capacity = null;
@@ -278,7 +278,7 @@ class VehicleLoadMatch
     public int $id;
 }
 
-/** Match filter for Vehicle#list (any subset of Vehicle fields). */
+/** Request payload for Vehicle#list. */
 class VehicleListMatch
 {
     public ?string $cargo_capacity = null;

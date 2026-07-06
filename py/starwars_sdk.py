@@ -221,43 +221,43 @@ class StarWarsSDK:
 
 
     def Film(self, data=None) -> "FilmEntity":
-        """Entity factory: client.Film().list({}) / client.Film().load({"id": ...})."""
+        """Entity factory: client.Film().list() / client.Film().load({"id": ...})."""
         from entity.film_entity import FilmEntity
         return FilmEntity(self, data)
 
 
     def PeopleList(self, data=None) -> "PeopleListEntity":
-        """Entity factory: client.PeopleList().list({}) / client.PeopleList().load({"id": ...})."""
+        """Entity factory: client.PeopleList().list() / client.PeopleList().load({"id": ...})."""
         from entity.people_list_entity import PeopleListEntity
         return PeopleListEntity(self, data)
 
 
     def Person(self, data=None) -> "PersonEntity":
-        """Entity factory: client.Person().list({}) / client.Person().load({"id": ...})."""
+        """Entity factory: client.Person().list() / client.Person().load({"id": ...})."""
         from entity.person_entity import PersonEntity
         return PersonEntity(self, data)
 
 
     def Planet(self, data=None) -> "PlanetEntity":
-        """Entity factory: client.Planet().list({}) / client.Planet().load({"id": ...})."""
+        """Entity factory: client.Planet().list() / client.Planet().load({"id": ...})."""
         from entity.planet_entity import PlanetEntity
         return PlanetEntity(self, data)
 
 
     def Species(self, data=None) -> "SpeciesEntity":
-        """Entity factory: client.Species().list({}) / client.Species().load({"id": ...})."""
+        """Entity factory: client.Species().list() / client.Species().load({"id": ...})."""
         from entity.species_entity import SpeciesEntity
         return SpeciesEntity(self, data)
 
 
     def Starship(self, data=None) -> "StarshipEntity":
-        """Entity factory: client.Starship().list({}) / client.Starship().load({"id": ...})."""
+        """Entity factory: client.Starship().list() / client.Starship().load({"id": ...})."""
         from entity.starship_entity import StarshipEntity
         return StarshipEntity(self, data)
 
 
     def Vehicle(self, data=None) -> "VehicleEntity":
-        """Entity factory: client.Vehicle().list({}) / client.Vehicle().load({"id": ...})."""
+        """Entity factory: client.Vehicle().list() / client.Vehicle().load({"id": ...})."""
         from entity.vehicle_entity import VehicleEntity
         return VehicleEntity(self, data)
 

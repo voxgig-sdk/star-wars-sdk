@@ -78,7 +78,7 @@ FilmLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Film#list (any subset of Film fields).
+# Request payload for Film#list.
 #
 # @!attribute [rw] character
 #   @return [Array, nil]
@@ -221,7 +221,7 @@ PersonLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Person#list (any subset of Person fields).
+# Request payload for Person#list.
 #
 # @!attribute [rw] birth_year
 #   @return [String, nil]
@@ -360,7 +360,7 @@ PlanetLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Planet#list (any subset of Planet fields).
+# Request payload for Planet#list.
 #
 # @!attribute [rw] climate
 #   @return [String, nil]
@@ -495,7 +495,7 @@ SpeciesLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Species#list (any subset of Species fields).
+# Request payload for Species#list.
 #
 # @!attribute [rw] average_height
 #   @return [String, nil]
@@ -646,7 +646,7 @@ StarshipLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Starship#list (any subset of Starship fields).
+# Request payload for Starship#list.
 #
 # @!attribute [rw] cargo_capacity
 #   @return [String, nil]
@@ -801,7 +801,7 @@ VehicleLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Vehicle#list (any subset of Vehicle fields).
+# Request payload for Vehicle#list.
 #
 # @!attribute [rw] cargo_capacity
 #   @return [String, nil]

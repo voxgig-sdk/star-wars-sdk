@@ -4,6 +4,8 @@
 
 The PHP SDK for the StarWars API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Film()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -36,7 +38,7 @@ try {
     // list() returns an array of Film records — iterate directly.
     $films = $client->Film()->list();
     foreach ($films as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["character"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -52,6 +54,37 @@ try {
     print_r($film);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $films = $client->Film()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -75,7 +108,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -104,8 +140,8 @@ $client = StarWarsSDK::test([
     "entity" => ["film" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// load() returns the bare mock record (throws on error).
-$film = $client->Film()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$film = $client->Film()->list();
 print_r($film);
 ```
 
@@ -200,10 +236,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -407,20 +440,20 @@ Create an instance: `$film = $client->Film();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | ``$ARRAY`` |  |
-| `created` | ``$STRING`` |  |
-| `director` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `episode_id` | ``$INTEGER`` |  |
-| `opening_crawl` | ``$STRING`` |  |
-| `planet` | ``$ARRAY`` |  |
-| `producer` | ``$STRING`` |  |
-| `release_date` | ``$STRING`` |  |
-| `species` | ``$ARRAY`` |  |
-| `starship` | ``$ARRAY`` |  |
-| `title` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
-| `vehicle` | ``$ARRAY`` |  |
+| `character` | `array` |  |
+| `created` | `string` |  |
+| `director` | `string` |  |
+| `edited` | `string` |  |
+| `episode_id` | `int` |  |
+| `opening_crawl` | `string` |  |
+| `planet` | `array` |  |
+| `producer` | `string` |  |
+| `release_date` | `string` |  |
+| `species` | `array` |  |
+| `starship` | `array` |  |
+| `title` | `string` |  |
+| `url` | `string` |  |
+| `vehicle` | `array` |  |
 
 #### Example: Load
 
@@ -457,22 +490,22 @@ Create an instance: `$person = $client->Person();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `birth_year` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `eye_color` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `gender` | ``$STRING`` |  |
-| `hair_color` | ``$STRING`` |  |
-| `height` | ``$STRING`` |  |
-| `homeworld` | ``$STRING`` |  |
-| `mass` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `skin_color` | ``$STRING`` |  |
-| `species` | ``$ARRAY`` |  |
-| `starship` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
-| `vehicle` | ``$ARRAY`` |  |
+| `birth_year` | `string` |  |
+| `created` | `string` |  |
+| `edited` | `string` |  |
+| `eye_color` | `string` |  |
+| `film` | `array` |  |
+| `gender` | `string` |  |
+| `hair_color` | `string` |  |
+| `height` | `string` |  |
+| `homeworld` | `string` |  |
+| `mass` | `string` |  |
+| `name` | `string` |  |
+| `skin_color` | `string` |  |
+| `species` | `array` |  |
+| `starship` | `array` |  |
+| `url` | `string` |  |
+| `vehicle` | `array` |  |
 
 #### Example: Load
 
@@ -504,20 +537,20 @@ Create an instance: `$planet = $client->Planet();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `climate` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `diameter` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `gravity` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `orbital_period` | ``$STRING`` |  |
-| `population` | ``$STRING`` |  |
-| `resident` | ``$ARRAY`` |  |
-| `rotation_period` | ``$STRING`` |  |
-| `surface_water` | ``$STRING`` |  |
-| `terrain` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `climate` | `string` |  |
+| `created` | `string` |  |
+| `diameter` | `string` |  |
+| `edited` | `string` |  |
+| `film` | `array` |  |
+| `gravity` | `string` |  |
+| `name` | `string` |  |
+| `orbital_period` | `string` |  |
+| `population` | `string` |  |
+| `resident` | `array` |  |
+| `rotation_period` | `string` |  |
+| `surface_water` | `string` |  |
+| `terrain` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -549,21 +582,21 @@ Create an instance: `$species = $client->Species();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `average_height` | ``$STRING`` |  |
-| `average_lifespan` | ``$STRING`` |  |
-| `classification` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `designation` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `eye_color` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `hair_color` | ``$STRING`` |  |
-| `homeworld` | ``$STRING`` |  |
-| `language` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `person` | ``$ARRAY`` |  |
-| `skin_color` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `average_height` | `string` |  |
+| `average_lifespan` | `string` |  |
+| `classification` | `string` |  |
+| `created` | `string` |  |
+| `designation` | `string` |  |
+| `edited` | `string` |  |
+| `eye_color` | `string` |  |
+| `film` | `array` |  |
+| `hair_color` | `string` |  |
+| `homeworld` | `string` |  |
+| `language` | `string` |  |
+| `name` | `string` |  |
+| `person` | `array` |  |
+| `skin_color` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -595,24 +628,24 @@ Create an instance: `$starship = $client->Starship();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` |  |
-| `consumable` | ``$STRING`` |  |
-| `cost_in_credit` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `crew` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `hyperdrive_rating` | ``$STRING`` |  |
-| `length` | ``$STRING`` |  |
-| `manufacturer` | ``$STRING`` |  |
-| `max_atmosphering_speed` | ``$STRING`` |  |
-| `mglt` | ``$STRING`` |  |
-| `model` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `passenger` | ``$STRING`` |  |
-| `pilot` | ``$ARRAY`` |  |
-| `starship_class` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `cargo_capacity` | `string` |  |
+| `consumable` | `string` |  |
+| `cost_in_credit` | `string` |  |
+| `created` | `string` |  |
+| `crew` | `string` |  |
+| `edited` | `string` |  |
+| `film` | `array` |  |
+| `hyperdrive_rating` | `string` |  |
+| `length` | `string` |  |
+| `manufacturer` | `string` |  |
+| `max_atmosphering_speed` | `string` |  |
+| `mglt` | `string` |  |
+| `model` | `string` |  |
+| `name` | `string` |  |
+| `passenger` | `string` |  |
+| `pilot` | `array` |  |
+| `starship_class` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -644,22 +677,22 @@ Create an instance: `$vehicle = $client->Vehicle();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` |  |
-| `consumable` | ``$STRING`` |  |
-| `cost_in_credit` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `crew` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `length` | ``$STRING`` |  |
-| `manufacturer` | ``$STRING`` |  |
-| `max_atmosphering_speed` | ``$STRING`` |  |
-| `model` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `passenger` | ``$STRING`` |  |
-| `pilot` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
-| `vehicle_class` | ``$STRING`` |  |
+| `cargo_capacity` | `string` |  |
+| `consumable` | `string` |  |
+| `cost_in_credit` | `string` |  |
+| `created` | `string` |  |
+| `crew` | `string` |  |
+| `edited` | `string` |  |
+| `film` | `array` |  |
+| `length` | `string` |  |
+| `manufacturer` | `string` |  |
+| `max_atmosphering_speed` | `string` |  |
+| `model` | `string` |  |
+| `name` | `string` |  |
+| `passenger` | `string` |  |
+| `pilot` | `array` |  |
+| `url` | `string` |  |
+| `vehicle_class` | `string` |  |
 
 #### Example: Load
 
@@ -676,12 +709,16 @@ $vehicles = $client->Vehicle()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -698,8 +735,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -743,15 +781,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $film = $client->Film();
-$film->load(["id" => "example_id"]);
+$film->list();
 
-// $film->dataGet() now returns the loaded film data
-// $film->matchGet() returns the last match criteria
+// $film->data_get() now returns the film data from the last list
+// $film->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -4,6 +4,8 @@
 
 The Lua SDK for the StarWars API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Film()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -41,7 +43,7 @@ local films, err = client:Film():list()
 if err then error(err) end
 
 for _, item in ipairs(films) do
-  print(item["id"], item["name"])
+  print(item["created"])
 end
 ```
 
@@ -51,6 +53,28 @@ end
 local film, err = client:Film():load({ id = "example_id" })
 if err then error(err) end
 print(film)
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local films, err = client:Film():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -96,8 +120,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Film():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Film():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -191,9 +215,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
 | `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -208,7 +229,7 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `load` | the entity record (a `table`) |
 | `list` | an array (`table`) of entity records |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
@@ -398,20 +419,20 @@ Create an instance: `local film = client:Film(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | ``$ARRAY`` |  |
-| `created` | ``$STRING`` |  |
-| `director` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `episode_id` | ``$INTEGER`` |  |
-| `opening_crawl` | ``$STRING`` |  |
-| `planet` | ``$ARRAY`` |  |
-| `producer` | ``$STRING`` |  |
-| `release_date` | ``$STRING`` |  |
-| `species` | ``$ARRAY`` |  |
-| `starship` | ``$ARRAY`` |  |
-| `title` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
-| `vehicle` | ``$ARRAY`` |  |
+| `character` | `table` |  |
+| `created` | `string` |  |
+| `director` | `string` |  |
+| `edited` | `string` |  |
+| `episode_id` | `number` |  |
+| `opening_crawl` | `string` |  |
+| `planet` | `table` |  |
+| `producer` | `string` |  |
+| `release_date` | `string` |  |
+| `species` | `table` |  |
+| `starship` | `table` |  |
+| `title` | `string` |  |
+| `url` | `string` |  |
+| `vehicle` | `table` |  |
 
 #### Example: Load
 
@@ -446,22 +467,22 @@ Create an instance: `local person = client:Person(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `birth_year` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `eye_color` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `gender` | ``$STRING`` |  |
-| `hair_color` | ``$STRING`` |  |
-| `height` | ``$STRING`` |  |
-| `homeworld` | ``$STRING`` |  |
-| `mass` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `skin_color` | ``$STRING`` |  |
-| `species` | ``$ARRAY`` |  |
-| `starship` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
-| `vehicle` | ``$ARRAY`` |  |
+| `birth_year` | `string` |  |
+| `created` | `string` |  |
+| `edited` | `string` |  |
+| `eye_color` | `string` |  |
+| `film` | `table` |  |
+| `gender` | `string` |  |
+| `hair_color` | `string` |  |
+| `height` | `string` |  |
+| `homeworld` | `string` |  |
+| `mass` | `string` |  |
+| `name` | `string` |  |
+| `skin_color` | `string` |  |
+| `species` | `table` |  |
+| `starship` | `table` |  |
+| `url` | `string` |  |
+| `vehicle` | `table` |  |
 
 #### Example: Load
 
@@ -491,20 +512,20 @@ Create an instance: `local planet = client:Planet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `climate` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `diameter` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `gravity` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `orbital_period` | ``$STRING`` |  |
-| `population` | ``$STRING`` |  |
-| `resident` | ``$ARRAY`` |  |
-| `rotation_period` | ``$STRING`` |  |
-| `surface_water` | ``$STRING`` |  |
-| `terrain` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `climate` | `string` |  |
+| `created` | `string` |  |
+| `diameter` | `string` |  |
+| `edited` | `string` |  |
+| `film` | `table` |  |
+| `gravity` | `string` |  |
+| `name` | `string` |  |
+| `orbital_period` | `string` |  |
+| `population` | `string` |  |
+| `resident` | `table` |  |
+| `rotation_period` | `string` |  |
+| `surface_water` | `string` |  |
+| `terrain` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -534,21 +555,21 @@ Create an instance: `local species = client:Species(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `average_height` | ``$STRING`` |  |
-| `average_lifespan` | ``$STRING`` |  |
-| `classification` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `designation` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `eye_color` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `hair_color` | ``$STRING`` |  |
-| `homeworld` | ``$STRING`` |  |
-| `language` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `person` | ``$ARRAY`` |  |
-| `skin_color` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `average_height` | `string` |  |
+| `average_lifespan` | `string` |  |
+| `classification` | `string` |  |
+| `created` | `string` |  |
+| `designation` | `string` |  |
+| `edited` | `string` |  |
+| `eye_color` | `string` |  |
+| `film` | `table` |  |
+| `hair_color` | `string` |  |
+| `homeworld` | `string` |  |
+| `language` | `string` |  |
+| `name` | `string` |  |
+| `person` | `table` |  |
+| `skin_color` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -578,24 +599,24 @@ Create an instance: `local starship = client:Starship(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` |  |
-| `consumable` | ``$STRING`` |  |
-| `cost_in_credit` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `crew` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `hyperdrive_rating` | ``$STRING`` |  |
-| `length` | ``$STRING`` |  |
-| `manufacturer` | ``$STRING`` |  |
-| `max_atmosphering_speed` | ``$STRING`` |  |
-| `mglt` | ``$STRING`` |  |
-| `model` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `passenger` | ``$STRING`` |  |
-| `pilot` | ``$ARRAY`` |  |
-| `starship_class` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `cargo_capacity` | `string` |  |
+| `consumable` | `string` |  |
+| `cost_in_credit` | `string` |  |
+| `created` | `string` |  |
+| `crew` | `string` |  |
+| `edited` | `string` |  |
+| `film` | `table` |  |
+| `hyperdrive_rating` | `string` |  |
+| `length` | `string` |  |
+| `manufacturer` | `string` |  |
+| `max_atmosphering_speed` | `string` |  |
+| `mglt` | `string` |  |
+| `model` | `string` |  |
+| `name` | `string` |  |
+| `passenger` | `string` |  |
+| `pilot` | `table` |  |
+| `starship_class` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
@@ -625,22 +646,22 @@ Create an instance: `local vehicle = client:Vehicle(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` |  |
-| `consumable` | ``$STRING`` |  |
-| `cost_in_credit` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `crew` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `length` | ``$STRING`` |  |
-| `manufacturer` | ``$STRING`` |  |
-| `max_atmosphering_speed` | ``$STRING`` |  |
-| `model` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `passenger` | ``$STRING`` |  |
-| `pilot` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
-| `vehicle_class` | ``$STRING`` |  |
+| `cargo_capacity` | `string` |  |
+| `consumable` | `string` |  |
+| `cost_in_credit` | `string` |  |
+| `created` | `string` |  |
+| `crew` | `string` |  |
+| `edited` | `string` |  |
+| `film` | `table` |  |
+| `length` | `string` |  |
+| `manufacturer` | `string` |  |
+| `max_atmosphering_speed` | `string` |  |
+| `model` | `string` |  |
+| `name` | `string` |  |
+| `passenger` | `string` |  |
+| `pilot` | `table` |  |
+| `url` | `string` |  |
+| `vehicle_class` | `string` |  |
 
 #### Example: Load
 
@@ -655,12 +676,16 @@ local vehicles, err = client:Vehicle():list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -677,8 +702,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -722,14 +748,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local film = client:Film()
-film:load({ id = "example_id" })
+film:list()
 
--- film:data_get() now returns the loaded film data
+-- film:data_get() now returns the film data from the last list
 -- film:match_get() returns the last match criteria
 ```
 

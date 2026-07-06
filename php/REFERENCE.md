@@ -8,7 +8,7 @@ Complete API reference for the StarWars PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/star-wars_sdk.php';
+require_once __DIR__ . '/starwars_sdk.php';
 
 $client = new StarWarsSDK($options);
 ```
@@ -69,11 +69,11 @@ Create a new `StarshipEntity` instance. Pass `null` for no initial data.
 
 Create a new `VehicleEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): StarWarsUtility`
 
 Return a copy of the SDK utility object.
 
@@ -116,29 +116,29 @@ $film = $client->Film();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | ``$ARRAY`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `director` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `episode_id` | ``$INTEGER`` | No |  |
-| `opening_crawl` | ``$STRING`` | No |  |
-| `planet` | ``$ARRAY`` | No |  |
-| `producer` | ``$STRING`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `species` | ``$ARRAY`` | No |  |
-| `starship` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle` | ``$ARRAY`` | No |  |
+| `character` | `array` | No |  |
+| `created` | `string` | No |  |
+| `director` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `episode_id` | `int` | No |  |
+| `opening_crawl` | `string` | No |  |
+| `planet` | `array` | No |  |
+| `producer` | `string` | No |  |
+| `release_date` | `string` | No |  |
+| `species` | `array` | No |  |
+| `starship` | `array` | No |  |
+| `title` | `string` | No |  |
+| `url` | `string` | No |  |
+| `vehicle` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Film()->list([]);
+$results = $client->Film()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -151,19 +151,19 @@ $result = $client->Film()->load(["id" => "film_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -172,7 +172,7 @@ Set the entity match criteria.
 Create a new `FilmEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -187,19 +187,19 @@ $people_list = $client->PeopleList();
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -208,7 +208,7 @@ Set the entity match criteria.
 Create a new `PeopleListEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -225,31 +225,31 @@ $person = $client->Person();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `birth_year` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `eye_color` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `hair_color` | ``$STRING`` | No |  |
-| `height` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `mass` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `skin_color` | ``$STRING`` | No |  |
-| `species` | ``$ARRAY`` | No |  |
-| `starship` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle` | ``$ARRAY`` | No |  |
+| `birth_year` | `string` | No |  |
+| `created` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `eye_color` | `string` | No |  |
+| `film` | `array` | No |  |
+| `gender` | `string` | No |  |
+| `hair_color` | `string` | No |  |
+| `height` | `string` | No |  |
+| `homeworld` | `string` | No |  |
+| `mass` | `string` | No |  |
+| `name` | `string` | No |  |
+| `skin_color` | `string` | No |  |
+| `species` | `array` | No |  |
+| `starship` | `array` | No |  |
+| `url` | `string` | No |  |
+| `vehicle` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Person()->list([]);
+$results = $client->Person()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -262,19 +262,19 @@ $result = $client->Person()->load(["id" => "person_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -283,7 +283,7 @@ Set the entity match criteria.
 Create a new `PersonEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -300,29 +300,29 @@ $planet = $client->Planet();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `climate` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `diameter` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `gravity` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `orbital_period` | ``$STRING`` | No |  |
-| `population` | ``$STRING`` | No |  |
-| `resident` | ``$ARRAY`` | No |  |
-| `rotation_period` | ``$STRING`` | No |  |
-| `surface_water` | ``$STRING`` | No |  |
-| `terrain` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `climate` | `string` | No |  |
+| `created` | `string` | No |  |
+| `diameter` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `film` | `array` | No |  |
+| `gravity` | `string` | No |  |
+| `name` | `string` | No |  |
+| `orbital_period` | `string` | No |  |
+| `population` | `string` | No |  |
+| `resident` | `array` | No |  |
+| `rotation_period` | `string` | No |  |
+| `surface_water` | `string` | No |  |
+| `terrain` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Planet()->list([]);
+$results = $client->Planet()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -335,19 +335,19 @@ $result = $client->Planet()->load(["id" => "planet_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -356,7 +356,7 @@ Set the entity match criteria.
 Create a new `PlanetEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -373,30 +373,30 @@ $species = $client->Species();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average_height` | ``$STRING`` | No |  |
-| `average_lifespan` | ``$STRING`` | No |  |
-| `classification` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `designation` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `eye_color` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `hair_color` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `person` | ``$ARRAY`` | No |  |
-| `skin_color` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `average_height` | `string` | No |  |
+| `average_lifespan` | `string` | No |  |
+| `classification` | `string` | No |  |
+| `created` | `string` | No |  |
+| `designation` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `eye_color` | `string` | No |  |
+| `film` | `array` | No |  |
+| `hair_color` | `string` | No |  |
+| `homeworld` | `string` | No |  |
+| `language` | `string` | No |  |
+| `name` | `string` | No |  |
+| `person` | `array` | No |  |
+| `skin_color` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Species()->list([]);
+$results = $client->Species()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -409,19 +409,19 @@ $result = $client->Species()->load(["id" => "species_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -430,7 +430,7 @@ Set the entity match criteria.
 Create a new `SpeciesEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -447,33 +447,33 @@ $starship = $client->Starship();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` | No |  |
-| `consumable` | ``$STRING`` | No |  |
-| `cost_in_credit` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `hyperdrive_rating` | ``$STRING`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `max_atmosphering_speed` | ``$STRING`` | No |  |
-| `mglt` | ``$STRING`` | No |  |
-| `model` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `passenger` | ``$STRING`` | No |  |
-| `pilot` | ``$ARRAY`` | No |  |
-| `starship_class` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `cargo_capacity` | `string` | No |  |
+| `consumable` | `string` | No |  |
+| `cost_in_credit` | `string` | No |  |
+| `created` | `string` | No |  |
+| `crew` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `film` | `array` | No |  |
+| `hyperdrive_rating` | `string` | No |  |
+| `length` | `string` | No |  |
+| `manufacturer` | `string` | No |  |
+| `max_atmosphering_speed` | `string` | No |  |
+| `mglt` | `string` | No |  |
+| `model` | `string` | No |  |
+| `name` | `string` | No |  |
+| `passenger` | `string` | No |  |
+| `pilot` | `array` | No |  |
+| `starship_class` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Starship()->list([]);
+$results = $client->Starship()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -486,19 +486,19 @@ $result = $client->Starship()->load(["id" => "starship_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -507,7 +507,7 @@ Set the entity match criteria.
 Create a new `StarshipEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -524,31 +524,31 @@ $vehicle = $client->Vehicle();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` | No |  |
-| `consumable` | ``$STRING`` | No |  |
-| `cost_in_credit` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `max_atmosphering_speed` | ``$STRING`` | No |  |
-| `model` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `passenger` | ``$STRING`` | No |  |
-| `pilot` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle_class` | ``$STRING`` | No |  |
+| `cargo_capacity` | `string` | No |  |
+| `consumable` | `string` | No |  |
+| `cost_in_credit` | `string` | No |  |
+| `created` | `string` | No |  |
+| `crew` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `film` | `array` | No |  |
+| `length` | `string` | No |  |
+| `manufacturer` | `string` | No |  |
+| `max_atmosphering_speed` | `string` | No |  |
+| `model` | `string` | No |  |
+| `name` | `string` | No |  |
+| `passenger` | `string` | No |  |
+| `pilot` | `array` | No |  |
+| `url` | `string` | No |  |
+| `vehicle_class` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Vehicle()->list([]);
+$results = $client->Vehicle()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -561,19 +561,19 @@ $result = $client->Vehicle()->load(["id" => "vehicle_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -582,7 +582,7 @@ Set the entity match criteria.
 Create a new `VehicleEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

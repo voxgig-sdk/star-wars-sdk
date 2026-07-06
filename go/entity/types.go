@@ -31,8 +31,7 @@ type FilmLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// FilmListMatch mirrors the film fields as an all-optional match
-// filter (Go analog of Partial<Film>).
+// FilmListMatch is the typed request payload for Film.ListTyped.
 type FilmListMatch struct {
 	Character *[]any `json:"character,omitempty"`
 	Created *string `json:"created,omitempty"`
@@ -79,8 +78,7 @@ type PersonLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// PersonListMatch mirrors the person fields as an all-optional match
-// filter (Go analog of Partial<Person>).
+// PersonListMatch is the typed request payload for Person.ListTyped.
 type PersonListMatch struct {
 	BirthYear *string `json:"birth_year,omitempty"`
 	Created *string `json:"created,omitempty"`
@@ -123,8 +121,7 @@ type PlanetLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// PlanetListMatch mirrors the planet fields as an all-optional match
-// filter (Go analog of Partial<Planet>).
+// PlanetListMatch is the typed request payload for Planet.ListTyped.
 type PlanetListMatch struct {
 	Climate *string `json:"climate,omitempty"`
 	Created *string `json:"created,omitempty"`
@@ -166,8 +163,7 @@ type SpeciesLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// SpeciesListMatch mirrors the species fields as an all-optional match
-// filter (Go analog of Partial<Species>).
+// SpeciesListMatch is the typed request payload for Species.ListTyped.
 type SpeciesListMatch struct {
 	AverageHeight *string `json:"average_height,omitempty"`
 	AverageLifespan *string `json:"average_lifespan,omitempty"`
@@ -213,8 +209,7 @@ type StarshipLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// StarshipListMatch mirrors the starship fields as an all-optional match
-// filter (Go analog of Partial<Starship>).
+// StarshipListMatch is the typed request payload for Starship.ListTyped.
 type StarshipListMatch struct {
 	CargoCapacity *string `json:"cargo_capacity,omitempty"`
 	Consumable *string `json:"consumable,omitempty"`
@@ -261,8 +256,7 @@ type VehicleLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// VehicleListMatch mirrors the vehicle fields as an all-optional match
-// filter (Go analog of Partial<Vehicle>).
+// VehicleListMatch is the typed request payload for Vehicle.ListTyped.
 type VehicleListMatch struct {
 	CargoCapacity *string `json:"cargo_capacity,omitempty"`
 	Consumable *string `json:"consumable,omitempty"`

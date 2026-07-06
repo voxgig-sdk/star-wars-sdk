@@ -114,20 +114,20 @@ local film = client:Film(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | ``$ARRAY`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `director` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `episode_id` | ``$INTEGER`` | No |  |
-| `opening_crawl` | ``$STRING`` | No |  |
-| `planet` | ``$ARRAY`` | No |  |
-| `producer` | ``$STRING`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `species` | ``$ARRAY`` | No |  |
-| `starship` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle` | ``$ARRAY`` | No |  |
+| `character` | `table` | No |  |
+| `created` | `string` | No |  |
+| `director` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `episode_id` | `number` | No |  |
+| `opening_crawl` | `string` | No |  |
+| `planet` | `table` | No |  |
+| `producer` | `string` | No |  |
+| `release_date` | `string` | No |  |
+| `species` | `table` | No |  |
+| `starship` | `table` | No |  |
+| `title` | `string` | No |  |
+| `url` | `string` | No |  |
+| `vehicle` | `table` | No |  |
 
 ### Operations
 
@@ -223,22 +223,22 @@ local person = client:Person(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `birth_year` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `eye_color` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `hair_color` | ``$STRING`` | No |  |
-| `height` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `mass` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `skin_color` | ``$STRING`` | No |  |
-| `species` | ``$ARRAY`` | No |  |
-| `starship` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle` | ``$ARRAY`` | No |  |
+| `birth_year` | `string` | No |  |
+| `created` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `eye_color` | `string` | No |  |
+| `film` | `table` | No |  |
+| `gender` | `string` | No |  |
+| `hair_color` | `string` | No |  |
+| `height` | `string` | No |  |
+| `homeworld` | `string` | No |  |
+| `mass` | `string` | No |  |
+| `name` | `string` | No |  |
+| `skin_color` | `string` | No |  |
+| `species` | `table` | No |  |
+| `starship` | `table` | No |  |
+| `url` | `string` | No |  |
+| `vehicle` | `table` | No |  |
 
 ### Operations
 
@@ -298,20 +298,20 @@ local planet = client:Planet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `climate` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `diameter` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `gravity` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `orbital_period` | ``$STRING`` | No |  |
-| `population` | ``$STRING`` | No |  |
-| `resident` | ``$ARRAY`` | No |  |
-| `rotation_period` | ``$STRING`` | No |  |
-| `surface_water` | ``$STRING`` | No |  |
-| `terrain` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `climate` | `string` | No |  |
+| `created` | `string` | No |  |
+| `diameter` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `film` | `table` | No |  |
+| `gravity` | `string` | No |  |
+| `name` | `string` | No |  |
+| `orbital_period` | `string` | No |  |
+| `population` | `string` | No |  |
+| `resident` | `table` | No |  |
+| `rotation_period` | `string` | No |  |
+| `surface_water` | `string` | No |  |
+| `terrain` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -371,21 +371,21 @@ local species = client:Species(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average_height` | ``$STRING`` | No |  |
-| `average_lifespan` | ``$STRING`` | No |  |
-| `classification` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `designation` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `eye_color` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `hair_color` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `person` | ``$ARRAY`` | No |  |
-| `skin_color` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `average_height` | `string` | No |  |
+| `average_lifespan` | `string` | No |  |
+| `classification` | `string` | No |  |
+| `created` | `string` | No |  |
+| `designation` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `eye_color` | `string` | No |  |
+| `film` | `table` | No |  |
+| `hair_color` | `string` | No |  |
+| `homeworld` | `string` | No |  |
+| `language` | `string` | No |  |
+| `name` | `string` | No |  |
+| `person` | `table` | No |  |
+| `skin_color` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -445,24 +445,24 @@ local starship = client:Starship(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` | No |  |
-| `consumable` | ``$STRING`` | No |  |
-| `cost_in_credit` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `hyperdrive_rating` | ``$STRING`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `max_atmosphering_speed` | ``$STRING`` | No |  |
-| `mglt` | ``$STRING`` | No |  |
-| `model` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `passenger` | ``$STRING`` | No |  |
-| `pilot` | ``$ARRAY`` | No |  |
-| `starship_class` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `cargo_capacity` | `string` | No |  |
+| `consumable` | `string` | No |  |
+| `cost_in_credit` | `string` | No |  |
+| `created` | `string` | No |  |
+| `crew` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `film` | `table` | No |  |
+| `hyperdrive_rating` | `string` | No |  |
+| `length` | `string` | No |  |
+| `manufacturer` | `string` | No |  |
+| `max_atmosphering_speed` | `string` | No |  |
+| `mglt` | `string` | No |  |
+| `model` | `string` | No |  |
+| `name` | `string` | No |  |
+| `passenger` | `string` | No |  |
+| `pilot` | `table` | No |  |
+| `starship_class` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -522,22 +522,22 @@ local vehicle = client:Vehicle(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` | No |  |
-| `consumable` | ``$STRING`` | No |  |
-| `cost_in_credit` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `max_atmosphering_speed` | ``$STRING`` | No |  |
-| `model` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `passenger` | ``$STRING`` | No |  |
-| `pilot` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle_class` | ``$STRING`` | No |  |
+| `cargo_capacity` | `string` | No |  |
+| `consumable` | `string` | No |  |
+| `cost_in_credit` | `string` | No |  |
+| `created` | `string` | No |  |
+| `crew` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `film` | `table` | No |  |
+| `length` | `string` | No |  |
+| `manufacturer` | `string` | No |  |
+| `max_atmosphering_speed` | `string` | No |  |
+| `model` | `string` | No |  |
+| `name` | `string` | No |  |
+| `passenger` | `string` | No |  |
+| `pilot` | `table` | No |  |
+| `url` | `string` | No |  |
+| `vehicle_class` | `string` | No |  |
 
 ### Operations
 

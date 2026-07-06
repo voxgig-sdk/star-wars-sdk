@@ -8,7 +8,7 @@ Complete API reference for the StarWars Python SDK.
 ### Constructor
 
 ```python
-from star-wars_sdk import StarWarsSDK
+from starwars_sdk import StarWarsSDK
 
 client = StarWarsSDK(options)
 ```
@@ -111,29 +111,29 @@ film = client.Film()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | ``$ARRAY`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `director` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `episode_id` | ``$INTEGER`` | No |  |
-| `opening_crawl` | ``$STRING`` | No |  |
-| `planet` | ``$ARRAY`` | No |  |
-| `producer` | ``$STRING`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `species` | ``$ARRAY`` | No |  |
-| `starship` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle` | ``$ARRAY`` | No |  |
+| `character` | `list` | No |  |
+| `created` | `str` | No |  |
+| `director` | `str` | No |  |
+| `edited` | `str` | No |  |
+| `episode_id` | `int` | No |  |
+| `opening_crawl` | `str` | No |  |
+| `planet` | `list` | No |  |
+| `producer` | `str` | No |  |
+| `release_date` | `str` | No |  |
+| `species` | `list` | No |  |
+| `starship` | `list` | No |  |
+| `title` | `str` | No |  |
+| `url` | `str` | No |  |
+| `vehicle` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Film().list({})
+results = client.Film().list()
 for film in results:
     print(film)
 ```
@@ -220,31 +220,31 @@ person = client.Person()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `birth_year` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `eye_color` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `hair_color` | ``$STRING`` | No |  |
-| `height` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `mass` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `skin_color` | ``$STRING`` | No |  |
-| `species` | ``$ARRAY`` | No |  |
-| `starship` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle` | ``$ARRAY`` | No |  |
+| `birth_year` | `str` | No |  |
+| `created` | `str` | No |  |
+| `edited` | `str` | No |  |
+| `eye_color` | `str` | No |  |
+| `film` | `list` | No |  |
+| `gender` | `str` | No |  |
+| `hair_color` | `str` | No |  |
+| `height` | `str` | No |  |
+| `homeworld` | `str` | No |  |
+| `mass` | `str` | No |  |
+| `name` | `str` | No |  |
+| `skin_color` | `str` | No |  |
+| `species` | `list` | No |  |
+| `starship` | `list` | No |  |
+| `url` | `str` | No |  |
+| `vehicle` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Person().list({})
+results = client.Person().list()
 for person in results:
     print(person)
 ```
@@ -296,29 +296,29 @@ planet = client.Planet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `climate` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `diameter` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `gravity` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `orbital_period` | ``$STRING`` | No |  |
-| `population` | ``$STRING`` | No |  |
-| `resident` | ``$ARRAY`` | No |  |
-| `rotation_period` | ``$STRING`` | No |  |
-| `surface_water` | ``$STRING`` | No |  |
-| `terrain` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `climate` | `str` | No |  |
+| `created` | `str` | No |  |
+| `diameter` | `str` | No |  |
+| `edited` | `str` | No |  |
+| `film` | `list` | No |  |
+| `gravity` | `str` | No |  |
+| `name` | `str` | No |  |
+| `orbital_period` | `str` | No |  |
+| `population` | `str` | No |  |
+| `resident` | `list` | No |  |
+| `rotation_period` | `str` | No |  |
+| `surface_water` | `str` | No |  |
+| `terrain` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Planet().list({})
+results = client.Planet().list()
 for planet in results:
     print(planet)
 ```
@@ -370,30 +370,30 @@ species = client.Species()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average_height` | ``$STRING`` | No |  |
-| `average_lifespan` | ``$STRING`` | No |  |
-| `classification` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `designation` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `eye_color` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `hair_color` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `person` | ``$ARRAY`` | No |  |
-| `skin_color` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `average_height` | `str` | No |  |
+| `average_lifespan` | `str` | No |  |
+| `classification` | `str` | No |  |
+| `created` | `str` | No |  |
+| `designation` | `str` | No |  |
+| `edited` | `str` | No |  |
+| `eye_color` | `str` | No |  |
+| `film` | `list` | No |  |
+| `hair_color` | `str` | No |  |
+| `homeworld` | `str` | No |  |
+| `language` | `str` | No |  |
+| `name` | `str` | No |  |
+| `person` | `list` | No |  |
+| `skin_color` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Species().list({})
+results = client.Species().list()
 for species in results:
     print(species)
 ```
@@ -445,33 +445,33 @@ starship = client.Starship()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` | No |  |
-| `consumable` | ``$STRING`` | No |  |
-| `cost_in_credit` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `hyperdrive_rating` | ``$STRING`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `max_atmosphering_speed` | ``$STRING`` | No |  |
-| `mglt` | ``$STRING`` | No |  |
-| `model` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `passenger` | ``$STRING`` | No |  |
-| `pilot` | ``$ARRAY`` | No |  |
-| `starship_class` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `cargo_capacity` | `str` | No |  |
+| `consumable` | `str` | No |  |
+| `cost_in_credit` | `str` | No |  |
+| `created` | `str` | No |  |
+| `crew` | `str` | No |  |
+| `edited` | `str` | No |  |
+| `film` | `list` | No |  |
+| `hyperdrive_rating` | `str` | No |  |
+| `length` | `str` | No |  |
+| `manufacturer` | `str` | No |  |
+| `max_atmosphering_speed` | `str` | No |  |
+| `mglt` | `str` | No |  |
+| `model` | `str` | No |  |
+| `name` | `str` | No |  |
+| `passenger` | `str` | No |  |
+| `pilot` | `list` | No |  |
+| `starship_class` | `str` | No |  |
+| `url` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Starship().list({})
+results = client.Starship().list()
 for starship in results:
     print(starship)
 ```
@@ -523,31 +523,31 @@ vehicle = client.Vehicle()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` | No |  |
-| `consumable` | ``$STRING`` | No |  |
-| `cost_in_credit` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `max_atmosphering_speed` | ``$STRING`` | No |  |
-| `model` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `passenger` | ``$STRING`` | No |  |
-| `pilot` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle_class` | ``$STRING`` | No |  |
+| `cargo_capacity` | `str` | No |  |
+| `consumable` | `str` | No |  |
+| `cost_in_credit` | `str` | No |  |
+| `created` | `str` | No |  |
+| `crew` | `str` | No |  |
+| `edited` | `str` | No |  |
+| `film` | `list` | No |  |
+| `length` | `str` | No |  |
+| `manufacturer` | `str` | No |  |
+| `max_atmosphering_speed` | `str` | No |  |
+| `model` | `str` | No |  |
+| `name` | `str` | No |  |
+| `passenger` | `str` | No |  |
+| `pilot` | `list` | No |  |
+| `url` | `str` | No |  |
+| `vehicle_class` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Vehicle().list({})
+results = client.Vehicle().list()
 for vehicle in results:
     print(vehicle)
 ```

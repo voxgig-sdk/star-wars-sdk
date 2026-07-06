@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the StarWars API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.Film()` — each with a small set of operations (`list`, `load`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -46,10 +51,39 @@ for (const film of films) {
 
 ```ts
 try {
-  const film = await client.Film().load({ id: 'example_id' })
+  const film = await client.Film().load({ id: 1 })
   console.log(film)
 } catch (err) {
   console.error('load failed:', err)
+}
+```
+
+
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const films = await client.Film().list()
+  console.log(films)
+} catch (err) {
+  console.error('list failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
 }
 ```
 
@@ -98,7 +132,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = StarWarsSDK.test()
 
-const film = await client.Film().load({ id: 'test01' })
+const film = await client.Film().list()
 // film is a bare entity populated with mock response data
 console.log(film)
 ```
@@ -117,12 +151,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.Film()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.list()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -218,11 +252,8 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
 | `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): StarWarsSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -232,10 +263,9 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
+- `load` resolves to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -447,25 +477,25 @@ Create an instance: `const film = client.Film()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | ``$ARRAY`` |  |
-| `created` | ``$STRING`` |  |
-| `director` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `episode_id` | ``$INTEGER`` |  |
-| `opening_crawl` | ``$STRING`` |  |
-| `planet` | ``$ARRAY`` |  |
-| `producer` | ``$STRING`` |  |
-| `release_date` | ``$STRING`` |  |
-| `species` | ``$ARRAY`` |  |
-| `starship` | ``$ARRAY`` |  |
-| `title` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
-| `vehicle` | ``$ARRAY`` |  |
+| `character` | `any[]` |  |
+| `created` | `string` |  |
+| `director` | `string` |  |
+| `edited` | `string` |  |
+| `episode_id` | `number` |  |
+| `opening_crawl` | `string` |  |
+| `planet` | `any[]` |  |
+| `producer` | `string` |  |
+| `release_date` | `string` |  |
+| `species` | `any[]` |  |
+| `starship` | `any[]` |  |
+| `title` | `string` |  |
+| `url` | `string` |  |
+| `vehicle` | `any[]` |  |
 
 #### Example: Load
 
 ```ts
-const film = await client.Film().load({ id: 'film_id' })
+const film = await client.Film().load({ id: 1 })
 ```
 
 #### Example: List
@@ -495,27 +525,27 @@ Create an instance: `const person = client.Person()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `birth_year` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `eye_color` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `gender` | ``$STRING`` |  |
-| `hair_color` | ``$STRING`` |  |
-| `height` | ``$STRING`` |  |
-| `homeworld` | ``$STRING`` |  |
-| `mass` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `skin_color` | ``$STRING`` |  |
-| `species` | ``$ARRAY`` |  |
-| `starship` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
-| `vehicle` | ``$ARRAY`` |  |
+| `birth_year` | `string` |  |
+| `created` | `string` |  |
+| `edited` | `string` |  |
+| `eye_color` | `string` |  |
+| `film` | `any[]` |  |
+| `gender` | `string` |  |
+| `hair_color` | `string` |  |
+| `height` | `string` |  |
+| `homeworld` | `string` |  |
+| `mass` | `string` |  |
+| `name` | `string` |  |
+| `skin_color` | `string` |  |
+| `species` | `any[]` |  |
+| `starship` | `any[]` |  |
+| `url` | `string` |  |
+| `vehicle` | `any[]` |  |
 
 #### Example: Load
 
 ```ts
-const person = await client.Person().load({ id: 'person_id' })
+const person = await client.Person().load({ id: 1 })
 ```
 
 #### Example: List
@@ -540,25 +570,25 @@ Create an instance: `const planet = client.Planet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `climate` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `diameter` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `gravity` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `orbital_period` | ``$STRING`` |  |
-| `population` | ``$STRING`` |  |
-| `resident` | ``$ARRAY`` |  |
-| `rotation_period` | ``$STRING`` |  |
-| `surface_water` | ``$STRING`` |  |
-| `terrain` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `climate` | `string` |  |
+| `created` | `string` |  |
+| `diameter` | `string` |  |
+| `edited` | `string` |  |
+| `film` | `any[]` |  |
+| `gravity` | `string` |  |
+| `name` | `string` |  |
+| `orbital_period` | `string` |  |
+| `population` | `string` |  |
+| `resident` | `any[]` |  |
+| `rotation_period` | `string` |  |
+| `surface_water` | `string` |  |
+| `terrain` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const planet = await client.Planet().load({ id: 'planet_id' })
+const planet = await client.Planet().load({ id: 1 })
 ```
 
 #### Example: List
@@ -583,26 +613,26 @@ Create an instance: `const species = client.Species()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `average_height` | ``$STRING`` |  |
-| `average_lifespan` | ``$STRING`` |  |
-| `classification` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `designation` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `eye_color` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `hair_color` | ``$STRING`` |  |
-| `homeworld` | ``$STRING`` |  |
-| `language` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `person` | ``$ARRAY`` |  |
-| `skin_color` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `average_height` | `string` |  |
+| `average_lifespan` | `string` |  |
+| `classification` | `string` |  |
+| `created` | `string` |  |
+| `designation` | `string` |  |
+| `edited` | `string` |  |
+| `eye_color` | `string` |  |
+| `film` | `any[]` |  |
+| `hair_color` | `string` |  |
+| `homeworld` | `string` |  |
+| `language` | `string` |  |
+| `name` | `string` |  |
+| `person` | `any[]` |  |
+| `skin_color` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const species = await client.Species().load({ id: 'species_id' })
+const species = await client.Species().load({ id: 1 })
 ```
 
 #### Example: List
@@ -627,29 +657,29 @@ Create an instance: `const starship = client.Starship()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` |  |
-| `consumable` | ``$STRING`` |  |
-| `cost_in_credit` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `crew` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `hyperdrive_rating` | ``$STRING`` |  |
-| `length` | ``$STRING`` |  |
-| `manufacturer` | ``$STRING`` |  |
-| `max_atmosphering_speed` | ``$STRING`` |  |
-| `mglt` | ``$STRING`` |  |
-| `model` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `passenger` | ``$STRING`` |  |
-| `pilot` | ``$ARRAY`` |  |
-| `starship_class` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
+| `cargo_capacity` | `string` |  |
+| `consumable` | `string` |  |
+| `cost_in_credit` | `string` |  |
+| `created` | `string` |  |
+| `crew` | `string` |  |
+| `edited` | `string` |  |
+| `film` | `any[]` |  |
+| `hyperdrive_rating` | `string` |  |
+| `length` | `string` |  |
+| `manufacturer` | `string` |  |
+| `max_atmosphering_speed` | `string` |  |
+| `mglt` | `string` |  |
+| `model` | `string` |  |
+| `name` | `string` |  |
+| `passenger` | `string` |  |
+| `pilot` | `any[]` |  |
+| `starship_class` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const starship = await client.Starship().load({ id: 'starship_id' })
+const starship = await client.Starship().load({ id: 1 })
 ```
 
 #### Example: List
@@ -674,27 +704,27 @@ Create an instance: `const vehicle = client.Vehicle()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` |  |
-| `consumable` | ``$STRING`` |  |
-| `cost_in_credit` | ``$STRING`` |  |
-| `created` | ``$STRING`` |  |
-| `crew` | ``$STRING`` |  |
-| `edited` | ``$STRING`` |  |
-| `film` | ``$ARRAY`` |  |
-| `length` | ``$STRING`` |  |
-| `manufacturer` | ``$STRING`` |  |
-| `max_atmosphering_speed` | ``$STRING`` |  |
-| `model` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `passenger` | ``$STRING`` |  |
-| `pilot` | ``$ARRAY`` |  |
-| `url` | ``$STRING`` |  |
-| `vehicle_class` | ``$STRING`` |  |
+| `cargo_capacity` | `string` |  |
+| `consumable` | `string` |  |
+| `cost_in_credit` | `string` |  |
+| `created` | `string` |  |
+| `crew` | `string` |  |
+| `edited` | `string` |  |
+| `film` | `any[]` |  |
+| `length` | `string` |  |
+| `manufacturer` | `string` |  |
+| `max_atmosphering_speed` | `string` |  |
+| `model` | `string` |  |
+| `name` | `string` |  |
+| `passenger` | `string` |  |
+| `pilot` | `any[]` |  |
+| `url` | `string` |  |
+| `vehicle_class` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const vehicle = await client.Vehicle().load({ id: 'vehicle_id' })
+const vehicle = await client.Vehicle().load({ id: 1 })
 ```
 
 #### Example: List
@@ -704,12 +734,16 @@ const vehicles = await client.Vehicle().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -726,11 +760,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -766,16 +798,16 @@ import { StarWarsSDK } from '@voxgig-sdk/star-wars'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
 const film = client.Film()
-await film.load({ id: "example_id" })
+await film.list()
 
-// film.data() now returns the loaded film data
-// film.match() returns { id: "example_id" }
+// film.data() now returns the film data from the last `list`
+// film.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

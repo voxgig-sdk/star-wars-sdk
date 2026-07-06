@@ -188,20 +188,20 @@ const film = client.Film()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | ``$ARRAY`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `director` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `episode_id` | ``$INTEGER`` | No |  |
-| `opening_crawl` | ``$STRING`` | No |  |
-| `planet` | ``$ARRAY`` | No |  |
-| `producer` | ``$STRING`` | No |  |
-| `release_date` | ``$STRING`` | No |  |
-| `species` | ``$ARRAY`` | No |  |
-| `starship` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle` | ``$ARRAY`` | No |  |
+| `character` | `any[]` | No |  |
+| `created` | `string` | No |  |
+| `director` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `episode_id` | `number` | No |  |
+| `opening_crawl` | `string` | No |  |
+| `planet` | `any[]` | No |  |
+| `producer` | `string` | No |  |
+| `release_date` | `string` | No |  |
+| `species` | `any[]` | No |  |
+| `starship` | `any[]` | No |  |
+| `title` | `string` | No |  |
+| `url` | `string` | No |  |
+| `vehicle` | `any[]` | No |  |
 
 ### Operations
 
@@ -218,7 +218,7 @@ const results = await client.Film().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Film().load({ id: 'film_id' })
+const result = await client.Film().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -293,22 +293,22 @@ const person = client.Person()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `birth_year` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `eye_color` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `hair_color` | ``$STRING`` | No |  |
-| `height` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `mass` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `skin_color` | ``$STRING`` | No |  |
-| `species` | ``$ARRAY`` | No |  |
-| `starship` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle` | ``$ARRAY`` | No |  |
+| `birth_year` | `string` | No |  |
+| `created` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `eye_color` | `string` | No |  |
+| `film` | `any[]` | No |  |
+| `gender` | `string` | No |  |
+| `hair_color` | `string` | No |  |
+| `height` | `string` | No |  |
+| `homeworld` | `string` | No |  |
+| `mass` | `string` | No |  |
+| `name` | `string` | No |  |
+| `skin_color` | `string` | No |  |
+| `species` | `any[]` | No |  |
+| `starship` | `any[]` | No |  |
+| `url` | `string` | No |  |
+| `vehicle` | `any[]` | No |  |
 
 ### Operations
 
@@ -325,7 +325,7 @@ const results = await client.Person().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Person().load({ id: 'person_id' })
+const result = await client.Person().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -366,20 +366,20 @@ const planet = client.Planet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `climate` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `diameter` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `gravity` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `orbital_period` | ``$STRING`` | No |  |
-| `population` | ``$STRING`` | No |  |
-| `resident` | ``$ARRAY`` | No |  |
-| `rotation_period` | ``$STRING`` | No |  |
-| `surface_water` | ``$STRING`` | No |  |
-| `terrain` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `climate` | `string` | No |  |
+| `created` | `string` | No |  |
+| `diameter` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `film` | `any[]` | No |  |
+| `gravity` | `string` | No |  |
+| `name` | `string` | No |  |
+| `orbital_period` | `string` | No |  |
+| `population` | `string` | No |  |
+| `resident` | `any[]` | No |  |
+| `rotation_period` | `string` | No |  |
+| `surface_water` | `string` | No |  |
+| `terrain` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -396,7 +396,7 @@ const results = await client.Planet().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Planet().load({ id: 'planet_id' })
+const result = await client.Planet().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -437,21 +437,21 @@ const species = client.Species()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average_height` | ``$STRING`` | No |  |
-| `average_lifespan` | ``$STRING`` | No |  |
-| `classification` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `designation` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `eye_color` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `hair_color` | ``$STRING`` | No |  |
-| `homeworld` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `person` | ``$ARRAY`` | No |  |
-| `skin_color` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `average_height` | `string` | No |  |
+| `average_lifespan` | `string` | No |  |
+| `classification` | `string` | No |  |
+| `created` | `string` | No |  |
+| `designation` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `eye_color` | `string` | No |  |
+| `film` | `any[]` | No |  |
+| `hair_color` | `string` | No |  |
+| `homeworld` | `string` | No |  |
+| `language` | `string` | No |  |
+| `name` | `string` | No |  |
+| `person` | `any[]` | No |  |
+| `skin_color` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -468,7 +468,7 @@ const results = await client.Species().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Species().load({ id: 'species_id' })
+const result = await client.Species().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -509,24 +509,24 @@ const starship = client.Starship()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` | No |  |
-| `consumable` | ``$STRING`` | No |  |
-| `cost_in_credit` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `hyperdrive_rating` | ``$STRING`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `max_atmosphering_speed` | ``$STRING`` | No |  |
-| `mglt` | ``$STRING`` | No |  |
-| `model` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `passenger` | ``$STRING`` | No |  |
-| `pilot` | ``$ARRAY`` | No |  |
-| `starship_class` | ``$STRING`` | No |  |
-| `url` | ``$STRING`` | No |  |
+| `cargo_capacity` | `string` | No |  |
+| `consumable` | `string` | No |  |
+| `cost_in_credit` | `string` | No |  |
+| `created` | `string` | No |  |
+| `crew` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `film` | `any[]` | No |  |
+| `hyperdrive_rating` | `string` | No |  |
+| `length` | `string` | No |  |
+| `manufacturer` | `string` | No |  |
+| `max_atmosphering_speed` | `string` | No |  |
+| `mglt` | `string` | No |  |
+| `model` | `string` | No |  |
+| `name` | `string` | No |  |
+| `passenger` | `string` | No |  |
+| `pilot` | `any[]` | No |  |
+| `starship_class` | `string` | No |  |
+| `url` | `string` | No |  |
 
 ### Operations
 
@@ -543,7 +543,7 @@ const results = await client.Starship().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Starship().load({ id: 'starship_id' })
+const result = await client.Starship().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -584,22 +584,22 @@ const vehicle = client.Vehicle()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cargo_capacity` | ``$STRING`` | No |  |
-| `consumable` | ``$STRING`` | No |  |
-| `cost_in_credit` | ``$STRING`` | No |  |
-| `created` | ``$STRING`` | No |  |
-| `crew` | ``$STRING`` | No |  |
-| `edited` | ``$STRING`` | No |  |
-| `film` | ``$ARRAY`` | No |  |
-| `length` | ``$STRING`` | No |  |
-| `manufacturer` | ``$STRING`` | No |  |
-| `max_atmosphering_speed` | ``$STRING`` | No |  |
-| `model` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `passenger` | ``$STRING`` | No |  |
-| `pilot` | ``$ARRAY`` | No |  |
-| `url` | ``$STRING`` | No |  |
-| `vehicle_class` | ``$STRING`` | No |  |
+| `cargo_capacity` | `string` | No |  |
+| `consumable` | `string` | No |  |
+| `cost_in_credit` | `string` | No |  |
+| `created` | `string` | No |  |
+| `crew` | `string` | No |  |
+| `edited` | `string` | No |  |
+| `film` | `any[]` | No |  |
+| `length` | `string` | No |  |
+| `manufacturer` | `string` | No |  |
+| `max_atmosphering_speed` | `string` | No |  |
+| `model` | `string` | No |  |
+| `name` | `string` | No |  |
+| `passenger` | `string` | No |  |
+| `pilot` | `any[]` | No |  |
+| `url` | `string` | No |  |
+| `vehicle_class` | `string` | No |  |
 
 ### Operations
 
@@ -616,7 +616,7 @@ const results = await client.Vehicle().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Vehicle().load({ id: 'vehicle_id' })
+const result = await client.Vehicle().load({ id: 1 })
 ```
 
 ### Common Methods

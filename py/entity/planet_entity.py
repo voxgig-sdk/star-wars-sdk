@@ -65,8 +65,13 @@ class PlanetEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: PlanetLoadMatch, ctrl=None) -> Planet:
+    def load(self, reqmatch=None, ctrl=None) -> Planet:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Planet().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class PlanetEntity:
 
 
     
-    def list(self, reqmatch: PlanetListMatch, ctrl=None) -> list[Planet]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Planet]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Planet().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,
