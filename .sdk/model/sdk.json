@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -1562,14 +1559,17 @@
           "url": "https://swapi.dev"
         },
         "description": "Provides data from the Star Wars universe including planets, spaceships, vehicles, people, films, and species. Accessible through HTTP web API.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://swapi.dev/api"
           }
         ],
+        "summary": "Provides data from the Star Wars universe including planets, spaceships, vehicles, people, films, and species.",
         "title": "Star Wars API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://swapi.dev"
       },
       "option": {},
       "target": {
@@ -1622,6 +1622,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -1672,6 +1675,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

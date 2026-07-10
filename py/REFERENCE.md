@@ -143,7 +143,7 @@ for film in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Film().load({"id": "film_id"})
+result = client.Film().load({"id": 1})
 ```
 
 ### Common Methods
@@ -254,7 +254,7 @@ for person in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Person().load({"id": "person_id"})
+result = client.Person().load({"id": 1})
 ```
 
 ### Common Methods
@@ -328,7 +328,7 @@ for planet in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Planet().load({"id": "planet_id"})
+result = client.Planet().load({"id": 1})
 ```
 
 ### Common Methods
@@ -403,7 +403,7 @@ for species in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Species().load({"id": "species_id"})
+result = client.Species().load({"id": 1})
 ```
 
 ### Common Methods
@@ -481,7 +481,7 @@ for starship in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Starship().load({"id": "starship_id"})
+result = client.Starship().load({"id": 1})
 ```
 
 ### Common Methods
@@ -557,7 +557,7 @@ for vehicle in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Vehicle().load({"id": "vehicle_id"})
+result = client.Vehicle().load({"id": 1})
 ```
 
 ### Common Methods

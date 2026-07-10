@@ -146,7 +146,7 @@ $results = $client->Film()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Film()->load(["id" => "film_id"]);
+$result = $client->Film()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -257,7 +257,7 @@ $results = $client->Person()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Person()->load(["id" => "person_id"]);
+$result = $client->Person()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -330,7 +330,7 @@ $results = $client->Planet()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Planet()->load(["id" => "planet_id"]);
+$result = $client->Planet()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -404,7 +404,7 @@ $results = $client->Species()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Species()->load(["id" => "species_id"]);
+$result = $client->Species()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -481,7 +481,7 @@ $results = $client->Starship()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Starship()->load(["id" => "starship_id"]);
+$result = $client->Starship()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -556,7 +556,7 @@ $results = $client->Vehicle()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Vehicle()->load(["id" => "vehicle_id"]);
+$result = $client->Vehicle()->load(["id" => 1]);
 ```
 
 ### Common Methods

@@ -50,7 +50,7 @@ try {
 ```php
 try {
     // load() returns the bare Film record (throws on error).
-    $film = $client->Film()->load(["id" => "example_id"]);
+    $film = $client->Film()->load(["id" => 1]);
     print_r($film);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -459,7 +459,7 @@ Create an instance: `$film = $client->Film();`
 
 ```php
 // load() returns the bare Film record (throws on error).
-$film = $client->Film()->load(["id" => "film_id"]);
+$film = $client->Film()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -511,7 +511,7 @@ Create an instance: `$person = $client->Person();`
 
 ```php
 // load() returns the bare Person record (throws on error).
-$person = $client->Person()->load(["id" => "person_id"]);
+$person = $client->Person()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -556,7 +556,7 @@ Create an instance: `$planet = $client->Planet();`
 
 ```php
 // load() returns the bare Planet record (throws on error).
-$planet = $client->Planet()->load(["id" => "planet_id"]);
+$planet = $client->Planet()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -602,7 +602,7 @@ Create an instance: `$species = $client->Species();`
 
 ```php
 // load() returns the bare Species record (throws on error).
-$species = $client->Species()->load(["id" => "species_id"]);
+$species = $client->Species()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -651,7 +651,7 @@ Create an instance: `$starship = $client->Starship();`
 
 ```php
 // load() returns the bare Starship record (throws on error).
-$starship = $client->Starship()->load(["id" => "starship_id"]);
+$starship = $client->Starship()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -698,7 +698,7 @@ Create an instance: `$vehicle = $client->Vehicle();`
 
 ```php
 // load() returns the bare Vehicle record (throws on error).
-$vehicle = $client->Vehicle()->load(["id" => "vehicle_id"]);
+$vehicle = $client->Vehicle()->load(["id" => 1]);
 ```
 
 #### Example: List

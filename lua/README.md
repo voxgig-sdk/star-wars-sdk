@@ -50,7 +50,7 @@ end
 ### 3. Load a film
 
 ```lua
-local film, err = client:Film():load({ id = "example_id" })
+local film, err = client:Film():load({ id = 1 })
 if err then error(err) end
 print(film)
 ```
@@ -437,7 +437,7 @@ Create an instance: `local film = client:Film(nil)`
 #### Example: Load
 
 ```lua
-local film, err = client:Film():load({ id = "film_id" })
+local film, err = client:Film():load({ id = 1 })
 ```
 
 #### Example: List
@@ -487,7 +487,7 @@ Create an instance: `local person = client:Person(nil)`
 #### Example: Load
 
 ```lua
-local person, err = client:Person():load({ id = "person_id" })
+local person, err = client:Person():load({ id = 1 })
 ```
 
 #### Example: List
@@ -530,7 +530,7 @@ Create an instance: `local planet = client:Planet(nil)`
 #### Example: Load
 
 ```lua
-local planet, err = client:Planet():load({ id = "planet_id" })
+local planet, err = client:Planet():load({ id = 1 })
 ```
 
 #### Example: List
@@ -574,7 +574,7 @@ Create an instance: `local species = client:Species(nil)`
 #### Example: Load
 
 ```lua
-local species, err = client:Species():load({ id = "species_id" })
+local species, err = client:Species():load({ id = 1 })
 ```
 
 #### Example: List
@@ -621,7 +621,7 @@ Create an instance: `local starship = client:Starship(nil)`
 #### Example: Load
 
 ```lua
-local starship, err = client:Starship():load({ id = "starship_id" })
+local starship, err = client:Starship():load({ id = 1 })
 ```
 
 #### Example: List
@@ -666,7 +666,7 @@ Create an instance: `local vehicle = client:Vehicle(nil)`
 #### Example: Load
 
 ```lua
-local vehicle, err = client:Vehicle():load({ id = "vehicle_id" })
+local vehicle, err = client:Vehicle():load({ id = 1 })
 ```
 
 #### Example: List

@@ -465,7 +465,7 @@ Create an instance: `film := client.Film(nil)`
 #### Example: Load
 
 ```go
-film, err := client.Film(nil).Load(map[string]any{"id": "film_id"}, nil)
+film, err := client.Film(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -485,7 +485,7 @@ fmt.Println(films) // the array of records
 
 ### PeopleList
 
-Create an instance: `people_list := client.PeopleList(nil)`
+Create an instance: `peopleList := client.PeopleList(nil)`
 
 
 ### Person
@@ -523,7 +523,7 @@ Create an instance: `person := client.Person(nil)`
 #### Example: Load
 
 ```go
-person, err := client.Person(nil).Load(map[string]any{"id": "person_id"}, nil)
+person, err := client.Person(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -574,7 +574,7 @@ Create an instance: `planet := client.Planet(nil)`
 #### Example: Load
 
 ```go
-planet, err := client.Planet(nil).Load(map[string]any{"id": "planet_id"}, nil)
+planet, err := client.Planet(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -626,7 +626,7 @@ Create an instance: `species := client.Species(nil)`
 #### Example: Load
 
 ```go
-species, err := client.Species(nil).Load(map[string]any{"id": "species_id"}, nil)
+species, err := client.Species(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -681,7 +681,7 @@ Create an instance: `starship := client.Starship(nil)`
 #### Example: Load
 
 ```go
-starship, err := client.Starship(nil).Load(map[string]any{"id": "starship_id"}, nil)
+starship, err := client.Starship(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -734,7 +734,7 @@ Create an instance: `vehicle := client.Vehicle(nil)`
 #### Example: Load
 
 ```go
-vehicle, err := client.Vehicle(nil).Load(map[string]any{"id": "vehicle_id"}, nil)
+vehicle, err := client.Vehicle(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }

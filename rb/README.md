@@ -49,7 +49,7 @@ end
 ```ruby
 begin
   # load returns the bare Film record (raises on error).
-  film = client.Film.load({ "id" => "example_id" })
+  film = client.Film.load({ "id" => 1 })
   puts film
 rescue => err
   warn "load failed: #{err}"
@@ -449,7 +449,7 @@ Create an instance: `film = client.Film`
 
 ```ruby
 # load returns the bare Film record (raises on error).
-film = client.Film.load({ "id" => "film_id" })
+film = client.Film.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -501,7 +501,7 @@ Create an instance: `person = client.Person`
 
 ```ruby
 # load returns the bare Person record (raises on error).
-person = client.Person.load({ "id" => "person_id" })
+person = client.Person.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -546,7 +546,7 @@ Create an instance: `planet = client.Planet`
 
 ```ruby
 # load returns the bare Planet record (raises on error).
-planet = client.Planet.load({ "id" => "planet_id" })
+planet = client.Planet.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -592,7 +592,7 @@ Create an instance: `species = client.Species`
 
 ```ruby
 # load returns the bare Species record (raises on error).
-species = client.Species.load({ "id" => "species_id" })
+species = client.Species.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -641,7 +641,7 @@ Create an instance: `starship = client.Starship`
 
 ```ruby
 # load returns the bare Starship record (raises on error).
-starship = client.Starship.load({ "id" => "starship_id" })
+starship = client.Starship.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -688,7 +688,7 @@ Create an instance: `vehicle = client.Vehicle`
 
 ```ruby
 # load returns the bare Vehicle record (raises on error).
-vehicle = client.Vehicle.load({ "id" => "vehicle_id" })
+vehicle = client.Vehicle.load({ "id" => 1 })
 ```
 
 #### Example: List

@@ -144,7 +144,7 @@ local results, err = client:Film():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Film():load({ id = "film_id" })
+local result, err = client:Film():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -255,7 +255,7 @@ local results, err = client:Person():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Person():load({ id = "person_id" })
+local result, err = client:Person():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -328,7 +328,7 @@ local results, err = client:Planet():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Planet():load({ id = "planet_id" })
+local result, err = client:Planet():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -402,7 +402,7 @@ local results, err = client:Species():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Species():load({ id = "species_id" })
+local result, err = client:Species():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -479,7 +479,7 @@ local results, err = client:Starship():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Starship():load({ id = "starship_id" })
+local result, err = client:Starship():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -554,7 +554,7 @@ local results, err = client:Vehicle():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Vehicle():load({ id = "vehicle_id" })
+local result, err = client:Vehicle():load({ id = 1 })
 ```
 
 ### Common Methods

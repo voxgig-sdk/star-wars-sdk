@@ -1,9 +1,0 @@
-# Flows
-
-@"BasicFilmFlow.jsonic"
-@"BasicPeopleListFlow.jsonic"
-@"BasicPersonFlow.jsonic"
-@"BasicPlanetFlow.jsonic"
-@"BasicSpeciesFlow.jsonic"
-@"BasicStarshipFlow.jsonic"
-@"BasicVehicleFlow.jsonic"

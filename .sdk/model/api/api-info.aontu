@@ -16,9 +16,9 @@ main: {
           url: "https://swapi.dev/api"
         }
       ]
+      summary: "Provides data from the Star Wars universe including planets, spaceships, vehicles, people, films, and species."
       title: "Star Wars API"
       version: "1.0.0"
+      website: "https://swapi.dev"
     }
   }
-}
-

@@ -56,7 +56,7 @@ except Exception as err:
 
 ```python
 try:
-    film = client.Film().load({"id": "example_id"})
+    film = client.Film().load({"id": 1})
     print(film)
 except Exception as err:
     print(f"load failed: {err}")
@@ -451,7 +451,7 @@ Create an instance: `film = client.Film()`
 #### Example: Load
 
 ```python
-film = client.Film().load({"id": "film_id"})
+film = client.Film().load({"id": 1})
 ```
 
 #### Example: List
@@ -501,7 +501,7 @@ Create an instance: `person = client.Person()`
 #### Example: Load
 
 ```python
-person = client.Person().load({"id": "person_id"})
+person = client.Person().load({"id": 1})
 ```
 
 #### Example: List
@@ -544,7 +544,7 @@ Create an instance: `planet = client.Planet()`
 #### Example: Load
 
 ```python
-planet = client.Planet().load({"id": "planet_id"})
+planet = client.Planet().load({"id": 1})
 ```
 
 #### Example: List
@@ -588,7 +588,7 @@ Create an instance: `species = client.Species()`
 #### Example: Load
 
 ```python
-species = client.Species().load({"id": "species_id"})
+species = client.Species().load({"id": 1})
 ```
 
 #### Example: List
@@ -635,7 +635,7 @@ Create an instance: `starship = client.Starship()`
 #### Example: Load
 
 ```python
-starship = client.Starship().load({"id": "starship_id"})
+starship = client.Starship().load({"id": 1})
 ```
 
 #### Example: List
@@ -680,7 +680,7 @@ Create an instance: `vehicle = client.Vehicle()`
 #### Example: Load
 
 ```python
-vehicle = client.Vehicle().load({"id": "vehicle_id"})
+vehicle = client.Vehicle().load({"id": 1})
 ```
 
 #### Example: List
