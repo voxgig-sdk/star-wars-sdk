@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- StarWars SDK exists test
 
 local sdk = require("star-wars_sdk")
 
