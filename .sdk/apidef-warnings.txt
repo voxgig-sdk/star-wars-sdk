@@ -1,6 +1,6 @@
 {
   point: "warning"
-  when: 1784302708259
+  when: 1784315403038
   note: "No paths defined for entity=people_list"
   entm: {
     name: "people_list"
