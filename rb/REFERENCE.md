@@ -117,20 +117,20 @@ film = client.Film
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | `Array` | No |  |
+| `characters` | `Array` | No |  |
 | `created` | `String` | No |  |
 | `director` | `String` | No |  |
 | `edited` | `String` | No |  |
 | `episode_id` | `Integer` | No |  |
 | `opening_crawl` | `String` | No |  |
-| `planet` | `Array` | No |  |
+| `planets` | `Array` | No |  |
 | `producer` | `String` | No |  |
 | `release_date` | `String` | No |  |
 | `species` | `Array` | No |  |
-| `starship` | `Array` | No |  |
+| `starships` | `Array` | No |  |
 | `title` | `String` | No |  |
 | `url` | `String` | No |  |
-| `vehicle` | `Array` | No |  |
+| `vehicles` | `Array` | No |  |
 
 ### Operations
 
@@ -230,7 +230,7 @@ person = client.Person
 | `created` | `String` | No |  |
 | `edited` | `String` | No |  |
 | `eye_color` | `String` | No |  |
-| `film` | `Array` | No |  |
+| `films` | `Array` | No |  |
 | `gender` | `String` | No |  |
 | `hair_color` | `String` | No |  |
 | `height` | `String` | No |  |
@@ -239,9 +239,9 @@ person = client.Person
 | `name` | `String` | No |  |
 | `skin_color` | `String` | No |  |
 | `species` | `Array` | No |  |
-| `starship` | `Array` | No |  |
+| `starships` | `Array` | No |  |
 | `url` | `String` | No |  |
-| `vehicle` | `Array` | No |  |
+| `vehicles` | `Array` | No |  |
 
 ### Operations
 
@@ -305,12 +305,12 @@ planet = client.Planet
 | `created` | `String` | No |  |
 | `diameter` | `String` | No |  |
 | `edited` | `String` | No |  |
-| `film` | `Array` | No |  |
+| `films` | `Array` | No |  |
 | `gravity` | `String` | No |  |
 | `name` | `String` | No |  |
 | `orbital_period` | `String` | No |  |
 | `population` | `String` | No |  |
-| `resident` | `Array` | No |  |
+| `residents` | `Array` | No |  |
 | `rotation_period` | `String` | No |  |
 | `surface_water` | `String` | No |  |
 | `terrain` | `String` | No |  |
@@ -380,14 +380,14 @@ species = client.Species
 | `created` | `String` | No |  |
 | `designation` | `String` | No |  |
 | `edited` | `String` | No |  |
-| `eye_color` | `String` | No |  |
-| `film` | `Array` | No |  |
-| `hair_color` | `String` | No |  |
+| `eye_colors` | `String` | No |  |
+| `films` | `Array` | No |  |
+| `hair_colors` | `String` | No |  |
 | `homeworld` | `String` | No |  |
 | `language` | `String` | No |  |
 | `name` | `String` | No |  |
-| `person` | `Array` | No |  |
-| `skin_color` | `String` | No |  |
+| `people` | `Array` | No |  |
+| `skin_colors` | `String` | No |  |
 | `url` | `String` | No |  |
 
 ### Operations
@@ -448,22 +448,22 @@ starship = client.Starship
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `MGLT` | `String` | No |  |
 | `cargo_capacity` | `String` | No |  |
-| `consumable` | `String` | No |  |
-| `cost_in_credit` | `String` | No |  |
+| `consumables` | `String` | No |  |
+| `cost_in_credits` | `String` | No |  |
 | `created` | `String` | No |  |
 | `crew` | `String` | No |  |
 | `edited` | `String` | No |  |
-| `film` | `Array` | No |  |
+| `films` | `Array` | No |  |
 | `hyperdrive_rating` | `String` | No |  |
 | `length` | `String` | No |  |
 | `manufacturer` | `String` | No |  |
 | `max_atmosphering_speed` | `String` | No |  |
-| `mglt` | `String` | No |  |
 | `model` | `String` | No |  |
 | `name` | `String` | No |  |
-| `passenger` | `String` | No |  |
-| `pilot` | `Array` | No |  |
+| `passengers` | `String` | No |  |
+| `pilots` | `Array` | No |  |
 | `starship_class` | `String` | No |  |
 | `url` | `String` | No |  |
 
@@ -526,19 +526,19 @@ vehicle = client.Vehicle
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `cargo_capacity` | `String` | No |  |
-| `consumable` | `String` | No |  |
-| `cost_in_credit` | `String` | No |  |
+| `consumables` | `String` | No |  |
+| `cost_in_credits` | `String` | No |  |
 | `created` | `String` | No |  |
 | `crew` | `String` | No |  |
 | `edited` | `String` | No |  |
-| `film` | `Array` | No |  |
+| `films` | `Array` | No |  |
 | `length` | `String` | No |  |
 | `manufacturer` | `String` | No |  |
 | `max_atmosphering_speed` | `String` | No |  |
 | `model` | `String` | No |  |
 | `name` | `String` | No |  |
-| `passenger` | `String` | No |  |
-| `pilot` | `Array` | No |  |
+| `passengers` | `String` | No |  |
+| `pilots` | `Array` | No |  |
 | `url` | `String` | No |  |
 | `vehicle_class` | `String` | No |  |
 

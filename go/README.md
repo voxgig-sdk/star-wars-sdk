@@ -75,12 +75,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-films, err := client.Film(nil).List(nil, nil)
+persons, err := client.Person(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = films
+_ = persons
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-film, err := client.Film(nil).List(
+person, err := client.Person(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(film) // the returned mock data
+fmt.Println(person) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -275,20 +275,20 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"character"` |  |
+| `"characters"` |  |
 | `"created"` |  |
 | `"director"` |  |
 | `"edited"` |  |
 | `"episode_id"` |  |
 | `"opening_crawl"` |  |
-| `"planet"` |  |
+| `"planets"` |  |
 | `"producer"` |  |
 | `"release_date"` |  |
 | `"species"` |  |
-| `"starship"` |  |
+| `"starships"` |  |
 | `"title"` |  |
 | `"url"` |  |
-| `"vehicle"` |  |
+| `"vehicles"` |  |
 
 Operations: List, Load.
 
@@ -311,7 +311,7 @@ API path: ``
 | `"created"` |  |
 | `"edited"` |  |
 | `"eye_color"` |  |
-| `"film"` |  |
+| `"films"` |  |
 | `"gender"` |  |
 | `"hair_color"` |  |
 | `"height"` |  |
@@ -320,9 +320,9 @@ API path: ``
 | `"name"` |  |
 | `"skin_color"` |  |
 | `"species"` |  |
-| `"starship"` |  |
+| `"starships"` |  |
 | `"url"` |  |
-| `"vehicle"` |  |
+| `"vehicles"` |  |
 
 Operations: List, Load.
 
@@ -336,12 +336,12 @@ API path: `/people`
 | `"created"` |  |
 | `"diameter"` |  |
 | `"edited"` |  |
-| `"film"` |  |
+| `"films"` |  |
 | `"gravity"` |  |
 | `"name"` |  |
 | `"orbital_period"` |  |
 | `"population"` |  |
-| `"resident"` |  |
+| `"residents"` |  |
 | `"rotation_period"` |  |
 | `"surface_water"` |  |
 | `"terrain"` |  |
@@ -361,14 +361,14 @@ API path: `/planets`
 | `"created"` |  |
 | `"designation"` |  |
 | `"edited"` |  |
-| `"eye_color"` |  |
-| `"film"` |  |
-| `"hair_color"` |  |
+| `"eye_colors"` |  |
+| `"films"` |  |
+| `"hair_colors"` |  |
 | `"homeworld"` |  |
 | `"language"` |  |
 | `"name"` |  |
-| `"person"` |  |
-| `"skin_color"` |  |
+| `"people"` |  |
+| `"skin_colors"` |  |
 | `"url"` |  |
 
 Operations: List, Load.
@@ -379,22 +379,22 @@ API path: `/species`
 
 | Field | Description |
 | --- | --- |
+| `"MGLT"` |  |
 | `"cargo_capacity"` |  |
-| `"consumable"` |  |
-| `"cost_in_credit"` |  |
+| `"consumables"` |  |
+| `"cost_in_credits"` |  |
 | `"created"` |  |
 | `"crew"` |  |
 | `"edited"` |  |
-| `"film"` |  |
+| `"films"` |  |
 | `"hyperdrive_rating"` |  |
 | `"length"` |  |
 | `"manufacturer"` |  |
 | `"max_atmosphering_speed"` |  |
-| `"mglt"` |  |
 | `"model"` |  |
 | `"name"` |  |
-| `"passenger"` |  |
-| `"pilot"` |  |
+| `"passengers"` |  |
+| `"pilots"` |  |
 | `"starship_class"` |  |
 | `"url"` |  |
 
@@ -407,19 +407,19 @@ API path: `/starships`
 | Field | Description |
 | --- | --- |
 | `"cargo_capacity"` |  |
-| `"consumable"` |  |
-| `"cost_in_credit"` |  |
+| `"consumables"` |  |
+| `"cost_in_credits"` |  |
 | `"created"` |  |
 | `"crew"` |  |
 | `"edited"` |  |
-| `"film"` |  |
+| `"films"` |  |
 | `"length"` |  |
 | `"manufacturer"` |  |
 | `"max_atmosphering_speed"` |  |
 | `"model"` |  |
 | `"name"` |  |
-| `"passenger"` |  |
-| `"pilot"` |  |
+| `"passengers"` |  |
+| `"pilots"` |  |
 | `"url"` |  |
 | `"vehicle_class"` |  |
 
@@ -447,20 +447,20 @@ Create an instance: `film := client.Film(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | `[]any` |  |
+| `characters` | `[]any` |  |
 | `created` | `string` |  |
 | `director` | `string` |  |
 | `edited` | `string` |  |
 | `episode_id` | `int` |  |
 | `opening_crawl` | `string` |  |
-| `planet` | `[]any` |  |
+| `planets` | `[]any` |  |
 | `producer` | `string` |  |
 | `release_date` | `string` |  |
 | `species` | `[]any` |  |
-| `starship` | `[]any` |  |
+| `starships` | `[]any` |  |
 | `title` | `string` |  |
 | `url` | `string` |  |
-| `vehicle` | `[]any` |  |
+| `vehicles` | `[]any` |  |
 
 #### Example: Load
 
@@ -507,7 +507,7 @@ Create an instance: `person := client.Person(nil)`
 | `created` | `string` |  |
 | `edited` | `string` |  |
 | `eye_color` | `string` |  |
-| `film` | `[]any` |  |
+| `films` | `[]any` |  |
 | `gender` | `string` |  |
 | `hair_color` | `string` |  |
 | `height` | `string` |  |
@@ -516,9 +516,9 @@ Create an instance: `person := client.Person(nil)`
 | `name` | `string` |  |
 | `skin_color` | `string` |  |
 | `species` | `[]any` |  |
-| `starship` | `[]any` |  |
+| `starships` | `[]any` |  |
 | `url` | `string` |  |
-| `vehicle` | `[]any` |  |
+| `vehicles` | `[]any` |  |
 
 #### Example: Load
 
@@ -560,12 +560,12 @@ Create an instance: `planet := client.Planet(nil)`
 | `created` | `string` |  |
 | `diameter` | `string` |  |
 | `edited` | `string` |  |
-| `film` | `[]any` |  |
+| `films` | `[]any` |  |
 | `gravity` | `string` |  |
 | `name` | `string` |  |
 | `orbital_period` | `string` |  |
 | `population` | `string` |  |
-| `resident` | `[]any` |  |
+| `residents` | `[]any` |  |
 | `rotation_period` | `string` |  |
 | `surface_water` | `string` |  |
 | `terrain` | `string` |  |
@@ -613,14 +613,14 @@ Create an instance: `species := client.Species(nil)`
 | `created` | `string` |  |
 | `designation` | `string` |  |
 | `edited` | `string` |  |
-| `eye_color` | `string` |  |
-| `film` | `[]any` |  |
-| `hair_color` | `string` |  |
+| `eye_colors` | `string` |  |
+| `films` | `[]any` |  |
+| `hair_colors` | `string` |  |
 | `homeworld` | `string` |  |
 | `language` | `string` |  |
 | `name` | `string` |  |
-| `person` | `[]any` |  |
-| `skin_color` | `string` |  |
+| `people` | `[]any` |  |
+| `skin_colors` | `string` |  |
 | `url` | `string` |  |
 
 #### Example: Load
@@ -659,22 +659,22 @@ Create an instance: `starship := client.Starship(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `MGLT` | `string` |  |
 | `cargo_capacity` | `string` |  |
-| `consumable` | `string` |  |
-| `cost_in_credit` | `string` |  |
+| `consumables` | `string` |  |
+| `cost_in_credits` | `string` |  |
 | `created` | `string` |  |
 | `crew` | `string` |  |
 | `edited` | `string` |  |
-| `film` | `[]any` |  |
+| `films` | `[]any` |  |
 | `hyperdrive_rating` | `string` |  |
 | `length` | `string` |  |
 | `manufacturer` | `string` |  |
 | `max_atmosphering_speed` | `string` |  |
-| `mglt` | `string` |  |
 | `model` | `string` |  |
 | `name` | `string` |  |
-| `passenger` | `string` |  |
-| `pilot` | `[]any` |  |
+| `passengers` | `string` |  |
+| `pilots` | `[]any` |  |
 | `starship_class` | `string` |  |
 | `url` | `string` |  |
 
@@ -715,19 +715,19 @@ Create an instance: `vehicle := client.Vehicle(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `cargo_capacity` | `string` |  |
-| `consumable` | `string` |  |
-| `cost_in_credit` | `string` |  |
+| `consumables` | `string` |  |
+| `cost_in_credits` | `string` |  |
 | `created` | `string` |  |
 | `crew` | `string` |  |
 | `edited` | `string` |  |
-| `film` | `[]any` |  |
+| `films` | `[]any` |  |
 | `length` | `string` |  |
 | `manufacturer` | `string` |  |
 | `max_atmosphering_speed` | `string` |  |
 | `model` | `string` |  |
 | `name` | `string` |  |
-| `passenger` | `string` |  |
-| `pilot` | `[]any` |  |
+| `passengers` | `string` |  |
+| `pilots` | `[]any` |  |
 | `url` | `string` |  |
 | `vehicle_class` | `string` |  |
 
@@ -825,11 +825,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-film := client.Film(nil)
-film.List(nil, nil)
+person := client.Person(nil)
+person.List(nil, nil)
 
-// film.Data() now returns the film data from the last list
-// film.Match() returns the last match criteria
+// person.Data() now returns the person data from the last list
+// person.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

@@ -62,7 +62,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local films, err = client:Film():list()
+local persons, err = client:Person():list()
 if err then error(err) end
 ```
 
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Film():list()
+local result, err = client:Person():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -247,20 +247,20 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `character` |  |
+| `characters` |  |
 | `created` |  |
 | `director` |  |
 | `edited` |  |
 | `episode_id` |  |
 | `opening_crawl` |  |
-| `planet` |  |
+| `planets` |  |
 | `producer` |  |
 | `release_date` |  |
 | `species` |  |
-| `starship` |  |
+| `starships` |  |
 | `title` |  |
 | `url` |  |
-| `vehicle` |  |
+| `vehicles` |  |
 
 Operations: List, Load.
 
@@ -283,7 +283,7 @@ API path: ``
 | `created` |  |
 | `edited` |  |
 | `eye_color` |  |
-| `film` |  |
+| `films` |  |
 | `gender` |  |
 | `hair_color` |  |
 | `height` |  |
@@ -292,9 +292,9 @@ API path: ``
 | `name` |  |
 | `skin_color` |  |
 | `species` |  |
-| `starship` |  |
+| `starships` |  |
 | `url` |  |
-| `vehicle` |  |
+| `vehicles` |  |
 
 Operations: List, Load.
 
@@ -308,12 +308,12 @@ API path: `/people`
 | `created` |  |
 | `diameter` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `gravity` |  |
 | `name` |  |
 | `orbital_period` |  |
 | `population` |  |
-| `resident` |  |
+| `residents` |  |
 | `rotation_period` |  |
 | `surface_water` |  |
 | `terrain` |  |
@@ -333,14 +333,14 @@ API path: `/planets`
 | `created` |  |
 | `designation` |  |
 | `edited` |  |
-| `eye_color` |  |
-| `film` |  |
-| `hair_color` |  |
+| `eye_colors` |  |
+| `films` |  |
+| `hair_colors` |  |
 | `homeworld` |  |
 | `language` |  |
 | `name` |  |
-| `person` |  |
-| `skin_color` |  |
+| `people` |  |
+| `skin_colors` |  |
 | `url` |  |
 
 Operations: List, Load.
@@ -351,22 +351,22 @@ API path: `/species`
 
 | Field | Description |
 | --- | --- |
+| `MGLT` |  |
 | `cargo_capacity` |  |
-| `consumable` |  |
-| `cost_in_credit` |  |
+| `consumables` |  |
+| `cost_in_credits` |  |
 | `created` |  |
 | `crew` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `hyperdrive_rating` |  |
 | `length` |  |
 | `manufacturer` |  |
 | `max_atmosphering_speed` |  |
-| `mglt` |  |
 | `model` |  |
 | `name` |  |
-| `passenger` |  |
-| `pilot` |  |
+| `passengers` |  |
+| `pilots` |  |
 | `starship_class` |  |
 | `url` |  |
 
@@ -379,19 +379,19 @@ API path: `/starships`
 | Field | Description |
 | --- | --- |
 | `cargo_capacity` |  |
-| `consumable` |  |
-| `cost_in_credit` |  |
+| `consumables` |  |
+| `cost_in_credits` |  |
 | `created` |  |
 | `crew` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `length` |  |
 | `manufacturer` |  |
 | `max_atmosphering_speed` |  |
 | `model` |  |
 | `name` |  |
-| `passenger` |  |
-| `pilot` |  |
+| `passengers` |  |
+| `pilots` |  |
 | `url` |  |
 | `vehicle_class` |  |
 
@@ -419,20 +419,20 @@ Create an instance: `local film = client:Film(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | `table` |  |
+| `characters` | `table` |  |
 | `created` | `string` |  |
 | `director` | `string` |  |
 | `edited` | `string` |  |
 | `episode_id` | `number` |  |
 | `opening_crawl` | `string` |  |
-| `planet` | `table` |  |
+| `planets` | `table` |  |
 | `producer` | `string` |  |
 | `release_date` | `string` |  |
 | `species` | `table` |  |
-| `starship` | `table` |  |
+| `starships` | `table` |  |
 | `title` | `string` |  |
 | `url` | `string` |  |
-| `vehicle` | `table` |  |
+| `vehicles` | `table` |  |
 
 #### Example: Load
 
@@ -471,7 +471,7 @@ Create an instance: `local person = client:Person(nil)`
 | `created` | `string` |  |
 | `edited` | `string` |  |
 | `eye_color` | `string` |  |
-| `film` | `table` |  |
+| `films` | `table` |  |
 | `gender` | `string` |  |
 | `hair_color` | `string` |  |
 | `height` | `string` |  |
@@ -480,9 +480,9 @@ Create an instance: `local person = client:Person(nil)`
 | `name` | `string` |  |
 | `skin_color` | `string` |  |
 | `species` | `table` |  |
-| `starship` | `table` |  |
+| `starships` | `table` |  |
 | `url` | `string` |  |
-| `vehicle` | `table` |  |
+| `vehicles` | `table` |  |
 
 #### Example: Load
 
@@ -516,12 +516,12 @@ Create an instance: `local planet = client:Planet(nil)`
 | `created` | `string` |  |
 | `diameter` | `string` |  |
 | `edited` | `string` |  |
-| `film` | `table` |  |
+| `films` | `table` |  |
 | `gravity` | `string` |  |
 | `name` | `string` |  |
 | `orbital_period` | `string` |  |
 | `population` | `string` |  |
-| `resident` | `table` |  |
+| `residents` | `table` |  |
 | `rotation_period` | `string` |  |
 | `surface_water` | `string` |  |
 | `terrain` | `string` |  |
@@ -561,14 +561,14 @@ Create an instance: `local species = client:Species(nil)`
 | `created` | `string` |  |
 | `designation` | `string` |  |
 | `edited` | `string` |  |
-| `eye_color` | `string` |  |
-| `film` | `table` |  |
-| `hair_color` | `string` |  |
+| `eye_colors` | `string` |  |
+| `films` | `table` |  |
+| `hair_colors` | `string` |  |
 | `homeworld` | `string` |  |
 | `language` | `string` |  |
 | `name` | `string` |  |
-| `person` | `table` |  |
-| `skin_color` | `string` |  |
+| `people` | `table` |  |
+| `skin_colors` | `string` |  |
 | `url` | `string` |  |
 
 #### Example: Load
@@ -599,22 +599,22 @@ Create an instance: `local starship = client:Starship(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `MGLT` | `string` |  |
 | `cargo_capacity` | `string` |  |
-| `consumable` | `string` |  |
-| `cost_in_credit` | `string` |  |
+| `consumables` | `string` |  |
+| `cost_in_credits` | `string` |  |
 | `created` | `string` |  |
 | `crew` | `string` |  |
 | `edited` | `string` |  |
-| `film` | `table` |  |
+| `films` | `table` |  |
 | `hyperdrive_rating` | `string` |  |
 | `length` | `string` |  |
 | `manufacturer` | `string` |  |
 | `max_atmosphering_speed` | `string` |  |
-| `mglt` | `string` |  |
 | `model` | `string` |  |
 | `name` | `string` |  |
-| `passenger` | `string` |  |
-| `pilot` | `table` |  |
+| `passengers` | `string` |  |
+| `pilots` | `table` |  |
 | `starship_class` | `string` |  |
 | `url` | `string` |  |
 
@@ -647,19 +647,19 @@ Create an instance: `local vehicle = client:Vehicle(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `cargo_capacity` | `string` |  |
-| `consumable` | `string` |  |
-| `cost_in_credit` | `string` |  |
+| `consumables` | `string` |  |
+| `cost_in_credits` | `string` |  |
 | `created` | `string` |  |
 | `crew` | `string` |  |
 | `edited` | `string` |  |
-| `film` | `table` |  |
+| `films` | `table` |  |
 | `length` | `string` |  |
 | `manufacturer` | `string` |  |
 | `max_atmosphering_speed` | `string` |  |
 | `model` | `string` |  |
 | `name` | `string` |  |
-| `passenger` | `string` |  |
-| `pilot` | `table` |  |
+| `passengers` | `string` |  |
+| `pilots` | `table` |  |
 | `url` | `string` |  |
 | `vehicle_class` | `string` |  |
 
@@ -752,11 +752,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local film = client:Film()
-film:list()
+local person = client:Person()
+person:list()
 
--- film:data_get() now returns the film data from the last list
--- film:match_get() returns the last match criteria
+-- person:data_get() now returns the person data from the last list
+-- person:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

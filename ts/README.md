@@ -35,7 +35,9 @@ const client = new StarWarsSDK()
 
 ### 2. List film records
 
-`list()` resolves to an array of Film objects — iterate it directly:
+`list()` resolves to an array of Film ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const films = await client.Film().list()
@@ -65,8 +67,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const films = await client.Film().list()
-  console.log(films)
+  const persons = await client.Person().list()
+  console.log(persons)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -132,9 +134,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = StarWarsSDK.test()
 
-const film = await client.Film().list()
-// film is a bare entity populated with mock response data
-console.log(film)
+const person = await client.Person().list()
+// person is the entity, populated with mock response data
+// — call person.data() for the record itself
+console.log(person)
 ```
 
 You can also use the instance method:
@@ -149,7 +152,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Film()
+const entity = client.Person()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -305,20 +308,20 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `character` |  |
+| `characters` |  |
 | `created` |  |
 | `director` |  |
 | `edited` |  |
 | `episode_id` |  |
 | `opening_crawl` |  |
-| `planet` |  |
+| `planets` |  |
 | `producer` |  |
 | `release_date` |  |
 | `species` |  |
-| `starship` |  |
+| `starships` |  |
 | `title` |  |
 | `url` |  |
-| `vehicle` |  |
+| `vehicles` |  |
 
 Operations: list, load.
 
@@ -341,7 +344,7 @@ API path: ``
 | `created` |  |
 | `edited` |  |
 | `eye_color` |  |
-| `film` |  |
+| `films` |  |
 | `gender` |  |
 | `hair_color` |  |
 | `height` |  |
@@ -350,9 +353,9 @@ API path: ``
 | `name` |  |
 | `skin_color` |  |
 | `species` |  |
-| `starship` |  |
+| `starships` |  |
 | `url` |  |
-| `vehicle` |  |
+| `vehicles` |  |
 
 Operations: list, load.
 
@@ -366,12 +369,12 @@ API path: `/people`
 | `created` |  |
 | `diameter` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `gravity` |  |
 | `name` |  |
 | `orbital_period` |  |
 | `population` |  |
-| `resident` |  |
+| `residents` |  |
 | `rotation_period` |  |
 | `surface_water` |  |
 | `terrain` |  |
@@ -391,14 +394,14 @@ API path: `/planets`
 | `created` |  |
 | `designation` |  |
 | `edited` |  |
-| `eye_color` |  |
-| `film` |  |
-| `hair_color` |  |
+| `eye_colors` |  |
+| `films` |  |
+| `hair_colors` |  |
 | `homeworld` |  |
 | `language` |  |
 | `name` |  |
-| `person` |  |
-| `skin_color` |  |
+| `people` |  |
+| `skin_colors` |  |
 | `url` |  |
 
 Operations: list, load.
@@ -409,22 +412,22 @@ API path: `/species`
 
 | Field | Description |
 | --- | --- |
+| `MGLT` |  |
 | `cargo_capacity` |  |
-| `consumable` |  |
-| `cost_in_credit` |  |
+| `consumables` |  |
+| `cost_in_credits` |  |
 | `created` |  |
 | `crew` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `hyperdrive_rating` |  |
 | `length` |  |
 | `manufacturer` |  |
 | `max_atmosphering_speed` |  |
-| `mglt` |  |
 | `model` |  |
 | `name` |  |
-| `passenger` |  |
-| `pilot` |  |
+| `passengers` |  |
+| `pilots` |  |
 | `starship_class` |  |
 | `url` |  |
 
@@ -437,19 +440,19 @@ API path: `/starships`
 | Field | Description |
 | --- | --- |
 | `cargo_capacity` |  |
-| `consumable` |  |
-| `cost_in_credit` |  |
+| `consumables` |  |
+| `cost_in_credits` |  |
 | `created` |  |
 | `crew` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `length` |  |
 | `manufacturer` |  |
 | `max_atmosphering_speed` |  |
 | `model` |  |
 | `name` |  |
-| `passenger` |  |
-| `pilot` |  |
+| `passengers` |  |
+| `pilots` |  |
 | `url` |  |
 | `vehicle_class` |  |
 
@@ -477,20 +480,20 @@ Create an instance: `const film = client.Film()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | `any[]` |  |
+| `characters` | `any[]` |  |
 | `created` | `string` |  |
 | `director` | `string` |  |
 | `edited` | `string` |  |
 | `episode_id` | `number` |  |
 | `opening_crawl` | `string` |  |
-| `planet` | `any[]` |  |
+| `planets` | `any[]` |  |
 | `producer` | `string` |  |
 | `release_date` | `string` |  |
 | `species` | `any[]` |  |
-| `starship` | `any[]` |  |
+| `starships` | `any[]` |  |
 | `title` | `string` |  |
 | `url` | `string` |  |
-| `vehicle` | `any[]` |  |
+| `vehicles` | `any[]` |  |
 
 #### Example: Load
 
@@ -529,7 +532,7 @@ Create an instance: `const person = client.Person()`
 | `created` | `string` |  |
 | `edited` | `string` |  |
 | `eye_color` | `string` |  |
-| `film` | `any[]` |  |
+| `films` | `any[]` |  |
 | `gender` | `string` |  |
 | `hair_color` | `string` |  |
 | `height` | `string` |  |
@@ -538,9 +541,9 @@ Create an instance: `const person = client.Person()`
 | `name` | `string` |  |
 | `skin_color` | `string` |  |
 | `species` | `any[]` |  |
-| `starship` | `any[]` |  |
+| `starships` | `any[]` |  |
 | `url` | `string` |  |
-| `vehicle` | `any[]` |  |
+| `vehicles` | `any[]` |  |
 
 #### Example: Load
 
@@ -574,12 +577,12 @@ Create an instance: `const planet = client.Planet()`
 | `created` | `string` |  |
 | `diameter` | `string` |  |
 | `edited` | `string` |  |
-| `film` | `any[]` |  |
+| `films` | `any[]` |  |
 | `gravity` | `string` |  |
 | `name` | `string` |  |
 | `orbital_period` | `string` |  |
 | `population` | `string` |  |
-| `resident` | `any[]` |  |
+| `residents` | `any[]` |  |
 | `rotation_period` | `string` |  |
 | `surface_water` | `string` |  |
 | `terrain` | `string` |  |
@@ -619,14 +622,14 @@ Create an instance: `const species = client.Species()`
 | `created` | `string` |  |
 | `designation` | `string` |  |
 | `edited` | `string` |  |
-| `eye_color` | `string` |  |
-| `film` | `any[]` |  |
-| `hair_color` | `string` |  |
+| `eye_colors` | `string` |  |
+| `films` | `any[]` |  |
+| `hair_colors` | `string` |  |
 | `homeworld` | `string` |  |
 | `language` | `string` |  |
 | `name` | `string` |  |
-| `person` | `any[]` |  |
-| `skin_color` | `string` |  |
+| `people` | `any[]` |  |
+| `skin_colors` | `string` |  |
 | `url` | `string` |  |
 
 #### Example: Load
@@ -657,22 +660,22 @@ Create an instance: `const starship = client.Starship()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `MGLT` | `string` |  |
 | `cargo_capacity` | `string` |  |
-| `consumable` | `string` |  |
-| `cost_in_credit` | `string` |  |
+| `consumables` | `string` |  |
+| `cost_in_credits` | `string` |  |
 | `created` | `string` |  |
 | `crew` | `string` |  |
 | `edited` | `string` |  |
-| `film` | `any[]` |  |
+| `films` | `any[]` |  |
 | `hyperdrive_rating` | `string` |  |
 | `length` | `string` |  |
 | `manufacturer` | `string` |  |
 | `max_atmosphering_speed` | `string` |  |
-| `mglt` | `string` |  |
 | `model` | `string` |  |
 | `name` | `string` |  |
-| `passenger` | `string` |  |
-| `pilot` | `any[]` |  |
+| `passengers` | `string` |  |
+| `pilots` | `any[]` |  |
 | `starship_class` | `string` |  |
 | `url` | `string` |  |
 
@@ -705,19 +708,19 @@ Create an instance: `const vehicle = client.Vehicle()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `cargo_capacity` | `string` |  |
-| `consumable` | `string` |  |
-| `cost_in_credit` | `string` |  |
+| `consumables` | `string` |  |
+| `cost_in_credits` | `string` |  |
 | `created` | `string` |  |
 | `crew` | `string` |  |
 | `edited` | `string` |  |
-| `film` | `any[]` |  |
+| `films` | `any[]` |  |
 | `length` | `string` |  |
 | `manufacturer` | `string` |  |
 | `max_atmosphering_speed` | `string` |  |
 | `model` | `string` |  |
 | `name` | `string` |  |
-| `passenger` | `string` |  |
-| `pilot` | `any[]` |  |
+| `passengers` | `string` |  |
+| `pilots` | `any[]` |  |
 | `url` | `string` |  |
 | `vehicle_class` | `string` |  |
 
@@ -803,11 +806,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const film = client.Film()
-await film.list()
+const person = client.Person()
+await person.list()
 
-// film.data() now returns the film data from the last `list`
-// film.match() returns the last match criteria
+// person.data() now returns the person data from the last `list`
+// person.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

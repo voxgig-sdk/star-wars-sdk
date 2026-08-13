@@ -10,7 +10,7 @@
 
 # Film entity data model.
 #
-# @!attribute [rw] character
+# @!attribute [rw] characters
 #   @return [Array, nil]
 #
 # @!attribute [rw] created
@@ -28,7 +28,7 @@
 # @!attribute [rw] opening_crawl
 #   @return [String, nil]
 #
-# @!attribute [rw] planet
+# @!attribute [rw] planets
 #   @return [Array, nil]
 #
 # @!attribute [rw] producer
@@ -40,7 +40,7 @@
 # @!attribute [rw] species
 #   @return [Array, nil]
 #
-# @!attribute [rw] starship
+# @!attribute [rw] starships
 #   @return [Array, nil]
 #
 # @!attribute [rw] title
@@ -49,23 +49,23 @@
 # @!attribute [rw] url
 #   @return [String, nil]
 #
-# @!attribute [rw] vehicle
+# @!attribute [rw] vehicles
 #   @return [Array, nil]
 Film = Struct.new(
-  :character,
+  :characters,
   :created,
   :director,
   :edited,
   :episode_id,
   :opening_crawl,
-  :planet,
+  :planets,
   :producer,
   :release_date,
   :species,
-  :starship,
+  :starships,
   :title,
   :url,
-  :vehicle,
+  :vehicles,
   keyword_init: true
 )
 
@@ -80,7 +80,7 @@ FilmLoadMatch = Struct.new(
 
 # Request payload for Film#list.
 #
-# @!attribute [rw] character
+# @!attribute [rw] characters
 #   @return [Array, nil]
 #
 # @!attribute [rw] created
@@ -98,7 +98,7 @@ FilmLoadMatch = Struct.new(
 # @!attribute [rw] opening_crawl
 #   @return [String, nil]
 #
-# @!attribute [rw] planet
+# @!attribute [rw] planets
 #   @return [Array, nil]
 #
 # @!attribute [rw] producer
@@ -110,7 +110,7 @@ FilmLoadMatch = Struct.new(
 # @!attribute [rw] species
 #   @return [Array, nil]
 #
-# @!attribute [rw] starship
+# @!attribute [rw] starships
 #   @return [Array, nil]
 #
 # @!attribute [rw] title
@@ -119,23 +119,23 @@ FilmLoadMatch = Struct.new(
 # @!attribute [rw] url
 #   @return [String, nil]
 #
-# @!attribute [rw] vehicle
+# @!attribute [rw] vehicles
 #   @return [Array, nil]
 FilmListMatch = Struct.new(
-  :character,
+  :characters,
   :created,
   :director,
   :edited,
   :episode_id,
   :opening_crawl,
-  :planet,
+  :planets,
   :producer,
   :release_date,
   :species,
-  :starship,
+  :starships,
   :title,
   :url,
-  :vehicle,
+  :vehicles,
   keyword_init: true
 )
 
@@ -157,7 +157,7 @@ end
 # @!attribute [rw] eye_color
 #   @return [String, nil]
 #
-# @!attribute [rw] film
+# @!attribute [rw] films
 #   @return [Array, nil]
 #
 # @!attribute [rw] gender
@@ -184,20 +184,20 @@ end
 # @!attribute [rw] species
 #   @return [Array, nil]
 #
-# @!attribute [rw] starship
+# @!attribute [rw] starships
 #   @return [Array, nil]
 #
 # @!attribute [rw] url
 #   @return [String, nil]
 #
-# @!attribute [rw] vehicle
+# @!attribute [rw] vehicles
 #   @return [Array, nil]
 Person = Struct.new(
   :birth_year,
   :created,
   :edited,
   :eye_color,
-  :film,
+  :films,
   :gender,
   :hair_color,
   :height,
@@ -206,9 +206,9 @@ Person = Struct.new(
   :name,
   :skin_color,
   :species,
-  :starship,
+  :starships,
   :url,
-  :vehicle,
+  :vehicles,
   keyword_init: true
 )
 
@@ -235,7 +235,7 @@ PersonLoadMatch = Struct.new(
 # @!attribute [rw] eye_color
 #   @return [String, nil]
 #
-# @!attribute [rw] film
+# @!attribute [rw] films
 #   @return [Array, nil]
 #
 # @!attribute [rw] gender
@@ -262,20 +262,20 @@ PersonLoadMatch = Struct.new(
 # @!attribute [rw] species
 #   @return [Array, nil]
 #
-# @!attribute [rw] starship
+# @!attribute [rw] starships
 #   @return [Array, nil]
 #
 # @!attribute [rw] url
 #   @return [String, nil]
 #
-# @!attribute [rw] vehicle
+# @!attribute [rw] vehicles
 #   @return [Array, nil]
 PersonListMatch = Struct.new(
   :birth_year,
   :created,
   :edited,
   :eye_color,
-  :film,
+  :films,
   :gender,
   :hair_color,
   :height,
@@ -284,9 +284,9 @@ PersonListMatch = Struct.new(
   :name,
   :skin_color,
   :species,
-  :starship,
+  :starships,
   :url,
-  :vehicle,
+  :vehicles,
   keyword_init: true
 )
 
@@ -304,7 +304,7 @@ PersonListMatch = Struct.new(
 # @!attribute [rw] edited
 #   @return [String, nil]
 #
-# @!attribute [rw] film
+# @!attribute [rw] films
 #   @return [Array, nil]
 #
 # @!attribute [rw] gravity
@@ -319,7 +319,7 @@ PersonListMatch = Struct.new(
 # @!attribute [rw] population
 #   @return [String, nil]
 #
-# @!attribute [rw] resident
+# @!attribute [rw] residents
 #   @return [Array, nil]
 #
 # @!attribute [rw] rotation_period
@@ -338,12 +338,12 @@ Planet = Struct.new(
   :created,
   :diameter,
   :edited,
-  :film,
+  :films,
   :gravity,
   :name,
   :orbital_period,
   :population,
-  :resident,
+  :residents,
   :rotation_period,
   :surface_water,
   :terrain,
@@ -374,7 +374,7 @@ PlanetLoadMatch = Struct.new(
 # @!attribute [rw] edited
 #   @return [String, nil]
 #
-# @!attribute [rw] film
+# @!attribute [rw] films
 #   @return [Array, nil]
 #
 # @!attribute [rw] gravity
@@ -389,7 +389,7 @@ PlanetLoadMatch = Struct.new(
 # @!attribute [rw] population
 #   @return [String, nil]
 #
-# @!attribute [rw] resident
+# @!attribute [rw] residents
 #   @return [Array, nil]
 #
 # @!attribute [rw] rotation_period
@@ -408,12 +408,12 @@ PlanetListMatch = Struct.new(
   :created,
   :diameter,
   :edited,
-  :film,
+  :films,
   :gravity,
   :name,
   :orbital_period,
   :population,
-  :resident,
+  :residents,
   :rotation_period,
   :surface_water,
   :terrain,
@@ -441,13 +441,13 @@ PlanetListMatch = Struct.new(
 # @!attribute [rw] edited
 #   @return [String, nil]
 #
-# @!attribute [rw] eye_color
+# @!attribute [rw] eye_colors
 #   @return [String, nil]
 #
-# @!attribute [rw] film
+# @!attribute [rw] films
 #   @return [Array, nil]
 #
-# @!attribute [rw] hair_color
+# @!attribute [rw] hair_colors
 #   @return [String, nil]
 #
 # @!attribute [rw] homeworld
@@ -459,10 +459,10 @@ PlanetListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] person
+# @!attribute [rw] people
 #   @return [Array, nil]
 #
-# @!attribute [rw] skin_color
+# @!attribute [rw] skin_colors
 #   @return [String, nil]
 #
 # @!attribute [rw] url
@@ -474,14 +474,14 @@ Species = Struct.new(
   :created,
   :designation,
   :edited,
-  :eye_color,
-  :film,
-  :hair_color,
+  :eye_colors,
+  :films,
+  :hair_colors,
   :homeworld,
   :language,
   :name,
-  :person,
-  :skin_color,
+  :people,
+  :skin_colors,
   :url,
   keyword_init: true
 )
@@ -515,13 +515,13 @@ SpeciesLoadMatch = Struct.new(
 # @!attribute [rw] edited
 #   @return [String, nil]
 #
-# @!attribute [rw] eye_color
+# @!attribute [rw] eye_colors
 #   @return [String, nil]
 #
-# @!attribute [rw] film
+# @!attribute [rw] films
 #   @return [Array, nil]
 #
-# @!attribute [rw] hair_color
+# @!attribute [rw] hair_colors
 #   @return [String, nil]
 #
 # @!attribute [rw] homeworld
@@ -533,10 +533,10 @@ SpeciesLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] person
+# @!attribute [rw] people
 #   @return [Array, nil]
 #
-# @!attribute [rw] skin_color
+# @!attribute [rw] skin_colors
 #   @return [String, nil]
 #
 # @!attribute [rw] url
@@ -548,27 +548,30 @@ SpeciesListMatch = Struct.new(
   :created,
   :designation,
   :edited,
-  :eye_color,
-  :film,
-  :hair_color,
+  :eye_colors,
+  :films,
+  :hair_colors,
   :homeworld,
   :language,
   :name,
-  :person,
-  :skin_color,
+  :people,
+  :skin_colors,
   :url,
   keyword_init: true
 )
 
 # Starship entity data model.
 #
+# @!attribute [rw] MGLT
+#   @return [String, nil]
+#
 # @!attribute [rw] cargo_capacity
 #   @return [String, nil]
 #
-# @!attribute [rw] consumable
+# @!attribute [rw] consumables
 #   @return [String, nil]
 #
-# @!attribute [rw] cost_in_credit
+# @!attribute [rw] cost_in_credits
 #   @return [String, nil]
 #
 # @!attribute [rw] created
@@ -580,7 +583,7 @@ SpeciesListMatch = Struct.new(
 # @!attribute [rw] edited
 #   @return [String, nil]
 #
-# @!attribute [rw] film
+# @!attribute [rw] films
 #   @return [Array, nil]
 #
 # @!attribute [rw] hyperdrive_rating
@@ -595,19 +598,16 @@ SpeciesListMatch = Struct.new(
 # @!attribute [rw] max_atmosphering_speed
 #   @return [String, nil]
 #
-# @!attribute [rw] mglt
-#   @return [String, nil]
-#
 # @!attribute [rw] model
 #   @return [String, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] passenger
+# @!attribute [rw] passengers
 #   @return [String, nil]
 #
-# @!attribute [rw] pilot
+# @!attribute [rw] pilots
 #   @return [Array, nil]
 #
 # @!attribute [rw] starship_class
@@ -616,22 +616,22 @@ SpeciesListMatch = Struct.new(
 # @!attribute [rw] url
 #   @return [String, nil]
 Starship = Struct.new(
+  :MGLT,
   :cargo_capacity,
-  :consumable,
-  :cost_in_credit,
+  :consumables,
+  :cost_in_credits,
   :created,
   :crew,
   :edited,
-  :film,
+  :films,
   :hyperdrive_rating,
   :length,
   :manufacturer,
   :max_atmosphering_speed,
-  :mglt,
   :model,
   :name,
-  :passenger,
-  :pilot,
+  :passengers,
+  :pilots,
   :starship_class,
   :url,
   keyword_init: true
@@ -648,13 +648,16 @@ StarshipLoadMatch = Struct.new(
 
 # Request payload for Starship#list.
 #
+# @!attribute [rw] MGLT
+#   @return [String, nil]
+#
 # @!attribute [rw] cargo_capacity
 #   @return [String, nil]
 #
-# @!attribute [rw] consumable
+# @!attribute [rw] consumables
 #   @return [String, nil]
 #
-# @!attribute [rw] cost_in_credit
+# @!attribute [rw] cost_in_credits
 #   @return [String, nil]
 #
 # @!attribute [rw] created
@@ -666,7 +669,7 @@ StarshipLoadMatch = Struct.new(
 # @!attribute [rw] edited
 #   @return [String, nil]
 #
-# @!attribute [rw] film
+# @!attribute [rw] films
 #   @return [Array, nil]
 #
 # @!attribute [rw] hyperdrive_rating
@@ -681,19 +684,16 @@ StarshipLoadMatch = Struct.new(
 # @!attribute [rw] max_atmosphering_speed
 #   @return [String, nil]
 #
-# @!attribute [rw] mglt
-#   @return [String, nil]
-#
 # @!attribute [rw] model
 #   @return [String, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] passenger
+# @!attribute [rw] passengers
 #   @return [String, nil]
 #
-# @!attribute [rw] pilot
+# @!attribute [rw] pilots
 #   @return [Array, nil]
 #
 # @!attribute [rw] starship_class
@@ -702,22 +702,22 @@ StarshipLoadMatch = Struct.new(
 # @!attribute [rw] url
 #   @return [String, nil]
 StarshipListMatch = Struct.new(
+  :MGLT,
   :cargo_capacity,
-  :consumable,
-  :cost_in_credit,
+  :consumables,
+  :cost_in_credits,
   :created,
   :crew,
   :edited,
-  :film,
+  :films,
   :hyperdrive_rating,
   :length,
   :manufacturer,
   :max_atmosphering_speed,
-  :mglt,
   :model,
   :name,
-  :passenger,
-  :pilot,
+  :passengers,
+  :pilots,
   :starship_class,
   :url,
   keyword_init: true
@@ -728,10 +728,10 @@ StarshipListMatch = Struct.new(
 # @!attribute [rw] cargo_capacity
 #   @return [String, nil]
 #
-# @!attribute [rw] consumable
+# @!attribute [rw] consumables
 #   @return [String, nil]
 #
-# @!attribute [rw] cost_in_credit
+# @!attribute [rw] cost_in_credits
 #   @return [String, nil]
 #
 # @!attribute [rw] created
@@ -743,7 +743,7 @@ StarshipListMatch = Struct.new(
 # @!attribute [rw] edited
 #   @return [String, nil]
 #
-# @!attribute [rw] film
+# @!attribute [rw] films
 #   @return [Array, nil]
 #
 # @!attribute [rw] length
@@ -761,10 +761,10 @@ StarshipListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] passenger
+# @!attribute [rw] passengers
 #   @return [String, nil]
 #
-# @!attribute [rw] pilot
+# @!attribute [rw] pilots
 #   @return [Array, nil]
 #
 # @!attribute [rw] url
@@ -774,19 +774,19 @@ StarshipListMatch = Struct.new(
 #   @return [String, nil]
 Vehicle = Struct.new(
   :cargo_capacity,
-  :consumable,
-  :cost_in_credit,
+  :consumables,
+  :cost_in_credits,
   :created,
   :crew,
   :edited,
-  :film,
+  :films,
   :length,
   :manufacturer,
   :max_atmosphering_speed,
   :model,
   :name,
-  :passenger,
-  :pilot,
+  :passengers,
+  :pilots,
   :url,
   :vehicle_class,
   keyword_init: true
@@ -806,10 +806,10 @@ VehicleLoadMatch = Struct.new(
 # @!attribute [rw] cargo_capacity
 #   @return [String, nil]
 #
-# @!attribute [rw] consumable
+# @!attribute [rw] consumables
 #   @return [String, nil]
 #
-# @!attribute [rw] cost_in_credit
+# @!attribute [rw] cost_in_credits
 #   @return [String, nil]
 #
 # @!attribute [rw] created
@@ -821,7 +821,7 @@ VehicleLoadMatch = Struct.new(
 # @!attribute [rw] edited
 #   @return [String, nil]
 #
-# @!attribute [rw] film
+# @!attribute [rw] films
 #   @return [Array, nil]
 #
 # @!attribute [rw] length
@@ -839,10 +839,10 @@ VehicleLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] passenger
+# @!attribute [rw] passengers
 #   @return [String, nil]
 #
-# @!attribute [rw] pilot
+# @!attribute [rw] pilots
 #   @return [Array, nil]
 #
 # @!attribute [rw] url
@@ -852,19 +852,19 @@ VehicleLoadMatch = Struct.new(
 #   @return [String, nil]
 VehicleListMatch = Struct.new(
   :cargo_capacity,
-  :consumable,
-  :cost_in_credit,
+  :consumables,
+  :cost_in_credits,
   :created,
   :crew,
   :edited,
-  :film,
+  :films,
   :length,
   :manufacturer,
   :max_atmosphering_speed,
   :model,
   :name,
-  :passenger,
-  :pilot,
+  :passengers,
+  :pilots,
   :url,
   :vehicle_class,
   keyword_init: true

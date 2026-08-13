@@ -26,8 +26,8 @@ import {
 describe('PeopleListEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when STARWARS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('STARWARS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when STAR_WARS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('STAR_WARS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = StarWarsSDK.test()

@@ -6,24 +6,28 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/star-wars-sdk/go/core"
+)
 
 // Film is the typed data model for the film entity.
 type Film struct {
-	Character *[]any `json:"character,omitempty"`
+	Characters *[]any `json:"characters,omitempty"`
 	Created *string `json:"created,omitempty"`
 	Director *string `json:"director,omitempty"`
 	Edited *string `json:"edited,omitempty"`
 	EpisodeId *int `json:"episode_id,omitempty"`
 	OpeningCrawl *string `json:"opening_crawl,omitempty"`
-	Planet *[]any `json:"planet,omitempty"`
+	Planets *[]any `json:"planets,omitempty"`
 	Producer *string `json:"producer,omitempty"`
 	ReleaseDate *string `json:"release_date,omitempty"`
 	Species *[]any `json:"species,omitempty"`
-	Starship *[]any `json:"starship,omitempty"`
+	Starships *[]any `json:"starships,omitempty"`
 	Title *string `json:"title,omitempty"`
 	Url *string `json:"url,omitempty"`
-	Vehicle *[]any `json:"vehicle,omitempty"`
+	Vehicles *[]any `json:"vehicles,omitempty"`
 }
 
 // FilmLoadMatch is the typed request payload for Film.LoadTyped.
@@ -33,20 +37,20 @@ type FilmLoadMatch struct {
 
 // FilmListMatch is the typed request payload for Film.ListTyped.
 type FilmListMatch struct {
-	Character *[]any `json:"character,omitempty"`
+	Characters *[]any `json:"characters,omitempty"`
 	Created *string `json:"created,omitempty"`
 	Director *string `json:"director,omitempty"`
 	Edited *string `json:"edited,omitempty"`
 	EpisodeId *int `json:"episode_id,omitempty"`
 	OpeningCrawl *string `json:"opening_crawl,omitempty"`
-	Planet *[]any `json:"planet,omitempty"`
+	Planets *[]any `json:"planets,omitempty"`
 	Producer *string `json:"producer,omitempty"`
 	ReleaseDate *string `json:"release_date,omitempty"`
 	Species *[]any `json:"species,omitempty"`
-	Starship *[]any `json:"starship,omitempty"`
+	Starships *[]any `json:"starships,omitempty"`
 	Title *string `json:"title,omitempty"`
 	Url *string `json:"url,omitempty"`
-	Vehicle *[]any `json:"vehicle,omitempty"`
+	Vehicles *[]any `json:"vehicles,omitempty"`
 }
 
 // PeopleList is the typed data model for the people_list entity.
@@ -59,7 +63,7 @@ type Person struct {
 	Created *string `json:"created,omitempty"`
 	Edited *string `json:"edited,omitempty"`
 	EyeColor *string `json:"eye_color,omitempty"`
-	Film *[]any `json:"film,omitempty"`
+	Films *[]any `json:"films,omitempty"`
 	Gender *string `json:"gender,omitempty"`
 	HairColor *string `json:"hair_color,omitempty"`
 	Height *string `json:"height,omitempty"`
@@ -68,9 +72,9 @@ type Person struct {
 	Name *string `json:"name,omitempty"`
 	SkinColor *string `json:"skin_color,omitempty"`
 	Species *[]any `json:"species,omitempty"`
-	Starship *[]any `json:"starship,omitempty"`
+	Starships *[]any `json:"starships,omitempty"`
 	Url *string `json:"url,omitempty"`
-	Vehicle *[]any `json:"vehicle,omitempty"`
+	Vehicles *[]any `json:"vehicles,omitempty"`
 }
 
 // PersonLoadMatch is the typed request payload for Person.LoadTyped.
@@ -84,7 +88,7 @@ type PersonListMatch struct {
 	Created *string `json:"created,omitempty"`
 	Edited *string `json:"edited,omitempty"`
 	EyeColor *string `json:"eye_color,omitempty"`
-	Film *[]any `json:"film,omitempty"`
+	Films *[]any `json:"films,omitempty"`
 	Gender *string `json:"gender,omitempty"`
 	HairColor *string `json:"hair_color,omitempty"`
 	Height *string `json:"height,omitempty"`
@@ -93,9 +97,9 @@ type PersonListMatch struct {
 	Name *string `json:"name,omitempty"`
 	SkinColor *string `json:"skin_color,omitempty"`
 	Species *[]any `json:"species,omitempty"`
-	Starship *[]any `json:"starship,omitempty"`
+	Starships *[]any `json:"starships,omitempty"`
 	Url *string `json:"url,omitempty"`
-	Vehicle *[]any `json:"vehicle,omitempty"`
+	Vehicles *[]any `json:"vehicles,omitempty"`
 }
 
 // Planet is the typed data model for the planet entity.
@@ -104,12 +108,12 @@ type Planet struct {
 	Created *string `json:"created,omitempty"`
 	Diameter *string `json:"diameter,omitempty"`
 	Edited *string `json:"edited,omitempty"`
-	Film *[]any `json:"film,omitempty"`
+	Films *[]any `json:"films,omitempty"`
 	Gravity *string `json:"gravity,omitempty"`
 	Name *string `json:"name,omitempty"`
 	OrbitalPeriod *string `json:"orbital_period,omitempty"`
 	Population *string `json:"population,omitempty"`
-	Resident *[]any `json:"resident,omitempty"`
+	Residents *[]any `json:"residents,omitempty"`
 	RotationPeriod *string `json:"rotation_period,omitempty"`
 	SurfaceWater *string `json:"surface_water,omitempty"`
 	Terrain *string `json:"terrain,omitempty"`
@@ -127,12 +131,12 @@ type PlanetListMatch struct {
 	Created *string `json:"created,omitempty"`
 	Diameter *string `json:"diameter,omitempty"`
 	Edited *string `json:"edited,omitempty"`
-	Film *[]any `json:"film,omitempty"`
+	Films *[]any `json:"films,omitempty"`
 	Gravity *string `json:"gravity,omitempty"`
 	Name *string `json:"name,omitempty"`
 	OrbitalPeriod *string `json:"orbital_period,omitempty"`
 	Population *string `json:"population,omitempty"`
-	Resident *[]any `json:"resident,omitempty"`
+	Residents *[]any `json:"residents,omitempty"`
 	RotationPeriod *string `json:"rotation_period,omitempty"`
 	SurfaceWater *string `json:"surface_water,omitempty"`
 	Terrain *string `json:"terrain,omitempty"`
@@ -147,14 +151,14 @@ type Species struct {
 	Created *string `json:"created,omitempty"`
 	Designation *string `json:"designation,omitempty"`
 	Edited *string `json:"edited,omitempty"`
-	EyeColor *string `json:"eye_color,omitempty"`
-	Film *[]any `json:"film,omitempty"`
-	HairColor *string `json:"hair_color,omitempty"`
+	EyeColors *string `json:"eye_colors,omitempty"`
+	Films *[]any `json:"films,omitempty"`
+	HairColors *string `json:"hair_colors,omitempty"`
 	Homeworld *string `json:"homeworld,omitempty"`
 	Language *string `json:"language,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Person *[]any `json:"person,omitempty"`
-	SkinColor *string `json:"skin_color,omitempty"`
+	People *[]any `json:"people,omitempty"`
+	SkinColors *string `json:"skin_colors,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
 
@@ -171,35 +175,35 @@ type SpeciesListMatch struct {
 	Created *string `json:"created,omitempty"`
 	Designation *string `json:"designation,omitempty"`
 	Edited *string `json:"edited,omitempty"`
-	EyeColor *string `json:"eye_color,omitempty"`
-	Film *[]any `json:"film,omitempty"`
-	HairColor *string `json:"hair_color,omitempty"`
+	EyeColors *string `json:"eye_colors,omitempty"`
+	Films *[]any `json:"films,omitempty"`
+	HairColors *string `json:"hair_colors,omitempty"`
 	Homeworld *string `json:"homeworld,omitempty"`
 	Language *string `json:"language,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Person *[]any `json:"person,omitempty"`
-	SkinColor *string `json:"skin_color,omitempty"`
+	People *[]any `json:"people,omitempty"`
+	SkinColors *string `json:"skin_colors,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
 
 // Starship is the typed data model for the starship entity.
 type Starship struct {
+	MGLT *string `json:"MGLT,omitempty"`
 	CargoCapacity *string `json:"cargo_capacity,omitempty"`
-	Consumable *string `json:"consumable,omitempty"`
-	CostInCredit *string `json:"cost_in_credit,omitempty"`
+	Consumables *string `json:"consumables,omitempty"`
+	CostInCredits *string `json:"cost_in_credits,omitempty"`
 	Created *string `json:"created,omitempty"`
 	Crew *string `json:"crew,omitempty"`
 	Edited *string `json:"edited,omitempty"`
-	Film *[]any `json:"film,omitempty"`
+	Films *[]any `json:"films,omitempty"`
 	HyperdriveRating *string `json:"hyperdrive_rating,omitempty"`
 	Length *string `json:"length,omitempty"`
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	MaxAtmospheringSpeed *string `json:"max_atmosphering_speed,omitempty"`
-	Mglt *string `json:"mglt,omitempty"`
 	Model *string `json:"model,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Passenger *string `json:"passenger,omitempty"`
-	Pilot *[]any `json:"pilot,omitempty"`
+	Passengers *string `json:"passengers,omitempty"`
+	Pilots *[]any `json:"pilots,omitempty"`
 	StarshipClass *string `json:"starship_class,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
@@ -211,22 +215,22 @@ type StarshipLoadMatch struct {
 
 // StarshipListMatch is the typed request payload for Starship.ListTyped.
 type StarshipListMatch struct {
+	MGLT *string `json:"MGLT,omitempty"`
 	CargoCapacity *string `json:"cargo_capacity,omitempty"`
-	Consumable *string `json:"consumable,omitempty"`
-	CostInCredit *string `json:"cost_in_credit,omitempty"`
+	Consumables *string `json:"consumables,omitempty"`
+	CostInCredits *string `json:"cost_in_credits,omitempty"`
 	Created *string `json:"created,omitempty"`
 	Crew *string `json:"crew,omitempty"`
 	Edited *string `json:"edited,omitempty"`
-	Film *[]any `json:"film,omitempty"`
+	Films *[]any `json:"films,omitempty"`
 	HyperdriveRating *string `json:"hyperdrive_rating,omitempty"`
 	Length *string `json:"length,omitempty"`
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	MaxAtmospheringSpeed *string `json:"max_atmosphering_speed,omitempty"`
-	Mglt *string `json:"mglt,omitempty"`
 	Model *string `json:"model,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Passenger *string `json:"passenger,omitempty"`
-	Pilot *[]any `json:"pilot,omitempty"`
+	Passengers *string `json:"passengers,omitempty"`
+	Pilots *[]any `json:"pilots,omitempty"`
 	StarshipClass *string `json:"starship_class,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
@@ -234,19 +238,19 @@ type StarshipListMatch struct {
 // Vehicle is the typed data model for the vehicle entity.
 type Vehicle struct {
 	CargoCapacity *string `json:"cargo_capacity,omitempty"`
-	Consumable *string `json:"consumable,omitempty"`
-	CostInCredit *string `json:"cost_in_credit,omitempty"`
+	Consumables *string `json:"consumables,omitempty"`
+	CostInCredits *string `json:"cost_in_credits,omitempty"`
 	Created *string `json:"created,omitempty"`
 	Crew *string `json:"crew,omitempty"`
 	Edited *string `json:"edited,omitempty"`
-	Film *[]any `json:"film,omitempty"`
+	Films *[]any `json:"films,omitempty"`
 	Length *string `json:"length,omitempty"`
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	MaxAtmospheringSpeed *string `json:"max_atmosphering_speed,omitempty"`
 	Model *string `json:"model,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Passenger *string `json:"passenger,omitempty"`
-	Pilot *[]any `json:"pilot,omitempty"`
+	Passengers *string `json:"passengers,omitempty"`
+	Pilots *[]any `json:"pilots,omitempty"`
 	Url *string `json:"url,omitempty"`
 	VehicleClass *string `json:"vehicle_class,omitempty"`
 }
@@ -259,19 +263,19 @@ type VehicleLoadMatch struct {
 // VehicleListMatch is the typed request payload for Vehicle.ListTyped.
 type VehicleListMatch struct {
 	CargoCapacity *string `json:"cargo_capacity,omitempty"`
-	Consumable *string `json:"consumable,omitempty"`
-	CostInCredit *string `json:"cost_in_credit,omitempty"`
+	Consumables *string `json:"consumables,omitempty"`
+	CostInCredits *string `json:"cost_in_credits,omitempty"`
 	Created *string `json:"created,omitempty"`
 	Crew *string `json:"crew,omitempty"`
 	Edited *string `json:"edited,omitempty"`
-	Film *[]any `json:"film,omitempty"`
+	Films *[]any `json:"films,omitempty"`
 	Length *string `json:"length,omitempty"`
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	MaxAtmospheringSpeed *string `json:"max_atmosphering_speed,omitempty"`
 	Model *string `json:"model,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Passenger *string `json:"passenger,omitempty"`
-	Pilot *[]any `json:"pilot,omitempty"`
+	Passengers *string `json:"passengers,omitempty"`
+	Pilots *[]any `json:"pilots,omitempty"`
 	Url *string `json:"url,omitempty"`
 	VehicleClass *string `json:"vehicle_class,omitempty"`
 }
@@ -288,12 +292,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -305,12 +323,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

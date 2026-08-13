@@ -43,8 +43,8 @@ class StarWarsTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('STARWARS_TEST_LIVE');
-        $override = self::getenv('STARWARS_TEST_OVERRIDE');
+        $live = self::getenv('STAR_WARS_TEST_LIVE');
+        $override = self::getenv('STAR_WARS_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class StarWarsTestRunner
             }
         }
 
-        $explain = self::getenv('STARWARS_TEST_EXPLAIN');
+        $explain = self::getenv('STAR_WARS_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['STARWARS_TEST_EXPLAIN'] = $explain;
+            $m['STAR_WARS_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

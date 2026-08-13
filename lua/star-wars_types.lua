@@ -7,39 +7,39 @@
 -- edit by hand.
 
 ---@class Film
----@field character? table
+---@field characters? table
 ---@field created? string
 ---@field director? string
 ---@field edited? string
 ---@field episode_id? number
 ---@field opening_crawl? string
----@field planet? table
+---@field planets? table
 ---@field producer? string
 ---@field release_date? string
 ---@field species? table
----@field starship? table
+---@field starships? table
 ---@field title? string
 ---@field url? string
----@field vehicle? table
+---@field vehicles? table
 
 ---@class FilmLoadMatch
 ---@field id number
 
 ---@class FilmListMatch
----@field character? table
+---@field characters? table
 ---@field created? string
 ---@field director? string
 ---@field edited? string
 ---@field episode_id? number
 ---@field opening_crawl? string
----@field planet? table
+---@field planets? table
 ---@field producer? string
 ---@field release_date? string
 ---@field species? table
----@field starship? table
+---@field starships? table
 ---@field title? string
 ---@field url? string
----@field vehicle? table
+---@field vehicles? table
 
 ---@class PeopleList
 
@@ -48,7 +48,7 @@
 ---@field created? string
 ---@field edited? string
 ---@field eye_color? string
----@field film? table
+---@field films? table
 ---@field gender? string
 ---@field hair_color? string
 ---@field height? string
@@ -57,9 +57,9 @@
 ---@field name? string
 ---@field skin_color? string
 ---@field species? table
----@field starship? table
+---@field starships? table
 ---@field url? string
----@field vehicle? table
+---@field vehicles? table
 
 ---@class PersonLoadMatch
 ---@field id number
@@ -69,7 +69,7 @@
 ---@field created? string
 ---@field edited? string
 ---@field eye_color? string
----@field film? table
+---@field films? table
 ---@field gender? string
 ---@field hair_color? string
 ---@field height? string
@@ -78,21 +78,21 @@
 ---@field name? string
 ---@field skin_color? string
 ---@field species? table
----@field starship? table
+---@field starships? table
 ---@field url? string
----@field vehicle? table
+---@field vehicles? table
 
 ---@class Planet
 ---@field climate? string
 ---@field created? string
 ---@field diameter? string
 ---@field edited? string
----@field film? table
+---@field films? table
 ---@field gravity? string
 ---@field name? string
 ---@field orbital_period? string
 ---@field population? string
----@field resident? table
+---@field residents? table
 ---@field rotation_period? string
 ---@field surface_water? string
 ---@field terrain? string
@@ -106,12 +106,12 @@
 ---@field created? string
 ---@field diameter? string
 ---@field edited? string
----@field film? table
+---@field films? table
 ---@field gravity? string
 ---@field name? string
 ---@field orbital_period? string
 ---@field population? string
----@field resident? table
+---@field residents? table
 ---@field rotation_period? string
 ---@field surface_water? string
 ---@field terrain? string
@@ -124,14 +124,14 @@
 ---@field created? string
 ---@field designation? string
 ---@field edited? string
----@field eye_color? string
----@field film? table
----@field hair_color? string
+---@field eye_colors? string
+---@field films? table
+---@field hair_colors? string
 ---@field homeworld? string
 ---@field language? string
 ---@field name? string
----@field person? table
----@field skin_color? string
+---@field people? table
+---@field skin_colors? string
 ---@field url? string
 
 ---@class SpeciesLoadMatch
@@ -144,33 +144,33 @@
 ---@field created? string
 ---@field designation? string
 ---@field edited? string
----@field eye_color? string
----@field film? table
----@field hair_color? string
+---@field eye_colors? string
+---@field films? table
+---@field hair_colors? string
 ---@field homeworld? string
 ---@field language? string
 ---@field name? string
----@field person? table
----@field skin_color? string
+---@field people? table
+---@field skin_colors? string
 ---@field url? string
 
 ---@class Starship
+---@field MGLT? string
 ---@field cargo_capacity? string
----@field consumable? string
----@field cost_in_credit? string
+---@field consumables? string
+---@field cost_in_credits? string
 ---@field created? string
 ---@field crew? string
 ---@field edited? string
----@field film? table
+---@field films? table
 ---@field hyperdrive_rating? string
 ---@field length? string
 ---@field manufacturer? string
 ---@field max_atmosphering_speed? string
----@field mglt? string
 ---@field model? string
 ---@field name? string
----@field passenger? string
----@field pilot? table
+---@field passengers? string
+---@field pilots? table
 ---@field starship_class? string
 ---@field url? string
 
@@ -178,40 +178,40 @@
 ---@field id number
 
 ---@class StarshipListMatch
+---@field MGLT? string
 ---@field cargo_capacity? string
----@field consumable? string
----@field cost_in_credit? string
+---@field consumables? string
+---@field cost_in_credits? string
 ---@field created? string
 ---@field crew? string
 ---@field edited? string
----@field film? table
+---@field films? table
 ---@field hyperdrive_rating? string
 ---@field length? string
 ---@field manufacturer? string
 ---@field max_atmosphering_speed? string
----@field mglt? string
 ---@field model? string
 ---@field name? string
----@field passenger? string
----@field pilot? table
+---@field passengers? string
+---@field pilots? table
 ---@field starship_class? string
 ---@field url? string
 
 ---@class Vehicle
 ---@field cargo_capacity? string
----@field consumable? string
----@field cost_in_credit? string
+---@field consumables? string
+---@field cost_in_credits? string
 ---@field created? string
 ---@field crew? string
 ---@field edited? string
----@field film? table
+---@field films? table
 ---@field length? string
 ---@field manufacturer? string
 ---@field max_atmosphering_speed? string
 ---@field model? string
 ---@field name? string
----@field passenger? string
----@field pilot? table
+---@field passengers? string
+---@field pilots? table
 ---@field url? string
 ---@field vehicle_class? string
 
@@ -220,19 +220,19 @@
 
 ---@class VehicleListMatch
 ---@field cargo_capacity? string
----@field consumable? string
----@field cost_in_credit? string
+---@field consumables? string
+---@field cost_in_credits? string
 ---@field created? string
 ---@field crew? string
 ---@field edited? string
----@field film? table
+---@field films? table
 ---@field length? string
 ---@field manufacturer? string
 ---@field max_atmosphering_speed? string
 ---@field model? string
 ---@field name? string
----@field passenger? string
----@field pilot? table
+---@field passengers? string
+---@field pilots? table
 ---@field url? string
 ---@field vehicle_class? string
 

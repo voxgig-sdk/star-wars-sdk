@@ -26,8 +26,8 @@ import {
 describe('PlanetEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when STARWARS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('STARWARS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when STAR_WARS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('STAR_WARS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = StarWarsSDK.test()
@@ -63,7 +63,7 @@ describe('PlanetEntity', async () => {
     const planet_ref01_ent = client.Planet()
     const planet_ref01_match: any = {}
 
-    const planet_ref01_list = await planet_ref01_ent.list(planet_ref01_match)
+    const planet_ref01_list = (await planet_ref01_ent.list(planet_ref01_match)).map((e: any) => e.data())
 
 
 

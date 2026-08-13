@@ -114,11 +114,11 @@ def film_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "STARWARS_TEST_FILM_ENTID" => {},
-    "STARWARS_TEST_LIVE" => "FALSE",
+    "STAR_WARS_TEST_FILM_ENTID" => {},
+    "STAR_WARS_TEST_LIVE" => "FALSE",
   })
 
-  live = env["STARWARS_TEST_LIVE"] == "TRUE"
+  live = env["STAR_WARS_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

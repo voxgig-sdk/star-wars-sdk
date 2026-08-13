@@ -8,6 +8,7 @@ guide: {
   entity: film: {
     path: "/films": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/films/{id}": {
       op: load: method: *GET
@@ -20,6 +21,7 @@ guide: {
   entity: person: {
     path: "/people": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/people/{id}": {
       op: load: method: *GET
@@ -29,6 +31,7 @@ guide: {
   entity: planet: {
     path: "/planets": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/planets/{id}": {
       op: load: method: *GET
@@ -38,6 +41,7 @@ guide: {
   entity: species: {
     path: "/species": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/species/{id}": {
       op: load: method: *GET
@@ -47,6 +51,7 @@ guide: {
   entity: starship: {
     path: "/starships": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/starships/{id}": {
       op: load: method: *GET
@@ -56,6 +61,7 @@ guide: {
   entity: vehicle: {
     path: "/vehicles": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
     path: "/vehicles/{id}": {
       op: load: method: *GET

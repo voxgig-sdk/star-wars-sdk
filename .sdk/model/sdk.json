@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "film": {
           "active": true,
@@ -27,7 +32,7 @@
           "fields": [
             {
               "active": true,
-              "name": "character",
+              "name": "characters",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -63,7 +68,7 @@
             },
             {
               "active": true,
-              "name": "planet",
+              "name": "planets",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -87,7 +92,7 @@
             },
             {
               "active": true,
-              "name": "starship",
+              "name": "starships",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -105,7 +110,7 @@
             },
             {
               "active": true,
-              "name": "vehicle",
+              "name": "vehicles",
               "req": false,
               "type": "`$ARRAY`"
             }
@@ -139,6 +144,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/films",
                   "parts": [
@@ -152,7 +158,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -175,6 +181,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/films/{id}",
                   "parts": [
@@ -242,7 +249,7 @@
             },
             {
               "active": true,
-              "name": "film",
+              "name": "films",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -296,7 +303,7 @@
             },
             {
               "active": true,
-              "name": "starship",
+              "name": "starships",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -308,7 +315,7 @@
             },
             {
               "active": true,
-              "name": "vehicle",
+              "name": "vehicles",
               "req": false,
               "type": "`$ARRAY`"
             }
@@ -342,6 +349,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/people",
                   "parts": [
@@ -355,7 +363,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -378,6 +386,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/people/{id}",
                   "parts": [
@@ -433,7 +442,7 @@
             },
             {
               "active": true,
-              "name": "film",
+              "name": "films",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -463,7 +472,7 @@
             },
             {
               "active": true,
-              "name": "resident",
+              "name": "residents",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -521,6 +530,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/planets",
                   "parts": [
@@ -534,7 +544,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -557,6 +567,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/planets/{id}",
                   "parts": [
@@ -624,19 +635,19 @@
             },
             {
               "active": true,
-              "name": "eye_color",
+              "name": "eye_colors",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "film",
+              "name": "films",
               "req": false,
               "type": "`$ARRAY`"
             },
             {
               "active": true,
-              "name": "hair_color",
+              "name": "hair_colors",
               "req": false,
               "type": "`$STRING`"
             },
@@ -660,13 +671,13 @@
             },
             {
               "active": true,
-              "name": "person",
+              "name": "people",
               "req": false,
               "type": "`$ARRAY`"
             },
             {
               "active": true,
-              "name": "skin_color",
+              "name": "skin_colors",
               "req": false,
               "type": "`$STRING`"
             },
@@ -706,6 +717,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/species",
                   "parts": [
@@ -719,7 +731,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -742,6 +754,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/species/{id}",
                   "parts": [
@@ -773,19 +786,25 @@
           "fields": [
             {
               "active": true,
+              "name": "MGLT",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "cargo_capacity",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "consumable",
+              "name": "consumables",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "cost_in_credit",
+              "name": "cost_in_credits",
               "req": false,
               "type": "`$STRING`"
             },
@@ -809,7 +828,7 @@
             },
             {
               "active": true,
-              "name": "film",
+              "name": "films",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -839,12 +858,6 @@
             },
             {
               "active": true,
-              "name": "mglt",
-              "req": false,
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
               "name": "model",
               "req": false,
               "type": "`$STRING`"
@@ -857,13 +870,13 @@
             },
             {
               "active": true,
-              "name": "passenger",
+              "name": "passengers",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "pilot",
+              "name": "pilots",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -909,6 +922,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/starships",
                   "parts": [
@@ -922,7 +936,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -945,6 +959,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/starships/{id}",
                   "parts": [
@@ -982,13 +997,13 @@
             },
             {
               "active": true,
-              "name": "consumable",
+              "name": "consumables",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "cost_in_credit",
+              "name": "cost_in_credits",
               "req": false,
               "type": "`$STRING`"
             },
@@ -1012,7 +1027,7 @@
             },
             {
               "active": true,
-              "name": "film",
+              "name": "films",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1048,13 +1063,13 @@
             },
             {
               "active": true,
-              "name": "passenger",
+              "name": "passengers",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "pilot",
+              "name": "pilots",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1100,6 +1115,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/vehicles",
                   "parts": [
@@ -1113,7 +1129,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.results`"
                   }
                 }
               ]
@@ -1136,6 +1152,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/vehicles/{id}",
                   "parts": [
@@ -1572,18 +1589,41 @@
         "website": "https://swapi.dev"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "star-wars"
+            "goversion": "",
+            "name": "star-wars",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1605,22 +1645,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "star-wars"
+            "goversion": "",
+            "name": "star-wars",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1659,21 +1717,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "star-wars"
+            "goversion": "",
+            "name": "star-wars",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1712,12 +1788,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -1729,10 +1810,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "star-wars"
+            "goversion": "",
+            "name": "star-wars",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1754,22 +1848,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "star-wars"
+            "goversion": "",
+            "name": "star-wars",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1791,13 +1903,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1809,10 +1926,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "star-wars"
+            "goversion": "",
+            "name": "star-wars",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1834,13 +1964,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1857,10 +1992,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "star-wars"
+            "goversion": "",
+            "name": "star-wars",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1882,13 +2030,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -1911,10 +2064,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "star-wars"
+            "goversion": "",
+            "name": "star-wars",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1936,9 +2102,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

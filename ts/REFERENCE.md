@@ -188,20 +188,20 @@ const film = client.Film()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | `any[]` | No |  |
+| `characters` | `any[]` | No |  |
 | `created` | `string` | No |  |
 | `director` | `string` | No |  |
 | `edited` | `string` | No |  |
 | `episode_id` | `number` | No |  |
 | `opening_crawl` | `string` | No |  |
-| `planet` | `any[]` | No |  |
+| `planets` | `any[]` | No |  |
 | `producer` | `string` | No |  |
 | `release_date` | `string` | No |  |
 | `species` | `any[]` | No |  |
-| `starship` | `any[]` | No |  |
+| `starships` | `any[]` | No |  |
 | `title` | `string` | No |  |
 | `url` | `string` | No |  |
-| `vehicle` | `any[]` | No |  |
+| `vehicles` | `any[]` | No |  |
 
 ### Operations
 
@@ -297,7 +297,7 @@ const person = client.Person()
 | `created` | `string` | No |  |
 | `edited` | `string` | No |  |
 | `eye_color` | `string` | No |  |
-| `film` | `any[]` | No |  |
+| `films` | `any[]` | No |  |
 | `gender` | `string` | No |  |
 | `hair_color` | `string` | No |  |
 | `height` | `string` | No |  |
@@ -306,9 +306,9 @@ const person = client.Person()
 | `name` | `string` | No |  |
 | `skin_color` | `string` | No |  |
 | `species` | `any[]` | No |  |
-| `starship` | `any[]` | No |  |
+| `starships` | `any[]` | No |  |
 | `url` | `string` | No |  |
-| `vehicle` | `any[]` | No |  |
+| `vehicles` | `any[]` | No |  |
 
 ### Operations
 
@@ -370,12 +370,12 @@ const planet = client.Planet()
 | `created` | `string` | No |  |
 | `diameter` | `string` | No |  |
 | `edited` | `string` | No |  |
-| `film` | `any[]` | No |  |
+| `films` | `any[]` | No |  |
 | `gravity` | `string` | No |  |
 | `name` | `string` | No |  |
 | `orbital_period` | `string` | No |  |
 | `population` | `string` | No |  |
-| `resident` | `any[]` | No |  |
+| `residents` | `any[]` | No |  |
 | `rotation_period` | `string` | No |  |
 | `surface_water` | `string` | No |  |
 | `terrain` | `string` | No |  |
@@ -443,14 +443,14 @@ const species = client.Species()
 | `created` | `string` | No |  |
 | `designation` | `string` | No |  |
 | `edited` | `string` | No |  |
-| `eye_color` | `string` | No |  |
-| `film` | `any[]` | No |  |
-| `hair_color` | `string` | No |  |
+| `eye_colors` | `string` | No |  |
+| `films` | `any[]` | No |  |
+| `hair_colors` | `string` | No |  |
 | `homeworld` | `string` | No |  |
 | `language` | `string` | No |  |
 | `name` | `string` | No |  |
-| `person` | `any[]` | No |  |
-| `skin_color` | `string` | No |  |
+| `people` | `any[]` | No |  |
+| `skin_colors` | `string` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -509,22 +509,22 @@ const starship = client.Starship()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `MGLT` | `string` | No |  |
 | `cargo_capacity` | `string` | No |  |
-| `consumable` | `string` | No |  |
-| `cost_in_credit` | `string` | No |  |
+| `consumables` | `string` | No |  |
+| `cost_in_credits` | `string` | No |  |
 | `created` | `string` | No |  |
 | `crew` | `string` | No |  |
 | `edited` | `string` | No |  |
-| `film` | `any[]` | No |  |
+| `films` | `any[]` | No |  |
 | `hyperdrive_rating` | `string` | No |  |
 | `length` | `string` | No |  |
 | `manufacturer` | `string` | No |  |
 | `max_atmosphering_speed` | `string` | No |  |
-| `mglt` | `string` | No |  |
 | `model` | `string` | No |  |
 | `name` | `string` | No |  |
-| `passenger` | `string` | No |  |
-| `pilot` | `any[]` | No |  |
+| `passengers` | `string` | No |  |
+| `pilots` | `any[]` | No |  |
 | `starship_class` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -585,19 +585,19 @@ const vehicle = client.Vehicle()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `cargo_capacity` | `string` | No |  |
-| `consumable` | `string` | No |  |
-| `cost_in_credit` | `string` | No |  |
+| `consumables` | `string` | No |  |
+| `cost_in_credits` | `string` | No |  |
 | `created` | `string` | No |  |
 | `crew` | `string` | No |  |
 | `edited` | `string` | No |  |
-| `film` | `any[]` | No |  |
+| `films` | `any[]` | No |  |
 | `length` | `string` | No |  |
 | `manufacturer` | `string` | No |  |
 | `max_atmosphering_speed` | `string` | No |  |
 | `model` | `string` | No |  |
 | `name` | `string` | No |  |
-| `passenger` | `string` | No |  |
-| `pilot` | `any[]` | No |  |
+| `passengers` | `string` | No |  |
+| `pilots` | `any[]` | No |  |
 | `url` | `string` | No |  |
 | `vehicle_class` | `string` | No |  |
 

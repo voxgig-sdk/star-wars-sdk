@@ -16,11 +16,11 @@
 import pytest
 
 from starwars_sdk import StarWarsSDK
-from core.error import StarWarsError
-from core.result import StarWarsResult
-from core.response import StarWarsResponse
-from core.spec import StarWarsSpec
-from feature.base_feature import StarWarsBaseFeature
+from starwars_sdk.core.error import StarWarsError
+from starwars_sdk.core.result import StarWarsResult
+from starwars_sdk.core.response import StarWarsResponse
+from starwars_sdk.core.spec import StarWarsSpec
+from starwars_sdk.feature.base_feature import StarWarsBaseFeature
 
 
 def _client():

@@ -114,11 +114,11 @@ def person_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "STARWARS_TEST_PERSON_ENTID" => {},
-    "STARWARS_TEST_LIVE" => "FALSE",
+    "STAR_WARS_TEST_PERSON_ENTID" => {},
+    "STAR_WARS_TEST_LIVE" => "FALSE",
   })
 
-  live = env["STARWARS_TEST_LIVE"] == "TRUE"
+  live = env["STAR_WARS_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

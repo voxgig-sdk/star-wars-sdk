@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'StarWars',
   }
 
 
@@ -74,7 +74,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "character",
+          "name": "characters",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -116,7 +116,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "planet",
+          "name": "planets",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 6
@@ -144,7 +144,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "starship",
+          "name": "starships",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 10
@@ -165,7 +165,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "vehicle",
+          "name": "vehicles",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 13
@@ -200,6 +200,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/films",
               "parts": [
@@ -213,7 +214,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.results`"
               },
               "index$": 0
             }
@@ -239,6 +240,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/films/{id}",
               "parts": [
@@ -304,7 +306,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "film",
+          "name": "films",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 4
@@ -367,7 +369,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "starship",
+          "name": "starships",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 13
@@ -381,7 +383,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "vehicle",
+          "name": "vehicles",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 15
@@ -416,6 +418,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/people",
               "parts": [
@@ -429,7 +432,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.results`"
               },
               "index$": 0
             }
@@ -455,6 +458,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/people/{id}",
               "parts": [
@@ -512,7 +516,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "film",
+          "name": "films",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 4
@@ -547,7 +551,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "resident",
+          "name": "residents",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 9
@@ -610,6 +614,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/planets",
               "parts": [
@@ -623,7 +628,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.results`"
               },
               "index$": 0
             }
@@ -649,6 +654,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/planets/{id}",
               "parts": [
@@ -720,21 +726,21 @@ class Config {
         },
         {
           "active": true,
-          "name": "eye_color",
+          "name": "eye_colors",
           "req": false,
           "type": "`$STRING`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "film",
+          "name": "films",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "hair_color",
+          "name": "hair_colors",
           "req": false,
           "type": "`$STRING`",
           "index$": 8
@@ -762,14 +768,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "person",
+          "name": "people",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "skin_color",
+          "name": "skin_colors",
           "req": false,
           "type": "`$STRING`",
           "index$": 13
@@ -811,6 +817,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/species",
               "parts": [
@@ -824,7 +831,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.results`"
               },
               "index$": 0
             }
@@ -850,6 +857,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/species/{id}",
               "parts": [
@@ -879,84 +887,84 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "cargo_capacity",
+          "name": "MGLT",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "consumable",
+          "name": "cargo_capacity",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "cost_in_credit",
+          "name": "consumables",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "created",
+          "name": "cost_in_credits",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "crew",
+          "name": "created",
           "req": false,
           "type": "`$STRING`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "edited",
+          "name": "crew",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "film",
+          "name": "edited",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 6
+        },
+        {
+          "active": true,
+          "name": "films",
           "req": false,
           "type": "`$ARRAY`",
-          "index$": 6
+          "index$": 7
         },
         {
           "active": true,
           "name": "hyperdrive_rating",
           "req": false,
           "type": "`$STRING`",
-          "index$": 7
+          "index$": 8
         },
         {
           "active": true,
           "name": "length",
           "req": false,
           "type": "`$STRING`",
-          "index$": 8
+          "index$": 9
         },
         {
           "active": true,
           "name": "manufacturer",
           "req": false,
           "type": "`$STRING`",
-          "index$": 9
-        },
-        {
-          "active": true,
-          "name": "max_atmosphering_speed",
-          "req": false,
-          "type": "`$STRING`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "mglt",
+          "name": "max_atmosphering_speed",
           "req": false,
           "type": "`$STRING`",
           "index$": 11
@@ -977,14 +985,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "passenger",
+          "name": "passengers",
           "req": false,
           "type": "`$STRING`",
           "index$": 14
         },
         {
           "active": true,
-          "name": "pilot",
+          "name": "pilots",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 15
@@ -1033,6 +1041,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/starships",
               "parts": [
@@ -1046,7 +1055,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.results`"
               },
               "index$": 0
             }
@@ -1072,6 +1081,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/starships/{id}",
               "parts": [
@@ -1108,14 +1118,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "consumable",
+          "name": "consumables",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "cost_in_credit",
+          "name": "cost_in_credits",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
@@ -1143,7 +1153,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "film",
+          "name": "films",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 6
@@ -1185,14 +1195,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "passenger",
+          "name": "passengers",
           "req": false,
           "type": "`$STRING`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "pilot",
+          "name": "pilots",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 13
@@ -1241,6 +1251,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/vehicles",
               "parts": [
@@ -1254,7 +1265,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.results`"
               },
               "index$": 0
             }
@@ -1280,6 +1291,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/vehicles/{id}",
               "parts": [

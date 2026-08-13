@@ -2,54 +2,54 @@
   "existing": {
     "film": {
       "FILM00": {
-        "character": [],
+        "characters": [],
         "created": "s8d",
         "director": "s8e",
         "edited": "s8f",
         "episode_id": "EPISODE01",
         "opening_crawl": "s91",
-        "planet": [],
+        "planets": [],
         "producer": "s93",
         "release_date": "s94",
         "species": [],
-        "starship": [],
+        "starships": [],
         "title": "s97",
         "url": "s98",
-        "vehicle": [],
+        "vehicles": [],
         "id": "FILM00"
       },
       "FILM01": {
-        "character": [],
+        "characters": [],
         "created": "s119",
         "director": "s11a",
         "edited": "s11b",
         "episode_id": "EPISODE01",
         "opening_crawl": "s11d",
-        "planet": [],
+        "planets": [],
         "producer": "s11f",
         "release_date": "s120",
         "species": [],
-        "starship": [],
+        "starships": [],
         "title": "s123",
         "url": "s124",
-        "vehicle": [],
+        "vehicles": [],
         "id": "FILM01"
       },
       "FILM02": {
-        "character": [],
+        "characters": [],
         "created": "s1a5",
         "director": "s1a6",
         "edited": "s1a7",
         "episode_id": "EPISODE01",
         "opening_crawl": "s1a9",
-        "planet": [],
+        "planets": [],
         "producer": "s1ab",
         "release_date": "s1ac",
         "species": [],
-        "starship": [],
+        "starships": [],
         "title": "s1af",
         "url": "s1b0",
-        "vehicle": [],
+        "vehicles": [],
         "id": "FILM02"
       }
     }
@@ -57,20 +57,20 @@
   "new": {
     "film": {
       "film_ref01": {
-        "character": [],
+        "characters": [],
         "created": "s231",
         "director": "s232",
         "edited": "s233",
         "episode_id": "EPISODE01",
         "opening_crawl": "s235",
-        "planet": [],
+        "planets": [],
         "producer": "s237",
         "release_date": "s238",
         "species": [],
-        "starship": [],
+        "starships": [],
         "title": "s23b",
         "url": "s23c",
-        "vehicle": []
+        "vehicles": []
       }
     }
   }

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from starwars_sdk.utility.voxgig_struct import voxgig_struct as vs
 from starwars_sdk import StarWarsSDK
-from core import helpers
+from starwars_sdk.core import helpers
 from test import runner
 
 
@@ -105,11 +105,11 @@ def _vehicle_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "STARWARS_TEST_VEHICLE_ENTID": {},
-        "STARWARS_TEST_LIVE": "FALSE",
+        "STAR_WARS_TEST_VEHICLE_ENTID": {},
+        "STAR_WARS_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("STARWARS_TEST_LIVE") == "TRUE"
+    live = env.get("STAR_WARS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

@@ -6,7 +6,7 @@
         "created": "sa1",
         "edited": "sa2",
         "eye_color": "sa3",
-        "film": [],
+        "films": [],
         "gender": "sa5",
         "hair_color": "sa6",
         "height": "sa7",
@@ -15,9 +15,9 @@
         "name": "saa",
         "skin_color": "sab",
         "species": [],
-        "starship": [],
+        "starships": [],
         "url": "sae",
-        "vehicle": [],
+        "vehicles": [],
         "id": "PERSON00"
       },
       "PERSON01": {
@@ -25,7 +25,7 @@
         "created": "s141",
         "edited": "s142",
         "eye_color": "s143",
-        "film": [],
+        "films": [],
         "gender": "s145",
         "hair_color": "s146",
         "height": "s147",
@@ -34,9 +34,9 @@
         "name": "s14a",
         "skin_color": "s14b",
         "species": [],
-        "starship": [],
+        "starships": [],
         "url": "s14e",
-        "vehicle": [],
+        "vehicles": [],
         "id": "PERSON01"
       },
       "PERSON02": {
@@ -44,7 +44,7 @@
         "created": "s1e1",
         "edited": "s1e2",
         "eye_color": "s1e3",
-        "film": [],
+        "films": [],
         "gender": "s1e5",
         "hair_color": "s1e6",
         "height": "s1e7",
@@ -53,9 +53,9 @@
         "name": "s1ea",
         "skin_color": "s1eb",
         "species": [],
-        "starship": [],
+        "starships": [],
         "url": "s1ee",
-        "vehicle": [],
+        "vehicles": [],
         "id": "PERSON02"
       }
     }
@@ -67,7 +67,7 @@
         "created": "s281",
         "edited": "s282",
         "eye_color": "s283",
-        "film": [],
+        "films": [],
         "gender": "s285",
         "hair_color": "s286",
         "height": "s287",
@@ -76,9 +76,9 @@
         "name": "s28a",
         "skin_color": "s28b",
         "species": [],
-        "starship": [],
+        "starships": [],
         "url": "s28e",
-        "vehicle": []
+        "vehicles": []
       }
     }
   }

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# StarWars SDK exists test
 
 import pytest
 from starwars_sdk import StarWarsSDK

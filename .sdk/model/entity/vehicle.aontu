@@ -11,12 +11,12 @@ main: kit: entity: vehicle: {
       type: "`$STRING`"
     }
     {
-      name: "consumable"
+      name: "consumables"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "cost_in_credit"
+      name: "cost_in_credits"
       req: false
       type: "`$STRING`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: vehicle: {
       type: "`$STRING`"
     }
     {
-      name: "film"
+      name: "films"
       req: false
       type: "`$ARRAY`"
     }
@@ -66,12 +66,12 @@ main: kit: entity: vehicle: {
       type: "`$STRING`"
     }
     {
-      name: "passenger"
+      name: "passengers"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "pilot"
+      name: "pilots"
       req: false
       type: "`$ARRAY`"
     }
@@ -125,7 +125,7 @@ main: kit: entity: vehicle: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

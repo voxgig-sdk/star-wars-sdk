@@ -38,7 +38,7 @@ try {
     // list() returns an array of Film records — iterate directly.
     $films = $client->Film()->list();
     foreach ($films as $item) {
-        echo $item["character"] . "\n";
+        echo $item["characters"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Film record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Film record (throws on error).
     $film = $client->Film()->load(["id" => 1]);
     print_r($film);
 } catch (\Throwable $err) {
@@ -65,7 +65,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $films = $client->Film()->list();
+    $persons = $client->Person()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -137,12 +137,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = StarWarsSDK::test([
-    "entity" => ["film" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["person" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
-$film = $client->Film()->list();
-print_r($film);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$person = $client->Person()->list();
+print_r($person);
 ```
 
 ### Use a custom fetch function
@@ -246,7 +247,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -268,20 +269,20 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `character` |  |
+| `characters` |  |
 | `created` |  |
 | `director` |  |
 | `edited` |  |
 | `episode_id` |  |
 | `opening_crawl` |  |
-| `planet` |  |
+| `planets` |  |
 | `producer` |  |
 | `release_date` |  |
 | `species` |  |
-| `starship` |  |
+| `starships` |  |
 | `title` |  |
 | `url` |  |
-| `vehicle` |  |
+| `vehicles` |  |
 
 Operations: List, Load.
 
@@ -304,7 +305,7 @@ API path: ``
 | `created` |  |
 | `edited` |  |
 | `eye_color` |  |
-| `film` |  |
+| `films` |  |
 | `gender` |  |
 | `hair_color` |  |
 | `height` |  |
@@ -313,9 +314,9 @@ API path: ``
 | `name` |  |
 | `skin_color` |  |
 | `species` |  |
-| `starship` |  |
+| `starships` |  |
 | `url` |  |
-| `vehicle` |  |
+| `vehicles` |  |
 
 Operations: List, Load.
 
@@ -329,12 +330,12 @@ API path: `/people`
 | `created` |  |
 | `diameter` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `gravity` |  |
 | `name` |  |
 | `orbital_period` |  |
 | `population` |  |
-| `resident` |  |
+| `residents` |  |
 | `rotation_period` |  |
 | `surface_water` |  |
 | `terrain` |  |
@@ -354,14 +355,14 @@ API path: `/planets`
 | `created` |  |
 | `designation` |  |
 | `edited` |  |
-| `eye_color` |  |
-| `film` |  |
-| `hair_color` |  |
+| `eye_colors` |  |
+| `films` |  |
+| `hair_colors` |  |
 | `homeworld` |  |
 | `language` |  |
 | `name` |  |
-| `person` |  |
-| `skin_color` |  |
+| `people` |  |
+| `skin_colors` |  |
 | `url` |  |
 
 Operations: List, Load.
@@ -372,22 +373,22 @@ API path: `/species`
 
 | Field | Description |
 | --- | --- |
+| `MGLT` |  |
 | `cargo_capacity` |  |
-| `consumable` |  |
-| `cost_in_credit` |  |
+| `consumables` |  |
+| `cost_in_credits` |  |
 | `created` |  |
 | `crew` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `hyperdrive_rating` |  |
 | `length` |  |
 | `manufacturer` |  |
 | `max_atmosphering_speed` |  |
-| `mglt` |  |
 | `model` |  |
 | `name` |  |
-| `passenger` |  |
-| `pilot` |  |
+| `passengers` |  |
+| `pilots` |  |
 | `starship_class` |  |
 | `url` |  |
 
@@ -400,19 +401,19 @@ API path: `/starships`
 | Field | Description |
 | --- | --- |
 | `cargo_capacity` |  |
-| `consumable` |  |
-| `cost_in_credit` |  |
+| `consumables` |  |
+| `cost_in_credits` |  |
 | `created` |  |
 | `crew` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `length` |  |
 | `manufacturer` |  |
 | `max_atmosphering_speed` |  |
 | `model` |  |
 | `name` |  |
-| `passenger` |  |
-| `pilot` |  |
+| `passengers` |  |
+| `pilots` |  |
 | `url` |  |
 | `vehicle_class` |  |
 
@@ -440,25 +441,25 @@ Create an instance: `$film = $client->Film();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | `array` |  |
+| `characters` | `array` |  |
 | `created` | `string` |  |
 | `director` | `string` |  |
 | `edited` | `string` |  |
 | `episode_id` | `int` |  |
 | `opening_crawl` | `string` |  |
-| `planet` | `array` |  |
+| `planets` | `array` |  |
 | `producer` | `string` |  |
 | `release_date` | `string` |  |
 | `species` | `array` |  |
-| `starship` | `array` |  |
+| `starships` | `array` |  |
 | `title` | `string` |  |
 | `url` | `string` |  |
-| `vehicle` | `array` |  |
+| `vehicles` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Film record (throws on error).
+// load() returns the ENTITY — call data_get() for the Film record (throws on error).
 $film = $client->Film()->load(["id" => 1]);
 ```
 
@@ -494,7 +495,7 @@ Create an instance: `$person = $client->Person();`
 | `created` | `string` |  |
 | `edited` | `string` |  |
 | `eye_color` | `string` |  |
-| `film` | `array` |  |
+| `films` | `array` |  |
 | `gender` | `string` |  |
 | `hair_color` | `string` |  |
 | `height` | `string` |  |
@@ -503,14 +504,14 @@ Create an instance: `$person = $client->Person();`
 | `name` | `string` |  |
 | `skin_color` | `string` |  |
 | `species` | `array` |  |
-| `starship` | `array` |  |
+| `starships` | `array` |  |
 | `url` | `string` |  |
-| `vehicle` | `array` |  |
+| `vehicles` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Person record (throws on error).
+// load() returns the ENTITY — call data_get() for the Person record (throws on error).
 $person = $client->Person()->load(["id" => 1]);
 ```
 
@@ -541,12 +542,12 @@ Create an instance: `$planet = $client->Planet();`
 | `created` | `string` |  |
 | `diameter` | `string` |  |
 | `edited` | `string` |  |
-| `film` | `array` |  |
+| `films` | `array` |  |
 | `gravity` | `string` |  |
 | `name` | `string` |  |
 | `orbital_period` | `string` |  |
 | `population` | `string` |  |
-| `resident` | `array` |  |
+| `residents` | `array` |  |
 | `rotation_period` | `string` |  |
 | `surface_water` | `string` |  |
 | `terrain` | `string` |  |
@@ -555,7 +556,7 @@ Create an instance: `$planet = $client->Planet();`
 #### Example: Load
 
 ```php
-// load() returns the bare Planet record (throws on error).
+// load() returns the ENTITY — call data_get() for the Planet record (throws on error).
 $planet = $client->Planet()->load(["id" => 1]);
 ```
 
@@ -588,20 +589,20 @@ Create an instance: `$species = $client->Species();`
 | `created` | `string` |  |
 | `designation` | `string` |  |
 | `edited` | `string` |  |
-| `eye_color` | `string` |  |
-| `film` | `array` |  |
-| `hair_color` | `string` |  |
+| `eye_colors` | `string` |  |
+| `films` | `array` |  |
+| `hair_colors` | `string` |  |
 | `homeworld` | `string` |  |
 | `language` | `string` |  |
 | `name` | `string` |  |
-| `person` | `array` |  |
-| `skin_color` | `string` |  |
+| `people` | `array` |  |
+| `skin_colors` | `string` |  |
 | `url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Species record (throws on error).
+// load() returns the ENTITY — call data_get() for the Species record (throws on error).
 $species = $client->Species()->load(["id" => 1]);
 ```
 
@@ -628,29 +629,29 @@ Create an instance: `$starship = $client->Starship();`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `MGLT` | `string` |  |
 | `cargo_capacity` | `string` |  |
-| `consumable` | `string` |  |
-| `cost_in_credit` | `string` |  |
+| `consumables` | `string` |  |
+| `cost_in_credits` | `string` |  |
 | `created` | `string` |  |
 | `crew` | `string` |  |
 | `edited` | `string` |  |
-| `film` | `array` |  |
+| `films` | `array` |  |
 | `hyperdrive_rating` | `string` |  |
 | `length` | `string` |  |
 | `manufacturer` | `string` |  |
 | `max_atmosphering_speed` | `string` |  |
-| `mglt` | `string` |  |
 | `model` | `string` |  |
 | `name` | `string` |  |
-| `passenger` | `string` |  |
-| `pilot` | `array` |  |
+| `passengers` | `string` |  |
+| `pilots` | `array` |  |
 | `starship_class` | `string` |  |
 | `url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Starship record (throws on error).
+// load() returns the ENTITY — call data_get() for the Starship record (throws on error).
 $starship = $client->Starship()->load(["id" => 1]);
 ```
 
@@ -678,26 +679,26 @@ Create an instance: `$vehicle = $client->Vehicle();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `cargo_capacity` | `string` |  |
-| `consumable` | `string` |  |
-| `cost_in_credit` | `string` |  |
+| `consumables` | `string` |  |
+| `cost_in_credits` | `string` |  |
 | `created` | `string` |  |
 | `crew` | `string` |  |
 | `edited` | `string` |  |
-| `film` | `array` |  |
+| `films` | `array` |  |
 | `length` | `string` |  |
 | `manufacturer` | `string` |  |
 | `max_atmosphering_speed` | `string` |  |
 | `model` | `string` |  |
 | `name` | `string` |  |
-| `passenger` | `string` |  |
-| `pilot` | `array` |  |
+| `passengers` | `string` |  |
+| `pilots` | `array` |  |
 | `url` | `string` |  |
 | `vehicle_class` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Vehicle record (throws on error).
+// load() returns the ENTITY — call data_get() for the Vehicle record (throws on error).
 $vehicle = $client->Vehicle()->load(["id" => 1]);
 ```
 
@@ -785,11 +786,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$film = $client->Film();
-$film->list();
+$person = $client->Person();
+$person->list();
 
-// $film->data_get() now returns the film data from the last list
-// $film->match_get() returns the last match criteria
+// $person->data_get() now returns the person data from the last list
+// $person->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

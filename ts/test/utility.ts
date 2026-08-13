@@ -62,8 +62,8 @@ function makeCtrl(explain: boolean) {
 // Overrides configuration values with environment variables if available
 function envOverride(m: Record<string, any>) {
   if (
-    'TRUE' === process.env.STARWARS_TEST_LIVE ||
-    'TRUE' === process.env.STARWARS_TEST_OVERRIDE
+    'TRUE' === process.env.STAR_WARS_TEST_LIVE ||
+    'TRUE' === process.env.STAR_WARS_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -74,7 +74,7 @@ function envOverride(m: Record<string, any>) {
     })
   }
 
-  m.STARWARS_TEST_EXPLAIN = process.env.STARWARS_TEST_EXPLAIN || m.STARWARS_TEST_EXPLAIN
+  m.STAR_WARS_TEST_EXPLAIN = process.env.STAR_WARS_TEST_EXPLAIN || m.STAR_WARS_TEST_EXPLAIN
 
   return m
 }

@@ -6,20 +6,20 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Film {
-  character?: any[]
+  characters?: any[]
   created?: string
   director?: string
   edited?: string
   episode_id?: number
   opening_crawl?: string
-  planet?: any[]
+  planets?: any[]
   producer?: string
   release_date?: string
   species?: any[]
-  starship?: any[]
+  starships?: any[]
   title?: string
   url?: string
-  vehicle?: any[]
+  vehicles?: any[]
 }
 
 export interface FilmLoadMatch {
@@ -27,20 +27,20 @@ export interface FilmLoadMatch {
 }
 
 export interface FilmListMatch {
-  character?: any[]
+  characters?: any[]
   created?: string
   director?: string
   edited?: string
   episode_id?: number
   opening_crawl?: string
-  planet?: any[]
+  planets?: any[]
   producer?: string
   release_date?: string
   species?: any[]
-  starship?: any[]
+  starships?: any[]
   title?: string
   url?: string
-  vehicle?: any[]
+  vehicles?: any[]
 }
 
 export interface PeopleList {
@@ -51,7 +51,7 @@ export interface Person {
   created?: string
   edited?: string
   eye_color?: string
-  film?: any[]
+  films?: any[]
   gender?: string
   hair_color?: string
   height?: string
@@ -60,9 +60,9 @@ export interface Person {
   name?: string
   skin_color?: string
   species?: any[]
-  starship?: any[]
+  starships?: any[]
   url?: string
-  vehicle?: any[]
+  vehicles?: any[]
 }
 
 export interface PersonLoadMatch {
@@ -74,7 +74,7 @@ export interface PersonListMatch {
   created?: string
   edited?: string
   eye_color?: string
-  film?: any[]
+  films?: any[]
   gender?: string
   hair_color?: string
   height?: string
@@ -83,9 +83,9 @@ export interface PersonListMatch {
   name?: string
   skin_color?: string
   species?: any[]
-  starship?: any[]
+  starships?: any[]
   url?: string
-  vehicle?: any[]
+  vehicles?: any[]
 }
 
 export interface Planet {
@@ -93,12 +93,12 @@ export interface Planet {
   created?: string
   diameter?: string
   edited?: string
-  film?: any[]
+  films?: any[]
   gravity?: string
   name?: string
   orbital_period?: string
   population?: string
-  resident?: any[]
+  residents?: any[]
   rotation_period?: string
   surface_water?: string
   terrain?: string
@@ -114,12 +114,12 @@ export interface PlanetListMatch {
   created?: string
   diameter?: string
   edited?: string
-  film?: any[]
+  films?: any[]
   gravity?: string
   name?: string
   orbital_period?: string
   population?: string
-  resident?: any[]
+  residents?: any[]
   rotation_period?: string
   surface_water?: string
   terrain?: string
@@ -133,14 +133,14 @@ export interface Species {
   created?: string
   designation?: string
   edited?: string
-  eye_color?: string
-  film?: any[]
-  hair_color?: string
+  eye_colors?: string
+  films?: any[]
+  hair_colors?: string
   homeworld?: string
   language?: string
   name?: string
-  person?: any[]
-  skin_color?: string
+  people?: any[]
+  skin_colors?: string
   url?: string
 }
 
@@ -155,34 +155,34 @@ export interface SpeciesListMatch {
   created?: string
   designation?: string
   edited?: string
-  eye_color?: string
-  film?: any[]
-  hair_color?: string
+  eye_colors?: string
+  films?: any[]
+  hair_colors?: string
   homeworld?: string
   language?: string
   name?: string
-  person?: any[]
-  skin_color?: string
+  people?: any[]
+  skin_colors?: string
   url?: string
 }
 
 export interface Starship {
+  MGLT?: string
   cargo_capacity?: string
-  consumable?: string
-  cost_in_credit?: string
+  consumables?: string
+  cost_in_credits?: string
   created?: string
   crew?: string
   edited?: string
-  film?: any[]
+  films?: any[]
   hyperdrive_rating?: string
   length?: string
   manufacturer?: string
   max_atmosphering_speed?: string
-  mglt?: string
   model?: string
   name?: string
-  passenger?: string
-  pilot?: any[]
+  passengers?: string
+  pilots?: any[]
   starship_class?: string
   url?: string
 }
@@ -192,41 +192,41 @@ export interface StarshipLoadMatch {
 }
 
 export interface StarshipListMatch {
+  MGLT?: string
   cargo_capacity?: string
-  consumable?: string
-  cost_in_credit?: string
+  consumables?: string
+  cost_in_credits?: string
   created?: string
   crew?: string
   edited?: string
-  film?: any[]
+  films?: any[]
   hyperdrive_rating?: string
   length?: string
   manufacturer?: string
   max_atmosphering_speed?: string
-  mglt?: string
   model?: string
   name?: string
-  passenger?: string
-  pilot?: any[]
+  passengers?: string
+  pilots?: any[]
   starship_class?: string
   url?: string
 }
 
 export interface Vehicle {
   cargo_capacity?: string
-  consumable?: string
-  cost_in_credit?: string
+  consumables?: string
+  cost_in_credits?: string
   created?: string
   crew?: string
   edited?: string
-  film?: any[]
+  films?: any[]
   length?: string
   manufacturer?: string
   max_atmosphering_speed?: string
   model?: string
   name?: string
-  passenger?: string
-  pilot?: any[]
+  passengers?: string
+  pilots?: any[]
   url?: string
   vehicle_class?: string
 }
@@ -237,19 +237,19 @@ export interface VehicleLoadMatch {
 
 export interface VehicleListMatch {
   cargo_capacity?: string
-  consumable?: string
-  cost_in_credit?: string
+  consumables?: string
+  cost_in_credits?: string
   created?: string
   crew?: string
   edited?: string
-  film?: any[]
+  films?: any[]
   length?: string
   manufacturer?: string
   max_atmosphering_speed?: string
   model?: string
   name?: string
-  passenger?: string
-  pilot?: any[]
+  passengers?: string
+  pilots?: any[]
   url?: string
   vehicle_class?: string
 }

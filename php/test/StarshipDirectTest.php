@@ -121,11 +121,11 @@ function starship_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "STARWARS_TEST_STARSHIP_ENTID" => [],
-        "STARWARS_TEST_LIVE" => "FALSE",
+        "STAR_WARS_TEST_STARSHIP_ENTID" => [],
+        "STAR_WARS_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["STARWARS_TEST_LIVE"] === "TRUE";
+    $live = $env["STAR_WARS_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

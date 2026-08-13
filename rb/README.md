@@ -37,7 +37,7 @@ begin
   # list returns an Array of Film records — iterate directly.
   films = client.Film.list
   films.each do |item|
-    puts "#{item["character"]}"
+    puts "#{item["characters"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Film record (raises on error).
+  # load returns the ENTITY — call data_get for the Film record (raises on error).
   film = client.Film.load({ "id" => 1 })
   puts film
 rescue => err
@@ -63,7 +63,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  films = client.Film.list()
+  persons = client.Person.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -131,12 +131,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
 client = StarWarsSDK.test({
-  "entity" => { "film" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "person" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
-film = client.Film.list()
-puts film
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+person = client.Person.list()
+puts person
 ```
 
 ### Use a custom fetch function
@@ -258,20 +259,20 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `character` |  |
+| `characters` |  |
 | `created` |  |
 | `director` |  |
 | `edited` |  |
 | `episode_id` |  |
 | `opening_crawl` |  |
-| `planet` |  |
+| `planets` |  |
 | `producer` |  |
 | `release_date` |  |
 | `species` |  |
-| `starship` |  |
+| `starships` |  |
 | `title` |  |
 | `url` |  |
-| `vehicle` |  |
+| `vehicles` |  |
 
 Operations: List, Load.
 
@@ -294,7 +295,7 @@ API path: ``
 | `created` |  |
 | `edited` |  |
 | `eye_color` |  |
-| `film` |  |
+| `films` |  |
 | `gender` |  |
 | `hair_color` |  |
 | `height` |  |
@@ -303,9 +304,9 @@ API path: ``
 | `name` |  |
 | `skin_color` |  |
 | `species` |  |
-| `starship` |  |
+| `starships` |  |
 | `url` |  |
-| `vehicle` |  |
+| `vehicles` |  |
 
 Operations: List, Load.
 
@@ -319,12 +320,12 @@ API path: `/people`
 | `created` |  |
 | `diameter` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `gravity` |  |
 | `name` |  |
 | `orbital_period` |  |
 | `population` |  |
-| `resident` |  |
+| `residents` |  |
 | `rotation_period` |  |
 | `surface_water` |  |
 | `terrain` |  |
@@ -344,14 +345,14 @@ API path: `/planets`
 | `created` |  |
 | `designation` |  |
 | `edited` |  |
-| `eye_color` |  |
-| `film` |  |
-| `hair_color` |  |
+| `eye_colors` |  |
+| `films` |  |
+| `hair_colors` |  |
 | `homeworld` |  |
 | `language` |  |
 | `name` |  |
-| `person` |  |
-| `skin_color` |  |
+| `people` |  |
+| `skin_colors` |  |
 | `url` |  |
 
 Operations: List, Load.
@@ -362,22 +363,22 @@ API path: `/species`
 
 | Field | Description |
 | --- | --- |
+| `MGLT` |  |
 | `cargo_capacity` |  |
-| `consumable` |  |
-| `cost_in_credit` |  |
+| `consumables` |  |
+| `cost_in_credits` |  |
 | `created` |  |
 | `crew` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `hyperdrive_rating` |  |
 | `length` |  |
 | `manufacturer` |  |
 | `max_atmosphering_speed` |  |
-| `mglt` |  |
 | `model` |  |
 | `name` |  |
-| `passenger` |  |
-| `pilot` |  |
+| `passengers` |  |
+| `pilots` |  |
 | `starship_class` |  |
 | `url` |  |
 
@@ -390,19 +391,19 @@ API path: `/starships`
 | Field | Description |
 | --- | --- |
 | `cargo_capacity` |  |
-| `consumable` |  |
-| `cost_in_credit` |  |
+| `consumables` |  |
+| `cost_in_credits` |  |
 | `created` |  |
 | `crew` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `length` |  |
 | `manufacturer` |  |
 | `max_atmosphering_speed` |  |
 | `model` |  |
 | `name` |  |
-| `passenger` |  |
-| `pilot` |  |
+| `passengers` |  |
+| `pilots` |  |
 | `url` |  |
 | `vehicle_class` |  |
 
@@ -430,25 +431,25 @@ Create an instance: `film = client.Film`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | `Array` |  |
+| `characters` | `Array` |  |
 | `created` | `String` |  |
 | `director` | `String` |  |
 | `edited` | `String` |  |
 | `episode_id` | `Integer` |  |
 | `opening_crawl` | `String` |  |
-| `planet` | `Array` |  |
+| `planets` | `Array` |  |
 | `producer` | `String` |  |
 | `release_date` | `String` |  |
 | `species` | `Array` |  |
-| `starship` | `Array` |  |
+| `starships` | `Array` |  |
 | `title` | `String` |  |
 | `url` | `String` |  |
-| `vehicle` | `Array` |  |
+| `vehicles` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Film record (raises on error).
+# load returns the ENTITY — call data_get for the Film record (raises on error).
 film = client.Film.load({ "id" => 1 })
 ```
 
@@ -484,7 +485,7 @@ Create an instance: `person = client.Person`
 | `created` | `String` |  |
 | `edited` | `String` |  |
 | `eye_color` | `String` |  |
-| `film` | `Array` |  |
+| `films` | `Array` |  |
 | `gender` | `String` |  |
 | `hair_color` | `String` |  |
 | `height` | `String` |  |
@@ -493,14 +494,14 @@ Create an instance: `person = client.Person`
 | `name` | `String` |  |
 | `skin_color` | `String` |  |
 | `species` | `Array` |  |
-| `starship` | `Array` |  |
+| `starships` | `Array` |  |
 | `url` | `String` |  |
-| `vehicle` | `Array` |  |
+| `vehicles` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Person record (raises on error).
+# load returns the ENTITY — call data_get for the Person record (raises on error).
 person = client.Person.load({ "id" => 1 })
 ```
 
@@ -531,12 +532,12 @@ Create an instance: `planet = client.Planet`
 | `created` | `String` |  |
 | `diameter` | `String` |  |
 | `edited` | `String` |  |
-| `film` | `Array` |  |
+| `films` | `Array` |  |
 | `gravity` | `String` |  |
 | `name` | `String` |  |
 | `orbital_period` | `String` |  |
 | `population` | `String` |  |
-| `resident` | `Array` |  |
+| `residents` | `Array` |  |
 | `rotation_period` | `String` |  |
 | `surface_water` | `String` |  |
 | `terrain` | `String` |  |
@@ -545,7 +546,7 @@ Create an instance: `planet = client.Planet`
 #### Example: Load
 
 ```ruby
-# load returns the bare Planet record (raises on error).
+# load returns the ENTITY — call data_get for the Planet record (raises on error).
 planet = client.Planet.load({ "id" => 1 })
 ```
 
@@ -578,20 +579,20 @@ Create an instance: `species = client.Species`
 | `created` | `String` |  |
 | `designation` | `String` |  |
 | `edited` | `String` |  |
-| `eye_color` | `String` |  |
-| `film` | `Array` |  |
-| `hair_color` | `String` |  |
+| `eye_colors` | `String` |  |
+| `films` | `Array` |  |
+| `hair_colors` | `String` |  |
 | `homeworld` | `String` |  |
 | `language` | `String` |  |
 | `name` | `String` |  |
-| `person` | `Array` |  |
-| `skin_color` | `String` |  |
+| `people` | `Array` |  |
+| `skin_colors` | `String` |  |
 | `url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Species record (raises on error).
+# load returns the ENTITY — call data_get for the Species record (raises on error).
 species = client.Species.load({ "id" => 1 })
 ```
 
@@ -618,29 +619,29 @@ Create an instance: `starship = client.Starship`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `MGLT` | `String` |  |
 | `cargo_capacity` | `String` |  |
-| `consumable` | `String` |  |
-| `cost_in_credit` | `String` |  |
+| `consumables` | `String` |  |
+| `cost_in_credits` | `String` |  |
 | `created` | `String` |  |
 | `crew` | `String` |  |
 | `edited` | `String` |  |
-| `film` | `Array` |  |
+| `films` | `Array` |  |
 | `hyperdrive_rating` | `String` |  |
 | `length` | `String` |  |
 | `manufacturer` | `String` |  |
 | `max_atmosphering_speed` | `String` |  |
-| `mglt` | `String` |  |
 | `model` | `String` |  |
 | `name` | `String` |  |
-| `passenger` | `String` |  |
-| `pilot` | `Array` |  |
+| `passengers` | `String` |  |
+| `pilots` | `Array` |  |
 | `starship_class` | `String` |  |
 | `url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Starship record (raises on error).
+# load returns the ENTITY — call data_get for the Starship record (raises on error).
 starship = client.Starship.load({ "id" => 1 })
 ```
 
@@ -668,26 +669,26 @@ Create an instance: `vehicle = client.Vehicle`
 | Field | Type | Description |
 | --- | --- | --- |
 | `cargo_capacity` | `String` |  |
-| `consumable` | `String` |  |
-| `cost_in_credit` | `String` |  |
+| `consumables` | `String` |  |
+| `cost_in_credits` | `String` |  |
 | `created` | `String` |  |
 | `crew` | `String` |  |
 | `edited` | `String` |  |
-| `film` | `Array` |  |
+| `films` | `Array` |  |
 | `length` | `String` |  |
 | `manufacturer` | `String` |  |
 | `max_atmosphering_speed` | `String` |  |
 | `model` | `String` |  |
 | `name` | `String` |  |
-| `passenger` | `String` |  |
-| `pilot` | `Array` |  |
+| `passengers` | `String` |  |
+| `pilots` | `Array` |  |
 | `url` | `String` |  |
 | `vehicle_class` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Vehicle record (raises on error).
+# load returns the ENTITY — call data_get for the Vehicle record (raises on error).
 vehicle = client.Vehicle.load({ "id" => 1 })
 ```
 
@@ -775,11 +776,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-film = client.Film
-film.list()
+person = client.Person
+person.list()
 
-# film.data_get now returns the film data from the last list
-# film.match_get returns the last match criteria
+# person.data_get now returns the person data from the last list
+# person.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

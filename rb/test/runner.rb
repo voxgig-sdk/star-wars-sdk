@@ -23,8 +23,8 @@ module StarWarsTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("STARWARS_TEST_LIVE")
-    override = getenv("STARWARS_TEST_OVERRIDE")
+    live = getenv("STAR_WARS_TEST_LIVE")
+    override = getenv("STAR_WARS_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module StarWarsTestRunner
       end
     end
 
-    explain = getenv("STARWARS_TEST_EXPLAIN")
-    m["STARWARS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("STAR_WARS_TEST_EXPLAIN")
+    m["STAR_WARS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

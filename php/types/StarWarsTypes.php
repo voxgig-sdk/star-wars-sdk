@@ -15,20 +15,20 @@ declare(strict_types=1);
 /** Film entity data model. */
 class Film
 {
-    public ?array $character = null;
+    public ?array $characters = null;
     public ?string $created = null;
     public ?string $director = null;
     public ?string $edited = null;
     public ?int $episode_id = null;
     public ?string $opening_crawl = null;
-    public ?array $planet = null;
+    public ?array $planets = null;
     public ?string $producer = null;
     public ?string $release_date = null;
     public ?array $species = null;
-    public ?array $starship = null;
+    public ?array $starships = null;
     public ?string $title = null;
     public ?string $url = null;
-    public ?array $vehicle = null;
+    public ?array $vehicles = null;
 }
 
 /** Request payload for Film#load. */
@@ -40,20 +40,20 @@ class FilmLoadMatch
 /** Request payload for Film#list. */
 class FilmListMatch
 {
-    public ?array $character = null;
+    public ?array $characters = null;
     public ?string $created = null;
     public ?string $director = null;
     public ?string $edited = null;
     public ?int $episode_id = null;
     public ?string $opening_crawl = null;
-    public ?array $planet = null;
+    public ?array $planets = null;
     public ?string $producer = null;
     public ?string $release_date = null;
     public ?array $species = null;
-    public ?array $starship = null;
+    public ?array $starships = null;
     public ?string $title = null;
     public ?string $url = null;
-    public ?array $vehicle = null;
+    public ?array $vehicles = null;
 }
 
 /** PeopleList entity data model. */
@@ -68,7 +68,7 @@ class Person
     public ?string $created = null;
     public ?string $edited = null;
     public ?string $eye_color = null;
-    public ?array $film = null;
+    public ?array $films = null;
     public ?string $gender = null;
     public ?string $hair_color = null;
     public ?string $height = null;
@@ -77,9 +77,9 @@ class Person
     public ?string $name = null;
     public ?string $skin_color = null;
     public ?array $species = null;
-    public ?array $starship = null;
+    public ?array $starships = null;
     public ?string $url = null;
-    public ?array $vehicle = null;
+    public ?array $vehicles = null;
 }
 
 /** Request payload for Person#load. */
@@ -95,7 +95,7 @@ class PersonListMatch
     public ?string $created = null;
     public ?string $edited = null;
     public ?string $eye_color = null;
-    public ?array $film = null;
+    public ?array $films = null;
     public ?string $gender = null;
     public ?string $hair_color = null;
     public ?string $height = null;
@@ -104,9 +104,9 @@ class PersonListMatch
     public ?string $name = null;
     public ?string $skin_color = null;
     public ?array $species = null;
-    public ?array $starship = null;
+    public ?array $starships = null;
     public ?string $url = null;
-    public ?array $vehicle = null;
+    public ?array $vehicles = null;
 }
 
 /** Planet entity data model. */
@@ -116,12 +116,12 @@ class Planet
     public ?string $created = null;
     public ?string $diameter = null;
     public ?string $edited = null;
-    public ?array $film = null;
+    public ?array $films = null;
     public ?string $gravity = null;
     public ?string $name = null;
     public ?string $orbital_period = null;
     public ?string $population = null;
-    public ?array $resident = null;
+    public ?array $residents = null;
     public ?string $rotation_period = null;
     public ?string $surface_water = null;
     public ?string $terrain = null;
@@ -141,12 +141,12 @@ class PlanetListMatch
     public ?string $created = null;
     public ?string $diameter = null;
     public ?string $edited = null;
-    public ?array $film = null;
+    public ?array $films = null;
     public ?string $gravity = null;
     public ?string $name = null;
     public ?string $orbital_period = null;
     public ?string $population = null;
-    public ?array $resident = null;
+    public ?array $residents = null;
     public ?string $rotation_period = null;
     public ?string $surface_water = null;
     public ?string $terrain = null;
@@ -162,14 +162,14 @@ class Species
     public ?string $created = null;
     public ?string $designation = null;
     public ?string $edited = null;
-    public ?string $eye_color = null;
-    public ?array $film = null;
-    public ?string $hair_color = null;
+    public ?string $eye_colors = null;
+    public ?array $films = null;
+    public ?string $hair_colors = null;
     public ?string $homeworld = null;
     public ?string $language = null;
     public ?string $name = null;
-    public ?array $person = null;
-    public ?string $skin_color = null;
+    public ?array $people = null;
+    public ?string $skin_colors = null;
     public ?string $url = null;
 }
 
@@ -188,36 +188,36 @@ class SpeciesListMatch
     public ?string $created = null;
     public ?string $designation = null;
     public ?string $edited = null;
-    public ?string $eye_color = null;
-    public ?array $film = null;
-    public ?string $hair_color = null;
+    public ?string $eye_colors = null;
+    public ?array $films = null;
+    public ?string $hair_colors = null;
     public ?string $homeworld = null;
     public ?string $language = null;
     public ?string $name = null;
-    public ?array $person = null;
-    public ?string $skin_color = null;
+    public ?array $people = null;
+    public ?string $skin_colors = null;
     public ?string $url = null;
 }
 
 /** Starship entity data model. */
 class Starship
 {
+    public ?string $MGLT = null;
     public ?string $cargo_capacity = null;
-    public ?string $consumable = null;
-    public ?string $cost_in_credit = null;
+    public ?string $consumables = null;
+    public ?string $cost_in_credits = null;
     public ?string $created = null;
     public ?string $crew = null;
     public ?string $edited = null;
-    public ?array $film = null;
+    public ?array $films = null;
     public ?string $hyperdrive_rating = null;
     public ?string $length = null;
     public ?string $manufacturer = null;
     public ?string $max_atmosphering_speed = null;
-    public ?string $mglt = null;
     public ?string $model = null;
     public ?string $name = null;
-    public ?string $passenger = null;
-    public ?array $pilot = null;
+    public ?string $passengers = null;
+    public ?array $pilots = null;
     public ?string $starship_class = null;
     public ?string $url = null;
 }
@@ -231,22 +231,22 @@ class StarshipLoadMatch
 /** Request payload for Starship#list. */
 class StarshipListMatch
 {
+    public ?string $MGLT = null;
     public ?string $cargo_capacity = null;
-    public ?string $consumable = null;
-    public ?string $cost_in_credit = null;
+    public ?string $consumables = null;
+    public ?string $cost_in_credits = null;
     public ?string $created = null;
     public ?string $crew = null;
     public ?string $edited = null;
-    public ?array $film = null;
+    public ?array $films = null;
     public ?string $hyperdrive_rating = null;
     public ?string $length = null;
     public ?string $manufacturer = null;
     public ?string $max_atmosphering_speed = null;
-    public ?string $mglt = null;
     public ?string $model = null;
     public ?string $name = null;
-    public ?string $passenger = null;
-    public ?array $pilot = null;
+    public ?string $passengers = null;
+    public ?array $pilots = null;
     public ?string $starship_class = null;
     public ?string $url = null;
 }
@@ -255,19 +255,19 @@ class StarshipListMatch
 class Vehicle
 {
     public ?string $cargo_capacity = null;
-    public ?string $consumable = null;
-    public ?string $cost_in_credit = null;
+    public ?string $consumables = null;
+    public ?string $cost_in_credits = null;
     public ?string $created = null;
     public ?string $crew = null;
     public ?string $edited = null;
-    public ?array $film = null;
+    public ?array $films = null;
     public ?string $length = null;
     public ?string $manufacturer = null;
     public ?string $max_atmosphering_speed = null;
     public ?string $model = null;
     public ?string $name = null;
-    public ?string $passenger = null;
-    public ?array $pilot = null;
+    public ?string $passengers = null;
+    public ?array $pilots = null;
     public ?string $url = null;
     public ?string $vehicle_class = null;
 }
@@ -282,19 +282,19 @@ class VehicleLoadMatch
 class VehicleListMatch
 {
     public ?string $cargo_capacity = null;
-    public ?string $consumable = null;
-    public ?string $cost_in_credit = null;
+    public ?string $consumables = null;
+    public ?string $cost_in_credits = null;
     public ?string $created = null;
     public ?string $crew = null;
     public ?string $edited = null;
-    public ?array $film = null;
+    public ?array $films = null;
     public ?string $length = null;
     public ?string $manufacturer = null;
     public ?string $max_atmosphering_speed = null;
     public ?string $model = null;
     public ?string $name = null;
-    public ?string $passenger = null;
-    public ?array $pilot = null;
+    public ?string $passengers = null;
+    public ?array $pilots = null;
     public ?string $url = null;
     public ?string $vehicle_class = null;
 }

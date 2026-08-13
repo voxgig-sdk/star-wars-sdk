@@ -111,20 +111,20 @@ film = client.Film()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | `list` | No |  |
+| `characters` | `list` | No |  |
 | `created` | `str` | No |  |
 | `director` | `str` | No |  |
 | `edited` | `str` | No |  |
 | `episode_id` | `int` | No |  |
 | `opening_crawl` | `str` | No |  |
-| `planet` | `list` | No |  |
+| `planets` | `list` | No |  |
 | `producer` | `str` | No |  |
 | `release_date` | `str` | No |  |
 | `species` | `list` | No |  |
-| `starship` | `list` | No |  |
+| `starships` | `list` | No |  |
 | `title` | `str` | No |  |
 | `url` | `str` | No |  |
-| `vehicle` | `list` | No |  |
+| `vehicles` | `list` | No |  |
 
 ### Operations
 
@@ -224,7 +224,7 @@ person = client.Person()
 | `created` | `str` | No |  |
 | `edited` | `str` | No |  |
 | `eye_color` | `str` | No |  |
-| `film` | `list` | No |  |
+| `films` | `list` | No |  |
 | `gender` | `str` | No |  |
 | `hair_color` | `str` | No |  |
 | `height` | `str` | No |  |
@@ -233,9 +233,9 @@ person = client.Person()
 | `name` | `str` | No |  |
 | `skin_color` | `str` | No |  |
 | `species` | `list` | No |  |
-| `starship` | `list` | No |  |
+| `starships` | `list` | No |  |
 | `url` | `str` | No |  |
-| `vehicle` | `list` | No |  |
+| `vehicles` | `list` | No |  |
 
 ### Operations
 
@@ -300,12 +300,12 @@ planet = client.Planet()
 | `created` | `str` | No |  |
 | `diameter` | `str` | No |  |
 | `edited` | `str` | No |  |
-| `film` | `list` | No |  |
+| `films` | `list` | No |  |
 | `gravity` | `str` | No |  |
 | `name` | `str` | No |  |
 | `orbital_period` | `str` | No |  |
 | `population` | `str` | No |  |
-| `resident` | `list` | No |  |
+| `residents` | `list` | No |  |
 | `rotation_period` | `str` | No |  |
 | `surface_water` | `str` | No |  |
 | `terrain` | `str` | No |  |
@@ -376,14 +376,14 @@ species = client.Species()
 | `created` | `str` | No |  |
 | `designation` | `str` | No |  |
 | `edited` | `str` | No |  |
-| `eye_color` | `str` | No |  |
-| `film` | `list` | No |  |
-| `hair_color` | `str` | No |  |
+| `eye_colors` | `str` | No |  |
+| `films` | `list` | No |  |
+| `hair_colors` | `str` | No |  |
 | `homeworld` | `str` | No |  |
 | `language` | `str` | No |  |
 | `name` | `str` | No |  |
-| `person` | `list` | No |  |
-| `skin_color` | `str` | No |  |
+| `people` | `list` | No |  |
+| `skin_colors` | `str` | No |  |
 | `url` | `str` | No |  |
 
 ### Operations
@@ -445,22 +445,22 @@ starship = client.Starship()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `MGLT` | `str` | No |  |
 | `cargo_capacity` | `str` | No |  |
-| `consumable` | `str` | No |  |
-| `cost_in_credit` | `str` | No |  |
+| `consumables` | `str` | No |  |
+| `cost_in_credits` | `str` | No |  |
 | `created` | `str` | No |  |
 | `crew` | `str` | No |  |
 | `edited` | `str` | No |  |
-| `film` | `list` | No |  |
+| `films` | `list` | No |  |
 | `hyperdrive_rating` | `str` | No |  |
 | `length` | `str` | No |  |
 | `manufacturer` | `str` | No |  |
 | `max_atmosphering_speed` | `str` | No |  |
-| `mglt` | `str` | No |  |
 | `model` | `str` | No |  |
 | `name` | `str` | No |  |
-| `passenger` | `str` | No |  |
-| `pilot` | `list` | No |  |
+| `passengers` | `str` | No |  |
+| `pilots` | `list` | No |  |
 | `starship_class` | `str` | No |  |
 | `url` | `str` | No |  |
 
@@ -524,19 +524,19 @@ vehicle = client.Vehicle()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `cargo_capacity` | `str` | No |  |
-| `consumable` | `str` | No |  |
-| `cost_in_credit` | `str` | No |  |
+| `consumables` | `str` | No |  |
+| `cost_in_credits` | `str` | No |  |
 | `created` | `str` | No |  |
 | `crew` | `str` | No |  |
 | `edited` | `str` | No |  |
-| `film` | `list` | No |  |
+| `films` | `list` | No |  |
 | `length` | `str` | No |  |
 | `manufacturer` | `str` | No |  |
 | `max_atmosphering_speed` | `str` | No |  |
 | `model` | `str` | No |  |
 | `name` | `str` | No |  |
-| `passenger` | `str` | No |  |
-| `pilot` | `list` | No |  |
+| `passengers` | `str` | No |  |
+| `pilots` | `list` | No |  |
 | `url` | `str` | No |  |
 | `vehicle_class` | `str` | No |  |
 

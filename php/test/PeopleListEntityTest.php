@@ -33,7 +33,7 @@ class PeopleListEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set STARWARS_TEST_PEOPLE_LIST_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set STAR_WARS_TEST_PEOPLE_LIST_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -71,22 +71,22 @@ function people_list_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("STARWARS_TEST_PEOPLE_LIST_ENTID");
+    $entid_env_raw = getenv("STAR_WARS_TEST_PEOPLE_LIST_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "STARWARS_TEST_PEOPLE_LIST_ENTID" => $idmap,
-        "STARWARS_TEST_LIVE" => "FALSE",
-        "STARWARS_TEST_EXPLAIN" => "FALSE",
+        "STAR_WARS_TEST_PEOPLE_LIST_ENTID" => $idmap,
+        "STAR_WARS_TEST_LIVE" => "FALSE",
+        "STAR_WARS_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["STARWARS_TEST_PEOPLE_LIST_ENTID"]);
+        $env["STAR_WARS_TEST_PEOPLE_LIST_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["STARWARS_TEST_LIVE"] === "TRUE") {
+    if ($env["STAR_WARS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -95,13 +95,13 @@ function people_list_basic_setup($extra)
         $client = new StarWarsSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["STARWARS_TEST_LIVE"] === "TRUE";
+    $live = $env["STAR_WARS_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["STARWARS_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["STAR_WARS_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

@@ -115,11 +115,11 @@ function person_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["STARWARS_TEST_PERSON_ENTID"] = {},
-    ["STARWARS_TEST_LIVE"] = "FALSE",
+    ["STAR_WARS_TEST_PERSON_ENTID"] = {},
+    ["STAR_WARS_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["STARWARS_TEST_LIVE"] == "TRUE"
+  local live = env["STAR_WARS_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

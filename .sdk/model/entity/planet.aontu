@@ -26,7 +26,7 @@ main: kit: entity: planet: {
       type: "`$STRING`"
     }
     {
-      name: "film"
+      name: "films"
       req: false
       type: "`$ARRAY`"
     }
@@ -51,7 +51,7 @@ main: kit: entity: planet: {
       type: "`$STRING`"
     }
     {
-      name: "resident"
+      name: "residents"
       req: false
       type: "`$ARRAY`"
     }
@@ -115,7 +115,7 @@ main: kit: entity: planet: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

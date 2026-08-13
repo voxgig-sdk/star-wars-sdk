@@ -6,17 +6,22 @@ main: kit: entity: starship: {
 
   fields: [
     {
+      name: "MGLT"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "cargo_capacity"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "consumable"
+      name: "consumables"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "cost_in_credit"
+      name: "cost_in_credits"
       req: false
       type: "`$STRING`"
     }
@@ -36,7 +41,7 @@ main: kit: entity: starship: {
       type: "`$STRING`"
     }
     {
-      name: "film"
+      name: "films"
       req: false
       type: "`$ARRAY`"
     }
@@ -61,11 +66,6 @@ main: kit: entity: starship: {
       type: "`$STRING`"
     }
     {
-      name: "mglt"
-      req: false
-      type: "`$STRING`"
-    }
-    {
       name: "model"
       req: false
       type: "`$STRING`"
@@ -76,12 +76,12 @@ main: kit: entity: starship: {
       type: "`$STRING`"
     }
     {
-      name: "passenger"
+      name: "passengers"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "pilot"
+      name: "pilots"
       req: false
       type: "`$ARRAY`"
     }
@@ -135,7 +135,7 @@ main: kit: entity: starship: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

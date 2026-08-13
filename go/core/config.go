@@ -32,7 +32,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "character",
+						"name": "characters",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 0,
@@ -74,7 +74,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "planet",
+						"name": "planets",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 6,
@@ -102,7 +102,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "starship",
+						"name": "starships",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 10,
@@ -123,7 +123,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "vehicle",
+						"name": "vehicles",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 13,
@@ -158,6 +158,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/films",
 								"parts": []any{
@@ -171,12 +172,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -197,6 +197,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/films/{id}",
 								"parts": []any{
@@ -215,7 +216,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -262,7 +262,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "film",
+						"name": "films",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 4,
@@ -325,7 +325,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "starship",
+						"name": "starships",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 13,
@@ -339,7 +339,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "vehicle",
+						"name": "vehicles",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 15,
@@ -374,6 +374,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/people",
 								"parts": []any{
@@ -387,12 +388,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -413,6 +413,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/people/{id}",
 								"parts": []any{
@@ -431,7 +432,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -470,7 +470,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "film",
+						"name": "films",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 4,
@@ -505,7 +505,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "resident",
+						"name": "residents",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 9,
@@ -568,6 +568,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/planets",
 								"parts": []any{
@@ -581,12 +582,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -607,6 +607,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/planets/{id}",
 								"parts": []any{
@@ -625,7 +626,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -678,21 +678,21 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "eye_color",
+						"name": "eye_colors",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 6,
 					},
 					map[string]any{
 						"active": true,
-						"name": "film",
+						"name": "films",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 7,
 					},
 					map[string]any{
 						"active": true,
-						"name": "hair_color",
+						"name": "hair_colors",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 8,
@@ -720,14 +720,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "person",
+						"name": "people",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 12,
 					},
 					map[string]any{
 						"active": true,
-						"name": "skin_color",
+						"name": "skin_colors",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 13,
@@ -769,6 +769,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/species",
 								"parts": []any{
@@ -782,12 +783,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -808,6 +808,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/species/{id}",
 								"parts": []any{
@@ -826,7 +827,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -837,84 +837,84 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "cargo_capacity",
+						"name": "MGLT",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "consumable",
+						"name": "cargo_capacity",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "cost_in_credit",
+						"name": "consumables",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "created",
+						"name": "cost_in_credits",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
-						"name": "crew",
+						"name": "created",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 4,
 					},
 					map[string]any{
 						"active": true,
-						"name": "edited",
+						"name": "crew",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
-						"name": "film",
+						"name": "edited",
+						"req": false,
+						"type": "`$STRING`",
+						"index$": 6,
+					},
+					map[string]any{
+						"active": true,
+						"name": "films",
 						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 6,
+						"index$": 7,
 					},
 					map[string]any{
 						"active": true,
 						"name": "hyperdrive_rating",
 						"req": false,
 						"type": "`$STRING`",
-						"index$": 7,
+						"index$": 8,
 					},
 					map[string]any{
 						"active": true,
 						"name": "length",
 						"req": false,
 						"type": "`$STRING`",
-						"index$": 8,
+						"index$": 9,
 					},
 					map[string]any{
 						"active": true,
 						"name": "manufacturer",
 						"req": false,
 						"type": "`$STRING`",
-						"index$": 9,
-					},
-					map[string]any{
-						"active": true,
-						"name": "max_atmosphering_speed",
-						"req": false,
-						"type": "`$STRING`",
 						"index$": 10,
 					},
 					map[string]any{
 						"active": true,
-						"name": "mglt",
+						"name": "max_atmosphering_speed",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 11,
@@ -935,14 +935,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "passenger",
+						"name": "passengers",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 14,
 					},
 					map[string]any{
 						"active": true,
-						"name": "pilot",
+						"name": "pilots",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 15,
@@ -991,6 +991,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/starships",
 								"parts": []any{
@@ -1004,12 +1005,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -1030,6 +1030,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/starships/{id}",
 								"parts": []any{
@@ -1048,7 +1049,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -1066,14 +1066,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "consumable",
+						"name": "consumables",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "cost_in_credit",
+						"name": "cost_in_credits",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
@@ -1101,7 +1101,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "film",
+						"name": "films",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 6,
@@ -1143,14 +1143,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "passenger",
+						"name": "passengers",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 12,
 					},
 					map[string]any{
 						"active": true,
-						"name": "pilot",
+						"name": "pilots",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 13,
@@ -1199,6 +1199,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/vehicles",
 								"parts": []any{
@@ -1212,12 +1213,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -1238,6 +1238,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/vehicles/{id}",
 								"parts": []any{
@@ -1256,7 +1257,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

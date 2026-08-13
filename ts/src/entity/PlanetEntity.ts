@@ -37,7 +37,7 @@ class PlanetEntity extends StarWarsEntityBase<Planet> {
 
 
 
-  async load(this: any, reqmatch?: PlanetLoadMatch, ctrl?: Control): Promise<Planet> {
+  async load(this: any, reqmatch?: PlanetLoadMatch, ctrl?: Control): Promise<PlanetEntity> {
 
     const utility = this._utility
 
@@ -128,7 +128,15 @@ class PlanetEntity extends StarWarsEntityBase<Planet> {
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 
@@ -150,7 +158,7 @@ class PlanetEntity extends StarWarsEntityBase<Planet> {
 
 
 
-  async list(this: any, reqmatch?: PlanetListMatch, ctrl?: Control): Promise<Planet[]> {
+  async list(this: any, reqmatch?: PlanetListMatch, ctrl?: Control): Promise<PlanetEntity[]> {
 
     const utility = this._utility
 

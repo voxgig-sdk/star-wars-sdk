@@ -116,20 +116,20 @@ $film = $client->Film();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | `array` | No |  |
+| `characters` | `array` | No |  |
 | `created` | `string` | No |  |
 | `director` | `string` | No |  |
 | `edited` | `string` | No |  |
 | `episode_id` | `int` | No |  |
 | `opening_crawl` | `string` | No |  |
-| `planet` | `array` | No |  |
+| `planets` | `array` | No |  |
 | `producer` | `string` | No |  |
 | `release_date` | `string` | No |  |
 | `species` | `array` | No |  |
-| `starship` | `array` | No |  |
+| `starships` | `array` | No |  |
 | `title` | `string` | No |  |
 | `url` | `string` | No |  |
-| `vehicle` | `array` | No |  |
+| `vehicles` | `array` | No |  |
 
 ### Operations
 
@@ -229,7 +229,7 @@ $person = $client->Person();
 | `created` | `string` | No |  |
 | `edited` | `string` | No |  |
 | `eye_color` | `string` | No |  |
-| `film` | `array` | No |  |
+| `films` | `array` | No |  |
 | `gender` | `string` | No |  |
 | `hair_color` | `string` | No |  |
 | `height` | `string` | No |  |
@@ -238,9 +238,9 @@ $person = $client->Person();
 | `name` | `string` | No |  |
 | `skin_color` | `string` | No |  |
 | `species` | `array` | No |  |
-| `starship` | `array` | No |  |
+| `starships` | `array` | No |  |
 | `url` | `string` | No |  |
-| `vehicle` | `array` | No |  |
+| `vehicles` | `array` | No |  |
 
 ### Operations
 
@@ -304,12 +304,12 @@ $planet = $client->Planet();
 | `created` | `string` | No |  |
 | `diameter` | `string` | No |  |
 | `edited` | `string` | No |  |
-| `film` | `array` | No |  |
+| `films` | `array` | No |  |
 | `gravity` | `string` | No |  |
 | `name` | `string` | No |  |
 | `orbital_period` | `string` | No |  |
 | `population` | `string` | No |  |
-| `resident` | `array` | No |  |
+| `residents` | `array` | No |  |
 | `rotation_period` | `string` | No |  |
 | `surface_water` | `string` | No |  |
 | `terrain` | `string` | No |  |
@@ -379,14 +379,14 @@ $species = $client->Species();
 | `created` | `string` | No |  |
 | `designation` | `string` | No |  |
 | `edited` | `string` | No |  |
-| `eye_color` | `string` | No |  |
-| `film` | `array` | No |  |
-| `hair_color` | `string` | No |  |
+| `eye_colors` | `string` | No |  |
+| `films` | `array` | No |  |
+| `hair_colors` | `string` | No |  |
 | `homeworld` | `string` | No |  |
 | `language` | `string` | No |  |
 | `name` | `string` | No |  |
-| `person` | `array` | No |  |
-| `skin_color` | `string` | No |  |
+| `people` | `array` | No |  |
+| `skin_colors` | `string` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -447,22 +447,22 @@ $starship = $client->Starship();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `MGLT` | `string` | No |  |
 | `cargo_capacity` | `string` | No |  |
-| `consumable` | `string` | No |  |
-| `cost_in_credit` | `string` | No |  |
+| `consumables` | `string` | No |  |
+| `cost_in_credits` | `string` | No |  |
 | `created` | `string` | No |  |
 | `crew` | `string` | No |  |
 | `edited` | `string` | No |  |
-| `film` | `array` | No |  |
+| `films` | `array` | No |  |
 | `hyperdrive_rating` | `string` | No |  |
 | `length` | `string` | No |  |
 | `manufacturer` | `string` | No |  |
 | `max_atmosphering_speed` | `string` | No |  |
-| `mglt` | `string` | No |  |
 | `model` | `string` | No |  |
 | `name` | `string` | No |  |
-| `passenger` | `string` | No |  |
-| `pilot` | `array` | No |  |
+| `passengers` | `string` | No |  |
+| `pilots` | `array` | No |  |
 | `starship_class` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -525,19 +525,19 @@ $vehicle = $client->Vehicle();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `cargo_capacity` | `string` | No |  |
-| `consumable` | `string` | No |  |
-| `cost_in_credit` | `string` | No |  |
+| `consumables` | `string` | No |  |
+| `cost_in_credits` | `string` | No |  |
 | `created` | `string` | No |  |
 | `crew` | `string` | No |  |
 | `edited` | `string` | No |  |
-| `film` | `array` | No |  |
+| `films` | `array` | No |  |
 | `length` | `string` | No |  |
 | `manufacturer` | `string` | No |  |
 | `max_atmosphering_speed` | `string` | No |  |
 | `model` | `string` | No |  |
 | `name` | `string` | No |  |
-| `passenger` | `string` | No |  |
-| `pilot` | `array` | No |  |
+| `passengers` | `string` | No |  |
+| `pilots` | `array` | No |  |
 | `url` | `string` | No |  |
 | `vehicle_class` | `string` | No |  |
 

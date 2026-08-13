@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load a film
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -69,8 +69,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    films = client.Film().list()
-    print(films)
+    persons = client.Person().list()
+    print(persons)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -136,9 +136,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = StarWarsSDK.test()
 
-# Entity ops return the bare record and raise on error.
-film = client.Film().list()
-# film contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+person = client.Person().list()
+# person contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -239,7 +240,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -261,20 +262,20 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `character` |  |
+| `characters` |  |
 | `created` |  |
 | `director` |  |
 | `edited` |  |
 | `episode_id` |  |
 | `opening_crawl` |  |
-| `planet` |  |
+| `planets` |  |
 | `producer` |  |
 | `release_date` |  |
 | `species` |  |
-| `starship` |  |
+| `starships` |  |
 | `title` |  |
 | `url` |  |
-| `vehicle` |  |
+| `vehicles` |  |
 
 Operations: List, Load.
 
@@ -297,7 +298,7 @@ API path: ``
 | `created` |  |
 | `edited` |  |
 | `eye_color` |  |
-| `film` |  |
+| `films` |  |
 | `gender` |  |
 | `hair_color` |  |
 | `height` |  |
@@ -306,9 +307,9 @@ API path: ``
 | `name` |  |
 | `skin_color` |  |
 | `species` |  |
-| `starship` |  |
+| `starships` |  |
 | `url` |  |
-| `vehicle` |  |
+| `vehicles` |  |
 
 Operations: List, Load.
 
@@ -322,12 +323,12 @@ API path: `/people`
 | `created` |  |
 | `diameter` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `gravity` |  |
 | `name` |  |
 | `orbital_period` |  |
 | `population` |  |
-| `resident` |  |
+| `residents` |  |
 | `rotation_period` |  |
 | `surface_water` |  |
 | `terrain` |  |
@@ -347,14 +348,14 @@ API path: `/planets`
 | `created` |  |
 | `designation` |  |
 | `edited` |  |
-| `eye_color` |  |
-| `film` |  |
-| `hair_color` |  |
+| `eye_colors` |  |
+| `films` |  |
+| `hair_colors` |  |
 | `homeworld` |  |
 | `language` |  |
 | `name` |  |
-| `person` |  |
-| `skin_color` |  |
+| `people` |  |
+| `skin_colors` |  |
 | `url` |  |
 
 Operations: List, Load.
@@ -365,22 +366,22 @@ API path: `/species`
 
 | Field | Description |
 | --- | --- |
+| `MGLT` |  |
 | `cargo_capacity` |  |
-| `consumable` |  |
-| `cost_in_credit` |  |
+| `consumables` |  |
+| `cost_in_credits` |  |
 | `created` |  |
 | `crew` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `hyperdrive_rating` |  |
 | `length` |  |
 | `manufacturer` |  |
 | `max_atmosphering_speed` |  |
-| `mglt` |  |
 | `model` |  |
 | `name` |  |
-| `passenger` |  |
-| `pilot` |  |
+| `passengers` |  |
+| `pilots` |  |
 | `starship_class` |  |
 | `url` |  |
 
@@ -393,19 +394,19 @@ API path: `/starships`
 | Field | Description |
 | --- | --- |
 | `cargo_capacity` |  |
-| `consumable` |  |
-| `cost_in_credit` |  |
+| `consumables` |  |
+| `cost_in_credits` |  |
 | `created` |  |
 | `crew` |  |
 | `edited` |  |
-| `film` |  |
+| `films` |  |
 | `length` |  |
 | `manufacturer` |  |
 | `max_atmosphering_speed` |  |
 | `model` |  |
 | `name` |  |
-| `passenger` |  |
-| `pilot` |  |
+| `passengers` |  |
+| `pilots` |  |
 | `url` |  |
 | `vehicle_class` |  |
 
@@ -433,20 +434,20 @@ Create an instance: `film = client.Film()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `character` | `list` |  |
+| `characters` | `list` |  |
 | `created` | `str` |  |
 | `director` | `str` |  |
 | `edited` | `str` |  |
 | `episode_id` | `int` |  |
 | `opening_crawl` | `str` |  |
-| `planet` | `list` |  |
+| `planets` | `list` |  |
 | `producer` | `str` |  |
 | `release_date` | `str` |  |
 | `species` | `list` |  |
-| `starship` | `list` |  |
+| `starships` | `list` |  |
 | `title` | `str` |  |
 | `url` | `str` |  |
-| `vehicle` | `list` |  |
+| `vehicles` | `list` |  |
 
 #### Example: Load
 
@@ -485,7 +486,7 @@ Create an instance: `person = client.Person()`
 | `created` | `str` |  |
 | `edited` | `str` |  |
 | `eye_color` | `str` |  |
-| `film` | `list` |  |
+| `films` | `list` |  |
 | `gender` | `str` |  |
 | `hair_color` | `str` |  |
 | `height` | `str` |  |
@@ -494,9 +495,9 @@ Create an instance: `person = client.Person()`
 | `name` | `str` |  |
 | `skin_color` | `str` |  |
 | `species` | `list` |  |
-| `starship` | `list` |  |
+| `starships` | `list` |  |
 | `url` | `str` |  |
-| `vehicle` | `list` |  |
+| `vehicles` | `list` |  |
 
 #### Example: Load
 
@@ -530,12 +531,12 @@ Create an instance: `planet = client.Planet()`
 | `created` | `str` |  |
 | `diameter` | `str` |  |
 | `edited` | `str` |  |
-| `film` | `list` |  |
+| `films` | `list` |  |
 | `gravity` | `str` |  |
 | `name` | `str` |  |
 | `orbital_period` | `str` |  |
 | `population` | `str` |  |
-| `resident` | `list` |  |
+| `residents` | `list` |  |
 | `rotation_period` | `str` |  |
 | `surface_water` | `str` |  |
 | `terrain` | `str` |  |
@@ -575,14 +576,14 @@ Create an instance: `species = client.Species()`
 | `created` | `str` |  |
 | `designation` | `str` |  |
 | `edited` | `str` |  |
-| `eye_color` | `str` |  |
-| `film` | `list` |  |
-| `hair_color` | `str` |  |
+| `eye_colors` | `str` |  |
+| `films` | `list` |  |
+| `hair_colors` | `str` |  |
 | `homeworld` | `str` |  |
 | `language` | `str` |  |
 | `name` | `str` |  |
-| `person` | `list` |  |
-| `skin_color` | `str` |  |
+| `people` | `list` |  |
+| `skin_colors` | `str` |  |
 | `url` | `str` |  |
 
 #### Example: Load
@@ -613,22 +614,22 @@ Create an instance: `starship = client.Starship()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `MGLT` | `str` |  |
 | `cargo_capacity` | `str` |  |
-| `consumable` | `str` |  |
-| `cost_in_credit` | `str` |  |
+| `consumables` | `str` |  |
+| `cost_in_credits` | `str` |  |
 | `created` | `str` |  |
 | `crew` | `str` |  |
 | `edited` | `str` |  |
-| `film` | `list` |  |
+| `films` | `list` |  |
 | `hyperdrive_rating` | `str` |  |
 | `length` | `str` |  |
 | `manufacturer` | `str` |  |
 | `max_atmosphering_speed` | `str` |  |
-| `mglt` | `str` |  |
 | `model` | `str` |  |
 | `name` | `str` |  |
-| `passenger` | `str` |  |
-| `pilot` | `list` |  |
+| `passengers` | `str` |  |
+| `pilots` | `list` |  |
 | `starship_class` | `str` |  |
 | `url` | `str` |  |
 
@@ -661,19 +662,19 @@ Create an instance: `vehicle = client.Vehicle()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `cargo_capacity` | `str` |  |
-| `consumable` | `str` |  |
-| `cost_in_credit` | `str` |  |
+| `consumables` | `str` |  |
+| `cost_in_credits` | `str` |  |
 | `created` | `str` |  |
 | `crew` | `str` |  |
 | `edited` | `str` |  |
-| `film` | `list` |  |
+| `films` | `list` |  |
 | `length` | `str` |  |
 | `manufacturer` | `str` |  |
 | `max_atmosphering_speed` | `str` |  |
 | `model` | `str` |  |
 | `name` | `str` |  |
-| `passenger` | `str` |  |
-| `pilot` | `list` |  |
+| `passengers` | `str` |  |
+| `pilots` | `list` |  |
 | `url` | `str` |  |
 | `vehicle_class` | `str` |  |
 
@@ -765,11 +766,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-film = client.Film()
-film.list()
+person = client.Person()
+person.list()
 
-# film.data_get() now returns the film data from the last list
-# film.match_get() returns the last match criteria
+# person.data_get() now returns the person data from the last list
+# person.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

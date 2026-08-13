@@ -6,7 +6,7 @@ main: kit: entity: film: {
 
   fields: [
     {
-      name: "character"
+      name: "characters"
       req: false
       type: "`$ARRAY`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: film: {
       type: "`$STRING`"
     }
     {
-      name: "planet"
+      name: "planets"
       req: false
       type: "`$ARRAY`"
     }
@@ -56,7 +56,7 @@ main: kit: entity: film: {
       type: "`$ARRAY`"
     }
     {
-      name: "starship"
+      name: "starships"
       req: false
       type: "`$ARRAY`"
     }
@@ -71,7 +71,7 @@ main: kit: entity: film: {
       type: "`$STRING`"
     }
     {
-      name: "vehicle"
+      name: "vehicles"
       req: false
       type: "`$ARRAY`"
     }
@@ -115,7 +115,7 @@ main: kit: entity: film: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

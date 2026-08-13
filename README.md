@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = StarWarsSDK.test()
-const films = await client.Film().list()
-// films is an array of bare Film records populated with mock data
-console.log(films)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = StarWarsSDK.test({
+  entity: {
+    person: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const persons = await client.Person().list()
+// persons is an array of Person entities, populated with mock data
+// — call persons[0].data() for the record itself
+console.log(persons)
 ```
 
 ### Python
 
 ```python
 client = StarWarsSDK.test()
-films = client.Film().list()
-print(films)
+persons = client.Person().list()
+print(persons)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(films)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = StarWarsSDK::test([
-    "entity" => ["film" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["person" => ["test01" => ["id" => "test01"]]],
 ]);
-$films = $client->Film()->list();
+$persons = $client->Person()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Film(nil).List(
+result, err := client.Person(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Film(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = StarWarsSDK.test({
-  "entity" => { "film" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "person" => { "test01" => { "id" => "test01" } } },
 })
-films = client.Film.list()
+persons = client.Person.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Film():list()
+local results, err = client:Person():list()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { StarWarsSDK } from '@voxgig-sdk/star-wars'
 
 const client = new StarWarsSDK()
 
-// List all films (returns Film[])
+// List all films (returns FilmEntity[] — .data() for the record)
 const films = await client.Film().list()
 for (const film of films) {
   console.log(film)
@@ -197,7 +206,7 @@ $client = new StarWarsSDK();
 $films = $client->Film()->list();
 print_r($films);
 
-// Load a specific film (returns the bare record; throws on error)
+// Load a specific film (returns the ENTITY; call data_get() for the record; throws on error)
 $film = $client->Film()->load(["id" => 1]);
 print_r($film);
 ```
@@ -228,7 +237,7 @@ client = StarWarsSDK.new
 films = client.Film.list
 puts films
 
-# Load a specific film (returns the bare record; raises on error)
+# Load a specific film (returns the ENTITY; call data_get for the record)
 film = client.Film.load({ "id" => 1 })
 puts film
 ```
@@ -365,6 +374,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://swapi.dev](https://swapi.dev)
 

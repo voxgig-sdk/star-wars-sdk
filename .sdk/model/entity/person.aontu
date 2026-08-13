@@ -26,7 +26,7 @@ main: kit: entity: person: {
       type: "`$STRING`"
     }
     {
-      name: "film"
+      name: "films"
       req: false
       type: "`$ARRAY`"
     }
@@ -71,7 +71,7 @@ main: kit: entity: person: {
       type: "`$ARRAY`"
     }
     {
-      name: "starship"
+      name: "starships"
       req: false
       type: "`$ARRAY`"
     }
@@ -81,7 +81,7 @@ main: kit: entity: person: {
       type: "`$STRING`"
     }
     {
-      name: "vehicle"
+      name: "vehicles"
       req: false
       type: "`$ARRAY`"
     }
@@ -125,7 +125,7 @@ main: kit: entity: person: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

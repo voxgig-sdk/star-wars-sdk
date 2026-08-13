@@ -114,20 +114,20 @@ local film = client:Film(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `character` | `table` | No |  |
+| `characters` | `table` | No |  |
 | `created` | `string` | No |  |
 | `director` | `string` | No |  |
 | `edited` | `string` | No |  |
 | `episode_id` | `number` | No |  |
 | `opening_crawl` | `string` | No |  |
-| `planet` | `table` | No |  |
+| `planets` | `table` | No |  |
 | `producer` | `string` | No |  |
 | `release_date` | `string` | No |  |
 | `species` | `table` | No |  |
-| `starship` | `table` | No |  |
+| `starships` | `table` | No |  |
 | `title` | `string` | No |  |
 | `url` | `string` | No |  |
-| `vehicle` | `table` | No |  |
+| `vehicles` | `table` | No |  |
 
 ### Operations
 
@@ -227,7 +227,7 @@ local person = client:Person(nil)
 | `created` | `string` | No |  |
 | `edited` | `string` | No |  |
 | `eye_color` | `string` | No |  |
-| `film` | `table` | No |  |
+| `films` | `table` | No |  |
 | `gender` | `string` | No |  |
 | `hair_color` | `string` | No |  |
 | `height` | `string` | No |  |
@@ -236,9 +236,9 @@ local person = client:Person(nil)
 | `name` | `string` | No |  |
 | `skin_color` | `string` | No |  |
 | `species` | `table` | No |  |
-| `starship` | `table` | No |  |
+| `starships` | `table` | No |  |
 | `url` | `string` | No |  |
-| `vehicle` | `table` | No |  |
+| `vehicles` | `table` | No |  |
 
 ### Operations
 
@@ -302,12 +302,12 @@ local planet = client:Planet(nil)
 | `created` | `string` | No |  |
 | `diameter` | `string` | No |  |
 | `edited` | `string` | No |  |
-| `film` | `table` | No |  |
+| `films` | `table` | No |  |
 | `gravity` | `string` | No |  |
 | `name` | `string` | No |  |
 | `orbital_period` | `string` | No |  |
 | `population` | `string` | No |  |
-| `resident` | `table` | No |  |
+| `residents` | `table` | No |  |
 | `rotation_period` | `string` | No |  |
 | `surface_water` | `string` | No |  |
 | `terrain` | `string` | No |  |
@@ -377,14 +377,14 @@ local species = client:Species(nil)
 | `created` | `string` | No |  |
 | `designation` | `string` | No |  |
 | `edited` | `string` | No |  |
-| `eye_color` | `string` | No |  |
-| `film` | `table` | No |  |
-| `hair_color` | `string` | No |  |
+| `eye_colors` | `string` | No |  |
+| `films` | `table` | No |  |
+| `hair_colors` | `string` | No |  |
 | `homeworld` | `string` | No |  |
 | `language` | `string` | No |  |
 | `name` | `string` | No |  |
-| `person` | `table` | No |  |
-| `skin_color` | `string` | No |  |
+| `people` | `table` | No |  |
+| `skin_colors` | `string` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -445,22 +445,22 @@ local starship = client:Starship(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `MGLT` | `string` | No |  |
 | `cargo_capacity` | `string` | No |  |
-| `consumable` | `string` | No |  |
-| `cost_in_credit` | `string` | No |  |
+| `consumables` | `string` | No |  |
+| `cost_in_credits` | `string` | No |  |
 | `created` | `string` | No |  |
 | `crew` | `string` | No |  |
 | `edited` | `string` | No |  |
-| `film` | `table` | No |  |
+| `films` | `table` | No |  |
 | `hyperdrive_rating` | `string` | No |  |
 | `length` | `string` | No |  |
 | `manufacturer` | `string` | No |  |
 | `max_atmosphering_speed` | `string` | No |  |
-| `mglt` | `string` | No |  |
 | `model` | `string` | No |  |
 | `name` | `string` | No |  |
-| `passenger` | `string` | No |  |
-| `pilot` | `table` | No |  |
+| `passengers` | `string` | No |  |
+| `pilots` | `table` | No |  |
 | `starship_class` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -523,19 +523,19 @@ local vehicle = client:Vehicle(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `cargo_capacity` | `string` | No |  |
-| `consumable` | `string` | No |  |
-| `cost_in_credit` | `string` | No |  |
+| `consumables` | `string` | No |  |
+| `cost_in_credits` | `string` | No |  |
 | `created` | `string` | No |  |
 | `crew` | `string` | No |  |
 | `edited` | `string` | No |  |
-| `film` | `table` | No |  |
+| `films` | `table` | No |  |
 | `length` | `string` | No |  |
 | `manufacturer` | `string` | No |  |
 | `max_atmosphering_speed` | `string` | No |  |
 | `model` | `string` | No |  |
 | `name` | `string` | No |  |
-| `passenger` | `string` | No |  |
-| `pilot` | `table` | No |  |
+| `passengers` | `string` | No |  |
+| `pilots` | `table` | No |  |
 | `url` | `string` | No |  |
 | `vehicle_class` | `string` | No |  |
 
