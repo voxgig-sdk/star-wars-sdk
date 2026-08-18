@@ -40,7 +40,7 @@ class StarWarsSDK
         $utility = new StarWarsUtility();
         $this->_utility = $utility;
 
-        $config = StarWarsConfig::make_config();
+        $config = StarWarsConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

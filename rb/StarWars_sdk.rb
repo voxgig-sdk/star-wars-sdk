@@ -28,7 +28,7 @@ class StarWarsSDK
     utility = StarWarsUtility.new
     @_utility = utility
 
-    config = StarWarsConfig.make_config
+    config = StarWarsConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
