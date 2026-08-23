@@ -1,0 +1,186 @@
+# Entity: person
+
+main: kit: entity: person: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "birth_year"
+      req: false
+      short: "The birth year of the person, using the in-universe standard of BBY or ABY"
+      type: "`$STRING`"
+    }
+    {
+      name: "created"
+      req: false
+      short: "The ISO 8601 date format of the time that this resource was created"
+      type: "`$STRING`"
+    }
+    {
+      name: "edited"
+      req: false
+      short: "The ISO 8601 date format of the time that this resource was edited"
+      type: "`$STRING`"
+    }
+    {
+      name: "eye_color"
+      req: false
+      short: "The eye color of this person"
+      type: "`$STRING`"
+    }
+    {
+      name: "films"
+      req: false
+      short: "An array of film resource URLs that this person has been in"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "gender"
+      req: false
+      short: "The gender of this person"
+      type: "`$STRING`"
+    }
+    {
+      name: "hair_color"
+      req: false
+      short: "The hair color of this person"
+      type: "`$STRING`"
+    }
+    {
+      name: "height"
+      req: false
+      short: "The height of the person in centimeters"
+      type: "`$STRING`"
+    }
+    {
+      name: "homeworld"
+      req: false
+      short: "The URL of the planet resource that this person was born on"
+      type: "`$STRING`"
+    }
+    {
+      name: "mass"
+      req: false
+      short: "The mass of the person in kilograms"
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "The name of this person"
+      type: "`$STRING`"
+    }
+    {
+      name: "skin_color"
+      req: false
+      short: "The skin color of this person"
+      type: "`$STRING`"
+    }
+    {
+      name: "species"
+      req: false
+      short: "An array of species resource URLs that this person belongs to"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "starships"
+      req: false
+      short: "An array of starship resource URLs that this person has piloted"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "url"
+      req: false
+      short: "The hypermedia URL of this resource"
+      type: "`$STRING`"
+    }
+    {
+      name: "vehicles"
+      req: false
+      short: "An array of vehicle resource URLs that this person has piloted"
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "person"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "search"
+                orig: "search"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/people"
+          parts: [
+            "people"
+          ]
+          select: {
+            exist: [
+              "page"
+              "search"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/people/{id}"
+          parts: [
+            "people"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

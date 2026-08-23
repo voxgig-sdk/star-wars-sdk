@@ -111,20 +111,20 @@ film = client.Film()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `characters` | `list` | No |  |
-| `created` | `str` | No |  |
-| `director` | `str` | No |  |
-| `edited` | `str` | No |  |
-| `episode_id` | `int` | No |  |
-| `opening_crawl` | `str` | No |  |
-| `planets` | `list` | No |  |
-| `producer` | `str` | No |  |
-| `release_date` | `str` | No |  |
-| `species` | `list` | No |  |
-| `starships` | `list` | No |  |
-| `title` | `str` | No |  |
-| `url` | `str` | No |  |
-| `vehicles` | `list` | No |  |
+| `characters` | `list` | No | An array of people resource URLs that are in this film |
+| `created` | `str` | No | The ISO 8601 date format of the time that this resource was created |
+| `director` | `str` | No | The name of the director of this film |
+| `edited` | `str` | No | The ISO 8601 date format of the time that this resource was edited |
+| `episode_id` | `int` | No | The episode number of this film |
+| `opening_crawl` | `str` | No | The opening paragraphs at the beginning of this film |
+| `planets` | `list` | No | An array of planet resource URLs that are in this film |
+| `producer` | `str` | No | The name(s) of the producer(s) of this film |
+| `release_date` | `str` | No | The release date of this film |
+| `species` | `list` | No | An array of species resource URLs that are in this film |
+| `starships` | `list` | No | An array of starship resource URLs that are in this film |
+| `title` | `str` | No | The title of this film |
+| `url` | `str` | No | The hypermedia URL of this resource |
+| `vehicles` | `list` | No | An array of vehicle resource URLs that are in this film |
 
 ### Operations
 
@@ -220,22 +220,22 @@ person = client.Person()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `birth_year` | `str` | No |  |
-| `created` | `str` | No |  |
-| `edited` | `str` | No |  |
-| `eye_color` | `str` | No |  |
-| `films` | `list` | No |  |
-| `gender` | `str` | No |  |
-| `hair_color` | `str` | No |  |
-| `height` | `str` | No |  |
-| `homeworld` | `str` | No |  |
-| `mass` | `str` | No |  |
-| `name` | `str` | No |  |
-| `skin_color` | `str` | No |  |
-| `species` | `list` | No |  |
-| `starships` | `list` | No |  |
-| `url` | `str` | No |  |
-| `vehicles` | `list` | No |  |
+| `birth_year` | `str` | No | The birth year of the person, using the in-universe standard of BBY or ABY |
+| `created` | `str` | No | The ISO 8601 date format of the time that this resource was created |
+| `edited` | `str` | No | The ISO 8601 date format of the time that this resource was edited |
+| `eye_color` | `str` | No | The eye color of this person |
+| `films` | `list` | No | An array of film resource URLs that this person has been in |
+| `gender` | `str` | No | The gender of this person |
+| `hair_color` | `str` | No | The hair color of this person |
+| `height` | `str` | No | The height of the person in centimeters |
+| `homeworld` | `str` | No | The URL of the planet resource that this person was born on |
+| `mass` | `str` | No | The mass of the person in kilograms |
+| `name` | `str` | No | The name of this person |
+| `skin_color` | `str` | No | The skin color of this person |
+| `species` | `list` | No | An array of species resource URLs that this person belongs to |
+| `starships` | `list` | No | An array of starship resource URLs that this person has piloted |
+| `url` | `str` | No | The hypermedia URL of this resource |
+| `vehicles` | `list` | No | An array of vehicle resource URLs that this person has piloted |
 
 ### Operations
 
@@ -296,20 +296,20 @@ planet = client.Planet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `climate` | `str` | No |  |
-| `created` | `str` | No |  |
-| `diameter` | `str` | No |  |
-| `edited` | `str` | No |  |
-| `films` | `list` | No |  |
-| `gravity` | `str` | No |  |
-| `name` | `str` | No |  |
-| `orbital_period` | `str` | No |  |
-| `population` | `str` | No |  |
-| `residents` | `list` | No |  |
-| `rotation_period` | `str` | No |  |
-| `surface_water` | `str` | No |  |
-| `terrain` | `str` | No |  |
-| `url` | `str` | No |  |
+| `climate` | `str` | No | The climate of this planet |
+| `created` | `str` | No | The ISO 8601 date format of the time that this resource was created |
+| `diameter` | `str` | No | The diameter of this planet in kilometers |
+| `edited` | `str` | No | The ISO 8601 date format of the time that this resource was edited |
+| `films` | `list` | No | An array of Film URL Resources that this planet has appeared in |
+| `gravity` | `str` | No | A number denoting the gravity of this planet |
+| `name` | `str` | No | The name of this planet |
+| `orbital_period` | `str` | No | The number of standard days it takes for this planet to complete a single orbit of its local star |
+| `population` | `str` | No | The average population of sentient beings inhabiting this planet |
+| `residents` | `list` | No | An array of People URL Resources that live on this planet |
+| `rotation_period` | `str` | No | The number of standard hours it takes for this planet to complete a single rotation on its axis |
+| `surface_water` | `str` | No | The percentage of the planet surface that is naturally occurring water |
+| `terrain` | `str` | No | The terrain of this planet |
+| `url` | `str` | No | The hypermedia URL of this resource |
 
 ### Operations
 
@@ -370,21 +370,21 @@ species = client.Species()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average_height` | `str` | No |  |
-| `average_lifespan` | `str` | No |  |
-| `classification` | `str` | No |  |
-| `created` | `str` | No |  |
-| `designation` | `str` | No |  |
-| `edited` | `str` | No |  |
-| `eye_colors` | `str` | No |  |
-| `films` | `list` | No |  |
-| `hair_colors` | `str` | No |  |
-| `homeworld` | `str` | No |  |
-| `language` | `str` | No |  |
-| `name` | `str` | No |  |
-| `people` | `list` | No |  |
-| `skin_colors` | `str` | No |  |
-| `url` | `str` | No |  |
+| `average_height` | `str` | No | The average height of this species in centimeters |
+| `average_lifespan` | `str` | No | The average lifespan of this species in years |
+| `classification` | `str` | No | The classification of this species |
+| `created` | `str` | No | The ISO 8601 date format of the time that this resource was created |
+| `designation` | `str` | No | The designation of this species |
+| `edited` | `str` | No | The ISO 8601 date format of the time that this resource was edited |
+| `eye_colors` | `str` | No | A comma-separated string of common eye colors for this species |
+| `films` | `list` | No | An array of Film URL Resources that this species has appeared in |
+| `hair_colors` | `str` | No | A comma-separated string of common hair colors for this species |
+| `homeworld` | `str` | No | The URL of a planet resource that is the homeworld of this species |
+| `language` | `str` | No | The language commonly spoken by this species |
+| `name` | `str` | No | The name of this species |
+| `people` | `list` | No | An array of People URL Resources that are a part of this species |
+| `skin_colors` | `str` | No | A comma-separated string of common skin colors for this species |
+| `url` | `str` | No | The hypermedia URL of this resource |
 
 ### Operations
 
@@ -445,24 +445,24 @@ starship = client.Starship()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `MGLT` | `str` | No |  |
-| `cargo_capacity` | `str` | No |  |
-| `consumables` | `str` | No |  |
-| `cost_in_credits` | `str` | No |  |
-| `created` | `str` | No |  |
-| `crew` | `str` | No |  |
-| `edited` | `str` | No |  |
-| `films` | `list` | No |  |
-| `hyperdrive_rating` | `str` | No |  |
-| `length` | `str` | No |  |
-| `manufacturer` | `str` | No |  |
-| `max_atmosphering_speed` | `str` | No |  |
-| `model` | `str` | No |  |
-| `name` | `str` | No |  |
-| `passengers` | `str` | No |  |
-| `pilots` | `list` | No |  |
-| `starship_class` | `str` | No |  |
-| `url` | `str` | No |  |
+| `MGLT` | `str` | No | The Maximum number of Megalights this starship can travel in a standard hour |
+| `cargo_capacity` | `str` | No | The maximum number of kilograms that this starship can transport |
+| `consumables` | `str` | No | The maximum length of time that this starship can provide consumables for its entire crew without having to resupply |
+| `cost_in_credits` | `str` | No | The cost of this starship new, in galactic credits |
+| `created` | `str` | No | The ISO 8601 date format of the time that this resource was created |
+| `crew` | `str` | No | The number of personnel needed to run or pilot this starship |
+| `edited` | `str` | No | The ISO 8601 date format of the time that this resource was edited |
+| `films` | `list` | No | An array of Film URL Resources that this starship has appeared in |
+| `hyperdrive_rating` | `str` | No | The class of this starships hyperdrive |
+| `length` | `str` | No | The length of this starship in meters |
+| `manufacturer` | `str` | No | The manufacturer of this starship |
+| `max_atmosphering_speed` | `str` | No | The maximum speed of this starship in atmosphere |
+| `model` | `str` | No | The model or official name of this starship |
+| `name` | `str` | No | The name of this starship |
+| `passengers` | `str` | No | The number of non-essential people this starship can transport |
+| `pilots` | `list` | No | An array of People URL Resources that this starship has been piloted by |
+| `starship_class` | `str` | No | The class of this starship |
+| `url` | `str` | No | The hypermedia URL of this resource |
 
 ### Operations
 
@@ -523,22 +523,22 @@ vehicle = client.Vehicle()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cargo_capacity` | `str` | No |  |
-| `consumables` | `str` | No |  |
-| `cost_in_credits` | `str` | No |  |
-| `created` | `str` | No |  |
-| `crew` | `str` | No |  |
-| `edited` | `str` | No |  |
-| `films` | `list` | No |  |
-| `length` | `str` | No |  |
-| `manufacturer` | `str` | No |  |
-| `max_atmosphering_speed` | `str` | No |  |
-| `model` | `str` | No |  |
-| `name` | `str` | No |  |
-| `passengers` | `str` | No |  |
-| `pilots` | `list` | No |  |
-| `url` | `str` | No |  |
-| `vehicle_class` | `str` | No |  |
+| `cargo_capacity` | `str` | No | The maximum number of kilograms that this vehicle can transport |
+| `consumables` | `str` | No | The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply |
+| `cost_in_credits` | `str` | No | The cost of this vehicle new, in galactic credits |
+| `created` | `str` | No | The ISO 8601 date format of the time that this resource was created |
+| `crew` | `str` | No | The number of personnel needed to run or pilot this vehicle |
+| `edited` | `str` | No | The ISO 8601 date format of the time that this resource was edited |
+| `films` | `list` | No | An array of Film URL Resources that this vehicle has appeared in |
+| `length` | `str` | No | The length of this vehicle in meters |
+| `manufacturer` | `str` | No | The manufacturer of this vehicle |
+| `max_atmosphering_speed` | `str` | No | The maximum speed of this vehicle in atmosphere |
+| `model` | `str` | No | The model or official name of this vehicle |
+| `name` | `str` | No | The name of this vehicle |
+| `passengers` | `str` | No | The number of non-essential people this vehicle can transport |
+| `pilots` | `list` | No | An array of People URL Resources that this vehicle has been piloted by |
+| `url` | `str` | No | The hypermedia URL of this resource |
+| `vehicle_class` | `str` | No | The class of this vehicle |
 
 ### Operations
 

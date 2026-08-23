@@ -1,0 +1,198 @@
+# Entity: starship
+
+main: kit: entity: starship: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "MGLT"
+      req: false
+      short: "The Maximum number of Megalights this starship can travel in a standard hour"
+      type: "`$STRING`"
+    }
+    {
+      name: "cargo_capacity"
+      req: false
+      short: "The maximum number of kilograms that this starship can transport"
+      type: "`$STRING`"
+    }
+    {
+      name: "consumables"
+      req: false
+      short: "The maximum length of time that this starship can provide consumables for its entire crew without having to resupply"
+      type: "`$STRING`"
+    }
+    {
+      name: "cost_in_credits"
+      req: false
+      short: "The cost of this starship new, in galactic credits"
+      type: "`$STRING`"
+    }
+    {
+      name: "created"
+      req: false
+      short: "The ISO 8601 date format of the time that this resource was created"
+      type: "`$STRING`"
+    }
+    {
+      name: "crew"
+      req: false
+      short: "The number of personnel needed to run or pilot this starship"
+      type: "`$STRING`"
+    }
+    {
+      name: "edited"
+      req: false
+      short: "The ISO 8601 date format of the time that this resource was edited"
+      type: "`$STRING`"
+    }
+    {
+      name: "films"
+      req: false
+      short: "An array of Film URL Resources that this starship has appeared in"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "hyperdrive_rating"
+      req: false
+      short: "The class of this starships hyperdrive"
+      type: "`$STRING`"
+    }
+    {
+      name: "length"
+      req: false
+      short: "The length of this starship in meters"
+      type: "`$STRING`"
+    }
+    {
+      name: "manufacturer"
+      req: false
+      short: "The manufacturer of this starship"
+      type: "`$STRING`"
+    }
+    {
+      name: "max_atmosphering_speed"
+      req: false
+      short: "The maximum speed of this starship in atmosphere"
+      type: "`$STRING`"
+    }
+    {
+      name: "model"
+      req: false
+      short: "The model or official name of this starship"
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "The name of this starship"
+      type: "`$STRING`"
+    }
+    {
+      name: "passengers"
+      req: false
+      short: "The number of non-essential people this starship can transport"
+      type: "`$STRING`"
+    }
+    {
+      name: "pilots"
+      req: false
+      short: "An array of People URL Resources that this starship has been piloted by"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "starship_class"
+      req: false
+      short: "The class of this starship"
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: false
+      short: "The hypermedia URL of this resource"
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "starship"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "search"
+                orig: "search"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/starships"
+          parts: [
+            "starships"
+          ]
+          select: {
+            exist: [
+              "page"
+              "search"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/starships/{id}"
+          parts: [
+            "starships"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,174 @@
+# Entity: film
+
+main: kit: entity: film: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "characters"
+      req: false
+      short: "An array of people resource URLs that are in this film"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "created"
+      req: false
+      short: "The ISO 8601 date format of the time that this resource was created"
+      type: "`$STRING`"
+    }
+    {
+      name: "director"
+      req: false
+      short: "The name of the director of this film"
+      type: "`$STRING`"
+    }
+    {
+      name: "edited"
+      req: false
+      short: "The ISO 8601 date format of the time that this resource was edited"
+      type: "`$STRING`"
+    }
+    {
+      name: "episode_id"
+      req: false
+      short: "The episode number of this film"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "opening_crawl"
+      req: false
+      short: "The opening paragraphs at the beginning of this film"
+      type: "`$STRING`"
+    }
+    {
+      name: "planets"
+      req: false
+      short: "An array of planet resource URLs that are in this film"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "producer"
+      req: false
+      short: "The name(s) of the producer(s) of this film"
+      type: "`$STRING`"
+    }
+    {
+      name: "release_date"
+      req: false
+      short: "The release date of this film"
+      type: "`$STRING`"
+    }
+    {
+      name: "species"
+      req: false
+      short: "An array of species resource URLs that are in this film"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "starships"
+      req: false
+      short: "An array of starship resource URLs that are in this film"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "title"
+      req: false
+      short: "The title of this film"
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: false
+      short: "The hypermedia URL of this resource"
+      type: "`$STRING`"
+    }
+    {
+      name: "vehicles"
+      req: false
+      short: "An array of vehicle resource URLs that are in this film"
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "film"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "search"
+                orig: "search"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/films"
+          parts: [
+            "films"
+          ]
+          select: {
+            exist: [
+              "page"
+              "search"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/films/{id}"
+          parts: [
+            "films"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -259,20 +259,20 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `characters` |  |
-| `created` |  |
-| `director` |  |
-| `edited` |  |
-| `episode_id` |  |
-| `opening_crawl` |  |
-| `planets` |  |
-| `producer` |  |
-| `release_date` |  |
-| `species` |  |
-| `starships` |  |
-| `title` |  |
-| `url` |  |
-| `vehicles` |  |
+| `characters` | An array of people resource URLs that are in this film |
+| `created` | The ISO 8601 date format of the time that this resource was created |
+| `director` | The name of the director of this film |
+| `edited` | The ISO 8601 date format of the time that this resource was edited |
+| `episode_id` | The episode number of this film |
+| `opening_crawl` | The opening paragraphs at the beginning of this film |
+| `planets` | An array of planet resource URLs that are in this film |
+| `producer` | The name(s) of the producer(s) of this film |
+| `release_date` | The release date of this film |
+| `species` | An array of species resource URLs that are in this film |
+| `starships` | An array of starship resource URLs that are in this film |
+| `title` | The title of this film |
+| `url` | The hypermedia URL of this resource |
+| `vehicles` | An array of vehicle resource URLs that are in this film |
 
 Operations: List, Load.
 
@@ -291,22 +291,22 @@ API path: ``
 
 | Field | Description |
 | --- | --- |
-| `birth_year` |  |
-| `created` |  |
-| `edited` |  |
-| `eye_color` |  |
-| `films` |  |
-| `gender` |  |
-| `hair_color` |  |
-| `height` |  |
-| `homeworld` |  |
-| `mass` |  |
-| `name` |  |
-| `skin_color` |  |
-| `species` |  |
-| `starships` |  |
-| `url` |  |
-| `vehicles` |  |
+| `birth_year` | The birth year of the person, using the in-universe standard of BBY or ABY |
+| `created` | The ISO 8601 date format of the time that this resource was created |
+| `edited` | The ISO 8601 date format of the time that this resource was edited |
+| `eye_color` | The eye color of this person |
+| `films` | An array of film resource URLs that this person has been in |
+| `gender` | The gender of this person |
+| `hair_color` | The hair color of this person |
+| `height` | The height of the person in centimeters |
+| `homeworld` | The URL of the planet resource that this person was born on |
+| `mass` | The mass of the person in kilograms |
+| `name` | The name of this person |
+| `skin_color` | The skin color of this person |
+| `species` | An array of species resource URLs that this person belongs to |
+| `starships` | An array of starship resource URLs that this person has piloted |
+| `url` | The hypermedia URL of this resource |
+| `vehicles` | An array of vehicle resource URLs that this person has piloted |
 
 Operations: List, Load.
 
@@ -316,20 +316,20 @@ API path: `/people`
 
 | Field | Description |
 | --- | --- |
-| `climate` |  |
-| `created` |  |
-| `diameter` |  |
-| `edited` |  |
-| `films` |  |
-| `gravity` |  |
-| `name` |  |
-| `orbital_period` |  |
-| `population` |  |
-| `residents` |  |
-| `rotation_period` |  |
-| `surface_water` |  |
-| `terrain` |  |
-| `url` |  |
+| `climate` | The climate of this planet |
+| `created` | The ISO 8601 date format of the time that this resource was created |
+| `diameter` | The diameter of this planet in kilometers |
+| `edited` | The ISO 8601 date format of the time that this resource was edited |
+| `films` | An array of Film URL Resources that this planet has appeared in |
+| `gravity` | A number denoting the gravity of this planet |
+| `name` | The name of this planet |
+| `orbital_period` | The number of standard days it takes for this planet to complete a single orbit of its local star |
+| `population` | The average population of sentient beings inhabiting this planet |
+| `residents` | An array of People URL Resources that live on this planet |
+| `rotation_period` | The number of standard hours it takes for this planet to complete a single rotation on its axis |
+| `surface_water` | The percentage of the planet surface that is naturally occurring water |
+| `terrain` | The terrain of this planet |
+| `url` | The hypermedia URL of this resource |
 
 Operations: List, Load.
 
@@ -339,21 +339,21 @@ API path: `/planets`
 
 | Field | Description |
 | --- | --- |
-| `average_height` |  |
-| `average_lifespan` |  |
-| `classification` |  |
-| `created` |  |
-| `designation` |  |
-| `edited` |  |
-| `eye_colors` |  |
-| `films` |  |
-| `hair_colors` |  |
-| `homeworld` |  |
-| `language` |  |
-| `name` |  |
-| `people` |  |
-| `skin_colors` |  |
-| `url` |  |
+| `average_height` | The average height of this species in centimeters |
+| `average_lifespan` | The average lifespan of this species in years |
+| `classification` | The classification of this species |
+| `created` | The ISO 8601 date format of the time that this resource was created |
+| `designation` | The designation of this species |
+| `edited` | The ISO 8601 date format of the time that this resource was edited |
+| `eye_colors` | A comma-separated string of common eye colors for this species |
+| `films` | An array of Film URL Resources that this species has appeared in |
+| `hair_colors` | A comma-separated string of common hair colors for this species |
+| `homeworld` | The URL of a planet resource that is the homeworld of this species |
+| `language` | The language commonly spoken by this species |
+| `name` | The name of this species |
+| `people` | An array of People URL Resources that are a part of this species |
+| `skin_colors` | A comma-separated string of common skin colors for this species |
+| `url` | The hypermedia URL of this resource |
 
 Operations: List, Load.
 
@@ -363,24 +363,24 @@ API path: `/species`
 
 | Field | Description |
 | --- | --- |
-| `MGLT` |  |
-| `cargo_capacity` |  |
-| `consumables` |  |
-| `cost_in_credits` |  |
-| `created` |  |
-| `crew` |  |
-| `edited` |  |
-| `films` |  |
-| `hyperdrive_rating` |  |
-| `length` |  |
-| `manufacturer` |  |
-| `max_atmosphering_speed` |  |
-| `model` |  |
-| `name` |  |
-| `passengers` |  |
-| `pilots` |  |
-| `starship_class` |  |
-| `url` |  |
+| `MGLT` | The Maximum number of Megalights this starship can travel in a standard hour |
+| `cargo_capacity` | The maximum number of kilograms that this starship can transport |
+| `consumables` | The maximum length of time that this starship can provide consumables for its entire crew without having to resupply |
+| `cost_in_credits` | The cost of this starship new, in galactic credits |
+| `created` | The ISO 8601 date format of the time that this resource was created |
+| `crew` | The number of personnel needed to run or pilot this starship |
+| `edited` | The ISO 8601 date format of the time that this resource was edited |
+| `films` | An array of Film URL Resources that this starship has appeared in |
+| `hyperdrive_rating` | The class of this starships hyperdrive |
+| `length` | The length of this starship in meters |
+| `manufacturer` | The manufacturer of this starship |
+| `max_atmosphering_speed` | The maximum speed of this starship in atmosphere |
+| `model` | The model or official name of this starship |
+| `name` | The name of this starship |
+| `passengers` | The number of non-essential people this starship can transport |
+| `pilots` | An array of People URL Resources that this starship has been piloted by |
+| `starship_class` | The class of this starship |
+| `url` | The hypermedia URL of this resource |
 
 Operations: List, Load.
 
@@ -390,22 +390,22 @@ API path: `/starships`
 
 | Field | Description |
 | --- | --- |
-| `cargo_capacity` |  |
-| `consumables` |  |
-| `cost_in_credits` |  |
-| `created` |  |
-| `crew` |  |
-| `edited` |  |
-| `films` |  |
-| `length` |  |
-| `manufacturer` |  |
-| `max_atmosphering_speed` |  |
-| `model` |  |
-| `name` |  |
-| `passengers` |  |
-| `pilots` |  |
-| `url` |  |
-| `vehicle_class` |  |
+| `cargo_capacity` | The maximum number of kilograms that this vehicle can transport |
+| `consumables` | The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply |
+| `cost_in_credits` | The cost of this vehicle new, in galactic credits |
+| `created` | The ISO 8601 date format of the time that this resource was created |
+| `crew` | The number of personnel needed to run or pilot this vehicle |
+| `edited` | The ISO 8601 date format of the time that this resource was edited |
+| `films` | An array of Film URL Resources that this vehicle has appeared in |
+| `length` | The length of this vehicle in meters |
+| `manufacturer` | The manufacturer of this vehicle |
+| `max_atmosphering_speed` | The maximum speed of this vehicle in atmosphere |
+| `model` | The model or official name of this vehicle |
+| `name` | The name of this vehicle |
+| `passengers` | The number of non-essential people this vehicle can transport |
+| `pilots` | An array of People URL Resources that this vehicle has been piloted by |
+| `url` | The hypermedia URL of this resource |
+| `vehicle_class` | The class of this vehicle |
 
 Operations: List, Load.
 
@@ -431,20 +431,20 @@ Create an instance: `film = client.Film`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `characters` | `Array` |  |
-| `created` | `String` |  |
-| `director` | `String` |  |
-| `edited` | `String` |  |
-| `episode_id` | `Integer` |  |
-| `opening_crawl` | `String` |  |
-| `planets` | `Array` |  |
-| `producer` | `String` |  |
-| `release_date` | `String` |  |
-| `species` | `Array` |  |
-| `starships` | `Array` |  |
-| `title` | `String` |  |
-| `url` | `String` |  |
-| `vehicles` | `Array` |  |
+| `characters` | `Array` | An array of people resource URLs that are in this film |
+| `created` | `String` | The ISO 8601 date format of the time that this resource was created |
+| `director` | `String` | The name of the director of this film |
+| `edited` | `String` | The ISO 8601 date format of the time that this resource was edited |
+| `episode_id` | `Integer` | The episode number of this film |
+| `opening_crawl` | `String` | The opening paragraphs at the beginning of this film |
+| `planets` | `Array` | An array of planet resource URLs that are in this film |
+| `producer` | `String` | The name(s) of the producer(s) of this film |
+| `release_date` | `String` | The release date of this film |
+| `species` | `Array` | An array of species resource URLs that are in this film |
+| `starships` | `Array` | An array of starship resource URLs that are in this film |
+| `title` | `String` | The title of this film |
+| `url` | `String` | The hypermedia URL of this resource |
+| `vehicles` | `Array` | An array of vehicle resource URLs that are in this film |
 
 #### Example: Load
 
@@ -481,22 +481,22 @@ Create an instance: `person = client.Person`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `birth_year` | `String` |  |
-| `created` | `String` |  |
-| `edited` | `String` |  |
-| `eye_color` | `String` |  |
-| `films` | `Array` |  |
-| `gender` | `String` |  |
-| `hair_color` | `String` |  |
-| `height` | `String` |  |
-| `homeworld` | `String` |  |
-| `mass` | `String` |  |
-| `name` | `String` |  |
-| `skin_color` | `String` |  |
-| `species` | `Array` |  |
-| `starships` | `Array` |  |
-| `url` | `String` |  |
-| `vehicles` | `Array` |  |
+| `birth_year` | `String` | The birth year of the person, using the in-universe standard of BBY or ABY |
+| `created` | `String` | The ISO 8601 date format of the time that this resource was created |
+| `edited` | `String` | The ISO 8601 date format of the time that this resource was edited |
+| `eye_color` | `String` | The eye color of this person |
+| `films` | `Array` | An array of film resource URLs that this person has been in |
+| `gender` | `String` | The gender of this person |
+| `hair_color` | `String` | The hair color of this person |
+| `height` | `String` | The height of the person in centimeters |
+| `homeworld` | `String` | The URL of the planet resource that this person was born on |
+| `mass` | `String` | The mass of the person in kilograms |
+| `name` | `String` | The name of this person |
+| `skin_color` | `String` | The skin color of this person |
+| `species` | `Array` | An array of species resource URLs that this person belongs to |
+| `starships` | `Array` | An array of starship resource URLs that this person has piloted |
+| `url` | `String` | The hypermedia URL of this resource |
+| `vehicles` | `Array` | An array of vehicle resource URLs that this person has piloted |
 
 #### Example: Load
 
@@ -528,20 +528,20 @@ Create an instance: `planet = client.Planet`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `climate` | `String` |  |
-| `created` | `String` |  |
-| `diameter` | `String` |  |
-| `edited` | `String` |  |
-| `films` | `Array` |  |
-| `gravity` | `String` |  |
-| `name` | `String` |  |
-| `orbital_period` | `String` |  |
-| `population` | `String` |  |
-| `residents` | `Array` |  |
-| `rotation_period` | `String` |  |
-| `surface_water` | `String` |  |
-| `terrain` | `String` |  |
-| `url` | `String` |  |
+| `climate` | `String` | The climate of this planet |
+| `created` | `String` | The ISO 8601 date format of the time that this resource was created |
+| `diameter` | `String` | The diameter of this planet in kilometers |
+| `edited` | `String` | The ISO 8601 date format of the time that this resource was edited |
+| `films` | `Array` | An array of Film URL Resources that this planet has appeared in |
+| `gravity` | `String` | A number denoting the gravity of this planet |
+| `name` | `String` | The name of this planet |
+| `orbital_period` | `String` | The number of standard days it takes for this planet to complete a single orbit of its local star |
+| `population` | `String` | The average population of sentient beings inhabiting this planet |
+| `residents` | `Array` | An array of People URL Resources that live on this planet |
+| `rotation_period` | `String` | The number of standard hours it takes for this planet to complete a single rotation on its axis |
+| `surface_water` | `String` | The percentage of the planet surface that is naturally occurring water |
+| `terrain` | `String` | The terrain of this planet |
+| `url` | `String` | The hypermedia URL of this resource |
 
 #### Example: Load
 
@@ -573,21 +573,21 @@ Create an instance: `species = client.Species`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `average_height` | `String` |  |
-| `average_lifespan` | `String` |  |
-| `classification` | `String` |  |
-| `created` | `String` |  |
-| `designation` | `String` |  |
-| `edited` | `String` |  |
-| `eye_colors` | `String` |  |
-| `films` | `Array` |  |
-| `hair_colors` | `String` |  |
-| `homeworld` | `String` |  |
-| `language` | `String` |  |
-| `name` | `String` |  |
-| `people` | `Array` |  |
-| `skin_colors` | `String` |  |
-| `url` | `String` |  |
+| `average_height` | `String` | The average height of this species in centimeters |
+| `average_lifespan` | `String` | The average lifespan of this species in years |
+| `classification` | `String` | The classification of this species |
+| `created` | `String` | The ISO 8601 date format of the time that this resource was created |
+| `designation` | `String` | The designation of this species |
+| `edited` | `String` | The ISO 8601 date format of the time that this resource was edited |
+| `eye_colors` | `String` | A comma-separated string of common eye colors for this species |
+| `films` | `Array` | An array of Film URL Resources that this species has appeared in |
+| `hair_colors` | `String` | A comma-separated string of common hair colors for this species |
+| `homeworld` | `String` | The URL of a planet resource that is the homeworld of this species |
+| `language` | `String` | The language commonly spoken by this species |
+| `name` | `String` | The name of this species |
+| `people` | `Array` | An array of People URL Resources that are a part of this species |
+| `skin_colors` | `String` | A comma-separated string of common skin colors for this species |
+| `url` | `String` | The hypermedia URL of this resource |
 
 #### Example: Load
 
@@ -619,24 +619,24 @@ Create an instance: `starship = client.Starship`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `MGLT` | `String` |  |
-| `cargo_capacity` | `String` |  |
-| `consumables` | `String` |  |
-| `cost_in_credits` | `String` |  |
-| `created` | `String` |  |
-| `crew` | `String` |  |
-| `edited` | `String` |  |
-| `films` | `Array` |  |
-| `hyperdrive_rating` | `String` |  |
-| `length` | `String` |  |
-| `manufacturer` | `String` |  |
-| `max_atmosphering_speed` | `String` |  |
-| `model` | `String` |  |
-| `name` | `String` |  |
-| `passengers` | `String` |  |
-| `pilots` | `Array` |  |
-| `starship_class` | `String` |  |
-| `url` | `String` |  |
+| `MGLT` | `String` | The Maximum number of Megalights this starship can travel in a standard hour |
+| `cargo_capacity` | `String` | The maximum number of kilograms that this starship can transport |
+| `consumables` | `String` | The maximum length of time that this starship can provide consumables for its entire crew without having to resupply |
+| `cost_in_credits` | `String` | The cost of this starship new, in galactic credits |
+| `created` | `String` | The ISO 8601 date format of the time that this resource was created |
+| `crew` | `String` | The number of personnel needed to run or pilot this starship |
+| `edited` | `String` | The ISO 8601 date format of the time that this resource was edited |
+| `films` | `Array` | An array of Film URL Resources that this starship has appeared in |
+| `hyperdrive_rating` | `String` | The class of this starships hyperdrive |
+| `length` | `String` | The length of this starship in meters |
+| `manufacturer` | `String` | The manufacturer of this starship |
+| `max_atmosphering_speed` | `String` | The maximum speed of this starship in atmosphere |
+| `model` | `String` | The model or official name of this starship |
+| `name` | `String` | The name of this starship |
+| `passengers` | `String` | The number of non-essential people this starship can transport |
+| `pilots` | `Array` | An array of People URL Resources that this starship has been piloted by |
+| `starship_class` | `String` | The class of this starship |
+| `url` | `String` | The hypermedia URL of this resource |
 
 #### Example: Load
 
@@ -668,22 +668,22 @@ Create an instance: `vehicle = client.Vehicle`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cargo_capacity` | `String` |  |
-| `consumables` | `String` |  |
-| `cost_in_credits` | `String` |  |
-| `created` | `String` |  |
-| `crew` | `String` |  |
-| `edited` | `String` |  |
-| `films` | `Array` |  |
-| `length` | `String` |  |
-| `manufacturer` | `String` |  |
-| `max_atmosphering_speed` | `String` |  |
-| `model` | `String` |  |
-| `name` | `String` |  |
-| `passengers` | `String` |  |
-| `pilots` | `Array` |  |
-| `url` | `String` |  |
-| `vehicle_class` | `String` |  |
+| `cargo_capacity` | `String` | The maximum number of kilograms that this vehicle can transport |
+| `consumables` | `String` | The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply |
+| `cost_in_credits` | `String` | The cost of this vehicle new, in galactic credits |
+| `created` | `String` | The ISO 8601 date format of the time that this resource was created |
+| `crew` | `String` | The number of personnel needed to run or pilot this vehicle |
+| `edited` | `String` | The ISO 8601 date format of the time that this resource was edited |
+| `films` | `Array` | An array of Film URL Resources that this vehicle has appeared in |
+| `length` | `String` | The length of this vehicle in meters |
+| `manufacturer` | `String` | The manufacturer of this vehicle |
+| `max_atmosphering_speed` | `String` | The maximum speed of this vehicle in atmosphere |
+| `model` | `String` | The model or official name of this vehicle |
+| `name` | `String` | The name of this vehicle |
+| `passengers` | `String` | The number of non-essential people this vehicle can transport |
+| `pilots` | `Array` | An array of People URL Resources that this vehicle has been piloted by |
+| `url` | `String` | The hypermedia URL of this resource |
+| `vehicle_class` | `String` | The class of this vehicle |
 
 #### Example: Load
 

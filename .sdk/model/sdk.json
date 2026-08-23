@@ -36,84 +36,98 @@
               "active": true,
               "name": "characters",
               "req": false,
+              "short": "An array of people resource URLs that are in this film",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "created",
               "req": false,
+              "short": "The ISO 8601 date format of the time that this resource was created",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "director",
               "req": false,
+              "short": "The name of the director of this film",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "edited",
               "req": false,
+              "short": "The ISO 8601 date format of the time that this resource was edited",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "episode_id",
               "req": false,
+              "short": "The episode number of this film",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "opening_crawl",
               "req": false,
+              "short": "The opening paragraphs at the beginning of this film",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "planets",
               "req": false,
+              "short": "An array of planet resource URLs that are in this film",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "producer",
               "req": false,
+              "short": "The name(s) of the producer(s) of this film",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "release_date",
               "req": false,
+              "short": "The release date of this film",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "species",
               "req": false,
+              "short": "An array of species resource URLs that are in this film",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "starships",
               "req": false,
+              "short": "An array of starship resource URLs that are in this film",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "The title of this film",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "The hypermedia URL of this resource",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "vehicles",
               "req": false,
+              "short": "An array of vehicle resource URLs that are in this film",
               "type": "`$ARRAY`"
             }
           ],
@@ -229,96 +243,112 @@
               "active": true,
               "name": "birth_year",
               "req": false,
+              "short": "The birth year of the person, using the in-universe standard of BBY or ABY",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "created",
               "req": false,
+              "short": "The ISO 8601 date format of the time that this resource was created",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "edited",
               "req": false,
+              "short": "The ISO 8601 date format of the time that this resource was edited",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "eye_color",
               "req": false,
+              "short": "The eye color of this person",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "films",
               "req": false,
+              "short": "An array of film resource URLs that this person has been in",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "gender",
               "req": false,
+              "short": "The gender of this person",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "hair_color",
               "req": false,
+              "short": "The hair color of this person",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "height",
               "req": false,
+              "short": "The height of the person in centimeters",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "homeworld",
               "req": false,
+              "short": "The URL of the planet resource that this person was born on",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "mass",
               "req": false,
+              "short": "The mass of the person in kilograms",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of this person",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "skin_color",
               "req": false,
+              "short": "The skin color of this person",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "species",
               "req": false,
+              "short": "An array of species resource URLs that this person belongs to",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "starships",
               "req": false,
+              "short": "An array of starship resource URLs that this person has piloted",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "The hypermedia URL of this resource",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "vehicles",
               "req": false,
+              "short": "An array of vehicle resource URLs that this person has piloted",
               "type": "`$ARRAY`"
             }
           ],
@@ -422,84 +452,98 @@
               "active": true,
               "name": "climate",
               "req": false,
+              "short": "The climate of this planet",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "created",
               "req": false,
+              "short": "The ISO 8601 date format of the time that this resource was created",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "diameter",
               "req": false,
+              "short": "The diameter of this planet in kilometers",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "edited",
               "req": false,
+              "short": "The ISO 8601 date format of the time that this resource was edited",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "films",
               "req": false,
+              "short": "An array of Film URL Resources that this planet has appeared in",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "gravity",
               "req": false,
+              "short": "A number denoting the gravity of this planet",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of this planet",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "orbital_period",
               "req": false,
+              "short": "The number of standard days it takes for this planet to complete a single orbit of its local star",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "population",
               "req": false,
+              "short": "The average population of sentient beings inhabiting this planet",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "residents",
               "req": false,
+              "short": "An array of People URL Resources that live on this planet",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "rotation_period",
               "req": false,
+              "short": "The number of standard hours it takes for this planet to complete a single rotation on its axis",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "surface_water",
               "req": false,
+              "short": "The percentage of the planet surface that is naturally occurring water",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "terrain",
               "req": false,
+              "short": "The terrain of this planet",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "The hypermedia URL of this resource",
               "type": "`$STRING`"
             }
           ],
@@ -603,90 +647,105 @@
               "active": true,
               "name": "average_height",
               "req": false,
+              "short": "The average height of this species in centimeters",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "average_lifespan",
               "req": false,
+              "short": "The average lifespan of this species in years",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "classification",
               "req": false,
+              "short": "The classification of this species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "created",
               "req": false,
+              "short": "The ISO 8601 date format of the time that this resource was created",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "designation",
               "req": false,
+              "short": "The designation of this species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "edited",
               "req": false,
+              "short": "The ISO 8601 date format of the time that this resource was edited",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "eye_colors",
               "req": false,
+              "short": "A comma-separated string of common eye colors for this species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "films",
               "req": false,
+              "short": "An array of Film URL Resources that this species has appeared in",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "hair_colors",
               "req": false,
+              "short": "A comma-separated string of common hair colors for this species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "homeworld",
               "req": false,
+              "short": "The URL of a planet resource that is the homeworld of this species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "language",
               "req": false,
+              "short": "The language commonly spoken by this species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of this species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "people",
               "req": false,
+              "short": "An array of People URL Resources that are a part of this species",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "skin_colors",
               "req": false,
+              "short": "A comma-separated string of common skin colors for this species",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "The hypermedia URL of this resource",
               "type": "`$STRING`"
             }
           ],
@@ -790,108 +849,126 @@
               "active": true,
               "name": "MGLT",
               "req": false,
+              "short": "The Maximum number of Megalights this starship can travel in a standard hour",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "cargo_capacity",
               "req": false,
+              "short": "The maximum number of kilograms that this starship can transport",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "consumables",
               "req": false,
+              "short": "The maximum length of time that this starship can provide consumables for its entire crew without having to resupply",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "cost_in_credits",
               "req": false,
+              "short": "The cost of this starship new, in galactic credits",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "created",
               "req": false,
+              "short": "The ISO 8601 date format of the time that this resource was created",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "crew",
               "req": false,
+              "short": "The number of personnel needed to run or pilot this starship",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "edited",
               "req": false,
+              "short": "The ISO 8601 date format of the time that this resource was edited",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "films",
               "req": false,
+              "short": "An array of Film URL Resources that this starship has appeared in",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "hyperdrive_rating",
               "req": false,
+              "short": "The class of this starships hyperdrive",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "length",
               "req": false,
+              "short": "The length of this starship in meters",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "manufacturer",
               "req": false,
+              "short": "The manufacturer of this starship",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "max_atmosphering_speed",
               "req": false,
+              "short": "The maximum speed of this starship in atmosphere",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "model",
               "req": false,
+              "short": "The model or official name of this starship",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of this starship",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "passengers",
               "req": false,
+              "short": "The number of non-essential people this starship can transport",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "pilots",
               "req": false,
+              "short": "An array of People URL Resources that this starship has been piloted by",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "starship_class",
               "req": false,
+              "short": "The class of this starship",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "The hypermedia URL of this resource",
               "type": "`$STRING`"
             }
           ],
@@ -995,96 +1072,112 @@
               "active": true,
               "name": "cargo_capacity",
               "req": false,
+              "short": "The maximum number of kilograms that this vehicle can transport",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "consumables",
               "req": false,
+              "short": "The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "cost_in_credits",
               "req": false,
+              "short": "The cost of this vehicle new, in galactic credits",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "created",
               "req": false,
+              "short": "The ISO 8601 date format of the time that this resource was created",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "crew",
               "req": false,
+              "short": "The number of personnel needed to run or pilot this vehicle",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "edited",
               "req": false,
+              "short": "The ISO 8601 date format of the time that this resource was edited",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "films",
               "req": false,
+              "short": "An array of Film URL Resources that this vehicle has appeared in",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "length",
               "req": false,
+              "short": "The length of this vehicle in meters",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "manufacturer",
               "req": false,
+              "short": "The manufacturer of this vehicle",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "max_atmosphering_speed",
               "req": false,
+              "short": "The maximum speed of this vehicle in atmosphere",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "model",
               "req": false,
+              "short": "The model or official name of this vehicle",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of this vehicle",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "passengers",
               "req": false,
+              "short": "The number of non-essential people this vehicle can transport",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "pilots",
               "req": false,
+              "short": "An array of People URL Resources that this vehicle has been piloted by",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "The hypermedia URL of this resource",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "vehicle_class",
               "req": false,
+              "short": "The class of this vehicle",
               "type": "`$STRING`"
             }
           ],
