@@ -121,13 +121,19 @@ func TestStarshipEntity(t *testing.T) {
 		}
 
 		// LOAD
-		starshipRef01MatchDt0 := map[string]any{}
+		starshipRef01MatchDt0 := map[string]any{
+			"id": starshipRef01Data["id"],
+		}
 		starshipRef01DataDt0Loaded, err := starshipRef01Ent.Load(starshipRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if starshipRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		starshipRef01DataDt0LoadResult := core.ToMapAny(entityData(starshipRef01DataDt0Loaded))
+		if starshipRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if starshipRef01DataDt0LoadResult["id"] != starshipRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

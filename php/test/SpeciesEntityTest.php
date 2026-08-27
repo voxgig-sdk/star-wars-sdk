@@ -93,9 +93,13 @@ class SpeciesEntityTest extends TestCase
         $this->assertIsArray($species_ref01_list_result);
 
         // LOAD
-        $species_ref01_match_dt0 = [];
+        $species_ref01_match_dt0 = [
+            "id" => $species_ref01_data["id"],
+        ];
         $species_ref01_data_dt0_loaded = $species_ref01_ent->load($species_ref01_match_dt0, null);
-        $this->assertNotNull($species_ref01_data_dt0_loaded);
+        $species_ref01_data_dt0_load_result = Helpers::to_map(is_object($species_ref01_data_dt0_loaded) && method_exists($species_ref01_data_dt0_loaded, 'data_get') ? $species_ref01_data_dt0_loaded->data_get() : $species_ref01_data_dt0_loaded);
+        $this->assertNotNull($species_ref01_data_dt0_load_result);
+        $this->assertEquals($species_ref01_data_dt0_load_result["id"], $species_ref01_data["id"]);
 
     }
 }

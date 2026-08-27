@@ -36,6 +36,11 @@ main: kit: entity: film: {
       type: "`$INTEGER`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "opening_crawl"
       req: false
       short: "The opening paragraphs at the beginning of this film"
@@ -90,6 +95,11 @@ main: kit: entity: film: {
       type: "`$ARRAY`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "film"
   op: {

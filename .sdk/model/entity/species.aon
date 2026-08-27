@@ -66,6 +66,11 @@ main: kit: entity: species: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "language"
       req: false
       short: "The language commonly spoken by this species"
@@ -96,6 +101,11 @@ main: kit: entity: species: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "species"
   op: {

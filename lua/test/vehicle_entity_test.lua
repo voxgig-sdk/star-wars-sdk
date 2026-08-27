@@ -92,10 +92,14 @@ describe("VehicleEntity", function()
     assert.is_table(vehicle_ref01_list_result)
 
     -- LOAD
-    local vehicle_ref01_match_dt0 = {}
+    local vehicle_ref01_match_dt0 = {
+      id = vehicle_ref01_data["id"],
+    }
     local vehicle_ref01_data_dt0_loaded, err = vehicle_ref01_ent:load(vehicle_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(vehicle_ref01_data_dt0_loaded)
+    local vehicle_ref01_data_dt0_load_result = helpers.to_map(type(vehicle_ref01_data_dt0_loaded) == 'table' and vehicle_ref01_data_dt0_loaded.data_get and vehicle_ref01_data_dt0_loaded:data_get() or vehicle_ref01_data_dt0_loaded)
+    assert.is_not_nil(vehicle_ref01_data_dt0_load_result)
+    assert.are.equal(vehicle_ref01_data_dt0_load_result["id"], vehicle_ref01_data["id"])
 
   end)
 end)

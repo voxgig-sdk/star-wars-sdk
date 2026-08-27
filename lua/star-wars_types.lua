@@ -12,6 +12,7 @@
 ---@field director? string
 ---@field edited? string
 ---@field episode_id? number
+---@field id? string
 ---@field opening_crawl? string
 ---@field planets? table
 ---@field producer? string
@@ -31,6 +32,7 @@
 ---@field director? string
 ---@field edited? string
 ---@field episode_id? number
+---@field id? string
 ---@field opening_crawl? string
 ---@field planets? table
 ---@field producer? string
@@ -53,6 +55,7 @@
 ---@field hair_color? string
 ---@field height? string
 ---@field homeworld? string
+---@field id? string
 ---@field mass? string
 ---@field name? string
 ---@field skin_color? string
@@ -74,6 +77,7 @@
 ---@field hair_color? string
 ---@field height? string
 ---@field homeworld? string
+---@field id? string
 ---@field mass? string
 ---@field name? string
 ---@field skin_color? string
@@ -89,6 +93,7 @@
 ---@field edited? string
 ---@field films? table
 ---@field gravity? string
+---@field id? string
 ---@field name? string
 ---@field orbital_period? string
 ---@field population? string
@@ -108,6 +113,7 @@
 ---@field edited? string
 ---@field films? table
 ---@field gravity? string
+---@field id? string
 ---@field name? string
 ---@field orbital_period? string
 ---@field population? string
@@ -128,6 +134,7 @@
 ---@field films? table
 ---@field hair_colors? string
 ---@field homeworld? string
+---@field id? string
 ---@field language? string
 ---@field name? string
 ---@field people? table
@@ -148,6 +155,7 @@
 ---@field films? table
 ---@field hair_colors? string
 ---@field homeworld? string
+---@field id? string
 ---@field language? string
 ---@field name? string
 ---@field people? table
@@ -164,6 +172,7 @@
 ---@field edited? string
 ---@field films? table
 ---@field hyperdrive_rating? string
+---@field id? string
 ---@field length? string
 ---@field manufacturer? string
 ---@field max_atmosphering_speed? string
@@ -187,6 +196,7 @@
 ---@field edited? string
 ---@field films? table
 ---@field hyperdrive_rating? string
+---@field id? string
 ---@field length? string
 ---@field manufacturer? string
 ---@field max_atmosphering_speed? string
@@ -205,6 +215,7 @@
 ---@field crew? string
 ---@field edited? string
 ---@field films? table
+---@field id? string
 ---@field length? string
 ---@field manufacturer? string
 ---@field max_atmosphering_speed? string
@@ -226,6 +237,7 @@
 ---@field crew? string
 ---@field edited? string
 ---@field films? table
+---@field id? string
 ---@field length? string
 ---@field manufacturer? string
 ---@field max_atmosphering_speed? string

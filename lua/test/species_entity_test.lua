@@ -92,10 +92,14 @@ describe("SpeciesEntity", function()
     assert.is_table(species_ref01_list_result)
 
     -- LOAD
-    local species_ref01_match_dt0 = {}
+    local species_ref01_match_dt0 = {
+      id = species_ref01_data["id"],
+    }
     local species_ref01_data_dt0_loaded, err = species_ref01_ent:load(species_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(species_ref01_data_dt0_loaded)
+    local species_ref01_data_dt0_load_result = helpers.to_map(type(species_ref01_data_dt0_loaded) == 'table' and species_ref01_data_dt0_loaded.data_get and species_ref01_data_dt0_loaded:data_get() or species_ref01_data_dt0_loaded)
+    assert.is_not_nil(species_ref01_data_dt0_load_result)
+    assert.are.equal(species_ref01_data_dt0_load_result["id"], species_ref01_data["id"])
 
   end)
 end)

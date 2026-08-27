@@ -22,6 +22,7 @@ class Film(TypedDict, total=False):
     director: str
     edited: str
     episode_id: int
+    id: str
     opening_crawl: str
     planets: list
     producer: str
@@ -43,6 +44,7 @@ class FilmListMatch(TypedDict, total=False):
     director: str
     edited: str
     episode_id: int
+    id: str
     opening_crawl: str
     planets: list
     producer: str
@@ -68,6 +70,7 @@ class Person(TypedDict, total=False):
     hair_color: str
     height: str
     homeworld: str
+    id: str
     mass: str
     name: str
     skin_color: str
@@ -91,6 +94,7 @@ class PersonListMatch(TypedDict, total=False):
     hair_color: str
     height: str
     homeworld: str
+    id: str
     mass: str
     name: str
     skin_color: str
@@ -107,6 +111,7 @@ class Planet(TypedDict, total=False):
     edited: str
     films: list
     gravity: str
+    id: str
     name: str
     orbital_period: str
     population: str
@@ -128,6 +133,7 @@ class PlanetListMatch(TypedDict, total=False):
     edited: str
     films: list
     gravity: str
+    id: str
     name: str
     orbital_period: str
     population: str
@@ -149,6 +155,7 @@ class Species(TypedDict, total=False):
     films: list
     hair_colors: str
     homeworld: str
+    id: str
     language: str
     name: str
     people: list
@@ -171,6 +178,7 @@ class SpeciesListMatch(TypedDict, total=False):
     films: list
     hair_colors: str
     homeworld: str
+    id: str
     language: str
     name: str
     people: list
@@ -188,6 +196,7 @@ class Starship(TypedDict, total=False):
     edited: str
     films: list
     hyperdrive_rating: str
+    id: str
     length: str
     manufacturer: str
     max_atmosphering_speed: str
@@ -213,6 +222,7 @@ class StarshipListMatch(TypedDict, total=False):
     edited: str
     films: list
     hyperdrive_rating: str
+    id: str
     length: str
     manufacturer: str
     max_atmosphering_speed: str
@@ -232,6 +242,7 @@ class Vehicle(TypedDict, total=False):
     crew: str
     edited: str
     films: list
+    id: str
     length: str
     manufacturer: str
     max_atmosphering_speed: str
@@ -255,6 +266,7 @@ class VehicleListMatch(TypedDict, total=False):
     crew: str
     edited: str
     films: list
+    id: str
     length: str
     manufacturer: str
     max_atmosphering_speed: str

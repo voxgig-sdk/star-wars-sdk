@@ -20,6 +20,7 @@ class Film
     public ?string $director = null;
     public ?string $edited = null;
     public ?int $episode_id = null;
+    public ?string $id = null;
     public ?string $opening_crawl = null;
     public ?array $planets = null;
     public ?string $producer = null;
@@ -45,6 +46,7 @@ class FilmListMatch
     public ?string $director = null;
     public ?string $edited = null;
     public ?int $episode_id = null;
+    public ?string $id = null;
     public ?string $opening_crawl = null;
     public ?array $planets = null;
     public ?string $producer = null;
@@ -73,6 +75,7 @@ class Person
     public ?string $hair_color = null;
     public ?string $height = null;
     public ?string $homeworld = null;
+    public ?string $id = null;
     public ?string $mass = null;
     public ?string $name = null;
     public ?string $skin_color = null;
@@ -100,6 +103,7 @@ class PersonListMatch
     public ?string $hair_color = null;
     public ?string $height = null;
     public ?string $homeworld = null;
+    public ?string $id = null;
     public ?string $mass = null;
     public ?string $name = null;
     public ?string $skin_color = null;
@@ -118,6 +122,7 @@ class Planet
     public ?string $edited = null;
     public ?array $films = null;
     public ?string $gravity = null;
+    public ?string $id = null;
     public ?string $name = null;
     public ?string $orbital_period = null;
     public ?string $population = null;
@@ -143,6 +148,7 @@ class PlanetListMatch
     public ?string $edited = null;
     public ?array $films = null;
     public ?string $gravity = null;
+    public ?string $id = null;
     public ?string $name = null;
     public ?string $orbital_period = null;
     public ?string $population = null;
@@ -166,6 +172,7 @@ class Species
     public ?array $films = null;
     public ?string $hair_colors = null;
     public ?string $homeworld = null;
+    public ?string $id = null;
     public ?string $language = null;
     public ?string $name = null;
     public ?array $people = null;
@@ -192,6 +199,7 @@ class SpeciesListMatch
     public ?array $films = null;
     public ?string $hair_colors = null;
     public ?string $homeworld = null;
+    public ?string $id = null;
     public ?string $language = null;
     public ?string $name = null;
     public ?array $people = null;
@@ -211,6 +219,7 @@ class Starship
     public ?string $edited = null;
     public ?array $films = null;
     public ?string $hyperdrive_rating = null;
+    public ?string $id = null;
     public ?string $length = null;
     public ?string $manufacturer = null;
     public ?string $max_atmosphering_speed = null;
@@ -240,6 +249,7 @@ class StarshipListMatch
     public ?string $edited = null;
     public ?array $films = null;
     public ?string $hyperdrive_rating = null;
+    public ?string $id = null;
     public ?string $length = null;
     public ?string $manufacturer = null;
     public ?string $max_atmosphering_speed = null;
@@ -261,6 +271,7 @@ class Vehicle
     public ?string $crew = null;
     public ?string $edited = null;
     public ?array $films = null;
+    public ?string $id = null;
     public ?string $length = null;
     public ?string $manufacturer = null;
     public ?string $max_atmosphering_speed = null;
@@ -288,6 +299,7 @@ class VehicleListMatch
     public ?string $crew = null;
     public ?string $edited = null;
     public ?array $films = null;
+    public ?string $id = null;
     public ?string $length = null;
     public ?string $manufacturer = null;
     public ?string $max_atmosphering_speed = null;

@@ -88,9 +88,13 @@ class TestStarshipEntity:
         assert isinstance(starship_ref01_list_result, list)
 
         # LOAD
-        starship_ref01_match_dt0 = {}
+        starship_ref01_match_dt0 = {
+            "id": starship_ref01_data["id"],
+        }
         starship_ref01_data_dt0_loaded = starship_ref01_ent.load(starship_ref01_match_dt0, None)
-        assert starship_ref01_data_dt0_loaded is not None
+        starship_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(starship_ref01_data_dt0_loaded))
+        assert starship_ref01_data_dt0_load_result is not None
+        assert starship_ref01_data_dt0_load_result["id"] == starship_ref01_data["id"]
 
 
 

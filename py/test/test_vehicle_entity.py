@@ -88,9 +88,13 @@ class TestVehicleEntity:
         assert isinstance(vehicle_ref01_list_result, list)
 
         # LOAD
-        vehicle_ref01_match_dt0 = {}
+        vehicle_ref01_match_dt0 = {
+            "id": vehicle_ref01_data["id"],
+        }
         vehicle_ref01_data_dt0_loaded = vehicle_ref01_ent.load(vehicle_ref01_match_dt0, None)
-        assert vehicle_ref01_data_dt0_loaded is not None
+        vehicle_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(vehicle_ref01_data_dt0_loaded))
+        assert vehicle_ref01_data_dt0_load_result is not None
+        assert vehicle_ref01_data_dt0_load_result["id"] == vehicle_ref01_data["id"]
 
 
 

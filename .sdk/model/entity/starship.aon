@@ -60,6 +60,11 @@ main: kit: entity: starship: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "length"
       req: false
       short: "The length of this starship in meters"
@@ -114,6 +119,11 @@ main: kit: entity: starship: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "starship"
   op: {

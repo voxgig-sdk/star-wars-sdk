@@ -92,10 +92,14 @@ describe("PlanetEntity", function()
     assert.is_table(planet_ref01_list_result)
 
     -- LOAD
-    local planet_ref01_match_dt0 = {}
+    local planet_ref01_match_dt0 = {
+      id = planet_ref01_data["id"],
+    }
     local planet_ref01_data_dt0_loaded, err = planet_ref01_ent:load(planet_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(planet_ref01_data_dt0_loaded)
+    local planet_ref01_data_dt0_load_result = helpers.to_map(type(planet_ref01_data_dt0_loaded) == 'table' and planet_ref01_data_dt0_loaded.data_get and planet_ref01_data_dt0_loaded:data_get() or planet_ref01_data_dt0_loaded)
+    assert.is_not_nil(planet_ref01_data_dt0_load_result)
+    assert.are.equal(planet_ref01_data_dt0_load_result["id"], planet_ref01_data["id"])
 
   end)
 end)

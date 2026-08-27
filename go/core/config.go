@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -64,6 +65,10 @@ func MakeConfig() map[string]any {
 						"name": "episode_id",
 						"short": "The episode number of this film",
 						"type": "`$INTEGER`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "opening_crawl",
@@ -250,6 +255,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "mass",
 						"short": "The mass of the person in kilograms",
 						"type": "`$STRING`",
@@ -398,6 +407,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "gravity",
 						"short": "A number denoting the gravity of this planet",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -577,6 +590,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "language",
 						"short": "The language commonly spoken by this species",
 						"type": "`$STRING`",
@@ -730,6 +747,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "hyperdrive_rating",
 						"short": "The class of this starships hyperdrive",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -897,6 +918,10 @@ func MakeConfig() map[string]any {
 						"name": "films",
 						"short": "An array of Film URL Resources that this vehicle has appeared in",
 						"type": "`$ARRAY`",
+					},
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "length",

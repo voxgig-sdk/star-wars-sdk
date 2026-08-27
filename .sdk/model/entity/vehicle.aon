@@ -48,6 +48,11 @@ main: kit: entity: vehicle: {
       type: "`$ARRAY`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "length"
       req: false
       short: "The length of this vehicle in meters"
@@ -102,6 +107,11 @@ main: kit: entity: vehicle: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "vehicle"
   op: {

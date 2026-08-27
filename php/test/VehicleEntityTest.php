@@ -93,9 +93,13 @@ class VehicleEntityTest extends TestCase
         $this->assertIsArray($vehicle_ref01_list_result);
 
         // LOAD
-        $vehicle_ref01_match_dt0 = [];
+        $vehicle_ref01_match_dt0 = [
+            "id" => $vehicle_ref01_data["id"],
+        ];
         $vehicle_ref01_data_dt0_loaded = $vehicle_ref01_ent->load($vehicle_ref01_match_dt0, null);
-        $this->assertNotNull($vehicle_ref01_data_dt0_loaded);
+        $vehicle_ref01_data_dt0_load_result = Helpers::to_map(is_object($vehicle_ref01_data_dt0_loaded) && method_exists($vehicle_ref01_data_dt0_loaded, 'data_get') ? $vehicle_ref01_data_dt0_loaded->data_get() : $vehicle_ref01_data_dt0_loaded);
+        $this->assertNotNull($vehicle_ref01_data_dt0_load_result);
+        $this->assertEquals($vehicle_ref01_data_dt0_load_result["id"], $vehicle_ref01_data["id"]);
 
     }
 }

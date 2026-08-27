@@ -25,6 +25,9 @@
 # @!attribute [rw] episode_id
 #   @return [Integer, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] opening_crawl
 #   @return [String, nil]
 #
@@ -57,6 +60,7 @@ Film = Struct.new(
   :director,
   :edited,
   :episode_id,
+  :id,
   :opening_crawl,
   :planets,
   :producer,
@@ -95,6 +99,9 @@ FilmLoadMatch = Struct.new(
 # @!attribute [rw] episode_id
 #   @return [Integer, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] opening_crawl
 #   @return [String, nil]
 #
@@ -127,6 +134,7 @@ FilmListMatch = Struct.new(
   :director,
   :edited,
   :episode_id,
+  :id,
   :opening_crawl,
   :planets,
   :producer,
@@ -172,6 +180,9 @@ end
 # @!attribute [rw] homeworld
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] mass
 #   @return [String, nil]
 #
@@ -202,6 +213,7 @@ Person = Struct.new(
   :hair_color,
   :height,
   :homeworld,
+  :id,
   :mass,
   :name,
   :skin_color,
@@ -250,6 +262,9 @@ PersonLoadMatch = Struct.new(
 # @!attribute [rw] homeworld
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] mass
 #   @return [String, nil]
 #
@@ -280,6 +295,7 @@ PersonListMatch = Struct.new(
   :hair_color,
   :height,
   :homeworld,
+  :id,
   :mass,
   :name,
   :skin_color,
@@ -308,6 +324,9 @@ PersonListMatch = Struct.new(
 #   @return [Array, nil]
 #
 # @!attribute [rw] gravity
+#   @return [String, nil]
+#
+# @!attribute [rw] id
 #   @return [String, nil]
 #
 # @!attribute [rw] name
@@ -340,6 +359,7 @@ Planet = Struct.new(
   :edited,
   :films,
   :gravity,
+  :id,
   :name,
   :orbital_period,
   :population,
@@ -380,6 +400,9 @@ PlanetLoadMatch = Struct.new(
 # @!attribute [rw] gravity
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 #
@@ -410,6 +433,7 @@ PlanetListMatch = Struct.new(
   :edited,
   :films,
   :gravity,
+  :id,
   :name,
   :orbital_period,
   :population,
@@ -453,6 +477,9 @@ PlanetListMatch = Struct.new(
 # @!attribute [rw] homeworld
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] language
 #   @return [String, nil]
 #
@@ -478,6 +505,7 @@ Species = Struct.new(
   :films,
   :hair_colors,
   :homeworld,
+  :id,
   :language,
   :name,
   :people,
@@ -527,6 +555,9 @@ SpeciesLoadMatch = Struct.new(
 # @!attribute [rw] homeworld
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] language
 #   @return [String, nil]
 #
@@ -552,6 +583,7 @@ SpeciesListMatch = Struct.new(
   :films,
   :hair_colors,
   :homeworld,
+  :id,
   :language,
   :name,
   :people,
@@ -587,6 +619,9 @@ SpeciesListMatch = Struct.new(
 #   @return [Array, nil]
 #
 # @!attribute [rw] hyperdrive_rating
+#   @return [String, nil]
+#
+# @!attribute [rw] id
 #   @return [String, nil]
 #
 # @!attribute [rw] length
@@ -625,6 +660,7 @@ Starship = Struct.new(
   :edited,
   :films,
   :hyperdrive_rating,
+  :id,
   :length,
   :manufacturer,
   :max_atmosphering_speed,
@@ -675,6 +711,9 @@ StarshipLoadMatch = Struct.new(
 # @!attribute [rw] hyperdrive_rating
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] length
 #   @return [String, nil]
 #
@@ -711,6 +750,7 @@ StarshipListMatch = Struct.new(
   :edited,
   :films,
   :hyperdrive_rating,
+  :id,
   :length,
   :manufacturer,
   :max_atmosphering_speed,
@@ -746,6 +786,9 @@ StarshipListMatch = Struct.new(
 # @!attribute [rw] films
 #   @return [Array, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] length
 #   @return [String, nil]
 #
@@ -780,6 +823,7 @@ Vehicle = Struct.new(
   :crew,
   :edited,
   :films,
+  :id,
   :length,
   :manufacturer,
   :max_atmosphering_speed,
@@ -824,6 +868,9 @@ VehicleLoadMatch = Struct.new(
 # @!attribute [rw] films
 #   @return [Array, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] length
 #   @return [String, nil]
 #
@@ -858,6 +905,7 @@ VehicleListMatch = Struct.new(
   :crew,
   :edited,
   :films,
+  :id,
   :length,
   :manufacturer,
   :max_atmosphering_speed,

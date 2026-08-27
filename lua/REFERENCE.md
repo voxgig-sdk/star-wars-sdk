@@ -119,6 +119,7 @@ local film = client:Film(nil)
 | `director` | `string` | No | The name of the director of this film |
 | `edited` | `string` | No | The ISO 8601 date format of the time that this resource was edited |
 | `episode_id` | `number` | No | The episode number of this film |
+| `id` | `string` | No |  |
 | `opening_crawl` | `string` | No | The opening paragraphs at the beginning of this film |
 | `planets` | `table` | No | An array of planet resource URLs that are in this film |
 | `producer` | `string` | No | The name(s) of the producer(s) of this film |
@@ -232,6 +233,7 @@ local person = client:Person(nil)
 | `hair_color` | `string` | No | The hair color of this person |
 | `height` | `string` | No | The height of the person in centimeters |
 | `homeworld` | `string` | No | The URL of the planet resource that this person was born on |
+| `id` | `string` | No |  |
 | `mass` | `string` | No | The mass of the person in kilograms |
 | `name` | `string` | No | The name of this person |
 | `skin_color` | `string` | No | The skin color of this person |
@@ -304,6 +306,7 @@ local planet = client:Planet(nil)
 | `edited` | `string` | No | The ISO 8601 date format of the time that this resource was edited |
 | `films` | `table` | No | An array of Film URL Resources that this planet has appeared in |
 | `gravity` | `string` | No | A number denoting the gravity of this planet |
+| `id` | `string` | No |  |
 | `name` | `string` | No | The name of this planet |
 | `orbital_period` | `string` | No | The number of standard days it takes for this planet to complete a single orbit of its local star |
 | `population` | `string` | No | The average population of sentient beings inhabiting this planet |
@@ -381,6 +384,7 @@ local species = client:Species(nil)
 | `films` | `table` | No | An array of Film URL Resources that this species has appeared in |
 | `hair_colors` | `string` | No | A comma-separated string of common hair colors for this species |
 | `homeworld` | `string` | No | The URL of a planet resource that is the homeworld of this species |
+| `id` | `string` | No |  |
 | `language` | `string` | No | The language commonly spoken by this species |
 | `name` | `string` | No | The name of this species |
 | `people` | `table` | No | An array of People URL Resources that are a part of this species |
@@ -454,6 +458,7 @@ local starship = client:Starship(nil)
 | `edited` | `string` | No | The ISO 8601 date format of the time that this resource was edited |
 | `films` | `table` | No | An array of Film URL Resources that this starship has appeared in |
 | `hyperdrive_rating` | `string` | No | The class of this starships hyperdrive |
+| `id` | `string` | No |  |
 | `length` | `string` | No | The length of this starship in meters |
 | `manufacturer` | `string` | No | The manufacturer of this starship |
 | `max_atmosphering_speed` | `string` | No | The maximum speed of this starship in atmosphere |
@@ -529,6 +534,7 @@ local vehicle = client:Vehicle(nil)
 | `crew` | `string` | No | The number of personnel needed to run or pilot this vehicle |
 | `edited` | `string` | No | The ISO 8601 date format of the time that this resource was edited |
 | `films` | `table` | No | An array of Film URL Resources that this vehicle has appeared in |
+| `id` | `string` | No |  |
 | `length` | `string` | No | The length of this vehicle in meters |
 | `manufacturer` | `string` | No | The manufacturer of this vehicle |
 | `max_atmosphering_speed` | `string` | No | The maximum speed of this vehicle in atmosphere |

@@ -19,6 +19,7 @@ type Film struct {
 	Director *string `json:"director,omitempty"`
 	Edited *string `json:"edited,omitempty"`
 	EpisodeId *int `json:"episode_id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	OpeningCrawl *string `json:"opening_crawl,omitempty"`
 	Planets *[]any `json:"planets,omitempty"`
 	Producer *string `json:"producer,omitempty"`
@@ -42,6 +43,7 @@ type FilmListMatch struct {
 	Director *string `json:"director,omitempty"`
 	Edited *string `json:"edited,omitempty"`
 	EpisodeId *int `json:"episode_id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	OpeningCrawl *string `json:"opening_crawl,omitempty"`
 	Planets *[]any `json:"planets,omitempty"`
 	Producer *string `json:"producer,omitempty"`
@@ -68,6 +70,7 @@ type Person struct {
 	HairColor *string `json:"hair_color,omitempty"`
 	Height *string `json:"height,omitempty"`
 	Homeworld *string `json:"homeworld,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Mass *string `json:"mass,omitempty"`
 	Name *string `json:"name,omitempty"`
 	SkinColor *string `json:"skin_color,omitempty"`
@@ -93,6 +96,7 @@ type PersonListMatch struct {
 	HairColor *string `json:"hair_color,omitempty"`
 	Height *string `json:"height,omitempty"`
 	Homeworld *string `json:"homeworld,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Mass *string `json:"mass,omitempty"`
 	Name *string `json:"name,omitempty"`
 	SkinColor *string `json:"skin_color,omitempty"`
@@ -110,6 +114,7 @@ type Planet struct {
 	Edited *string `json:"edited,omitempty"`
 	Films *[]any `json:"films,omitempty"`
 	Gravity *string `json:"gravity,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	OrbitalPeriod *string `json:"orbital_period,omitempty"`
 	Population *string `json:"population,omitempty"`
@@ -133,6 +138,7 @@ type PlanetListMatch struct {
 	Edited *string `json:"edited,omitempty"`
 	Films *[]any `json:"films,omitempty"`
 	Gravity *string `json:"gravity,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	OrbitalPeriod *string `json:"orbital_period,omitempty"`
 	Population *string `json:"population,omitempty"`
@@ -155,6 +161,7 @@ type Species struct {
 	Films *[]any `json:"films,omitempty"`
 	HairColors *string `json:"hair_colors,omitempty"`
 	Homeworld *string `json:"homeworld,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Language *string `json:"language,omitempty"`
 	Name *string `json:"name,omitempty"`
 	People *[]any `json:"people,omitempty"`
@@ -179,6 +186,7 @@ type SpeciesListMatch struct {
 	Films *[]any `json:"films,omitempty"`
 	HairColors *string `json:"hair_colors,omitempty"`
 	Homeworld *string `json:"homeworld,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Language *string `json:"language,omitempty"`
 	Name *string `json:"name,omitempty"`
 	People *[]any `json:"people,omitempty"`
@@ -197,6 +205,7 @@ type Starship struct {
 	Edited *string `json:"edited,omitempty"`
 	Films *[]any `json:"films,omitempty"`
 	HyperdriveRating *string `json:"hyperdrive_rating,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Length *string `json:"length,omitempty"`
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	MaxAtmospheringSpeed *string `json:"max_atmosphering_speed,omitempty"`
@@ -224,6 +233,7 @@ type StarshipListMatch struct {
 	Edited *string `json:"edited,omitempty"`
 	Films *[]any `json:"films,omitempty"`
 	HyperdriveRating *string `json:"hyperdrive_rating,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Length *string `json:"length,omitempty"`
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	MaxAtmospheringSpeed *string `json:"max_atmosphering_speed,omitempty"`
@@ -244,6 +254,7 @@ type Vehicle struct {
 	Crew *string `json:"crew,omitempty"`
 	Edited *string `json:"edited,omitempty"`
 	Films *[]any `json:"films,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Length *string `json:"length,omitempty"`
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	MaxAtmospheringSpeed *string `json:"max_atmosphering_speed,omitempty"`
@@ -269,6 +280,7 @@ type VehicleListMatch struct {
 	Crew *string `json:"crew,omitempty"`
 	Edited *string `json:"edited,omitempty"`
 	Films *[]any `json:"films,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Length *string `json:"length,omitempty"`
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	MaxAtmospheringSpeed *string `json:"max_atmosphering_speed,omitempty"`

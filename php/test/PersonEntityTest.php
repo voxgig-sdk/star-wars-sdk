@@ -93,9 +93,13 @@ class PersonEntityTest extends TestCase
         $this->assertIsArray($person_ref01_list_result);
 
         // LOAD
-        $person_ref01_match_dt0 = [];
+        $person_ref01_match_dt0 = [
+            "id" => $person_ref01_data["id"],
+        ];
         $person_ref01_data_dt0_loaded = $person_ref01_ent->load($person_ref01_match_dt0, null);
-        $this->assertNotNull($person_ref01_data_dt0_loaded);
+        $person_ref01_data_dt0_load_result = Helpers::to_map(is_object($person_ref01_data_dt0_loaded) && method_exists($person_ref01_data_dt0_loaded, 'data_get') ? $person_ref01_data_dt0_loaded->data_get() : $person_ref01_data_dt0_loaded);
+        $this->assertNotNull($person_ref01_data_dt0_load_result);
+        $this->assertEquals($person_ref01_data_dt0_load_result["id"], $person_ref01_data["id"]);
 
     }
 }

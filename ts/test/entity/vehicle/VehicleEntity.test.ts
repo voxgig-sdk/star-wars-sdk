@@ -66,6 +66,12 @@ describe('VehicleEntity', async () => {
     const vehicle_ref01_list = (await vehicle_ref01_ent.list(vehicle_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const vehicle_ref01_match_dt0: any = {}
+    vehicle_ref01_match_dt0.id = vehicle_ref01_data.id
+    const vehicle_ref01_data_dt0 = (await vehicle_ref01_ent.load(vehicle_ref01_match_dt0)).data()
+    assert(vehicle_ref01_data_dt0.id === vehicle_ref01_data.id)
+
 
   })
 })

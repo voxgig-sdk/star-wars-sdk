@@ -92,10 +92,14 @@ describe("StarshipEntity", function()
     assert.is_table(starship_ref01_list_result)
 
     -- LOAD
-    local starship_ref01_match_dt0 = {}
+    local starship_ref01_match_dt0 = {
+      id = starship_ref01_data["id"],
+    }
     local starship_ref01_data_dt0_loaded, err = starship_ref01_ent:load(starship_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(starship_ref01_data_dt0_loaded)
+    local starship_ref01_data_dt0_load_result = helpers.to_map(type(starship_ref01_data_dt0_loaded) == 'table' and starship_ref01_data_dt0_loaded.data_get and starship_ref01_data_dt0_loaded:data_get() or starship_ref01_data_dt0_loaded)
+    assert.is_not_nil(starship_ref01_data_dt0_load_result)
+    assert.are.equal(starship_ref01_data_dt0_load_result["id"], starship_ref01_data["id"])
 
   end)
 end)

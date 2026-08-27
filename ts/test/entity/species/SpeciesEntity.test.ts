@@ -66,6 +66,12 @@ describe('SpeciesEntity', async () => {
     const species_ref01_list = (await species_ref01_ent.list(species_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const species_ref01_match_dt0: any = {}
+    species_ref01_match_dt0.id = species_ref01_data.id
+    const species_ref01_data_dt0 = (await species_ref01_ent.load(species_ref01_match_dt0)).data()
+    assert(species_ref01_data_dt0.id === species_ref01_data.id)
+
 
   })
 })

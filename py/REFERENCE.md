@@ -116,6 +116,7 @@ film = client.Film()
 | `director` | `str` | No | The name of the director of this film |
 | `edited` | `str` | No | The ISO 8601 date format of the time that this resource was edited |
 | `episode_id` | `int` | No | The episode number of this film |
+| `id` | `str` | No |  |
 | `opening_crawl` | `str` | No | The opening paragraphs at the beginning of this film |
 | `planets` | `list` | No | An array of planet resource URLs that are in this film |
 | `producer` | `str` | No | The name(s) of the producer(s) of this film |
@@ -229,6 +230,7 @@ person = client.Person()
 | `hair_color` | `str` | No | The hair color of this person |
 | `height` | `str` | No | The height of the person in centimeters |
 | `homeworld` | `str` | No | The URL of the planet resource that this person was born on |
+| `id` | `str` | No |  |
 | `mass` | `str` | No | The mass of the person in kilograms |
 | `name` | `str` | No | The name of this person |
 | `skin_color` | `str` | No | The skin color of this person |
@@ -302,6 +304,7 @@ planet = client.Planet()
 | `edited` | `str` | No | The ISO 8601 date format of the time that this resource was edited |
 | `films` | `list` | No | An array of Film URL Resources that this planet has appeared in |
 | `gravity` | `str` | No | A number denoting the gravity of this planet |
+| `id` | `str` | No |  |
 | `name` | `str` | No | The name of this planet |
 | `orbital_period` | `str` | No | The number of standard days it takes for this planet to complete a single orbit of its local star |
 | `population` | `str` | No | The average population of sentient beings inhabiting this planet |
@@ -380,6 +383,7 @@ species = client.Species()
 | `films` | `list` | No | An array of Film URL Resources that this species has appeared in |
 | `hair_colors` | `str` | No | A comma-separated string of common hair colors for this species |
 | `homeworld` | `str` | No | The URL of a planet resource that is the homeworld of this species |
+| `id` | `str` | No |  |
 | `language` | `str` | No | The language commonly spoken by this species |
 | `name` | `str` | No | The name of this species |
 | `people` | `list` | No | An array of People URL Resources that are a part of this species |
@@ -454,6 +458,7 @@ starship = client.Starship()
 | `edited` | `str` | No | The ISO 8601 date format of the time that this resource was edited |
 | `films` | `list` | No | An array of Film URL Resources that this starship has appeared in |
 | `hyperdrive_rating` | `str` | No | The class of this starships hyperdrive |
+| `id` | `str` | No |  |
 | `length` | `str` | No | The length of this starship in meters |
 | `manufacturer` | `str` | No | The manufacturer of this starship |
 | `max_atmosphering_speed` | `str` | No | The maximum speed of this starship in atmosphere |
@@ -530,6 +535,7 @@ vehicle = client.Vehicle()
 | `crew` | `str` | No | The number of personnel needed to run or pilot this vehicle |
 | `edited` | `str` | No | The ISO 8601 date format of the time that this resource was edited |
 | `films` | `list` | No | An array of Film URL Resources that this vehicle has appeared in |
+| `id` | `str` | No |  |
 | `length` | `str` | No | The length of this vehicle in meters |
 | `manufacturer` | `str` | No | The manufacturer of this vehicle |
 | `max_atmosphering_speed` | `str` | No | The maximum speed of this vehicle in atmosphere |

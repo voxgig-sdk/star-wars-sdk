@@ -83,9 +83,13 @@ class VehicleEntityTest < Minitest::Test
     assert vehicle_ref01_list_result.is_a?(Array)
 
     # LOAD
-    vehicle_ref01_match_dt0 = {}
+    vehicle_ref01_match_dt0 = {
+      "id" => vehicle_ref01_data["id"],
+    }
     vehicle_ref01_data_dt0_loaded = vehicle_ref01_ent.load(vehicle_ref01_match_dt0, nil)
-    assert !vehicle_ref01_data_dt0_loaded.nil?
+    vehicle_ref01_data_dt0_load_result = Helpers.to_map(vehicle_ref01_data_dt0_loaded.respond_to?(:data_get) ? vehicle_ref01_data_dt0_loaded.data_get : vehicle_ref01_data_dt0_loaded)
+    assert !vehicle_ref01_data_dt0_load_result.nil?
+    assert_equal vehicle_ref01_data_dt0_load_result["id"], vehicle_ref01_data["id"]
 
   end
 end

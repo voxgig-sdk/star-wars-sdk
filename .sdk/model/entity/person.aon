@@ -60,6 +60,11 @@ main: kit: entity: person: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "mass"
       req: false
       short: "The mass of the person in kilograms"
@@ -102,6 +107,11 @@ main: kit: entity: person: {
       type: "`$ARRAY`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "person"
   op: {

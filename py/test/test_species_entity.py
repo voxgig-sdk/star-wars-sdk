@@ -88,9 +88,13 @@ class TestSpeciesEntity:
         assert isinstance(species_ref01_list_result, list)
 
         # LOAD
-        species_ref01_match_dt0 = {}
+        species_ref01_match_dt0 = {
+            "id": species_ref01_data["id"],
+        }
         species_ref01_data_dt0_loaded = species_ref01_ent.load(species_ref01_match_dt0, None)
-        assert species_ref01_data_dt0_loaded is not None
+        species_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(species_ref01_data_dt0_loaded))
+        assert species_ref01_data_dt0_load_result is not None
+        assert species_ref01_data_dt0_load_result["id"] == species_ref01_data["id"]
 
 
 

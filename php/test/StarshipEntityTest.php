@@ -93,9 +93,13 @@ class StarshipEntityTest extends TestCase
         $this->assertIsArray($starship_ref01_list_result);
 
         // LOAD
-        $starship_ref01_match_dt0 = [];
+        $starship_ref01_match_dt0 = [
+            "id" => $starship_ref01_data["id"],
+        ];
         $starship_ref01_data_dt0_loaded = $starship_ref01_ent->load($starship_ref01_match_dt0, null);
-        $this->assertNotNull($starship_ref01_data_dt0_loaded);
+        $starship_ref01_data_dt0_load_result = Helpers::to_map(is_object($starship_ref01_data_dt0_loaded) && method_exists($starship_ref01_data_dt0_loaded, 'data_get') ? $starship_ref01_data_dt0_loaded->data_get() : $starship_ref01_data_dt0_loaded);
+        $this->assertNotNull($starship_ref01_data_dt0_load_result);
+        $this->assertEquals($starship_ref01_data_dt0_load_result["id"], $starship_ref01_data["id"]);
 
     }
 }

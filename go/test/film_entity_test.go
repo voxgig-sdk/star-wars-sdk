@@ -121,13 +121,19 @@ func TestFilmEntity(t *testing.T) {
 		}
 
 		// LOAD
-		filmRef01MatchDt0 := map[string]any{}
+		filmRef01MatchDt0 := map[string]any{
+			"id": filmRef01Data["id"],
+		}
 		filmRef01DataDt0Loaded, err := filmRef01Ent.Load(filmRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if filmRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		filmRef01DataDt0LoadResult := core.ToMapAny(entityData(filmRef01DataDt0Loaded))
+		if filmRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if filmRef01DataDt0LoadResult["id"] != filmRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

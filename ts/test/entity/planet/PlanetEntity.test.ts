@@ -66,6 +66,12 @@ describe('PlanetEntity', async () => {
     const planet_ref01_list = (await planet_ref01_ent.list(planet_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const planet_ref01_match_dt0: any = {}
+    planet_ref01_match_dt0.id = planet_ref01_data.id
+    const planet_ref01_data_dt0 = (await planet_ref01_ent.load(planet_ref01_match_dt0)).data()
+    assert(planet_ref01_data_dt0.id === planet_ref01_data.id)
+
 
   })
 })

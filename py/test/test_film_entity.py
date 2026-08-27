@@ -88,9 +88,13 @@ class TestFilmEntity:
         assert isinstance(film_ref01_list_result, list)
 
         # LOAD
-        film_ref01_match_dt0 = {}
+        film_ref01_match_dt0 = {
+            "id": film_ref01_data["id"],
+        }
         film_ref01_data_dt0_loaded = film_ref01_ent.load(film_ref01_match_dt0, None)
-        assert film_ref01_data_dt0_loaded is not None
+        film_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(film_ref01_data_dt0_loaded))
+        assert film_ref01_data_dt0_load_result is not None
+        assert film_ref01_data_dt0_load_result["id"] == film_ref01_data["id"]
 
 
 

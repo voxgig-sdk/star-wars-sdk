@@ -93,9 +93,13 @@ class PlanetEntityTest extends TestCase
         $this->assertIsArray($planet_ref01_list_result);
 
         // LOAD
-        $planet_ref01_match_dt0 = [];
+        $planet_ref01_match_dt0 = [
+            "id" => $planet_ref01_data["id"],
+        ];
         $planet_ref01_data_dt0_loaded = $planet_ref01_ent->load($planet_ref01_match_dt0, null);
-        $this->assertNotNull($planet_ref01_data_dt0_loaded);
+        $planet_ref01_data_dt0_load_result = Helpers::to_map(is_object($planet_ref01_data_dt0_loaded) && method_exists($planet_ref01_data_dt0_loaded, 'data_get') ? $planet_ref01_data_dt0_loaded->data_get() : $planet_ref01_data_dt0_loaded);
+        $this->assertNotNull($planet_ref01_data_dt0_load_result);
+        $this->assertEquals($planet_ref01_data_dt0_load_result["id"], $planet_ref01_data["id"]);
 
     }
 }

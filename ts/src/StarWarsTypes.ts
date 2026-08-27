@@ -11,6 +11,7 @@ export interface Film {
   director?: string
   edited?: string
   episode_id?: number
+  id?: string
   opening_crawl?: string
   planets?: any[]
   producer?: string
@@ -32,6 +33,7 @@ export interface FilmListMatch {
   director?: string
   edited?: string
   episode_id?: number
+  id?: string
   opening_crawl?: string
   planets?: any[]
   producer?: string
@@ -56,6 +58,7 @@ export interface Person {
   hair_color?: string
   height?: string
   homeworld?: string
+  id?: string
   mass?: string
   name?: string
   skin_color?: string
@@ -79,6 +82,7 @@ export interface PersonListMatch {
   hair_color?: string
   height?: string
   homeworld?: string
+  id?: string
   mass?: string
   name?: string
   skin_color?: string
@@ -95,6 +99,7 @@ export interface Planet {
   edited?: string
   films?: any[]
   gravity?: string
+  id?: string
   name?: string
   orbital_period?: string
   population?: string
@@ -116,6 +121,7 @@ export interface PlanetListMatch {
   edited?: string
   films?: any[]
   gravity?: string
+  id?: string
   name?: string
   orbital_period?: string
   population?: string
@@ -137,6 +143,7 @@ export interface Species {
   films?: any[]
   hair_colors?: string
   homeworld?: string
+  id?: string
   language?: string
   name?: string
   people?: any[]
@@ -159,6 +166,7 @@ export interface SpeciesListMatch {
   films?: any[]
   hair_colors?: string
   homeworld?: string
+  id?: string
   language?: string
   name?: string
   people?: any[]
@@ -176,6 +184,7 @@ export interface Starship {
   edited?: string
   films?: any[]
   hyperdrive_rating?: string
+  id?: string
   length?: string
   manufacturer?: string
   max_atmosphering_speed?: string
@@ -201,6 +210,7 @@ export interface StarshipListMatch {
   edited?: string
   films?: any[]
   hyperdrive_rating?: string
+  id?: string
   length?: string
   manufacturer?: string
   max_atmosphering_speed?: string
@@ -220,6 +230,7 @@ export interface Vehicle {
   crew?: string
   edited?: string
   films?: any[]
+  id?: string
   length?: string
   manufacturer?: string
   max_atmosphering_speed?: string
@@ -243,6 +254,7 @@ export interface VehicleListMatch {
   crew?: string
   edited?: string
   films?: any[]
+  id?: string
   length?: string
   manufacturer?: string
   max_atmosphering_speed?: string

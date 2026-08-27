@@ -88,9 +88,13 @@ class TestPlanetEntity:
         assert isinstance(planet_ref01_list_result, list)
 
         # LOAD
-        planet_ref01_match_dt0 = {}
+        planet_ref01_match_dt0 = {
+            "id": planet_ref01_data["id"],
+        }
         planet_ref01_data_dt0_loaded = planet_ref01_ent.load(planet_ref01_match_dt0, None)
-        assert planet_ref01_data_dt0_loaded is not None
+        planet_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(planet_ref01_data_dt0_loaded))
+        assert planet_ref01_data_dt0_load_result is not None
+        assert planet_ref01_data_dt0_load_result["id"] == planet_ref01_data["id"]
 
 
 

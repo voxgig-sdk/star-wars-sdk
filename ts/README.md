@@ -159,7 +159,7 @@ await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -313,6 +313,7 @@ The `prepare()` method returns:
 | `director` | The name of the director of this film |
 | `edited` | The ISO 8601 date format of the time that this resource was edited |
 | `episode_id` | The episode number of this film |
+| `id` |  |
 | `opening_crawl` | The opening paragraphs at the beginning of this film |
 | `planets` | An array of planet resource URLs that are in this film |
 | `producer` | The name(s) of the producer(s) of this film |
@@ -349,6 +350,7 @@ API path: ``
 | `hair_color` | The hair color of this person |
 | `height` | The height of the person in centimeters |
 | `homeworld` | The URL of the planet resource that this person was born on |
+| `id` |  |
 | `mass` | The mass of the person in kilograms |
 | `name` | The name of this person |
 | `skin_color` | The skin color of this person |
@@ -371,6 +373,7 @@ API path: `/people`
 | `edited` | The ISO 8601 date format of the time that this resource was edited |
 | `films` | An array of Film URL Resources that this planet has appeared in |
 | `gravity` | A number denoting the gravity of this planet |
+| `id` |  |
 | `name` | The name of this planet |
 | `orbital_period` | The number of standard days it takes for this planet to complete a single orbit of its local star |
 | `population` | The average population of sentient beings inhabiting this planet |
@@ -398,6 +401,7 @@ API path: `/planets`
 | `films` | An array of Film URL Resources that this species has appeared in |
 | `hair_colors` | A comma-separated string of common hair colors for this species |
 | `homeworld` | The URL of a planet resource that is the homeworld of this species |
+| `id` |  |
 | `language` | The language commonly spoken by this species |
 | `name` | The name of this species |
 | `people` | An array of People URL Resources that are a part of this species |
@@ -421,6 +425,7 @@ API path: `/species`
 | `edited` | The ISO 8601 date format of the time that this resource was edited |
 | `films` | An array of Film URL Resources that this starship has appeared in |
 | `hyperdrive_rating` | The class of this starships hyperdrive |
+| `id` |  |
 | `length` | The length of this starship in meters |
 | `manufacturer` | The manufacturer of this starship |
 | `max_atmosphering_speed` | The maximum speed of this starship in atmosphere |
@@ -446,6 +451,7 @@ API path: `/starships`
 | `crew` | The number of personnel needed to run or pilot this vehicle |
 | `edited` | The ISO 8601 date format of the time that this resource was edited |
 | `films` | An array of Film URL Resources that this vehicle has appeared in |
+| `id` |  |
 | `length` | The length of this vehicle in meters |
 | `manufacturer` | The manufacturer of this vehicle |
 | `max_atmosphering_speed` | The maximum speed of this vehicle in atmosphere |
@@ -485,6 +491,7 @@ Create an instance: `const film = client.Film()`
 | `director` | `string` | The name of the director of this film |
 | `edited` | `string` | The ISO 8601 date format of the time that this resource was edited |
 | `episode_id` | `number` | The episode number of this film |
+| `id` | `string` |  |
 | `opening_crawl` | `string` | The opening paragraphs at the beginning of this film |
 | `planets` | `any[]` | An array of planet resource URLs that are in this film |
 | `producer` | `string` | The name(s) of the producer(s) of this film |
@@ -537,6 +544,7 @@ Create an instance: `const person = client.Person()`
 | `hair_color` | `string` | The hair color of this person |
 | `height` | `string` | The height of the person in centimeters |
 | `homeworld` | `string` | The URL of the planet resource that this person was born on |
+| `id` | `string` |  |
 | `mass` | `string` | The mass of the person in kilograms |
 | `name` | `string` | The name of this person |
 | `skin_color` | `string` | The skin color of this person |
@@ -579,6 +587,7 @@ Create an instance: `const planet = client.Planet()`
 | `edited` | `string` | The ISO 8601 date format of the time that this resource was edited |
 | `films` | `any[]` | An array of Film URL Resources that this planet has appeared in |
 | `gravity` | `string` | A number denoting the gravity of this planet |
+| `id` | `string` |  |
 | `name` | `string` | The name of this planet |
 | `orbital_period` | `string` | The number of standard days it takes for this planet to complete a single orbit of its local star |
 | `population` | `string` | The average population of sentient beings inhabiting this planet |
@@ -626,6 +635,7 @@ Create an instance: `const species = client.Species()`
 | `films` | `any[]` | An array of Film URL Resources that this species has appeared in |
 | `hair_colors` | `string` | A comma-separated string of common hair colors for this species |
 | `homeworld` | `string` | The URL of a planet resource that is the homeworld of this species |
+| `id` | `string` |  |
 | `language` | `string` | The language commonly spoken by this species |
 | `name` | `string` | The name of this species |
 | `people` | `any[]` | An array of People URL Resources that are a part of this species |
@@ -669,6 +679,7 @@ Create an instance: `const starship = client.Starship()`
 | `edited` | `string` | The ISO 8601 date format of the time that this resource was edited |
 | `films` | `any[]` | An array of Film URL Resources that this starship has appeared in |
 | `hyperdrive_rating` | `string` | The class of this starships hyperdrive |
+| `id` | `string` |  |
 | `length` | `string` | The length of this starship in meters |
 | `manufacturer` | `string` | The manufacturer of this starship |
 | `max_atmosphering_speed` | `string` | The maximum speed of this starship in atmosphere |
@@ -714,6 +725,7 @@ Create an instance: `const vehicle = client.Vehicle()`
 | `crew` | `string` | The number of personnel needed to run or pilot this vehicle |
 | `edited` | `string` | The ISO 8601 date format of the time that this resource was edited |
 | `films` | `any[]` | An array of Film URL Resources that this vehicle has appeared in |
+| `id` | `string` |  |
 | `length` | `string` | The length of this vehicle in meters |
 | `manufacturer` | `string` | The manufacturer of this vehicle |
 | `max_atmosphering_speed` | `string` | The maximum speed of this vehicle in atmosphere |

@@ -92,10 +92,14 @@ describe("FilmEntity", function()
     assert.is_table(film_ref01_list_result)
 
     -- LOAD
-    local film_ref01_match_dt0 = {}
+    local film_ref01_match_dt0 = {
+      id = film_ref01_data["id"],
+    }
     local film_ref01_data_dt0_loaded, err = film_ref01_ent:load(film_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(film_ref01_data_dt0_loaded)
+    local film_ref01_data_dt0_load_result = helpers.to_map(type(film_ref01_data_dt0_loaded) == 'table' and film_ref01_data_dt0_loaded.data_get and film_ref01_data_dt0_loaded:data_get() or film_ref01_data_dt0_loaded)
+    assert.is_not_nil(film_ref01_data_dt0_load_result)
+    assert.are.equal(film_ref01_data_dt0_load_result["id"], film_ref01_data["id"])
 
   end)
 end)

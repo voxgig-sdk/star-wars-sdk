@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -107,6 +108,10 @@ class Config {
           "name": "episode_id",
           "short": "The episode number of this film",
           "type": "`$INTEGER`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "opening_crawl",
@@ -293,6 +298,10 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "name": "id",
+          "type": "`$STRING`"
+        },
+        {
           "name": "mass",
           "short": "The mass of the person in kilograms",
           "type": "`$STRING`"
@@ -441,6 +450,10 @@ class Config {
         {
           "name": "gravity",
           "short": "A number denoting the gravity of this planet",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         },
         {
@@ -620,6 +633,10 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "name": "id",
+          "type": "`$STRING`"
+        },
+        {
           "name": "language",
           "short": "The language commonly spoken by this species",
           "type": "`$STRING`"
@@ -773,6 +790,10 @@ class Config {
         {
           "name": "hyperdrive_rating",
           "short": "The class of this starships hyperdrive",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         },
         {
@@ -940,6 +961,10 @@ class Config {
           "name": "films",
           "short": "An array of Film URL Resources that this vehicle has appeared in",
           "type": "`$ARRAY`"
+        },
+        {
+          "name": "id",
+          "type": "`$STRING`"
         },
         {
           "name": "length",

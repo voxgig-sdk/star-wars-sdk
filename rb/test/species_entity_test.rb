@@ -83,9 +83,13 @@ class SpeciesEntityTest < Minitest::Test
     assert species_ref01_list_result.is_a?(Array)
 
     # LOAD
-    species_ref01_match_dt0 = {}
+    species_ref01_match_dt0 = {
+      "id" => species_ref01_data["id"],
+    }
     species_ref01_data_dt0_loaded = species_ref01_ent.load(species_ref01_match_dt0, nil)
-    assert !species_ref01_data_dt0_loaded.nil?
+    species_ref01_data_dt0_load_result = Helpers.to_map(species_ref01_data_dt0_loaded.respond_to?(:data_get) ? species_ref01_data_dt0_loaded.data_get : species_ref01_data_dt0_loaded)
+    assert !species_ref01_data_dt0_load_result.nil?
+    assert_equal species_ref01_data_dt0_load_result["id"], species_ref01_data["id"]
 
   end
 end

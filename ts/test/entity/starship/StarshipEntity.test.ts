@@ -66,6 +66,12 @@ describe('StarshipEntity', async () => {
     const starship_ref01_list = (await starship_ref01_ent.list(starship_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const starship_ref01_match_dt0: any = {}
+    starship_ref01_match_dt0.id = starship_ref01_data.id
+    const starship_ref01_data_dt0 = (await starship_ref01_ent.load(starship_ref01_match_dt0)).data()
+    assert(starship_ref01_data_dt0.id === starship_ref01_data.id)
+
 
   })
 })
