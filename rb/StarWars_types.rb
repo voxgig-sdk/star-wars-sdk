@@ -84,66 +84,14 @@ FilmLoadMatch = Struct.new(
 
 # Request payload for Film#list.
 #
-# @!attribute [rw] characters
-#   @return [Array, nil]
-#
-# @!attribute [rw] created
-#   @return [String, nil]
-#
-# @!attribute [rw] director
-#   @return [String, nil]
-#
-# @!attribute [rw] edited
-#   @return [String, nil]
-#
-# @!attribute [rw] episode_id
+# @!attribute [rw] page
 #   @return [Integer, nil]
 #
-# @!attribute [rw] id
+# @!attribute [rw] search
 #   @return [String, nil]
-#
-# @!attribute [rw] opening_crawl
-#   @return [String, nil]
-#
-# @!attribute [rw] planets
-#   @return [Array, nil]
-#
-# @!attribute [rw] producer
-#   @return [String, nil]
-#
-# @!attribute [rw] release_date
-#   @return [String, nil]
-#
-# @!attribute [rw] species
-#   @return [Array, nil]
-#
-# @!attribute [rw] starships
-#   @return [Array, nil]
-#
-# @!attribute [rw] title
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
-#
-# @!attribute [rw] vehicles
-#   @return [Array, nil]
 FilmListMatch = Struct.new(
-  :characters,
-  :created,
-  :director,
-  :edited,
-  :episode_id,
-  :id,
-  :opening_crawl,
-  :planets,
-  :producer,
-  :release_date,
-  :species,
-  :starships,
-  :title,
-  :url,
-  :vehicles,
+  :page,
+  :search,
   keyword_init: true
 )
 
@@ -235,74 +183,14 @@ PersonLoadMatch = Struct.new(
 
 # Request payload for Person#list.
 #
-# @!attribute [rw] birth_year
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
 #   @return [String, nil]
-#
-# @!attribute [rw] created
-#   @return [String, nil]
-#
-# @!attribute [rw] edited
-#   @return [String, nil]
-#
-# @!attribute [rw] eye_color
-#   @return [String, nil]
-#
-# @!attribute [rw] films
-#   @return [Array, nil]
-#
-# @!attribute [rw] gender
-#   @return [String, nil]
-#
-# @!attribute [rw] hair_color
-#   @return [String, nil]
-#
-# @!attribute [rw] height
-#   @return [String, nil]
-#
-# @!attribute [rw] homeworld
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] mass
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] skin_color
-#   @return [String, nil]
-#
-# @!attribute [rw] species
-#   @return [Array, nil]
-#
-# @!attribute [rw] starships
-#   @return [Array, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
-#
-# @!attribute [rw] vehicles
-#   @return [Array, nil]
 PersonListMatch = Struct.new(
-  :birth_year,
-  :created,
-  :edited,
-  :eye_color,
-  :films,
-  :gender,
-  :hair_color,
-  :height,
-  :homeworld,
-  :id,
-  :mass,
-  :name,
-  :skin_color,
-  :species,
-  :starships,
-  :url,
-  :vehicles,
+  :page,
+  :search,
   keyword_init: true
 )
 
@@ -382,66 +270,14 @@ PlanetLoadMatch = Struct.new(
 
 # Request payload for Planet#list.
 #
-# @!attribute [rw] climate
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 #
-# @!attribute [rw] created
-#   @return [String, nil]
-#
-# @!attribute [rw] diameter
-#   @return [String, nil]
-#
-# @!attribute [rw] edited
-#   @return [String, nil]
-#
-# @!attribute [rw] films
-#   @return [Array, nil]
-#
-# @!attribute [rw] gravity
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] orbital_period
-#   @return [String, nil]
-#
-# @!attribute [rw] population
-#   @return [String, nil]
-#
-# @!attribute [rw] residents
-#   @return [Array, nil]
-#
-# @!attribute [rw] rotation_period
-#   @return [String, nil]
-#
-# @!attribute [rw] surface_water
-#   @return [String, nil]
-#
-# @!attribute [rw] terrain
-#   @return [String, nil]
-#
-# @!attribute [rw] url
+# @!attribute [rw] search
 #   @return [String, nil]
 PlanetListMatch = Struct.new(
-  :climate,
-  :created,
-  :diameter,
-  :edited,
-  :films,
-  :gravity,
-  :id,
-  :name,
-  :orbital_period,
-  :population,
-  :residents,
-  :rotation_period,
-  :surface_water,
-  :terrain,
-  :url,
+  :page,
+  :search,
   keyword_init: true
 )
 
@@ -525,70 +361,14 @@ SpeciesLoadMatch = Struct.new(
 
 # Request payload for Species#list.
 #
-# @!attribute [rw] average_height
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 #
-# @!attribute [rw] average_lifespan
-#   @return [String, nil]
-#
-# @!attribute [rw] classification
-#   @return [String, nil]
-#
-# @!attribute [rw] created
-#   @return [String, nil]
-#
-# @!attribute [rw] designation
-#   @return [String, nil]
-#
-# @!attribute [rw] edited
-#   @return [String, nil]
-#
-# @!attribute [rw] eye_colors
-#   @return [String, nil]
-#
-# @!attribute [rw] films
-#   @return [Array, nil]
-#
-# @!attribute [rw] hair_colors
-#   @return [String, nil]
-#
-# @!attribute [rw] homeworld
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] language
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] people
-#   @return [Array, nil]
-#
-# @!attribute [rw] skin_colors
-#   @return [String, nil]
-#
-# @!attribute [rw] url
+# @!attribute [rw] search
 #   @return [String, nil]
 SpeciesListMatch = Struct.new(
-  :average_height,
-  :average_lifespan,
-  :classification,
-  :created,
-  :designation,
-  :edited,
-  :eye_colors,
-  :films,
-  :hair_colors,
-  :homeworld,
-  :id,
-  :language,
-  :name,
-  :people,
-  :skin_colors,
-  :url,
+  :page,
+  :search,
   keyword_init: true
 )
 
@@ -684,82 +464,14 @@ StarshipLoadMatch = Struct.new(
 
 # Request payload for Starship#list.
 #
-# @!attribute [rw] MGLT
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 #
-# @!attribute [rw] cargo_capacity
-#   @return [String, nil]
-#
-# @!attribute [rw] consumables
-#   @return [String, nil]
-#
-# @!attribute [rw] cost_in_credits
-#   @return [String, nil]
-#
-# @!attribute [rw] created
-#   @return [String, nil]
-#
-# @!attribute [rw] crew
-#   @return [String, nil]
-#
-# @!attribute [rw] edited
-#   @return [String, nil]
-#
-# @!attribute [rw] films
-#   @return [Array, nil]
-#
-# @!attribute [rw] hyperdrive_rating
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] length
-#   @return [String, nil]
-#
-# @!attribute [rw] manufacturer
-#   @return [String, nil]
-#
-# @!attribute [rw] max_atmosphering_speed
-#   @return [String, nil]
-#
-# @!attribute [rw] model
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] passengers
-#   @return [String, nil]
-#
-# @!attribute [rw] pilots
-#   @return [Array, nil]
-#
-# @!attribute [rw] starship_class
-#   @return [String, nil]
-#
-# @!attribute [rw] url
+# @!attribute [rw] search
 #   @return [String, nil]
 StarshipListMatch = Struct.new(
-  :MGLT,
-  :cargo_capacity,
-  :consumables,
-  :cost_in_credits,
-  :created,
-  :crew,
-  :edited,
-  :films,
-  :hyperdrive_rating,
-  :id,
-  :length,
-  :manufacturer,
-  :max_atmosphering_speed,
-  :model,
-  :name,
-  :passengers,
-  :pilots,
-  :starship_class,
-  :url,
+  :page,
+  :search,
   keyword_init: true
 )
 
@@ -847,74 +559,14 @@ VehicleLoadMatch = Struct.new(
 
 # Request payload for Vehicle#list.
 #
-# @!attribute [rw] cargo_capacity
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 #
-# @!attribute [rw] consumables
-#   @return [String, nil]
-#
-# @!attribute [rw] cost_in_credits
-#   @return [String, nil]
-#
-# @!attribute [rw] created
-#   @return [String, nil]
-#
-# @!attribute [rw] crew
-#   @return [String, nil]
-#
-# @!attribute [rw] edited
-#   @return [String, nil]
-#
-# @!attribute [rw] films
-#   @return [Array, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] length
-#   @return [String, nil]
-#
-# @!attribute [rw] manufacturer
-#   @return [String, nil]
-#
-# @!attribute [rw] max_atmosphering_speed
-#   @return [String, nil]
-#
-# @!attribute [rw] model
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] passengers
-#   @return [String, nil]
-#
-# @!attribute [rw] pilots
-#   @return [Array, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
-#
-# @!attribute [rw] vehicle_class
+# @!attribute [rw] search
 #   @return [String, nil]
 VehicleListMatch = Struct.new(
-  :cargo_capacity,
-  :consumables,
-  :cost_in_credits,
-  :created,
-  :crew,
-  :edited,
-  :films,
-  :id,
-  :length,
-  :manufacturer,
-  :max_atmosphering_speed,
-  :model,
-  :name,
-  :passengers,
-  :pilots,
-  :url,
-  :vehicle_class,
+  :page,
+  :search,
   keyword_init: true
 )
 

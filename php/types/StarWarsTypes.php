@@ -41,21 +41,8 @@ class FilmLoadMatch
 /** Request payload for Film#list. */
 class FilmListMatch
 {
-    public ?array $characters = null;
-    public ?string $created = null;
-    public ?string $director = null;
-    public ?string $edited = null;
-    public ?int $episode_id = null;
-    public ?string $id = null;
-    public ?string $opening_crawl = null;
-    public ?array $planets = null;
-    public ?string $producer = null;
-    public ?string $release_date = null;
-    public ?array $species = null;
-    public ?array $starships = null;
-    public ?string $title = null;
-    public ?string $url = null;
-    public ?array $vehicles = null;
+    public ?int $page = null;
+    public ?string $search = null;
 }
 
 /** PeopleList entity data model. */
@@ -94,23 +81,8 @@ class PersonLoadMatch
 /** Request payload for Person#list. */
 class PersonListMatch
 {
-    public ?string $birth_year = null;
-    public ?string $created = null;
-    public ?string $edited = null;
-    public ?string $eye_color = null;
-    public ?array $films = null;
-    public ?string $gender = null;
-    public ?string $hair_color = null;
-    public ?string $height = null;
-    public ?string $homeworld = null;
-    public ?string $id = null;
-    public ?string $mass = null;
-    public ?string $name = null;
-    public ?string $skin_color = null;
-    public ?array $species = null;
-    public ?array $starships = null;
-    public ?string $url = null;
-    public ?array $vehicles = null;
+    public ?int $page = null;
+    public ?string $search = null;
 }
 
 /** Planet entity data model. */
@@ -142,21 +114,8 @@ class PlanetLoadMatch
 /** Request payload for Planet#list. */
 class PlanetListMatch
 {
-    public ?string $climate = null;
-    public ?string $created = null;
-    public ?string $diameter = null;
-    public ?string $edited = null;
-    public ?array $films = null;
-    public ?string $gravity = null;
-    public ?string $id = null;
-    public ?string $name = null;
-    public ?string $orbital_period = null;
-    public ?string $population = null;
-    public ?array $residents = null;
-    public ?string $rotation_period = null;
-    public ?string $surface_water = null;
-    public ?string $terrain = null;
-    public ?string $url = null;
+    public ?int $page = null;
+    public ?string $search = null;
 }
 
 /** Species entity data model. */
@@ -189,22 +148,8 @@ class SpeciesLoadMatch
 /** Request payload for Species#list. */
 class SpeciesListMatch
 {
-    public ?string $average_height = null;
-    public ?string $average_lifespan = null;
-    public ?string $classification = null;
-    public ?string $created = null;
-    public ?string $designation = null;
-    public ?string $edited = null;
-    public ?string $eye_colors = null;
-    public ?array $films = null;
-    public ?string $hair_colors = null;
-    public ?string $homeworld = null;
-    public ?string $id = null;
-    public ?string $language = null;
-    public ?string $name = null;
-    public ?array $people = null;
-    public ?string $skin_colors = null;
-    public ?string $url = null;
+    public ?int $page = null;
+    public ?string $search = null;
 }
 
 /** Starship entity data model. */
@@ -240,25 +185,8 @@ class StarshipLoadMatch
 /** Request payload for Starship#list. */
 class StarshipListMatch
 {
-    public ?string $MGLT = null;
-    public ?string $cargo_capacity = null;
-    public ?string $consumables = null;
-    public ?string $cost_in_credits = null;
-    public ?string $created = null;
-    public ?string $crew = null;
-    public ?string $edited = null;
-    public ?array $films = null;
-    public ?string $hyperdrive_rating = null;
-    public ?string $id = null;
-    public ?string $length = null;
-    public ?string $manufacturer = null;
-    public ?string $max_atmosphering_speed = null;
-    public ?string $model = null;
-    public ?string $name = null;
-    public ?string $passengers = null;
-    public ?array $pilots = null;
-    public ?string $starship_class = null;
-    public ?string $url = null;
+    public ?int $page = null;
+    public ?string $search = null;
 }
 
 /** Vehicle entity data model. */
@@ -292,22 +220,7 @@ class VehicleLoadMatch
 /** Request payload for Vehicle#list. */
 class VehicleListMatch
 {
-    public ?string $cargo_capacity = null;
-    public ?string $consumables = null;
-    public ?string $cost_in_credits = null;
-    public ?string $created = null;
-    public ?string $crew = null;
-    public ?string $edited = null;
-    public ?array $films = null;
-    public ?string $id = null;
-    public ?string $length = null;
-    public ?string $manufacturer = null;
-    public ?string $max_atmosphering_speed = null;
-    public ?string $model = null;
-    public ?string $name = null;
-    public ?string $passengers = null;
-    public ?array $pilots = null;
-    public ?string $url = null;
-    public ?string $vehicle_class = null;
+    public ?int $page = null;
+    public ?string $search = null;
 }
 

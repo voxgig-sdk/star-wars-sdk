@@ -39,21 +39,8 @@ class FilmLoadMatch(TypedDict):
 
 
 class FilmListMatch(TypedDict, total=False):
-    characters: list
-    created: str
-    director: str
-    edited: str
-    episode_id: int
-    id: str
-    opening_crawl: str
-    planets: list
-    producer: str
-    release_date: str
-    species: list
-    starships: list
-    title: str
-    url: str
-    vehicles: list
+    page: int
+    search: str
 
 
 class PeopleList(TypedDict):
@@ -85,23 +72,8 @@ class PersonLoadMatch(TypedDict):
 
 
 class PersonListMatch(TypedDict, total=False):
-    birth_year: str
-    created: str
-    edited: str
-    eye_color: str
-    films: list
-    gender: str
-    hair_color: str
-    height: str
-    homeworld: str
-    id: str
-    mass: str
-    name: str
-    skin_color: str
-    species: list
-    starships: list
-    url: str
-    vehicles: list
+    page: int
+    search: str
 
 
 class Planet(TypedDict, total=False):
@@ -127,21 +99,8 @@ class PlanetLoadMatch(TypedDict):
 
 
 class PlanetListMatch(TypedDict, total=False):
-    climate: str
-    created: str
-    diameter: str
-    edited: str
-    films: list
-    gravity: str
-    id: str
-    name: str
-    orbital_period: str
-    population: str
-    residents: list
-    rotation_period: str
-    surface_water: str
-    terrain: str
-    url: str
+    page: int
+    search: str
 
 
 class Species(TypedDict, total=False):
@@ -168,22 +127,8 @@ class SpeciesLoadMatch(TypedDict):
 
 
 class SpeciesListMatch(TypedDict, total=False):
-    average_height: str
-    average_lifespan: str
-    classification: str
-    created: str
-    designation: str
-    edited: str
-    eye_colors: str
-    films: list
-    hair_colors: str
-    homeworld: str
-    id: str
-    language: str
-    name: str
-    people: list
-    skin_colors: str
-    url: str
+    page: int
+    search: str
 
 
 class Starship(TypedDict, total=False):
@@ -213,25 +158,8 @@ class StarshipLoadMatch(TypedDict):
 
 
 class StarshipListMatch(TypedDict, total=False):
-    MGLT: str
-    cargo_capacity: str
-    consumables: str
-    cost_in_credits: str
-    created: str
-    crew: str
-    edited: str
-    films: list
-    hyperdrive_rating: str
-    id: str
-    length: str
-    manufacturer: str
-    max_atmosphering_speed: str
-    model: str
-    name: str
-    passengers: str
-    pilots: list
-    starship_class: str
-    url: str
+    page: int
+    search: str
 
 
 class Vehicle(TypedDict, total=False):
@@ -259,20 +187,5 @@ class VehicleLoadMatch(TypedDict):
 
 
 class VehicleListMatch(TypedDict, total=False):
-    cargo_capacity: str
-    consumables: str
-    cost_in_credits: str
-    created: str
-    crew: str
-    edited: str
-    films: list
-    id: str
-    length: str
-    manufacturer: str
-    max_atmosphering_speed: str
-    model: str
-    name: str
-    passengers: str
-    pilots: list
-    url: str
-    vehicle_class: str
+    page: int
+    search: str

@@ -27,21 +27,8 @@
 ---@field id number
 
 ---@class FilmListMatch
----@field characters? table
----@field created? string
----@field director? string
----@field edited? string
----@field episode_id? number
----@field id? string
----@field opening_crawl? string
----@field planets? table
----@field producer? string
----@field release_date? string
----@field species? table
----@field starships? table
----@field title? string
----@field url? string
----@field vehicles? table
+---@field page? number
+---@field search? string
 
 ---@class PeopleList
 
@@ -68,23 +55,8 @@
 ---@field id number
 
 ---@class PersonListMatch
----@field birth_year? string
----@field created? string
----@field edited? string
----@field eye_color? string
----@field films? table
----@field gender? string
----@field hair_color? string
----@field height? string
----@field homeworld? string
----@field id? string
----@field mass? string
----@field name? string
----@field skin_color? string
----@field species? table
----@field starships? table
----@field url? string
----@field vehicles? table
+---@field page? number
+---@field search? string
 
 ---@class Planet
 ---@field climate? string
@@ -107,21 +79,8 @@
 ---@field id number
 
 ---@class PlanetListMatch
----@field climate? string
----@field created? string
----@field diameter? string
----@field edited? string
----@field films? table
----@field gravity? string
----@field id? string
----@field name? string
----@field orbital_period? string
----@field population? string
----@field residents? table
----@field rotation_period? string
----@field surface_water? string
----@field terrain? string
----@field url? string
+---@field page? number
+---@field search? string
 
 ---@class Species
 ---@field average_height? string
@@ -145,22 +104,8 @@
 ---@field id number
 
 ---@class SpeciesListMatch
----@field average_height? string
----@field average_lifespan? string
----@field classification? string
----@field created? string
----@field designation? string
----@field edited? string
----@field eye_colors? string
----@field films? table
----@field hair_colors? string
----@field homeworld? string
----@field id? string
----@field language? string
----@field name? string
----@field people? table
----@field skin_colors? string
----@field url? string
+---@field page? number
+---@field search? string
 
 ---@class Starship
 ---@field MGLT? string
@@ -187,25 +132,8 @@
 ---@field id number
 
 ---@class StarshipListMatch
----@field MGLT? string
----@field cargo_capacity? string
----@field consumables? string
----@field cost_in_credits? string
----@field created? string
----@field crew? string
----@field edited? string
----@field films? table
----@field hyperdrive_rating? string
----@field id? string
----@field length? string
----@field manufacturer? string
----@field max_atmosphering_speed? string
----@field model? string
----@field name? string
----@field passengers? string
----@field pilots? table
----@field starship_class? string
----@field url? string
+---@field page? number
+---@field search? string
 
 ---@class Vehicle
 ---@field cargo_capacity? string
@@ -230,23 +158,8 @@
 ---@field id number
 
 ---@class VehicleListMatch
----@field cargo_capacity? string
----@field consumables? string
----@field cost_in_credits? string
----@field created? string
----@field crew? string
----@field edited? string
----@field films? table
----@field id? string
----@field length? string
----@field manufacturer? string
----@field max_atmosphering_speed? string
----@field model? string
----@field name? string
----@field passengers? string
----@field pilots? table
----@field url? string
----@field vehicle_class? string
+---@field page? number
+---@field search? string
 
 local M = {}
 
