@@ -24,6 +24,7 @@ main: kit: entity: vehicle: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "created"
       req: false
       short: "The ISO 8601 date format of the time that this resource was created"
@@ -36,6 +37,7 @@ main: kit: entity: vehicle: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "edited"
       req: false
       short: "The ISO 8601 date format of the time that this resource was edited"
@@ -140,8 +142,10 @@ main: kit: entity: vehicle: {
           }
           method: "GET"
           orig: "/vehicles"
-          parts: [
-            "vehicles"
+          segments: [
+            {
+              lit: "vehicles"
+            }
           ]
           select: {
             exist: [
@@ -173,9 +177,13 @@ main: kit: entity: vehicle: {
           }
           method: "GET"
           orig: "/vehicles/{id}"
-          parts: [
-            "vehicles"
-            "{id}"
+          segments: [
+            {
+              lit: "vehicles"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

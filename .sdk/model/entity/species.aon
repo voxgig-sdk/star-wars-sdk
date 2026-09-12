@@ -24,6 +24,7 @@ main: kit: entity: species: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "created"
       req: false
       short: "The ISO 8601 date format of the time that this resource was created"
@@ -36,6 +37,7 @@ main: kit: entity: species: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "edited"
       req: false
       short: "The ISO 8601 date format of the time that this resource was edited"
@@ -134,8 +136,10 @@ main: kit: entity: species: {
           }
           method: "GET"
           orig: "/species"
-          parts: [
-            "species"
+          segments: [
+            {
+              lit: "species"
+            }
           ]
           select: {
             exist: [
@@ -167,9 +171,13 @@ main: kit: entity: species: {
           }
           method: "GET"
           orig: "/species/{id}"
-          parts: [
-            "species"
-            "{id}"
+          segments: [
+            {
+              lit: "species"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

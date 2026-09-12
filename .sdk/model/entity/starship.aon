@@ -30,6 +30,7 @@ main: kit: entity: starship: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "created"
       req: false
       short: "The ISO 8601 date format of the time that this resource was created"
@@ -42,6 +43,7 @@ main: kit: entity: starship: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "edited"
       req: false
       short: "The ISO 8601 date format of the time that this resource was edited"
@@ -152,8 +154,10 @@ main: kit: entity: starship: {
           }
           method: "GET"
           orig: "/starships"
-          parts: [
-            "starships"
+          segments: [
+            {
+              lit: "starships"
+            }
           ]
           select: {
             exist: [
@@ -185,9 +189,13 @@ main: kit: entity: starship: {
           }
           method: "GET"
           orig: "/starships/{id}"
-          parts: [
-            "starships"
-            "{id}"
+          segments: [
+            {
+              lit: "starships"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

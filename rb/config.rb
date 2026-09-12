@@ -55,6 +55,7 @@ module StarWarsConfig
               "type" => "`$ARRAY`",
             },
             {
+              "format" => "date-time",
               "name" => "created",
               "short" => "The ISO 8601 date format of the time that this resource was created",
               "type" => "`$STRING`",
@@ -65,6 +66,7 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "edited",
               "short" => "The ISO 8601 date format of the time that this resource was edited",
               "type" => "`$STRING`",
@@ -94,6 +96,7 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date",
               "name" => "release_date",
               "short" => "The release date of this film",
               "type" => "`$STRING`",
@@ -124,6 +127,10 @@ module StarWarsConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "film",
           "op" => {
             "list" => {
@@ -151,8 +158,10 @@ module StarWarsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/films",
-                  "parts" => [
-                    "films",
+                  "segments" => [
+                    {
+                      "lit" => "films",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -164,6 +173,9 @@ module StarWarsConfig
                     "req" => "`reqdata`",
                     "res" => "`body.results`",
                   },
+                  "parts" => [
+                    "films",
+                  ],
                 },
               ],
             },
@@ -186,9 +198,13 @@ module StarWarsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/films/{id}",
-                  "parts" => [
-                    "films",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "films",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -199,6 +215,10 @@ module StarWarsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "films",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -223,11 +243,13 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "created",
               "short" => "The ISO 8601 date format of the time that this resource was created",
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "edited",
               "short" => "The ISO 8601 date format of the time that this resource was edited",
               "type" => "`$STRING`",
@@ -302,6 +324,10 @@ module StarWarsConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "person",
           "op" => {
             "list" => {
@@ -329,8 +355,10 @@ module StarWarsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/people",
-                  "parts" => [
-                    "people",
+                  "segments" => [
+                    {
+                      "lit" => "people",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -342,6 +370,9 @@ module StarWarsConfig
                     "req" => "`reqdata`",
                     "res" => "`body.results`",
                   },
+                  "parts" => [
+                    "people",
+                  ],
                 },
               ],
             },
@@ -364,9 +395,13 @@ module StarWarsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/people/{id}",
-                  "parts" => [
-                    "people",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "people",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -377,6 +412,10 @@ module StarWarsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "people",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -393,6 +432,7 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "created",
               "short" => "The ISO 8601 date format of the time that this resource was created",
               "type" => "`$STRING`",
@@ -403,6 +443,7 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "edited",
               "short" => "The ISO 8601 date format of the time that this resource was edited",
               "type" => "`$STRING`",
@@ -462,6 +503,10 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "planet",
           "op" => {
             "list" => {
@@ -489,8 +534,10 @@ module StarWarsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/planets",
-                  "parts" => [
-                    "planets",
+                  "segments" => [
+                    {
+                      "lit" => "planets",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -502,6 +549,9 @@ module StarWarsConfig
                     "req" => "`reqdata`",
                     "res" => "`body.results`",
                   },
+                  "parts" => [
+                    "planets",
+                  ],
                 },
               ],
             },
@@ -524,9 +574,13 @@ module StarWarsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/planets/{id}",
-                  "parts" => [
-                    "planets",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "planets",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -537,6 +591,10 @@ module StarWarsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "planets",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -563,6 +621,7 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "created",
               "short" => "The ISO 8601 date format of the time that this resource was created",
               "type" => "`$STRING`",
@@ -573,6 +632,7 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "edited",
               "short" => "The ISO 8601 date format of the time that this resource was edited",
               "type" => "`$STRING`",
@@ -627,6 +687,10 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "species",
           "op" => {
             "list" => {
@@ -654,8 +718,10 @@ module StarWarsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/species",
-                  "parts" => [
-                    "species",
+                  "segments" => [
+                    {
+                      "lit" => "species",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -667,6 +733,9 @@ module StarWarsConfig
                     "req" => "`reqdata`",
                     "res" => "`body.results`",
                   },
+                  "parts" => [
+                    "species",
+                  ],
                 },
               ],
             },
@@ -689,9 +758,13 @@ module StarWarsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/species/{id}",
-                  "parts" => [
-                    "species",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "species",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -702,6 +775,10 @@ module StarWarsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "species",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -733,6 +810,7 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "created",
               "short" => "The ISO 8601 date format of the time that this resource was created",
               "type" => "`$STRING`",
@@ -743,6 +821,7 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "edited",
               "short" => "The ISO 8601 date format of the time that this resource was edited",
               "type" => "`$STRING`",
@@ -807,6 +886,10 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "starship",
           "op" => {
             "list" => {
@@ -834,8 +917,10 @@ module StarWarsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/starships",
-                  "parts" => [
-                    "starships",
+                  "segments" => [
+                    {
+                      "lit" => "starships",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -847,6 +932,9 @@ module StarWarsConfig
                     "req" => "`reqdata`",
                     "res" => "`body.results`",
                   },
+                  "parts" => [
+                    "starships",
+                  ],
                 },
               ],
             },
@@ -869,9 +957,13 @@ module StarWarsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/starships/{id}",
-                  "parts" => [
-                    "starships",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "starships",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -882,6 +974,10 @@ module StarWarsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "starships",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -908,6 +1004,7 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "created",
               "short" => "The ISO 8601 date format of the time that this resource was created",
               "type" => "`$STRING`",
@@ -918,6 +1015,7 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "edited",
               "short" => "The ISO 8601 date format of the time that this resource was edited",
               "type" => "`$STRING`",
@@ -977,6 +1075,10 @@ module StarWarsConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "vehicle",
           "op" => {
             "list" => {
@@ -1004,8 +1106,10 @@ module StarWarsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/vehicles",
-                  "parts" => [
-                    "vehicles",
+                  "segments" => [
+                    {
+                      "lit" => "vehicles",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1017,6 +1121,9 @@ module StarWarsConfig
                     "req" => "`reqdata`",
                     "res" => "`body.results`",
                   },
+                  "parts" => [
+                    "vehicles",
+                  ],
                 },
               ],
             },
@@ -1039,9 +1146,13 @@ module StarWarsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/vehicles/{id}",
-                  "parts" => [
-                    "vehicles",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "vehicles",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1052,6 +1163,10 @@ module StarWarsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "vehicles",
+                    "{id}",
+                  ],
                 },
               ],
             },

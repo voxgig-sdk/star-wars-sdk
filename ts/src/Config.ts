@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -90,6 +101,7 @@ class Config {
           "type": "`$ARRAY`"
         },
         {
+          "format": "date-time",
           "name": "created",
           "short": "The ISO 8601 date format of the time that this resource was created",
           "type": "`$STRING`"
@@ -100,6 +112,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "edited",
           "short": "The ISO 8601 date format of the time that this resource was edited",
           "type": "`$STRING`"
@@ -129,6 +142,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date",
           "name": "release_date",
           "short": "The release date of this film",
           "type": "`$STRING`"
@@ -159,6 +173,10 @@ class Config {
           "type": "`$ARRAY`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "film",
       "op": {
         "list": {
@@ -186,8 +204,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/films",
-              "parts": [
-                "films"
+              "segments": [
+                {
+                  "lit": "films"
+                }
               ],
               "select": {
                 "exist": [
@@ -198,7 +218,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              }
+              },
+              "parts": [
+                "films"
+              ]
             }
           ]
         },
@@ -221,9 +244,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/films/{id}",
-              "parts": [
-                "films",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "films"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -233,7 +260,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "films",
+                "{id}"
+              ]
             }
           ]
         }
@@ -258,11 +289,13 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "created",
           "short": "The ISO 8601 date format of the time that this resource was created",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "edited",
           "short": "The ISO 8601 date format of the time that this resource was edited",
           "type": "`$STRING`"
@@ -337,6 +370,10 @@ class Config {
           "type": "`$ARRAY`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "person",
       "op": {
         "list": {
@@ -364,8 +401,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/people",
-              "parts": [
-                "people"
+              "segments": [
+                {
+                  "lit": "people"
+                }
               ],
               "select": {
                 "exist": [
@@ -376,7 +415,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              }
+              },
+              "parts": [
+                "people"
+              ]
             }
           ]
         },
@@ -399,9 +441,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/people/{id}",
-              "parts": [
-                "people",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "people"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -411,7 +457,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "people",
+                "{id}"
+              ]
             }
           ]
         }
@@ -428,6 +478,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "created",
           "short": "The ISO 8601 date format of the time that this resource was created",
           "type": "`$STRING`"
@@ -438,6 +489,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "edited",
           "short": "The ISO 8601 date format of the time that this resource was edited",
           "type": "`$STRING`"
@@ -497,6 +549,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "planet",
       "op": {
         "list": {
@@ -524,8 +580,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/planets",
-              "parts": [
-                "planets"
+              "segments": [
+                {
+                  "lit": "planets"
+                }
               ],
               "select": {
                 "exist": [
@@ -536,7 +594,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              }
+              },
+              "parts": [
+                "planets"
+              ]
             }
           ]
         },
@@ -559,9 +620,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/planets/{id}",
-              "parts": [
-                "planets",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "planets"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -571,7 +636,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "planets",
+                "{id}"
+              ]
             }
           ]
         }
@@ -598,6 +667,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "created",
           "short": "The ISO 8601 date format of the time that this resource was created",
           "type": "`$STRING`"
@@ -608,6 +678,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "edited",
           "short": "The ISO 8601 date format of the time that this resource was edited",
           "type": "`$STRING`"
@@ -662,6 +733,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "species",
       "op": {
         "list": {
@@ -689,8 +764,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/species",
-              "parts": [
-                "species"
+              "segments": [
+                {
+                  "lit": "species"
+                }
               ],
               "select": {
                 "exist": [
@@ -701,7 +778,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              }
+              },
+              "parts": [
+                "species"
+              ]
             }
           ]
         },
@@ -724,9 +804,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/species/{id}",
-              "parts": [
-                "species",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "species"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -736,7 +820,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "species",
+                "{id}"
+              ]
             }
           ]
         }
@@ -768,6 +856,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "created",
           "short": "The ISO 8601 date format of the time that this resource was created",
           "type": "`$STRING`"
@@ -778,6 +867,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "edited",
           "short": "The ISO 8601 date format of the time that this resource was edited",
           "type": "`$STRING`"
@@ -842,6 +932,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "starship",
       "op": {
         "list": {
@@ -869,8 +963,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/starships",
-              "parts": [
-                "starships"
+              "segments": [
+                {
+                  "lit": "starships"
+                }
               ],
               "select": {
                 "exist": [
@@ -881,7 +977,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              }
+              },
+              "parts": [
+                "starships"
+              ]
             }
           ]
         },
@@ -904,9 +1003,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/starships/{id}",
-              "parts": [
-                "starships",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "starships"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -916,7 +1019,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "starships",
+                "{id}"
+              ]
             }
           ]
         }
@@ -943,6 +1050,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "created",
           "short": "The ISO 8601 date format of the time that this resource was created",
           "type": "`$STRING`"
@@ -953,6 +1061,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "edited",
           "short": "The ISO 8601 date format of the time that this resource was edited",
           "type": "`$STRING`"
@@ -1012,6 +1121,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "vehicle",
       "op": {
         "list": {
@@ -1039,8 +1152,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/vehicles",
-              "parts": [
-                "vehicles"
+              "segments": [
+                {
+                  "lit": "vehicles"
+                }
               ],
               "select": {
                 "exist": [
@@ -1051,7 +1166,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              }
+              },
+              "parts": [
+                "vehicles"
+              ]
             }
           ]
         },
@@ -1074,9 +1192,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/vehicles/{id}",
-              "parts": [
-                "vehicles",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "vehicles"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -1086,7 +1208,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "vehicles",
+                "{id}"
+              ]
             }
           ]
         }
@@ -1102,6 +1228,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

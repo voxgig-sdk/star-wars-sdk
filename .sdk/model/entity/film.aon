@@ -12,6 +12,7 @@ main: kit: entity: film: {
       type: "`$ARRAY`"
     }
     {
+      format: "date-time"
       name: "created"
       req: false
       short: "The ISO 8601 date format of the time that this resource was created"
@@ -24,6 +25,7 @@ main: kit: entity: film: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "edited"
       req: false
       short: "The ISO 8601 date format of the time that this resource was edited"
@@ -59,6 +61,7 @@ main: kit: entity: film: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "release_date"
       req: false
       short: "The release date of this film"
@@ -128,8 +131,10 @@ main: kit: entity: film: {
           }
           method: "GET"
           orig: "/films"
-          parts: [
-            "films"
+          segments: [
+            {
+              lit: "films"
+            }
           ]
           select: {
             exist: [
@@ -161,9 +166,13 @@ main: kit: entity: film: {
           }
           method: "GET"
           orig: "/films/{id}"
-          parts: [
-            "films"
-            "{id}"
+          segments: [
+            {
+              lit: "films"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

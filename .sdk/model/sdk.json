@@ -41,6 +41,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "created",
               "req": false,
               "short": "The ISO 8601 date format of the time that this resource was created",
@@ -55,6 +56,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "edited",
               "req": false,
               "short": "The ISO 8601 date format of the time that this resource was edited",
@@ -96,6 +98,7 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "release_date",
               "req": false,
               "short": "The release date of this film",
@@ -173,8 +176,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/films",
-                  "parts": [
-                    "films"
+                  "segments": [
+                    {
+                      "lit": "films"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -210,9 +215,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/films/{id}",
-                  "parts": [
-                    "films",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "films"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -258,6 +267,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "created",
               "req": false,
               "short": "The ISO 8601 date format of the time that this resource was created",
@@ -265,6 +275,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "edited",
               "req": false,
               "short": "The ISO 8601 date format of the time that this resource was edited",
@@ -404,8 +415,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/people",
-                  "parts": [
-                    "people"
+                  "segments": [
+                    {
+                      "lit": "people"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -441,9 +454,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/people/{id}",
-                  "parts": [
-                    "people",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "people"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -477,6 +494,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "created",
               "req": false,
               "short": "The ISO 8601 date format of the time that this resource was created",
@@ -491,6 +509,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "edited",
               "req": false,
               "short": "The ISO 8601 date format of the time that this resource was edited",
@@ -609,8 +628,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/planets",
-                  "parts": [
-                    "planets"
+                  "segments": [
+                    {
+                      "lit": "planets"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -646,9 +667,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/planets/{id}",
-                  "parts": [
-                    "planets",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "planets"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -696,6 +721,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "created",
               "req": false,
               "short": "The ISO 8601 date format of the time that this resource was created",
@@ -710,6 +736,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "edited",
               "req": false,
               "short": "The ISO 8601 date format of the time that this resource was edited",
@@ -821,8 +848,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/species",
-                  "parts": [
-                    "species"
+                  "segments": [
+                    {
+                      "lit": "species"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -858,9 +887,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/species/{id}",
-                  "parts": [
-                    "species",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "species"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -915,6 +948,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "created",
               "req": false,
               "short": "The ISO 8601 date format of the time that this resource was created",
@@ -929,6 +963,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "edited",
               "req": false,
               "short": "The ISO 8601 date format of the time that this resource was edited",
@@ -1054,8 +1089,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/starships",
-                  "parts": [
-                    "starships"
+                  "segments": [
+                    {
+                      "lit": "starships"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1091,9 +1128,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/starships/{id}",
-                  "parts": [
-                    "starships",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "starships"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1141,6 +1182,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "created",
               "req": false,
               "short": "The ISO 8601 date format of the time that this resource was created",
@@ -1155,6 +1197,7 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "edited",
               "req": false,
               "short": "The ISO 8601 date format of the time that this resource was edited",
@@ -1273,8 +1316,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/vehicles",
-                  "parts": [
-                    "vehicles"
+                  "segments": [
+                    {
+                      "lit": "vehicles"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1310,9 +1355,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/vehicles/{id}",
-                  "parts": [
-                    "vehicles",
-                    "{id}"
+                  "segments": [
+                    {
+                      "lit": "vehicles"
+                    },
+                    {
+                      "var": "id"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1396,8 +1445,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -1787,6 +1839,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1812,6 +1867,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -1863,6 +1922,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1887,6 +1947,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -1938,6 +1999,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1962,6 +2024,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -2002,6 +2065,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2027,6 +2093,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -2061,6 +2130,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2086,6 +2158,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -2126,6 +2201,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2151,6 +2229,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -2196,6 +2277,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2221,6 +2305,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -2238,11 +2325,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -2271,6 +2353,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2295,6 +2380,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

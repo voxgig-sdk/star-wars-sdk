@@ -12,6 +12,7 @@ main: kit: entity: planet: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "created"
       req: false
       short: "The ISO 8601 date format of the time that this resource was created"
@@ -24,6 +25,7 @@ main: kit: entity: planet: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "edited"
       req: false
       short: "The ISO 8601 date format of the time that this resource was edited"
@@ -128,8 +130,10 @@ main: kit: entity: planet: {
           }
           method: "GET"
           orig: "/planets"
-          parts: [
-            "planets"
+          segments: [
+            {
+              lit: "planets"
+            }
           ]
           select: {
             exist: [
@@ -161,9 +165,13 @@ main: kit: entity: planet: {
           }
           method: "GET"
           orig: "/planets/{id}"
-          parts: [
-            "planets"
-            "{id}"
+          segments: [
+            {
+              lit: "planets"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

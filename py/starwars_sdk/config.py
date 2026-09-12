@@ -1,6 +1,14 @@
 # StarWars SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -64,6 +72,7 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "date-time",
             "name": "created",
             "short": "The ISO 8601 date format of the time that this resource was created",
             "type": "`$STRING`",
@@ -74,6 +83,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "edited",
             "short": "The ISO 8601 date format of the time that this resource was edited",
             "type": "`$STRING`",
@@ -103,6 +113,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "release_date",
             "short": "The release date of this film",
             "type": "`$STRING`",
@@ -133,6 +144,10 @@ def make_config():
             "type": "`$ARRAY`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "film",
         "op": {
           "list": {
@@ -160,8 +175,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/films",
-                "parts": [
-                  "films",
+                "segments": [
+                  {
+                    "lit": "films",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -173,6 +190,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "films",
+                ],
               },
             ],
           },
@@ -195,9 +215,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/films/{id}",
-                "parts": [
-                  "films",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "films",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -208,6 +232,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "films",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -232,11 +260,13 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "created",
             "short": "The ISO 8601 date format of the time that this resource was created",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "edited",
             "short": "The ISO 8601 date format of the time that this resource was edited",
             "type": "`$STRING`",
@@ -311,6 +341,10 @@ def make_config():
             "type": "`$ARRAY`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "person",
         "op": {
           "list": {
@@ -338,8 +372,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/people",
-                "parts": [
-                  "people",
+                "segments": [
+                  {
+                    "lit": "people",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -351,6 +387,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "people",
+                ],
               },
             ],
           },
@@ -373,9 +412,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/people/{id}",
-                "parts": [
-                  "people",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "people",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -386,6 +429,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "people",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -402,6 +449,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "created",
             "short": "The ISO 8601 date format of the time that this resource was created",
             "type": "`$STRING`",
@@ -412,6 +460,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "edited",
             "short": "The ISO 8601 date format of the time that this resource was edited",
             "type": "`$STRING`",
@@ -471,6 +520,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "planet",
         "op": {
           "list": {
@@ -498,8 +551,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/planets",
-                "parts": [
-                  "planets",
+                "segments": [
+                  {
+                    "lit": "planets",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -511,6 +566,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "planets",
+                ],
               },
             ],
           },
@@ -533,9 +591,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/planets/{id}",
-                "parts": [
-                  "planets",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "planets",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -546,6 +608,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "planets",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -572,6 +638,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "created",
             "short": "The ISO 8601 date format of the time that this resource was created",
             "type": "`$STRING`",
@@ -582,6 +649,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "edited",
             "short": "The ISO 8601 date format of the time that this resource was edited",
             "type": "`$STRING`",
@@ -636,6 +704,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "species",
         "op": {
           "list": {
@@ -663,8 +735,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/species",
-                "parts": [
-                  "species",
+                "segments": [
+                  {
+                    "lit": "species",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -676,6 +750,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "species",
+                ],
               },
             ],
           },
@@ -698,9 +775,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/species/{id}",
-                "parts": [
-                  "species",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "species",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -711,6 +792,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "species",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -742,6 +827,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "created",
             "short": "The ISO 8601 date format of the time that this resource was created",
             "type": "`$STRING`",
@@ -752,6 +838,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "edited",
             "short": "The ISO 8601 date format of the time that this resource was edited",
             "type": "`$STRING`",
@@ -816,6 +903,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "starship",
         "op": {
           "list": {
@@ -843,8 +934,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/starships",
-                "parts": [
-                  "starships",
+                "segments": [
+                  {
+                    "lit": "starships",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -856,6 +949,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "starships",
+                ],
               },
             ],
           },
@@ -878,9 +974,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/starships/{id}",
-                "parts": [
-                  "starships",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "starships",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -891,6 +991,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "starships",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -917,6 +1021,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "created",
             "short": "The ISO 8601 date format of the time that this resource was created",
             "type": "`$STRING`",
@@ -927,6 +1032,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "edited",
             "short": "The ISO 8601 date format of the time that this resource was edited",
             "type": "`$STRING`",
@@ -986,6 +1092,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "vehicle",
         "op": {
           "list": {
@@ -1013,8 +1123,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/vehicles",
-                "parts": [
-                  "vehicles",
+                "segments": [
+                  {
+                    "lit": "vehicles",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1026,6 +1138,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "vehicles",
+                ],
               },
             ],
           },
@@ -1048,9 +1163,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/vehicles/{id}",
-                "parts": [
-                  "vehicles",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "vehicles",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1061,6 +1180,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "vehicles",
+                  "{id}",
+                ],
               },
             ],
           },

@@ -12,12 +12,14 @@ main: kit: entity: person: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "created"
       req: false
       short: "The ISO 8601 date format of the time that this resource was created"
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "edited"
       req: false
       short: "The ISO 8601 date format of the time that this resource was edited"
@@ -140,8 +142,10 @@ main: kit: entity: person: {
           }
           method: "GET"
           orig: "/people"
-          parts: [
-            "people"
+          segments: [
+            {
+              lit: "people"
+            }
           ]
           select: {
             exist: [
@@ -173,9 +177,13 @@ main: kit: entity: person: {
           }
           method: "GET"
           orig: "/people/{id}"
-          parts: [
-            "people"
-            "{id}"
+          segments: [
+            {
+              lit: "people"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

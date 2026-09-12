@@ -69,6 +69,7 @@ class StarWarsConfig
               'type' => '`$ARRAY`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'created',
               'short' => 'The ISO 8601 date format of the time that this resource was created',
               'type' => '`$STRING`',
@@ -79,6 +80,7 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'edited',
               'short' => 'The ISO 8601 date format of the time that this resource was edited',
               'type' => '`$STRING`',
@@ -108,6 +110,7 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date',
               'name' => 'release_date',
               'short' => 'The release date of this film',
               'type' => '`$STRING`',
@@ -138,6 +141,10 @@ class StarWarsConfig
               'type' => '`$ARRAY`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'film',
           'op' => [
             'list' => [
@@ -165,8 +172,10 @@ class StarWarsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/films',
-                  'parts' => [
-                    'films',
+                  'segments' => [
+                    [
+                      'lit' => 'films',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -177,6 +186,9 @@ class StarWarsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
+                  ],
+                  'parts' => [
+                    'films',
                   ],
                 ],
               ],
@@ -200,9 +212,13 @@ class StarWarsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/films/{id}',
-                  'parts' => [
-                    'films',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'films',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -212,6 +228,10 @@ class StarWarsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'films',
+                    '{id}',
                   ],
                 ],
               ],
@@ -237,11 +257,13 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'created',
               'short' => 'The ISO 8601 date format of the time that this resource was created',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'edited',
               'short' => 'The ISO 8601 date format of the time that this resource was edited',
               'type' => '`$STRING`',
@@ -316,6 +338,10 @@ class StarWarsConfig
               'type' => '`$ARRAY`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'person',
           'op' => [
             'list' => [
@@ -343,8 +369,10 @@ class StarWarsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/people',
-                  'parts' => [
-                    'people',
+                  'segments' => [
+                    [
+                      'lit' => 'people',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -355,6 +383,9 @@ class StarWarsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
+                  ],
+                  'parts' => [
+                    'people',
                   ],
                 ],
               ],
@@ -378,9 +409,13 @@ class StarWarsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/people/{id}',
-                  'parts' => [
-                    'people',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'people',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -390,6 +425,10 @@ class StarWarsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'people',
+                    '{id}',
                   ],
                 ],
               ],
@@ -407,6 +446,7 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'created',
               'short' => 'The ISO 8601 date format of the time that this resource was created',
               'type' => '`$STRING`',
@@ -417,6 +457,7 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'edited',
               'short' => 'The ISO 8601 date format of the time that this resource was edited',
               'type' => '`$STRING`',
@@ -476,6 +517,10 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'planet',
           'op' => [
             'list' => [
@@ -503,8 +548,10 @@ class StarWarsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/planets',
-                  'parts' => [
-                    'planets',
+                  'segments' => [
+                    [
+                      'lit' => 'planets',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -515,6 +562,9 @@ class StarWarsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
+                  ],
+                  'parts' => [
+                    'planets',
                   ],
                 ],
               ],
@@ -538,9 +588,13 @@ class StarWarsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/planets/{id}',
-                  'parts' => [
-                    'planets',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'planets',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -550,6 +604,10 @@ class StarWarsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'planets',
+                    '{id}',
                   ],
                 ],
               ],
@@ -577,6 +635,7 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'created',
               'short' => 'The ISO 8601 date format of the time that this resource was created',
               'type' => '`$STRING`',
@@ -587,6 +646,7 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'edited',
               'short' => 'The ISO 8601 date format of the time that this resource was edited',
               'type' => '`$STRING`',
@@ -641,6 +701,10 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'species',
           'op' => [
             'list' => [
@@ -668,8 +732,10 @@ class StarWarsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/species',
-                  'parts' => [
-                    'species',
+                  'segments' => [
+                    [
+                      'lit' => 'species',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -680,6 +746,9 @@ class StarWarsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
+                  ],
+                  'parts' => [
+                    'species',
                   ],
                 ],
               ],
@@ -703,9 +772,13 @@ class StarWarsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/species/{id}',
-                  'parts' => [
-                    'species',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'species',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -715,6 +788,10 @@ class StarWarsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'species',
+                    '{id}',
                   ],
                 ],
               ],
@@ -747,6 +824,7 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'created',
               'short' => 'The ISO 8601 date format of the time that this resource was created',
               'type' => '`$STRING`',
@@ -757,6 +835,7 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'edited',
               'short' => 'The ISO 8601 date format of the time that this resource was edited',
               'type' => '`$STRING`',
@@ -821,6 +900,10 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'starship',
           'op' => [
             'list' => [
@@ -848,8 +931,10 @@ class StarWarsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/starships',
-                  'parts' => [
-                    'starships',
+                  'segments' => [
+                    [
+                      'lit' => 'starships',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -860,6 +945,9 @@ class StarWarsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
+                  ],
+                  'parts' => [
+                    'starships',
                   ],
                 ],
               ],
@@ -883,9 +971,13 @@ class StarWarsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/starships/{id}',
-                  'parts' => [
-                    'starships',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'starships',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -895,6 +987,10 @@ class StarWarsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'starships',
+                    '{id}',
                   ],
                 ],
               ],
@@ -922,6 +1018,7 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'created',
               'short' => 'The ISO 8601 date format of the time that this resource was created',
               'type' => '`$STRING`',
@@ -932,6 +1029,7 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'edited',
               'short' => 'The ISO 8601 date format of the time that this resource was edited',
               'type' => '`$STRING`',
@@ -991,6 +1089,10 @@ class StarWarsConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'vehicle',
           'op' => [
             'list' => [
@@ -1018,8 +1120,10 @@ class StarWarsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/vehicles',
-                  'parts' => [
-                    'vehicles',
+                  'segments' => [
+                    [
+                      'lit' => 'vehicles',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1030,6 +1134,9 @@ class StarWarsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
+                  ],
+                  'parts' => [
+                    'vehicles',
                   ],
                 ],
               ],
@@ -1053,9 +1160,13 @@ class StarWarsConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/vehicles/{id}',
-                  'parts' => [
-                    'vehicles',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'vehicles',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1065,6 +1176,10 @@ class StarWarsConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'vehicles',
+                    '{id}',
                   ],
                 ],
               ],
