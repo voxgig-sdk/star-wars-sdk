@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { StarWarsSDK } from '@voxgig-sdk/star-wars'
+import { StarWarsSDK } from '@voxgig-sdk/star-wars-sdk'
 
 const client = new StarWarsSDK()
 ```
@@ -831,7 +831,7 @@ star-wars/
 Import the SDK from the package root:
 
 ```ts
-import { StarWarsSDK } from '@voxgig-sdk/star-wars'
+import { StarWarsSDK } from '@voxgig-sdk/star-wars-sdk'
 ```
 
 ### Entity state

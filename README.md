@@ -105,7 +105,7 @@ local results, err = client:Person():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/star-wars` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/releases) |
+| TypeScript | `@voxgig-sdk/star-wars-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/releases) |
 | Python | `voxgig-sdk-star-wars` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/releases) |
 | PHP | `voxgig-sdk/star-wars` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/star-wars-sdk/go` | `go get github.com/voxgig-sdk/star-wars-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Person():list()
 ### TypeScript
 
 ```ts
-import { StarWarsSDK } from '@voxgig-sdk/star-wars'
+import { StarWarsSDK } from '@voxgig-sdk/star-wars-sdk'
 
 const client = new StarWarsSDK()
 

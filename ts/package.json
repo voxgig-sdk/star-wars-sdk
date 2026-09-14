@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/star-wars",
+  "name": "@voxgig-sdk/star-wars-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Star Wars public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [
