@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { StarWarsSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('PlanetEntity', async () => {
 
     const live = 'TRUE' === process.env.STAR_WARS_TEST_LIVE
     for (const op of ['list', 'load']) {
-      if (maybeSkipControl(t, 'entityOp', 'planet.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'planet.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set STAR_WARS_TEST_PLANET_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"climate","req":false,"short":"The climate of this planet","type":"`$STRING`","index$":0},{"active":true,"format":"date-time","name":"created","req":false,"short":"The ISO 8601 date format of the time that this resource was created","type":"`$STRING`","index$":1},{"active":true,"name":"diameter","req":false,"short":"The diameter of this planet in kilometers","type":"`$STRING`","index$":2},{"active":true,"format":"date-time","name":"edited","req":false,"short":"The ISO 8601 date format of the time that this resource was edited","type":"`$STRING`","index$":3},{"active":true,"name":"films","req":false,"short":"An array of Film URL Resources that this planet has appeared in","type":"`$ARRAY`","index$":4},{"active":true,"name":"gravity","req":false,"short":"A number denoting the gravity of this planet","type":"`$STRING`","index$":5},{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":6},{"active":true,"name":"name","req":false,"short":"The name of this planet","type":"`$STRING`","index$":7},{"active":true,"name":"orbital_period","req":false,"short":"The number of standard days it takes for this planet to complete a single orbit of its local star","type":"`$STRING`","index$":8},{"active":true,"name":"population","req":false,"short":"The average population of sentient beings inhabiting this planet","type":"`$STRING`","index$":9},{"active":true,"name":"residents","req":false,"short":"An array of People URL Resources that live on this planet","type":"`$ARRAY`","index$":10},{"active":true,"name":"rotation_period","req":false,"short":"The number of standard hours it takes for this planet to complete a single rotation on its axis","type":"`$STRING`","index$":11},{"active":true,"name":"surface_water","req":false,"short":"The percentage of the planet surface that is naturally occurring water","type":"`$STRING`","index$":12},{"active":true,"name":"terrain","req":false,"short":"The terrain of this planet","type":"`$STRING`","index$":13},{"active":true,"name":"url","req":false,"short":"The hypermedia URL of this resource","type":"`$STRING`","index$":14}],"id":{"field":"id","name":"id"},"name":"planet","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{"query":[{"active":true,"example":1,"kind":"query","name":"page","orig":"page","reqd":false,"type":"`$INTEGER`","index$":0},{"active":true,"kind":"query","name":"search","orig":"search","reqd":false,"type":"`$STRING`","index$":1}]},"contract":{"id":"GET /planets","json":"{\"operationId\":\"getAllPlanets\",\"parameters\":[{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Search query to filter planets by name\",\"in\":\"query\",\"name\":\"search\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"The total number of planets\",\"type\":\"integer\"},\"next\":{\"description\":\"The URL for the next page of results\",\"nullable\":true,\"type\":\"string\"},\"previous\":{\"description\":\"The URL for the previous page of results\",\"nullable\":true,\"type\":\"string\"},\"results\":{\"items\":{\"properties\":{\"climate\":{\"description\":\"The climate of this planet\",\"type\":\"string\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"diameter\":{\"description\":\"The diameter of this planet in kilometers\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"films\":{\"description\":\"An array of Film URL Resources that this planet has appeared in\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"gravity\":{\"description\":\"A number denoting the gravity of this planet\",\"type\":\"string\"},\"name\":{\"description\":\"The name of this planet\",\"type\":\"string\"},\"orbital_period\":{\"description\":\"The number of standard days it takes for this planet to complete a single orbit of its local star\",\"type\":\"string\"},\"population\":{\"description\":\"The average population of sentient beings inhabiting this planet\",\"type\":\"string\"},\"residents\":{\"description\":\"An array of People URL Resources that live on this planet\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"rotation_period\":{\"description\":\"The number of standard hours it takes for this planet to complete a single rotation on its axis\",\"type\":\"string\"},\"surface_water\":{\"description\":\"The percentage of the planet surface that is naturally occurring water\",\"type\":\"string\"},\"terrain\":{\"description\":\"The terrain of this planet\",\"type\":\"string\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/planets","segments":[{"lit":"planets"}],"select":{"exist":["page","search"]},"transform":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"id","reqd":true,"type":"`$INTEGER`","index$":0}]},"contract":{"id":"GET /planets/{id}","json":"{\"operationId\":\"getPlanetById\",\"parameters\":[{\"description\":\"ID of the planet to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"climate\":{\"description\":\"The climate of this planet\",\"type\":\"string\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"diameter\":{\"description\":\"The diameter of this planet in kilometers\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"films\":{\"description\":\"An array of Film URL Resources that this planet has appeared in\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"gravity\":{\"description\":\"A number denoting the gravity of this planet\",\"type\":\"string\"},\"name\":{\"description\":\"The name of this planet\",\"type\":\"string\"},\"orbital_period\":{\"description\":\"The number of standard days it takes for this planet to complete a single orbit of its local star\",\"type\":\"string\"},\"population\":{\"description\":\"The average population of sentient beings inhabiting this planet\",\"type\":\"string\"},\"residents\":{\"description\":\"An array of People URL Resources that live on this planet\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"rotation_period\":{\"description\":\"The number of standard hours it takes for this planet to complete a single rotation on its axis\",\"type\":\"string\"},\"surface_water\":{\"description\":\"The percentage of the planet surface that is naturally occurring water\",\"type\":\"string\"},\"terrain\":{\"description\":\"The terrain of this planet\",\"type\":\"string\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Planet not found\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/planets/{id}","segments":[{"lit":"planets"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"planet","name__orig":"planet","Name":"Planet","name_":"planet","name-":"planet","NAME":"PLANET","index$":3}, {"active":true,"entity":"planet","key$":"BasicPlanetFlow","kind":"basic","name":"BasicPlanetFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"planet_ref01"}}],"index$":0},{"active":true,"data":{},"input":{"ref":"planet_ref01","srcdatavar":"planet_ref01_data","suffix":"_dt0"},"match":{"id":"planet01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-planet_ref01"}}],"index$":1}]}, 'Planet')
     }
     const client = setup.client
     const struct = setup.struct
@@ -116,13 +115,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['STAR_WARS_TEST_PLANET_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'STAR_WARS_TEST_PLANET_ENTID': idmap,
     'STAR_WARS_TEST_LIVE': 'FALSE',
@@ -133,7 +125,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.STAR_WARS_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['STAR_WARS_TEST_PLANET_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new StarWarsSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -145,7 +143,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -158,7 +157,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.STAR_WARS_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.STAR_WARS_TEST_LIVE;
         for (const op of ['list', 'load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'film.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'film.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set STAR_WARS_TEST_FILM_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "characters", "req": false, "short": "An array of people resource URLs that are in this film", "type": "`$ARRAY`", "index$": 0 }, { "active": true, "format": "date-time", "name": "created", "req": false, "short": "The ISO 8601 date format of the time that this resource was created", "type": "`$STRING`", "index$": 1 }, { "active": true, "name": "director", "req": false, "short": "The name of the director of this film", "type": "`$STRING`", "index$": 2 }, { "active": true, "format": "date-time", "name": "edited", "req": false, "short": "The ISO 8601 date format of the time that this resource was edited", "type": "`$STRING`", "index$": 3 }, { "active": true, "name": "episode_id", "req": false, "short": "The episode number of this film", "type": "`$INTEGER`", "index$": 4 }, { "active": true, "name": "id", "req": false, "type": "`$STRING`", "index$": 5 }, { "active": true, "name": "opening_crawl", "req": false, "short": "The opening paragraphs at the beginning of this film", "type": "`$STRING`", "index$": 6 }, { "active": true, "name": "planets", "req": false, "short": "An array of planet resource URLs that are in this film", "type": "`$ARRAY`", "index$": 7 }, { "active": true, "name": "producer", "req": false, "short": "The name(s) of the producer(s) of this film", "type": "`$STRING`", "index$": 8 }, { "active": true, "format": "date", "name": "release_date", "req": false, "short": "The release date of this film", "type": "`$STRING`", "index$": 9 }, { "active": true, "name": "species", "req": false, "short": "An array of species resource URLs that are in this film", "type": "`$ARRAY`", "index$": 10 }, { "active": true, "name": "starships", "req": false, "short": "An array of starship resource URLs that are in this film", "type": "`$ARRAY`", "index$": 11 }, { "active": true, "name": "title", "req": false, "short": "The title of this film", "type": "`$STRING`", "index$": 12 }, { "active": true, "name": "url", "req": false, "short": "The hypermedia URL of this resource", "type": "`$STRING`", "index$": 13 }, { "active": true, "name": "vehicles", "req": false, "short": "An array of vehicle resource URLs that are in this film", "type": "`$ARRAY`", "index$": 14 }], "id": { "field": "id", "name": "id" }, "name": "film", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "query": [{ "active": true, "example": 1, "kind": "query", "name": "page", "orig": "page", "reqd": false, "type": "`$INTEGER`", "index$": 0 }, { "active": true, "kind": "query", "name": "search", "orig": "search", "reqd": false, "type": "`$STRING`", "index$": 1 }] }, "contract": { "id": "GET /films", "json": "{\"operationId\":\"getAllFilms\",\"parameters\":[{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Search query to filter films by title\",\"in\":\"query\",\"name\":\"search\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"The total number of films\",\"type\":\"integer\"},\"next\":{\"description\":\"The URL for the next page of results\",\"nullable\":true,\"type\":\"string\"},\"previous\":{\"description\":\"The URL for the previous page of results\",\"nullable\":true,\"type\":\"string\"},\"results\":{\"items\":{\"properties\":{\"characters\":{\"description\":\"An array of people resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"director\":{\"description\":\"The name of the director of this film\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"episode_id\":{\"description\":\"The episode number of this film\",\"type\":\"integer\"},\"opening_crawl\":{\"description\":\"The opening paragraphs at the beginning of this film\",\"type\":\"string\"},\"planets\":{\"description\":\"An array of planet resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"producer\":{\"description\":\"The name(s) of the producer(s) of this film\",\"type\":\"string\"},\"release_date\":{\"description\":\"The release date of this film\",\"format\":\"date\",\"type\":\"string\"},\"species\":{\"description\":\"An array of species resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"starships\":{\"description\":\"An array of starship resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"description\":\"The title of this film\",\"type\":\"string\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"},\"vehicles\":{\"description\":\"An array of vehicle resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/films", "segments": [{ "lit": "films" }], "select": { "exist": ["page", "search"] }, "transform": { "req": "`reqdata`", "res": "`body.results`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "params": [{ "active": true, "kind": "param", "name": "id", "orig": "id", "reqd": true, "type": "`$INTEGER`", "index$": 0 }] }, "contract": { "id": "GET /films/{id}", "json": "{\"operationId\":\"getFilmById\",\"parameters\":[{\"description\":\"ID of the film to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"characters\":{\"description\":\"An array of people resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"director\":{\"description\":\"The name of the director of this film\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"episode_id\":{\"description\":\"The episode number of this film\",\"type\":\"integer\"},\"opening_crawl\":{\"description\":\"The opening paragraphs at the beginning of this film\",\"type\":\"string\"},\"planets\":{\"description\":\"An array of planet resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"producer\":{\"description\":\"The name(s) of the producer(s) of this film\",\"type\":\"string\"},\"release_date\":{\"description\":\"The release date of this film\",\"format\":\"date\",\"type\":\"string\"},\"species\":{\"description\":\"An array of species resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"starships\":{\"description\":\"An array of starship resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"description\":\"The title of this film\",\"type\":\"string\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"},\"vehicles\":{\"description\":\"An array of vehicle resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Film not found\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/films/{id}", "segments": [{ "lit": "films" }, { "var": "id" }], "select": { "exist": ["id"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "film", "name__orig": "film", "Name": "Film", "name_": "film", "name-": "film", "NAME": "FILM", "index$": 0 }, { "active": true, "entity": "film", "key$": "BasicFilmFlow", "kind": "basic", "name": "BasicFilmFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": {}, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "film_ref01" } }], "index$": 0 }, { "active": true, "data": {}, "input": { "ref": "film_ref01", "srcdatavar": "film_ref01_data", "suffix": "_dt0" }, "match": { "id": "film01" }, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-film_ref01" } }], "index$": 1 }] }, 'Film');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -106,12 +104,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['STAR_WARS_TEST_FILM_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'STAR_WARS_TEST_FILM_ENTID': idmap,
         'STAR_WARS_TEST_LIVE': 'FALSE',
@@ -119,7 +111,13 @@ function basicSetup(extra) {
     });
     idmap = env['STAR_WARS_TEST_FILM_ENTID'];
     const live = 'TRUE' === env.STAR_WARS_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['STAR_WARS_TEST_FILM_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.StarWarsSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -130,7 +128,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -142,7 +141,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.STAR_WARS_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

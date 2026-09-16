@@ -73,5 +73,234 @@
         "url": "s266"
       }
     }
+  },
+  "requests": {
+    "GET /planets": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllPlanets",
+        "parameters": [
+          {
+            "description": "Page number for pagination",
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Search query to filter planets by name",
+            "in": "query",
+            "name": "search",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "description": "The total number of planets",
+                      "type": "integer"
+                    },
+                    "next": {
+                      "description": "The URL for the next page of results",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "previous": {
+                      "description": "The URL for the previous page of results",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "results": {
+                      "items": {
+                        "properties": {
+                          "climate": {
+                            "description": "The climate of this planet",
+                            "type": "string"
+                          },
+                          "created": {
+                            "description": "The ISO 8601 date format of the time that this resource was created",
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "diameter": {
+                            "description": "The diameter of this planet in kilometers",
+                            "type": "string"
+                          },
+                          "edited": {
+                            "description": "The ISO 8601 date format of the time that this resource was edited",
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "films": {
+                            "description": "An array of Film URL Resources that this planet has appeared in",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "gravity": {
+                            "description": "A number denoting the gravity of this planet",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "The name of this planet",
+                            "type": "string"
+                          },
+                          "orbital_period": {
+                            "description": "The number of standard days it takes for this planet to complete a single orbit of its local star",
+                            "type": "string"
+                          },
+                          "population": {
+                            "description": "The average population of sentient beings inhabiting this planet",
+                            "type": "string"
+                          },
+                          "residents": {
+                            "description": "An array of People URL Resources that live on this planet",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "rotation_period": {
+                            "description": "The number of standard hours it takes for this planet to complete a single rotation on its axis",
+                            "type": "string"
+                          },
+                          "surface_water": {
+                            "description": "The percentage of the planet surface that is naturally occurring water",
+                            "type": "string"
+                          },
+                          "terrain": {
+                            "description": "The terrain of this planet",
+                            "type": "string"
+                          },
+                          "url": {
+                            "description": "The hypermedia URL of this resource",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /planets/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPlanetById",
+        "parameters": [
+          {
+            "description": "ID of the planet to retrieve",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "climate": {
+                      "description": "The climate of this planet",
+                      "type": "string"
+                    },
+                    "created": {
+                      "description": "The ISO 8601 date format of the time that this resource was created",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "diameter": {
+                      "description": "The diameter of this planet in kilometers",
+                      "type": "string"
+                    },
+                    "edited": {
+                      "description": "The ISO 8601 date format of the time that this resource was edited",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "films": {
+                      "description": "An array of Film URL Resources that this planet has appeared in",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "gravity": {
+                      "description": "A number denoting the gravity of this planet",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "The name of this planet",
+                      "type": "string"
+                    },
+                    "orbital_period": {
+                      "description": "The number of standard days it takes for this planet to complete a single orbit of its local star",
+                      "type": "string"
+                    },
+                    "population": {
+                      "description": "The average population of sentient beings inhabiting this planet",
+                      "type": "string"
+                    },
+                    "residents": {
+                      "description": "An array of People URL Resources that live on this planet",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "rotation_period": {
+                      "description": "The number of standard hours it takes for this planet to complete a single rotation on its axis",
+                      "type": "string"
+                    },
+                    "surface_water": {
+                      "description": "The percentage of the planet surface that is naturally occurring water",
+                      "type": "string"
+                    },
+                    "terrain": {
+                      "description": "The terrain of this planet",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "The hypermedia URL of this resource",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Planet not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

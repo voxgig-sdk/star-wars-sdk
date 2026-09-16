@@ -1,12 +1,18 @@
 # StarWars SDK feature factory
 
 from starwars_sdk.feature.base_feature import StarWarsBaseFeature
+from starwars_sdk.feature.ratelimit_feature import StarWarsRatelimitFeature
+from starwars_sdk.feature.retry_feature import StarWarsRetryFeature
 from starwars_sdk.feature.test_feature import StarWarsTestFeature
+from starwars_sdk.feature.timeout_feature import StarWarsTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: StarWarsBaseFeature(),
+    "ratelimit": lambda: StarWarsRatelimitFeature(),
+    "retry": lambda: StarWarsRetryFeature(),
     "test": lambda: StarWarsTestFeature(),
+    "timeout": lambda: StarWarsTimeoutFeature(),
 }
 
 

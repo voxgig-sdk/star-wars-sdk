@@ -4,7 +4,10 @@ declare(strict_types=1);
 // StarWars SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class StarWarsFeatures
@@ -14,8 +17,14 @@ class StarWarsFeatures
         switch ($name) {
             case "base":
                 return new StarWarsBaseFeature();
+            case "ratelimit":
+                return new StarWarsRatelimitFeature();
+            case "retry":
+                return new StarWarsRetryFeature();
             case "test":
                 return new StarWarsTestFeature();
+            case "timeout":
+                return new StarWarsTimeoutFeature();
             default:
                 return new StarWarsBaseFeature();
         }
@@ -31,7 +40,10 @@ class StarWarsFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

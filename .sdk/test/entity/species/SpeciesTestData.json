@@ -77,5 +77,244 @@
         "url": "s28f"
       }
     }
+  },
+  "requests": {
+    "GET /species": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllSpecies",
+        "parameters": [
+          {
+            "description": "Page number for pagination",
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Search query to filter species by name",
+            "in": "query",
+            "name": "search",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "description": "The total number of species",
+                      "type": "integer"
+                    },
+                    "next": {
+                      "description": "The URL for the next page of results",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "previous": {
+                      "description": "The URL for the previous page of results",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "results": {
+                      "items": {
+                        "properties": {
+                          "average_height": {
+                            "description": "The average height of this species in centimeters",
+                            "type": "string"
+                          },
+                          "average_lifespan": {
+                            "description": "The average lifespan of this species in years",
+                            "type": "string"
+                          },
+                          "classification": {
+                            "description": "The classification of this species",
+                            "type": "string"
+                          },
+                          "created": {
+                            "description": "The ISO 8601 date format of the time that this resource was created",
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "designation": {
+                            "description": "The designation of this species",
+                            "type": "string"
+                          },
+                          "edited": {
+                            "description": "The ISO 8601 date format of the time that this resource was edited",
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "eye_colors": {
+                            "description": "A comma-separated string of common eye colors for this species",
+                            "type": "string"
+                          },
+                          "films": {
+                            "description": "An array of Film URL Resources that this species has appeared in",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "hair_colors": {
+                            "description": "A comma-separated string of common hair colors for this species",
+                            "type": "string"
+                          },
+                          "homeworld": {
+                            "description": "The URL of a planet resource that is the homeworld of this species",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "language": {
+                            "description": "The language commonly spoken by this species",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "The name of this species",
+                            "type": "string"
+                          },
+                          "people": {
+                            "description": "An array of People URL Resources that are a part of this species",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          },
+                          "skin_colors": {
+                            "description": "A comma-separated string of common skin colors for this species",
+                            "type": "string"
+                          },
+                          "url": {
+                            "description": "The hypermedia URL of this resource",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /species/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSpeciesById",
+        "parameters": [
+          {
+            "description": "ID of the species to retrieve",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "average_height": {
+                      "description": "The average height of this species in centimeters",
+                      "type": "string"
+                    },
+                    "average_lifespan": {
+                      "description": "The average lifespan of this species in years",
+                      "type": "string"
+                    },
+                    "classification": {
+                      "description": "The classification of this species",
+                      "type": "string"
+                    },
+                    "created": {
+                      "description": "The ISO 8601 date format of the time that this resource was created",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "designation": {
+                      "description": "The designation of this species",
+                      "type": "string"
+                    },
+                    "edited": {
+                      "description": "The ISO 8601 date format of the time that this resource was edited",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "eye_colors": {
+                      "description": "A comma-separated string of common eye colors for this species",
+                      "type": "string"
+                    },
+                    "films": {
+                      "description": "An array of Film URL Resources that this species has appeared in",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "hair_colors": {
+                      "description": "A comma-separated string of common hair colors for this species",
+                      "type": "string"
+                    },
+                    "homeworld": {
+                      "description": "The URL of a planet resource that is the homeworld of this species",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "language": {
+                      "description": "The language commonly spoken by this species",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "The name of this species",
+                      "type": "string"
+                    },
+                    "people": {
+                      "description": "An array of People URL Resources that are a part of this species",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "skin_colors": {
+                      "description": "A comma-separated string of common skin colors for this species",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "The hypermedia URL of this resource",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Species not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
