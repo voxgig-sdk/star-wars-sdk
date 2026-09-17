@@ -105,12 +105,12 @@ local results, err = client:Person():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/star-wars-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/releases) |
-| Python | `voxgig-sdk-star-wars` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/releases) |
-| PHP | `voxgig-sdk/star-wars` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/releases) |
+| TypeScript | `@voxgig-sdk/star-wars-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/tags) |
+| Python | `voxgig-sdk-star-wars` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/tags) |
+| PHP | `voxgig-sdk/star-wars` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/star-wars-sdk/go` | `go get github.com/voxgig-sdk/star-wars-sdk/go@latest` |
-| Ruby | `voxgig-sdk-star-wars` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/releases) |
-| Lua | `voxgig-sdk-star-wars` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/releases) |
+| Ruby | `voxgig-sdk-star-wars` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/tags) |
+| Lua | `voxgig-sdk-star-wars` | publish pending — [install from git tag](https://github.com/voxgig-sdk/star-wars-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/star-wars-sdk/go-cli` | `go install github.com/voxgig-sdk/star-wars-sdk/go-cli/cmd/star-wars@latest` |
 | Go MCP server | `github.com/voxgig-sdk/star-wars-sdk/go-mcp` | `go get github.com/voxgig-sdk/star-wars-sdk/go-mcp@latest` |
 

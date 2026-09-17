@@ -1,9 +1,9 @@
 # Entity Models
 
-@"film.aon"
-@"people_list.aon"
-@"person.aon"
-@"planet.aon"
-@"species.aon"
-@"starship.aon"
-@"vehicle.aon"
+@"./film.aon"
+@"./people_list.aon"
+@"./person.aon"
+@"./planet.aon"
+@"./species.aon"
+@"./starship.aon"
+@"./vehicle.aon"

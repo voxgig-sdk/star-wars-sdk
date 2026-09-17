@@ -127,27 +127,27 @@ class Config {
 
     entity: {
       
-      film: {
-      },
-
-      people_list: {
-      },
-
-      person: {
-      },
-
-      planet: {
-      },
-
-      species: {
-      },
-
-      starship: {
-      },
-
-      vehicle: {
-      },
-
+        film: {
+        },
+  
+        people_list: {
+        },
+  
+        person: {
+        },
+  
+        planet: {
+        },
+  
+        species: {
+        },
+  
+        starship: {
+        },
+  
+        vehicle: {
+        },
+  
     }
   }
 
