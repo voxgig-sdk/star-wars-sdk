@@ -1,5 +1,4 @@
 import { FilmEntity } from './entity/FilmEntity';
-import { PeopleListEntity } from './entity/PeopleListEntity';
 import { PersonEntity } from './entity/PersonEntity';
 import { PlanetEntity } from './entity/PlanetEntity';
 import { SpeciesEntity } from './entity/SpeciesEntity';
@@ -51,7 +50,6 @@ declare class StarWarsSDK {
     }>;
     graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
     Film(entopts?: Record<string, any>): FilmEntity;
-    PeopleList(entopts?: Record<string, any>): PeopleListEntity;
     Person(entopts?: Record<string, any>): PersonEntity;
     Planet(entopts?: Record<string, any>): PlanetEntity;
     Species(entopts?: Record<string, any>): SpeciesEntity;

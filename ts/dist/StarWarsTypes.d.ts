@@ -22,8 +22,6 @@ export interface FilmListMatch {
     page?: number;
     search?: string;
 }
-export interface PeopleList {
-}
 export interface Person {
     birth_year?: string;
     created?: string;

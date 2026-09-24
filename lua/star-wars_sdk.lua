@@ -363,20 +363,6 @@ function StarWarsSDK:Film(data)
 end
 
 
--- Idiomatic facade: client:PeopleList():list() / client:PeopleList():load({ id = ... })
--- Entity access is capitalised (PascalCase) for parity with the other SDKs.
-function StarWarsSDK:PeopleList(data)
-  local EntityMod = require("entity.people_list_entity")
-  if data == nil then
-    if self._people_list == nil then
-      self._people_list = EntityMod.new(self, nil)
-    end
-    return self._people_list
-  end
-  return EntityMod.new(self, data)
-end
-
-
 -- Idiomatic facade: client:Person():list() / client:Person():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function StarWarsSDK:Person(data)

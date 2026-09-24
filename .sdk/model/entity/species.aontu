@@ -1,0 +1,224 @@
+# Entity: species
+
+main: kit: entity: species: {
+
+  alias: field: {}
+
+  fields: {
+    average_height: {
+      h: "Average Height"
+      n: "average_height"
+      r: false
+      sh: "The average height of this species in centimeters"
+      t: "`$STRING`"
+    }
+    average_lifespan: {
+      h: "Average Lifespan"
+      n: "average_lifespan"
+      r: false
+      sh: "The average lifespan of this species in years"
+      t: "`$STRING`"
+    }
+    classification: {
+      h: "Classification"
+      n: "classification"
+      r: false
+      sh: "The classification of this species"
+      t: "`$STRING`"
+    }
+    created: {
+      fo: "date-time"
+      h: "Created"
+      n: "created"
+      r: false
+      sh: "The ISO 8601 date format of the time that this resource was created"
+      t: "`$STRING`"
+    }
+    designation: {
+      h: "Designation"
+      n: "designation"
+      r: false
+      sh: "The designation of this species"
+      t: "`$STRING`"
+    }
+    edited: {
+      fo: "date-time"
+      h: "Edited"
+      n: "edited"
+      r: false
+      sh: "The ISO 8601 date format of the time that this resource was edited"
+      t: "`$STRING`"
+    }
+    eye_colors: {
+      h: "Eye Colors"
+      n: "eye_colors"
+      r: false
+      sh: "A comma-separated string of common eye colors for this species"
+      t: "`$STRING`"
+    }
+    films: {
+      h: "Films"
+      n: "films"
+      r: false
+      sh: "An array of Film URL Resources that this species has appeared in"
+      t: "`$ARRAY`"
+    }
+    hair_colors: {
+      h: "Hair Colors"
+      n: "hair_colors"
+      r: false
+      sh: "A comma-separated string of common hair colors for this species"
+      t: "`$STRING`"
+    }
+    homeworld: {
+      h: "Homeworld"
+      n: "homeworld"
+      r: false
+      sh: "The URL of a planet resource that is the homeworld of this species"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    language: {
+      h: "Language"
+      n: "language"
+      r: false
+      sh: "The language commonly spoken by this species"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of this species"
+      t: "`$STRING`"
+    }
+    people: {
+      h: "People"
+      n: "people"
+      r: false
+      sh: "An array of People URL Resources that are a part of this species"
+      t: "`$ARRAY`"
+    }
+    skin_colors: {
+      h: "Skin Colors"
+      n: "skin_colors"
+      r: false
+      sh: "A comma-separated string of common skin colors for this species"
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "The hypermedia URL of this resource"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "species"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /species"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/species"
+          q: {
+            exist: [
+              "page"
+              "search"
+            ]
+          }
+          s: [
+            {
+              lit: "species"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /species/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/species/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "species"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

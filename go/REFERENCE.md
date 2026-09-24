@@ -51,10 +51,6 @@ client := sdk.TestSDK(testopts, sdkopts)
 
 Create a new `Film` entity instance. Pass `nil` for no initial data.
 
-#### `PeopleList(data map[string]any) StarWarsEntity`
-
-Create a new `PeopleList` entity instance. Pass `nil` for no initial data.
-
 #### `Person(data map[string]any) StarWarsEntity`
 
 Create a new `Person` entity instance. Pass `nil` for no initial data.
@@ -179,37 +175,6 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `FilmEntity` instance with the same client and
-options.
-
-#### `GetName() string`
-
-Return the entity name.
-
-
----
-
-## PeopleListEntity
-
-```go
-peopleList := client.PeopleList(nil)
-fmt.Println(peopleList.GetName()) // "people_list"
-```
-
-### Common Methods
-
-#### `Data(args ...any) any`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `Match(args ...any) any`
-
-Get or set the entity match criteria. Works the same as `Data()`.
-
-#### `Make() Entity`
-
-Create a new `PeopleListEntity` instance with the same client and
 options.
 
 #### `GetName() string`

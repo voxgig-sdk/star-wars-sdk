@@ -359,24 +359,6 @@ class StarWarsSDK
     }
 
 
-    private $_people_list = null;
-
-    // Canonical facade: $client->PeopleList()->list() / ->load(["id" => ...]).
-    // PHP method names are case-insensitive, so lowercase $client->people_list()
-    // resolves here too.
-    public function PeopleList($data = null)
-    {
-        require_once __DIR__ . '/entity/people_list_entity.php';
-        if ($data === null) {
-            if ($this->_people_list === null) {
-                $this->_people_list = new PeopleListEntity($this, null);
-            }
-            return $this->_people_list;
-        }
-        return new PeopleListEntity($this, $data);
-    }
-
-
     private $_person = null;
 
     // Canonical facade: $client->Person()->list() / ->load(["id" => ...]).

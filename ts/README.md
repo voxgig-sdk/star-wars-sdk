@@ -236,7 +236,6 @@ new StarWarsSDK(options?: {
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
 | `Film(data?)` | `FilmEntity` | Create a Film entity instance. |
-| `PeopleList(data?)` | `PeopleListEntity` | Create a PeopleList entity instance. |
 | `Person(data?)` | `PersonEntity` | Create a Person entity instance. |
 | `Planet(data?)` | `PlanetEntity` | Create a Planet entity instance. |
 | `Species(data?)` | `SpeciesEntity` | Create a Species entity instance. |
@@ -332,15 +331,6 @@ The `prepare()` method returns:
 Operations: list, load.
 
 API path: `/films`
-
-#### PeopleList
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
 
 #### Person
 
@@ -518,11 +508,6 @@ const film = await client.Film().load({ id: 1 })
 ```ts
 const films = await client.Film().list()
 ```
-
-
-### PeopleList
-
-Create an instance: `const people_list = client.PeopleList()`
 
 
 ### Person

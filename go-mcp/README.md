@@ -129,7 +129,7 @@ Both tools take the same argument object:
 
 | Field | Type | Notes |
 |-------|------|-------|
-| `entity` | string | One of the 7 supported entities (see below). |
+| `entity` | string | One of the 6 supported entities (see below). |
 | `query` | object | Optional match map. `{"id":N}` for load; omit or `{}` for list. |
 
 JSON schemas are emitted by the SDK from the `Args` struct's `json` /
@@ -151,9 +151,9 @@ JSON schemas are emitted by the SDK from the `Args` struct's `json` /
 
 ### Entities
 
-The 7 entities valid as the `entity` argument:
+The 6 entities valid as the `entity` argument:
 
-film | people_list | person | planet | species | starship | vehicle
+film | person | planet | species | starship | vehicle
 
 ### Smoke test via HTTP (raw JSON-RPC)
 

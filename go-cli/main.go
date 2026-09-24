@@ -20,7 +20,7 @@ import (
 const prompt = "star-wars"
 
 // entitiesHelp is the space-separated entity list shown by /help.
-const entitiesHelp = "film people_list person planet species starship vehicle"
+const entitiesHelp = "film person planet species starship vehicle"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

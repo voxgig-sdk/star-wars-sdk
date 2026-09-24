@@ -214,7 +214,6 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `Film` | `(data) -> FilmEntity` | Create a Film entity instance. |
-| `PeopleList` | `(data) -> PeopleListEntity` | Create a PeopleList entity instance. |
 | `Person` | `(data) -> PersonEntity` | Create a Person entity instance. |
 | `Planet` | `(data) -> PlanetEntity` | Create a Planet entity instance. |
 | `Species` | `(data) -> SpeciesEntity` | Create a Species entity instance. |
@@ -278,15 +277,6 @@ returns a result `Hash` with these keys:
 Operations: List, Load.
 
 API path: `/films`
-
-#### PeopleList
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
 
 #### Person
 
@@ -466,11 +456,6 @@ film = client.Film.load({ "id" => 1 })
 # list returns an Array of Film records (raises on error).
 films = client.Film.list
 ```
-
-
-### PeopleList
-
-Create an instance: `people_list = client.PeopleList`
 
 
 ### Person

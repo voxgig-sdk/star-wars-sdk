@@ -296,13 +296,6 @@ class StarWarsSDK
   end
 
 
-  # Canonical facade: client.PeopleList.list / client.PeopleList.load({ "id" => ... })
-  def PeopleList(data = nil)
-    require_relative 'entity/people_list_entity'
-    PeopleListEntity.new(self, data)
-  end
-
-
   # Canonical facade: client.Person.list / client.Person.load({ "id" => ... })
   def Person(data = nil)
     require_relative 'entity/person_entity'

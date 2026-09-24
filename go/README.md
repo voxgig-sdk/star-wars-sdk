@@ -228,7 +228,6 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
 | `Film` | `(data map[string]any) StarWarsEntity` | Create a Film entity instance. |
-| `PeopleList` | `(data map[string]any) StarWarsEntity` | Create a PeopleList entity instance. |
 | `Person` | `(data map[string]any) StarWarsEntity` | Create a Person entity instance. |
 | `Planet` | `(data map[string]any) StarWarsEntity` | Create a Planet entity instance. |
 | `Species` | `(data map[string]any) StarWarsEntity` | Create a Species entity instance. |
@@ -294,15 +293,6 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 Operations: List, Load.
 
 API path: `/films`
-
-#### PeopleList
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
 
 #### Person
 
@@ -488,11 +478,6 @@ if err != nil {
 }
 fmt.Println(films) // the array of records
 ```
-
-
-### PeopleList
-
-Create an instance: `peopleList := client.PeopleList(nil)`
 
 
 ### Person

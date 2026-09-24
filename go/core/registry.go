@@ -14,8 +14,6 @@ var NewTimeoutFeatureFunc func() Feature
 
 var NewFilmEntityFunc func(client *StarWarsSDK, entopts map[string]any) StarWarsEntity
 
-var NewPeopleListEntityFunc func(client *StarWarsSDK, entopts map[string]any) StarWarsEntity
-
 var NewPersonEntityFunc func(client *StarWarsSDK, entopts map[string]any) StarWarsEntity
 
 var NewPlanetEntityFunc func(client *StarWarsSDK, entopts map[string]any) StarWarsEntity

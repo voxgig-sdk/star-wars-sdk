@@ -224,7 +224,6 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
 | `Film` | `($data): FilmEntity` | Create a Film entity instance. |
-| `PeopleList` | `($data): PeopleListEntity` | Create a PeopleList entity instance. |
 | `Person` | `($data): PersonEntity` | Create a Person entity instance. |
 | `Planet` | `($data): PlanetEntity` | Create a Planet entity instance. |
 | `Species` | `($data): SpeciesEntity` | Create a Species entity instance. |
@@ -289,15 +288,6 @@ On error, `ok` is `false` and `$err` contains the error value.
 Operations: List, Load.
 
 API path: `/films`
-
-#### PeopleList
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
 
 #### Person
 
@@ -477,11 +467,6 @@ $film = $client->Film()->load(["id" => 1]);
 // list() returns an array of Film records (throws on error).
 $films = $client->Film()->list();
 ```
-
-
-### PeopleList
-
-Create an instance: `$people_list = $client->PeopleList();`
 
 
 ### Person

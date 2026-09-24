@@ -14,14 +14,14 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
 ## Entities, not endpoints
 
-This SDK exposes the API as **7 semantic entities** that you
-call directly, instead of assembling URL paths and query strings. See the [Entities](#entities) table below for the full list. Entities are
+This SDK exposes the API as a small set of **semantic entities** — Film, Person, Planet, Species, Starship and Vehicle — that you
+call directly, instead of assembling URL paths and query strings. Entities are
 **Capitalised** to mark them as the primary surface, each with the operations they
 support (`list`, `load`):
 
@@ -164,12 +164,11 @@ Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
 
 ## Entities
 
-The API exposes 7 entities:
+The API exposes 6 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
 | **Film** | The Film entity (list, load). | `/films` |
-| **PeopleList** | The PeopleList entity. | `` |
 | **Person** | The Person entity (list, load). | `/people` |
 | **Planet** | The Planet entity (list, load). | `/planets` |
 | **Species** | The Species entity (list, load). | `/species` |

@@ -1,0 +1,218 @@
+# Entity: film
+
+main: kit: entity: film: {
+
+  alias: field: {}
+
+  fields: {
+    characters: {
+      h: "Characters"
+      n: "characters"
+      r: false
+      sh: "An array of people resource URLs that are in this film"
+      t: "`$ARRAY`"
+    }
+    created: {
+      fo: "date-time"
+      h: "Created"
+      n: "created"
+      r: false
+      sh: "The ISO 8601 date format of the time that this resource was created"
+      t: "`$STRING`"
+    }
+    director: {
+      h: "Director"
+      n: "director"
+      r: false
+      sh: "The name of the director of this film"
+      t: "`$STRING`"
+    }
+    edited: {
+      fo: "date-time"
+      h: "Edited"
+      n: "edited"
+      r: false
+      sh: "The ISO 8601 date format of the time that this resource was edited"
+      t: "`$STRING`"
+    }
+    episode_id: {
+      h: "Episode Id"
+      n: "episode_id"
+      r: false
+      sh: "The episode number of this film"
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    opening_crawl: {
+      h: "Opening Crawl"
+      n: "opening_crawl"
+      r: false
+      sh: "The opening paragraphs at the beginning of this film"
+      t: "`$STRING`"
+    }
+    planets: {
+      h: "Planets"
+      n: "planets"
+      r: false
+      sh: "An array of planet resource URLs that are in this film"
+      t: "`$ARRAY`"
+    }
+    producer: {
+      h: "Producer"
+      n: "producer"
+      r: false
+      sh: "The name(s) of the producer(s) of this film"
+      t: "`$STRING`"
+    }
+    release_date: {
+      fo: "date"
+      h: "Release Date"
+      n: "release_date"
+      r: false
+      sh: "The release date of this film"
+      t: "`$STRING`"
+    }
+    species: {
+      h: "Species"
+      n: "species"
+      r: false
+      sh: "An array of species resource URLs that are in this film"
+      t: "`$ARRAY`"
+    }
+    starships: {
+      h: "Starships"
+      n: "starships"
+      r: false
+      sh: "An array of starship resource URLs that are in this film"
+      t: "`$ARRAY`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "The title of this film"
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "The hypermedia URL of this resource"
+      t: "`$STRING`"
+    }
+    vehicles: {
+      h: "Vehicles"
+      n: "vehicles"
+      r: false
+      sh: "An array of vehicle resource URLs that are in this film"
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "film"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /films"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/films"
+          q: {
+            exist: [
+              "page"
+              "search"
+            ]
+          }
+          s: [
+            {
+              lit: "films"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /films/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/films/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "films"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

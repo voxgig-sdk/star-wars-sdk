@@ -60,18 +60,6 @@ Create a new `Film` entity instance.
 
 **Returns:** `FilmEntity` instance.
 
-#### `PeopleList(data?: object)`
-
-Create a new `PeopleList` entity instance.
-
-**Parameters:**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| `data` | `object` | Initial entity data. |
-
-**Returns:** `PeopleListEntity` instance.
-
 #### `Person(data?: object)`
 
 Create a new `Person` entity instance.
@@ -237,40 +225,6 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `FilmEntity` instance with the same client and
-options.
-
-#### `client()`
-
-Return the parent `StarWarsSDK` instance.
-
-#### `entopts()`
-
-Return a copy of the entity options.
-
-
----
-
-## PeopleListEntity
-
-```ts
-const people_list = client.PeopleList()
-```
-
-### Common Methods
-
-#### `data(data?: object)`
-
-Get or set the entity data. When called with data, sets the entity's
-internal data and returns the current data. When called without
-arguments, returns a copy of the current data.
-
-#### `match(match?: object)`
-
-Get or set the entity match criteria. Works the same as `data()`.
-
-#### `make()`
-
-Create a new `PeopleListEntity` instance with the same client and
 options.
 
 #### `client()`

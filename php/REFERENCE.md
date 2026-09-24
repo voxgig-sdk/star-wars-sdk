@@ -45,10 +45,6 @@ $client = StarWarsSDK::test();
 
 Create a new `FilmEntity` instance. Pass `null` for no initial data.
 
-#### `PeopleList($data = null)`
-
-Create a new `PeopleListEntity` instance. Pass `null` for no initial data.
-
 #### `Person($data = null)`
 
 Create a new `PersonEntity` instance. Pass `null` for no initial data.
@@ -171,42 +167,6 @@ Set the entity match criteria.
 #### `make(): FilmEntity`
 
 Create a new `FilmEntity` instance with the same client and
-options.
-
-#### `get_name(): string`
-
-Return the entity name.
-
-
----
-
-## PeopleListEntity
-
-```php
-$people_list = $client->PeopleList();
-```
-
-### Common Methods
-
-#### `data_get(): array`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set($data): void`
-
-Set the entity data.
-
-#### `match_get(): array`
-
-Get the entity match criteria.
-
-#### `match_set($match): void`
-
-Set the entity match criteria.
-
-#### `make(): PeopleListEntity`
-
-Create a new `PeopleListEntity` instance with the same client and
 options.
 
 #### `get_name(): string`

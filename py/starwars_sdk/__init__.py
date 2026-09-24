@@ -313,12 +313,6 @@ class StarWarsSDK:
         return FilmEntity(self, data)
 
 
-    def PeopleList(self, data=None) -> "PeopleListEntity":
-        """Entity factory: client.PeopleList().list() / client.PeopleList().load({"id": ...})."""
-        from starwars_sdk.entity.people_list_entity import PeopleListEntity
-        return PeopleListEntity(self, data)
-
-
     def Person(self, data=None) -> "PersonEntity":
         """Entity factory: client.Person().list() / client.Person().load({"id": ...})."""
         from starwars_sdk.entity.person_entity import PersonEntity
@@ -377,7 +371,6 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from starwars_sdk.entity.film_entity import FilmEntity
-    from starwars_sdk.entity.people_list_entity import PeopleListEntity
     from starwars_sdk.entity.person_entity import PersonEntity
     from starwars_sdk.entity.planet_entity import PlanetEntity
     from starwars_sdk.entity.species_entity import SpeciesEntity

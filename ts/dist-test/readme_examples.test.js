@@ -70,7 +70,7 @@ const __1 = require("..");
 const SDK_NAME = 'StarWarsSDK';
 // A fixture for every entity, so list()/load() resolve offline with no
 // network. Snippet client construction is rewritten to seed this.
-const TEST_SEED = { "entity": { "film": { "test01": { "id": "test01" } }, "people_list": { "test01": { "id": "test01" } }, "person": { "test01": { "id": "test01" } }, "planet": { "test01": { "id": "test01" } }, "species": { "test01": { "id": "test01" } }, "starship": { "test01": { "id": "test01" } }, "vehicle": { "test01": { "id": "test01" } } } };
+const TEST_SEED = { "entity": { "film": { "test01": { "id": "test01" } }, "person": { "test01": { "id": "test01" } }, "planet": { "test01": { "id": "test01" } }, "species": { "test01": { "id": "test01" } }, "starship": { "test01": { "id": "test01" } }, "vehicle": { "test01": { "id": "test01" } } } };
 const SEED_ARG = JSON.stringify(TEST_SEED);
 const SEEDED_CTOR = SDK_NAME + '.test(' + SEED_ARG + ')';
 // The three docs this gate covers, resolved relative to dist-test/.

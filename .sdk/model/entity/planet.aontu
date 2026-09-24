@@ -1,0 +1,217 @@
+# Entity: planet
+
+main: kit: entity: planet: {
+
+  alias: field: {}
+
+  fields: {
+    climate: {
+      h: "Climate"
+      n: "climate"
+      r: false
+      sh: "The climate of this planet"
+      t: "`$STRING`"
+    }
+    created: {
+      fo: "date-time"
+      h: "Created"
+      n: "created"
+      r: false
+      sh: "The ISO 8601 date format of the time that this resource was created"
+      t: "`$STRING`"
+    }
+    diameter: {
+      h: "Diameter"
+      n: "diameter"
+      r: false
+      sh: "The diameter of this planet in kilometers"
+      t: "`$STRING`"
+    }
+    edited: {
+      fo: "date-time"
+      h: "Edited"
+      n: "edited"
+      r: false
+      sh: "The ISO 8601 date format of the time that this resource was edited"
+      t: "`$STRING`"
+    }
+    films: {
+      h: "Films"
+      n: "films"
+      r: false
+      sh: "An array of Film URL Resources that this planet has appeared in"
+      t: "`$ARRAY`"
+    }
+    gravity: {
+      h: "Gravity"
+      n: "gravity"
+      r: false
+      sh: "A number denoting the gravity of this planet"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of this planet"
+      t: "`$STRING`"
+    }
+    orbital_period: {
+      h: "Orbital Period"
+      n: "orbital_period"
+      r: false
+      sh: "The number of standard days it takes for this planet to complete a single orbit of its local star"
+      t: "`$STRING`"
+    }
+    population: {
+      h: "Population"
+      n: "population"
+      r: false
+      sh: "The average population of sentient beings inhabiting this planet"
+      t: "`$STRING`"
+    }
+    residents: {
+      h: "Residents"
+      n: "residents"
+      r: false
+      sh: "An array of People URL Resources that live on this planet"
+      t: "`$ARRAY`"
+    }
+    rotation_period: {
+      h: "Rotation Period"
+      n: "rotation_period"
+      r: false
+      sh: "The number of standard hours it takes for this planet to complete a single rotation on its axis"
+      t: "`$STRING`"
+    }
+    surface_water: {
+      h: "Surface Water"
+      n: "surface_water"
+      r: false
+      sh: "The percentage of the planet surface that is naturally occurring water"
+      t: "`$STRING`"
+    }
+    terrain: {
+      h: "Terrain"
+      n: "terrain"
+      r: false
+      sh: "The terrain of this planet"
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "The hypermedia URL of this resource"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "planet"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /planets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/planets"
+          q: {
+            exist: [
+              "page"
+              "search"
+            ]
+          }
+          s: [
+            {
+              lit: "planets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /planets/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/planets/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "planets"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

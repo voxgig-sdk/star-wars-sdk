@@ -1,0 +1,44 @@
+# BasicStarshipFlow
+
+main: kit: flow: BasicStarshipFlow:
+{
+  entity: "starship",
+  kind: "basic",
+  name: "BasicStarshipFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "starship_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "starship_ref01",
+        srcdatavar: "starship_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "starship01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-starship_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicStarshipFlow"
+}

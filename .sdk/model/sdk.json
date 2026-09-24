@@ -24,121 +24,202 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "film": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "characters",
-              "req": false,
-              "short": "An array of people resource URLs that are in this film",
-              "type": "`$ARRAY`"
+          "fields": {
+            "characters": {
+              "a": true,
+              "h": "Characters",
+              "n": "characters",
+              "r": false,
+              "sh": "An array of people resource URLs that are in this film",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "created",
-              "req": false,
-              "short": "The ISO 8601 date format of the time that this resource was created",
-              "type": "`$STRING`"
+            "created": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created",
+              "n": "created",
+              "r": false,
+              "sh": "The ISO 8601 date format of the time that this resource was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "director",
-              "req": false,
-              "short": "The name of the director of this film",
-              "type": "`$STRING`"
+            "director": {
+              "a": true,
+              "h": "Director",
+              "n": "director",
+              "r": false,
+              "sh": "The name of the director of this film",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "edited",
-              "req": false,
-              "short": "The ISO 8601 date format of the time that this resource was edited",
-              "type": "`$STRING`"
+            "edited": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Edited",
+              "n": "edited",
+              "r": false,
+              "sh": "The ISO 8601 date format of the time that this resource was edited",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "episode_id",
-              "req": false,
-              "short": "The episode number of this film",
-              "type": "`$INTEGER`"
+            "episode_id": {
+              "a": true,
+              "h": "Episode Id",
+              "n": "episode_id",
+              "r": false,
+              "sh": "The episode number of this film",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "opening_crawl",
-              "req": false,
-              "short": "The opening paragraphs at the beginning of this film",
-              "type": "`$STRING`"
+            "opening_crawl": {
+              "a": true,
+              "h": "Opening Crawl",
+              "n": "opening_crawl",
+              "r": false,
+              "sh": "The opening paragraphs at the beginning of this film",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "planets",
-              "req": false,
-              "short": "An array of planet resource URLs that are in this film",
-              "type": "`$ARRAY`"
+            "planets": {
+              "a": true,
+              "h": "Planets",
+              "n": "planets",
+              "r": false,
+              "sh": "An array of planet resource URLs that are in this film",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "producer",
-              "req": false,
-              "short": "The name(s) of the producer(s) of this film",
-              "type": "`$STRING`"
+            "producer": {
+              "a": true,
+              "h": "Producer",
+              "n": "producer",
+              "r": false,
+              "sh": "The name(s) of the producer(s) of this film",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date",
-              "name": "release_date",
-              "req": false,
-              "short": "The release date of this film",
-              "type": "`$STRING`"
+            "release_date": {
+              "a": true,
+              "fo": "date",
+              "h": "Release Date",
+              "n": "release_date",
+              "r": false,
+              "sh": "The release date of this film",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "species",
-              "req": false,
-              "short": "An array of species resource URLs that are in this film",
-              "type": "`$ARRAY`"
+            "species": {
+              "a": true,
+              "h": "Species",
+              "n": "species",
+              "r": false,
+              "sh": "An array of species resource URLs that are in this film",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "starships",
-              "req": false,
-              "short": "An array of starship resource URLs that are in this film",
-              "type": "`$ARRAY`"
+            "starships": {
+              "a": true,
+              "h": "Starships",
+              "n": "starships",
+              "r": false,
+              "sh": "An array of starship resource URLs that are in this film",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "title",
-              "req": false,
-              "short": "The title of this film",
-              "type": "`$STRING`"
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": false,
+              "sh": "The title of this film",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "The hypermedia URL of this resource",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "The hypermedia URL of this resource",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "vehicles",
-              "req": false,
-              "short": "An array of vehicle resource URLs that are in this film",
-              "type": "`$ARRAY`"
+            "vehicles": {
+              "a": true,
+              "h": "Vehicles",
+              "n": "vehicles",
+              "r": false,
+              "sh": "An array of vehicle resource URLs that are in this film",
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -150,49 +231,49 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /films",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "search",
-                        "orig": "search",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "search",
+                        "or": "search",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /films",
-                    "json": "{\"operationId\":\"getAllFilms\",\"parameters\":[{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Search query to filter films by title\",\"in\":\"query\",\"name\":\"search\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"The total number of films\",\"type\":\"integer\"},\"next\":{\"description\":\"The URL for the next page of results\",\"nullable\":true,\"type\":\"string\"},\"previous\":{\"description\":\"The URL for the previous page of results\",\"nullable\":true,\"type\":\"string\"},\"results\":{\"items\":{\"properties\":{\"characters\":{\"description\":\"An array of people resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"director\":{\"description\":\"The name of the director of this film\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"episode_id\":{\"description\":\"The episode number of this film\",\"type\":\"integer\"},\"opening_crawl\":{\"description\":\"The opening paragraphs at the beginning of this film\",\"type\":\"string\"},\"planets\":{\"description\":\"An array of planet resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"producer\":{\"description\":\"The name(s) of the producer(s) of this film\",\"type\":\"string\"},\"release_date\":{\"description\":\"The release date of this film\",\"format\":\"date\",\"type\":\"string\"},\"species\":{\"description\":\"An array of species resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"starships\":{\"description\":\"An array of starship resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"description\":\"The title of this film\",\"type\":\"string\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"},\"vehicles\":{\"description\":\"An array of vehicle resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/films",
-                  "segments": [
-                    {
-                      "lit": "films"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/films",
+                  "q": {
                     "exist": [
                       "page",
                       "search"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "films"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -204,29 +285,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /films/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /films/{id}",
-                    "json": "{\"operationId\":\"getFilmById\",\"parameters\":[{\"description\":\"ID of the film to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"characters\":{\"description\":\"An array of people resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"director\":{\"description\":\"The name of the director of this film\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"episode_id\":{\"description\":\"The episode number of this film\",\"type\":\"integer\"},\"opening_crawl\":{\"description\":\"The opening paragraphs at the beginning of this film\",\"type\":\"string\"},\"planets\":{\"description\":\"An array of planet resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"producer\":{\"description\":\"The name(s) of the producer(s) of this film\",\"type\":\"string\"},\"release_date\":{\"description\":\"The release date of this film\",\"format\":\"date\",\"type\":\"string\"},\"species\":{\"description\":\"An array of species resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"starships\":{\"description\":\"An array of starship resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"description\":\"The title of this film\",\"type\":\"string\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"},\"vehicles\":{\"description\":\"An array of vehicle resource URLs that are in this film\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Film not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/films/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/films/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "films"
                     },
@@ -234,12 +320,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -251,145 +332,150 @@
             "ancestors": []
           }
         },
-        "people_list": {
-          "active": true,
-          "alias": {
-            "field": {}
-          },
-          "fields": [],
-          "name": "people_list",
-          "op": {},
-          "relations": {
-            "ancestors": []
-          }
-        },
         "person": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "birth_year",
-              "req": false,
-              "short": "The birth year of the person, using the in-universe standard of BBY or ABY",
-              "type": "`$STRING`"
+          "fields": {
+            "birth_year": {
+              "a": true,
+              "h": "Birth Year",
+              "n": "birth_year",
+              "r": false,
+              "sh": "The birth year of the person, using the in-universe standard of BBY or ABY",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "created",
-              "req": false,
-              "short": "The ISO 8601 date format of the time that this resource was created",
-              "type": "`$STRING`"
+            "created": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created",
+              "n": "created",
+              "r": false,
+              "sh": "The ISO 8601 date format of the time that this resource was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "edited",
-              "req": false,
-              "short": "The ISO 8601 date format of the time that this resource was edited",
-              "type": "`$STRING`"
+            "edited": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Edited",
+              "n": "edited",
+              "r": false,
+              "sh": "The ISO 8601 date format of the time that this resource was edited",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "eye_color",
-              "req": false,
-              "short": "The eye color of this person",
-              "type": "`$STRING`"
+            "eye_color": {
+              "a": true,
+              "h": "Eye Color",
+              "n": "eye_color",
+              "r": false,
+              "sh": "The eye color of this person",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "films",
-              "req": false,
-              "short": "An array of film resource URLs that this person has been in",
-              "type": "`$ARRAY`"
+            "films": {
+              "a": true,
+              "h": "Films",
+              "n": "films",
+              "r": false,
+              "sh": "An array of film resource URLs that this person has been in",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "gender",
-              "req": false,
-              "short": "The gender of this person",
-              "type": "`$STRING`"
+            "gender": {
+              "a": true,
+              "h": "Gender",
+              "n": "gender",
+              "r": false,
+              "sh": "The gender of this person",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "hair_color",
-              "req": false,
-              "short": "The hair color of this person",
-              "type": "`$STRING`"
+            "hair_color": {
+              "a": true,
+              "h": "Hair Color",
+              "n": "hair_color",
+              "r": false,
+              "sh": "The hair color of this person",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "height",
-              "req": false,
-              "short": "The height of the person in centimeters",
-              "type": "`$STRING`"
+            "height": {
+              "a": true,
+              "h": "Height",
+              "n": "height",
+              "r": false,
+              "sh": "The height of the person in centimeters",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "homeworld",
-              "req": false,
-              "short": "The URL of the planet resource that this person was born on",
-              "type": "`$STRING`"
+            "homeworld": {
+              "a": true,
+              "h": "Homeworld",
+              "n": "homeworld",
+              "r": false,
+              "sh": "The URL of the planet resource that this person was born on",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "mass",
-              "req": false,
-              "short": "The mass of the person in kilograms",
-              "type": "`$STRING`"
+            "mass": {
+              "a": true,
+              "h": "Mass",
+              "n": "mass",
+              "r": false,
+              "sh": "The mass of the person in kilograms",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of this person",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of this person",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "skin_color",
-              "req": false,
-              "short": "The skin color of this person",
-              "type": "`$STRING`"
+            "skin_color": {
+              "a": true,
+              "h": "Skin Color",
+              "n": "skin_color",
+              "r": false,
+              "sh": "The skin color of this person",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "species",
-              "req": false,
-              "short": "An array of species resource URLs that this person belongs to",
-              "type": "`$ARRAY`"
+            "species": {
+              "a": true,
+              "h": "Species",
+              "n": "species",
+              "r": false,
+              "sh": "An array of species resource URLs that this person belongs to",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "starships",
-              "req": false,
-              "short": "An array of starship resource URLs that this person has piloted",
-              "type": "`$ARRAY`"
+            "starships": {
+              "a": true,
+              "h": "Starships",
+              "n": "starships",
+              "r": false,
+              "sh": "An array of starship resource URLs that this person has piloted",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "The hypermedia URL of this resource",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "The hypermedia URL of this resource",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "vehicles",
-              "req": false,
-              "short": "An array of vehicle resource URLs that this person has piloted",
-              "type": "`$ARRAY`"
+            "vehicles": {
+              "a": true,
+              "h": "Vehicles",
+              "n": "vehicles",
+              "r": false,
+              "sh": "An array of vehicle resource URLs that this person has piloted",
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -401,49 +487,49 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /people",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "search",
-                        "orig": "search",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "search",
+                        "or": "search",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /people",
-                    "json": "{\"operationId\":\"getAllPeople\",\"parameters\":[{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Search query to filter people by name\",\"in\":\"query\",\"name\":\"search\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"The total number of people\",\"type\":\"integer\"},\"next\":{\"description\":\"The URL for the next page of results\",\"nullable\":true,\"type\":\"string\"},\"previous\":{\"description\":\"The URL for the previous page of results\",\"nullable\":true,\"type\":\"string\"},\"results\":{\"items\":{\"properties\":{\"birth_year\":{\"description\":\"The birth year of the person, using the in-universe standard of BBY or ABY\",\"type\":\"string\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"eye_color\":{\"description\":\"The eye color of this person\",\"type\":\"string\"},\"films\":{\"description\":\"An array of film resource URLs that this person has been in\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"gender\":{\"description\":\"The gender of this person\",\"type\":\"string\"},\"hair_color\":{\"description\":\"The hair color of this person\",\"type\":\"string\"},\"height\":{\"description\":\"The height of the person in centimeters\",\"type\":\"string\"},\"homeworld\":{\"description\":\"The URL of the planet resource that this person was born on\",\"type\":\"string\"},\"mass\":{\"description\":\"The mass of the person in kilograms\",\"type\":\"string\"},\"name\":{\"description\":\"The name of this person\",\"type\":\"string\"},\"skin_color\":{\"description\":\"The skin color of this person\",\"type\":\"string\"},\"species\":{\"description\":\"An array of species resource URLs that this person belongs to\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"starships\":{\"description\":\"An array of starship resource URLs that this person has piloted\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"},\"vehicles\":{\"description\":\"An array of vehicle resource URLs that this person has piloted\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/people",
-                  "segments": [
-                    {
-                      "lit": "people"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/people",
+                  "q": {
                     "exist": [
                       "page",
                       "search"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "people"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -455,29 +541,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /people/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /people/{id}",
-                    "json": "{\"operationId\":\"getPersonById\",\"parameters\":[{\"description\":\"ID of the person to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"birth_year\":\"19BBY\",\"created\":\"2014-12-09T13:50:51.644000Z\",\"edited\":\"2014-12-20T21:17:56.891000Z\",\"eye_color\":\"blue\",\"films\":[\"https://swapi.dev/api/films/2/\",\"https://swapi.dev/api/films/6/\",\"https://swapi.dev/api/films/3/\",\"https://swapi.dev/api/films/1/\",\"https://swapi.dev/api/films/7/\"],\"gender\":\"male\",\"hair_color\":\"blond\",\"height\":\"172\",\"homeworld\":\"https://swapi.dev/api/planets/1/\",\"mass\":\"77\",\"name\":\"Luke Skywalker\",\"skin_color\":\"fair\",\"species\":[\"https://swapi.dev/api/species/1/\"],\"starships\":[\"https://swapi.dev/api/starships/12/\",\"https://swapi.dev/api/starships/22/\"],\"url\":\"https://swapi.dev/api/people/1/\",\"vehicles\":[\"https://swapi.dev/api/vehicles/14/\",\"https://swapi.dev/api/vehicles/30/\"]},\"schema\":{\"properties\":{\"birth_year\":{\"description\":\"The birth year of the person, using the in-universe standard of BBY or ABY\",\"type\":\"string\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"eye_color\":{\"description\":\"The eye color of this person\",\"type\":\"string\"},\"films\":{\"description\":\"An array of film resource URLs that this person has been in\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"gender\":{\"description\":\"The gender of this person\",\"type\":\"string\"},\"hair_color\":{\"description\":\"The hair color of this person\",\"type\":\"string\"},\"height\":{\"description\":\"The height of the person in centimeters\",\"type\":\"string\"},\"homeworld\":{\"description\":\"The URL of the planet resource that this person was born on\",\"type\":\"string\"},\"mass\":{\"description\":\"The mass of the person in kilograms\",\"type\":\"string\"},\"name\":{\"description\":\"The name of this person\",\"type\":\"string\"},\"skin_color\":{\"description\":\"The skin color of this person\",\"type\":\"string\"},\"species\":{\"description\":\"An array of species resource URLs that this person belongs to\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"starships\":{\"description\":\"An array of starship resource URLs that this person has piloted\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"},\"vehicles\":{\"description\":\"An array of vehicle resource URLs that this person has piloted\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Person not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/people/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/people/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "people"
                     },
@@ -485,12 +576,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -507,114 +593,129 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "climate",
-              "req": false,
-              "short": "The climate of this planet",
-              "type": "`$STRING`"
+          "fields": {
+            "climate": {
+              "a": true,
+              "h": "Climate",
+              "n": "climate",
+              "r": false,
+              "sh": "The climate of this planet",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "created",
-              "req": false,
-              "short": "The ISO 8601 date format of the time that this resource was created",
-              "type": "`$STRING`"
+            "created": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created",
+              "n": "created",
+              "r": false,
+              "sh": "The ISO 8601 date format of the time that this resource was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "diameter",
-              "req": false,
-              "short": "The diameter of this planet in kilometers",
-              "type": "`$STRING`"
+            "diameter": {
+              "a": true,
+              "h": "Diameter",
+              "n": "diameter",
+              "r": false,
+              "sh": "The diameter of this planet in kilometers",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "edited",
-              "req": false,
-              "short": "The ISO 8601 date format of the time that this resource was edited",
-              "type": "`$STRING`"
+            "edited": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Edited",
+              "n": "edited",
+              "r": false,
+              "sh": "The ISO 8601 date format of the time that this resource was edited",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "films",
-              "req": false,
-              "short": "An array of Film URL Resources that this planet has appeared in",
-              "type": "`$ARRAY`"
+            "films": {
+              "a": true,
+              "h": "Films",
+              "n": "films",
+              "r": false,
+              "sh": "An array of Film URL Resources that this planet has appeared in",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "gravity",
-              "req": false,
-              "short": "A number denoting the gravity of this planet",
-              "type": "`$STRING`"
+            "gravity": {
+              "a": true,
+              "h": "Gravity",
+              "n": "gravity",
+              "r": false,
+              "sh": "A number denoting the gravity of this planet",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of this planet",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of this planet",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "orbital_period",
-              "req": false,
-              "short": "The number of standard days it takes for this planet to complete a single orbit of its local star",
-              "type": "`$STRING`"
+            "orbital_period": {
+              "a": true,
+              "h": "Orbital Period",
+              "n": "orbital_period",
+              "r": false,
+              "sh": "The number of standard days it takes for this planet to complete a single orbit of its local star",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "population",
-              "req": false,
-              "short": "The average population of sentient beings inhabiting this planet",
-              "type": "`$STRING`"
+            "population": {
+              "a": true,
+              "h": "Population",
+              "n": "population",
+              "r": false,
+              "sh": "The average population of sentient beings inhabiting this planet",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "residents",
-              "req": false,
-              "short": "An array of People URL Resources that live on this planet",
-              "type": "`$ARRAY`"
+            "residents": {
+              "a": true,
+              "h": "Residents",
+              "n": "residents",
+              "r": false,
+              "sh": "An array of People URL Resources that live on this planet",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "rotation_period",
-              "req": false,
-              "short": "The number of standard hours it takes for this planet to complete a single rotation on its axis",
-              "type": "`$STRING`"
+            "rotation_period": {
+              "a": true,
+              "h": "Rotation Period",
+              "n": "rotation_period",
+              "r": false,
+              "sh": "The number of standard hours it takes for this planet to complete a single rotation on its axis",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "surface_water",
-              "req": false,
-              "short": "The percentage of the planet surface that is naturally occurring water",
-              "type": "`$STRING`"
+            "surface_water": {
+              "a": true,
+              "h": "Surface Water",
+              "n": "surface_water",
+              "r": false,
+              "sh": "The percentage of the planet surface that is naturally occurring water",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "terrain",
-              "req": false,
-              "short": "The terrain of this planet",
-              "type": "`$STRING`"
+            "terrain": {
+              "a": true,
+              "h": "Terrain",
+              "n": "terrain",
+              "r": false,
+              "sh": "The terrain of this planet",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "The hypermedia URL of this resource",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "The hypermedia URL of this resource",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -626,49 +727,49 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /planets",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "search",
-                        "orig": "search",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "search",
+                        "or": "search",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /planets",
-                    "json": "{\"operationId\":\"getAllPlanets\",\"parameters\":[{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Search query to filter planets by name\",\"in\":\"query\",\"name\":\"search\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"The total number of planets\",\"type\":\"integer\"},\"next\":{\"description\":\"The URL for the next page of results\",\"nullable\":true,\"type\":\"string\"},\"previous\":{\"description\":\"The URL for the previous page of results\",\"nullable\":true,\"type\":\"string\"},\"results\":{\"items\":{\"properties\":{\"climate\":{\"description\":\"The climate of this planet\",\"type\":\"string\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"diameter\":{\"description\":\"The diameter of this planet in kilometers\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"films\":{\"description\":\"An array of Film URL Resources that this planet has appeared in\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"gravity\":{\"description\":\"A number denoting the gravity of this planet\",\"type\":\"string\"},\"name\":{\"description\":\"The name of this planet\",\"type\":\"string\"},\"orbital_period\":{\"description\":\"The number of standard days it takes for this planet to complete a single orbit of its local star\",\"type\":\"string\"},\"population\":{\"description\":\"The average population of sentient beings inhabiting this planet\",\"type\":\"string\"},\"residents\":{\"description\":\"An array of People URL Resources that live on this planet\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"rotation_period\":{\"description\":\"The number of standard hours it takes for this planet to complete a single rotation on its axis\",\"type\":\"string\"},\"surface_water\":{\"description\":\"The percentage of the planet surface that is naturally occurring water\",\"type\":\"string\"},\"terrain\":{\"description\":\"The terrain of this planet\",\"type\":\"string\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/planets",
-                  "segments": [
-                    {
-                      "lit": "planets"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/planets",
+                  "q": {
                     "exist": [
                       "page",
                       "search"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "planets"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -680,29 +781,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /planets/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /planets/{id}",
-                    "json": "{\"operationId\":\"getPlanetById\",\"parameters\":[{\"description\":\"ID of the planet to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"climate\":{\"description\":\"The climate of this planet\",\"type\":\"string\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"diameter\":{\"description\":\"The diameter of this planet in kilometers\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"films\":{\"description\":\"An array of Film URL Resources that this planet has appeared in\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"gravity\":{\"description\":\"A number denoting the gravity of this planet\",\"type\":\"string\"},\"name\":{\"description\":\"The name of this planet\",\"type\":\"string\"},\"orbital_period\":{\"description\":\"The number of standard days it takes for this planet to complete a single orbit of its local star\",\"type\":\"string\"},\"population\":{\"description\":\"The average population of sentient beings inhabiting this planet\",\"type\":\"string\"},\"residents\":{\"description\":\"An array of People URL Resources that live on this planet\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"rotation_period\":{\"description\":\"The number of standard hours it takes for this planet to complete a single rotation on its axis\",\"type\":\"string\"},\"surface_water\":{\"description\":\"The percentage of the planet surface that is naturally occurring water\",\"type\":\"string\"},\"terrain\":{\"description\":\"The terrain of this planet\",\"type\":\"string\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Planet not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/planets/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/planets/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "planets"
                     },
@@ -710,12 +816,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -732,121 +833,137 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "average_height",
-              "req": false,
-              "short": "The average height of this species in centimeters",
-              "type": "`$STRING`"
+          "fields": {
+            "average_height": {
+              "a": true,
+              "h": "Average Height",
+              "n": "average_height",
+              "r": false,
+              "sh": "The average height of this species in centimeters",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "average_lifespan",
-              "req": false,
-              "short": "The average lifespan of this species in years",
-              "type": "`$STRING`"
+            "average_lifespan": {
+              "a": true,
+              "h": "Average Lifespan",
+              "n": "average_lifespan",
+              "r": false,
+              "sh": "The average lifespan of this species in years",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "classification",
-              "req": false,
-              "short": "The classification of this species",
-              "type": "`$STRING`"
+            "classification": {
+              "a": true,
+              "h": "Classification",
+              "n": "classification",
+              "r": false,
+              "sh": "The classification of this species",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "created",
-              "req": false,
-              "short": "The ISO 8601 date format of the time that this resource was created",
-              "type": "`$STRING`"
+            "created": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created",
+              "n": "created",
+              "r": false,
+              "sh": "The ISO 8601 date format of the time that this resource was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "designation",
-              "req": false,
-              "short": "The designation of this species",
-              "type": "`$STRING`"
+            "designation": {
+              "a": true,
+              "h": "Designation",
+              "n": "designation",
+              "r": false,
+              "sh": "The designation of this species",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "edited",
-              "req": false,
-              "short": "The ISO 8601 date format of the time that this resource was edited",
-              "type": "`$STRING`"
+            "edited": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Edited",
+              "n": "edited",
+              "r": false,
+              "sh": "The ISO 8601 date format of the time that this resource was edited",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "eye_colors",
-              "req": false,
-              "short": "A comma-separated string of common eye colors for this species",
-              "type": "`$STRING`"
+            "eye_colors": {
+              "a": true,
+              "h": "Eye Colors",
+              "n": "eye_colors",
+              "r": false,
+              "sh": "A comma-separated string of common eye colors for this species",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "films",
-              "req": false,
-              "short": "An array of Film URL Resources that this species has appeared in",
-              "type": "`$ARRAY`"
+            "films": {
+              "a": true,
+              "h": "Films",
+              "n": "films",
+              "r": false,
+              "sh": "An array of Film URL Resources that this species has appeared in",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "hair_colors",
-              "req": false,
-              "short": "A comma-separated string of common hair colors for this species",
-              "type": "`$STRING`"
+            "hair_colors": {
+              "a": true,
+              "h": "Hair Colors",
+              "n": "hair_colors",
+              "r": false,
+              "sh": "A comma-separated string of common hair colors for this species",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "homeworld",
-              "req": false,
-              "short": "The URL of a planet resource that is the homeworld of this species",
-              "type": "`$STRING`"
+            "homeworld": {
+              "a": true,
+              "h": "Homeworld",
+              "n": "homeworld",
+              "r": false,
+              "sh": "The URL of a planet resource that is the homeworld of this species",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "language",
-              "req": false,
-              "short": "The language commonly spoken by this species",
-              "type": "`$STRING`"
+            "language": {
+              "a": true,
+              "h": "Language",
+              "n": "language",
+              "r": false,
+              "sh": "The language commonly spoken by this species",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of this species",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of this species",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "people",
-              "req": false,
-              "short": "An array of People URL Resources that are a part of this species",
-              "type": "`$ARRAY`"
+            "people": {
+              "a": true,
+              "h": "People",
+              "n": "people",
+              "r": false,
+              "sh": "An array of People URL Resources that are a part of this species",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "skin_colors",
-              "req": false,
-              "short": "A comma-separated string of common skin colors for this species",
-              "type": "`$STRING`"
+            "skin_colors": {
+              "a": true,
+              "h": "Skin Colors",
+              "n": "skin_colors",
+              "r": false,
+              "sh": "A comma-separated string of common skin colors for this species",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "The hypermedia URL of this resource",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "The hypermedia URL of this resource",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -858,49 +975,49 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /species",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "search",
-                        "orig": "search",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "search",
+                        "or": "search",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /species",
-                    "json": "{\"operationId\":\"getAllSpecies\",\"parameters\":[{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Search query to filter species by name\",\"in\":\"query\",\"name\":\"search\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"The total number of species\",\"type\":\"integer\"},\"next\":{\"description\":\"The URL for the next page of results\",\"nullable\":true,\"type\":\"string\"},\"previous\":{\"description\":\"The URL for the previous page of results\",\"nullable\":true,\"type\":\"string\"},\"results\":{\"items\":{\"properties\":{\"average_height\":{\"description\":\"The average height of this species in centimeters\",\"type\":\"string\"},\"average_lifespan\":{\"description\":\"The average lifespan of this species in years\",\"type\":\"string\"},\"classification\":{\"description\":\"The classification of this species\",\"type\":\"string\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"designation\":{\"description\":\"The designation of this species\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"eye_colors\":{\"description\":\"A comma-separated string of common eye colors for this species\",\"type\":\"string\"},\"films\":{\"description\":\"An array of Film URL Resources that this species has appeared in\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"hair_colors\":{\"description\":\"A comma-separated string of common hair colors for this species\",\"type\":\"string\"},\"homeworld\":{\"description\":\"The URL of a planet resource that is the homeworld of this species\",\"nullable\":true,\"type\":\"string\"},\"language\":{\"description\":\"The language commonly spoken by this species\",\"type\":\"string\"},\"name\":{\"description\":\"The name of this species\",\"type\":\"string\"},\"people\":{\"description\":\"An array of People URL Resources that are a part of this species\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"skin_colors\":{\"description\":\"A comma-separated string of common skin colors for this species\",\"type\":\"string\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/species",
-                  "segments": [
-                    {
-                      "lit": "species"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/species",
+                  "q": {
                     "exist": [
                       "page",
                       "search"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "species"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -912,29 +1029,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /species/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /species/{id}",
-                    "json": "{\"operationId\":\"getSpeciesById\",\"parameters\":[{\"description\":\"ID of the species to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"average_height\":{\"description\":\"The average height of this species in centimeters\",\"type\":\"string\"},\"average_lifespan\":{\"description\":\"The average lifespan of this species in years\",\"type\":\"string\"},\"classification\":{\"description\":\"The classification of this species\",\"type\":\"string\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"designation\":{\"description\":\"The designation of this species\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"eye_colors\":{\"description\":\"A comma-separated string of common eye colors for this species\",\"type\":\"string\"},\"films\":{\"description\":\"An array of Film URL Resources that this species has appeared in\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"hair_colors\":{\"description\":\"A comma-separated string of common hair colors for this species\",\"type\":\"string\"},\"homeworld\":{\"description\":\"The URL of a planet resource that is the homeworld of this species\",\"nullable\":true,\"type\":\"string\"},\"language\":{\"description\":\"The language commonly spoken by this species\",\"type\":\"string\"},\"name\":{\"description\":\"The name of this species\",\"type\":\"string\"},\"people\":{\"description\":\"An array of People URL Resources that are a part of this species\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"skin_colors\":{\"description\":\"A comma-separated string of common skin colors for this species\",\"type\":\"string\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Species not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/species/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/species/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "species"
                     },
@@ -942,12 +1064,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -964,142 +1081,161 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "MGLT",
-              "req": false,
-              "short": "The Maximum number of Megalights this starship can travel in a standard hour",
-              "type": "`$STRING`"
+          "fields": {
+            "MGLT": {
+              "a": true,
+              "h": "Mglt",
+              "n": "MGLT",
+              "r": false,
+              "sh": "The Maximum number of Megalights this starship can travel in a standard hour",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "cargo_capacity",
-              "req": false,
-              "short": "The maximum number of kilograms that this starship can transport",
-              "type": "`$STRING`"
+            "cargo_capacity": {
+              "a": true,
+              "h": "Cargo Capacity",
+              "n": "cargo_capacity",
+              "r": false,
+              "sh": "The maximum number of kilograms that this starship can transport",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "consumables",
-              "req": false,
-              "short": "The maximum length of time that this starship can provide consumables for its entire crew without having to resupply",
-              "type": "`$STRING`"
+            "consumables": {
+              "a": true,
+              "h": "Consumables",
+              "n": "consumables",
+              "r": false,
+              "sh": "The maximum length of time that this starship can provide consumables for its entire crew without having to resupply",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "cost_in_credits",
-              "req": false,
-              "short": "The cost of this starship new, in galactic credits",
-              "type": "`$STRING`"
+            "cost_in_credits": {
+              "a": true,
+              "h": "Cost In Credits",
+              "n": "cost_in_credits",
+              "r": false,
+              "sh": "The cost of this starship new, in galactic credits",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "created",
-              "req": false,
-              "short": "The ISO 8601 date format of the time that this resource was created",
-              "type": "`$STRING`"
+            "created": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created",
+              "n": "created",
+              "r": false,
+              "sh": "The ISO 8601 date format of the time that this resource was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "crew",
-              "req": false,
-              "short": "The number of personnel needed to run or pilot this starship",
-              "type": "`$STRING`"
+            "crew": {
+              "a": true,
+              "h": "Crew",
+              "n": "crew",
+              "r": false,
+              "sh": "The number of personnel needed to run or pilot this starship",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "edited",
-              "req": false,
-              "short": "The ISO 8601 date format of the time that this resource was edited",
-              "type": "`$STRING`"
+            "edited": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Edited",
+              "n": "edited",
+              "r": false,
+              "sh": "The ISO 8601 date format of the time that this resource was edited",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "films",
-              "req": false,
-              "short": "An array of Film URL Resources that this starship has appeared in",
-              "type": "`$ARRAY`"
+            "films": {
+              "a": true,
+              "h": "Films",
+              "n": "films",
+              "r": false,
+              "sh": "An array of Film URL Resources that this starship has appeared in",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "hyperdrive_rating",
-              "req": false,
-              "short": "The class of this starships hyperdrive",
-              "type": "`$STRING`"
+            "hyperdrive_rating": {
+              "a": true,
+              "h": "Hyperdrive Rating",
+              "n": "hyperdrive_rating",
+              "r": false,
+              "sh": "The class of this starships hyperdrive",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "length",
-              "req": false,
-              "short": "The length of this starship in meters",
-              "type": "`$STRING`"
+            "length": {
+              "a": true,
+              "h": "Length",
+              "n": "length",
+              "r": false,
+              "sh": "The length of this starship in meters",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "manufacturer",
-              "req": false,
-              "short": "The manufacturer of this starship",
-              "type": "`$STRING`"
+            "manufacturer": {
+              "a": true,
+              "h": "Manufacturer",
+              "n": "manufacturer",
+              "r": false,
+              "sh": "The manufacturer of this starship",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "max_atmosphering_speed",
-              "req": false,
-              "short": "The maximum speed of this starship in atmosphere",
-              "type": "`$STRING`"
+            "max_atmosphering_speed": {
+              "a": true,
+              "h": "Max Atmosphering Speed",
+              "n": "max_atmosphering_speed",
+              "r": false,
+              "sh": "The maximum speed of this starship in atmosphere",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "model",
-              "req": false,
-              "short": "The model or official name of this starship",
-              "type": "`$STRING`"
+            "model": {
+              "a": true,
+              "h": "Model",
+              "n": "model",
+              "r": false,
+              "sh": "The model or official name of this starship",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of this starship",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of this starship",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "passengers",
-              "req": false,
-              "short": "The number of non-essential people this starship can transport",
-              "type": "`$STRING`"
+            "passengers": {
+              "a": true,
+              "h": "Passengers",
+              "n": "passengers",
+              "r": false,
+              "sh": "The number of non-essential people this starship can transport",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "pilots",
-              "req": false,
-              "short": "An array of People URL Resources that this starship has been piloted by",
-              "type": "`$ARRAY`"
+            "pilots": {
+              "a": true,
+              "h": "Pilots",
+              "n": "pilots",
+              "r": false,
+              "sh": "An array of People URL Resources that this starship has been piloted by",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "starship_class",
-              "req": false,
-              "short": "The class of this starship",
-              "type": "`$STRING`"
+            "starship_class": {
+              "a": true,
+              "h": "Starship Class",
+              "n": "starship_class",
+              "r": false,
+              "sh": "The class of this starship",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "The hypermedia URL of this resource",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "The hypermedia URL of this resource",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1111,49 +1247,49 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /starships",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "search",
-                        "orig": "search",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "search",
+                        "or": "search",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /starships",
-                    "json": "{\"operationId\":\"getAllStarships\",\"parameters\":[{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Search query to filter starships by name\",\"in\":\"query\",\"name\":\"search\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"The total number of starships\",\"type\":\"integer\"},\"next\":{\"description\":\"The URL for the next page of results\",\"nullable\":true,\"type\":\"string\"},\"previous\":{\"description\":\"The URL for the previous page of results\",\"nullable\":true,\"type\":\"string\"},\"results\":{\"items\":{\"properties\":{\"MGLT\":{\"description\":\"The Maximum number of Megalights this starship can travel in a standard hour\",\"type\":\"string\"},\"cargo_capacity\":{\"description\":\"The maximum number of kilograms that this starship can transport\",\"type\":\"string\"},\"consumables\":{\"description\":\"The maximum length of time that this starship can provide consumables for its entire crew without having to resupply\",\"type\":\"string\"},\"cost_in_credits\":{\"description\":\"The cost of this starship new, in galactic credits\",\"type\":\"string\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"crew\":{\"description\":\"The number of personnel needed to run or pilot this starship\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"films\":{\"description\":\"An array of Film URL Resources that this starship has appeared in\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"hyperdrive_rating\":{\"description\":\"The class of this starships hyperdrive\",\"type\":\"string\"},\"length\":{\"description\":\"The length of this starship in meters\",\"type\":\"string\"},\"manufacturer\":{\"description\":\"The manufacturer of this starship\",\"type\":\"string\"},\"max_atmosphering_speed\":{\"description\":\"The maximum speed of this starship in atmosphere\",\"type\":\"string\"},\"model\":{\"description\":\"The model or official name of this starship\",\"type\":\"string\"},\"name\":{\"description\":\"The name of this starship\",\"type\":\"string\"},\"passengers\":{\"description\":\"The number of non-essential people this starship can transport\",\"type\":\"string\"},\"pilots\":{\"description\":\"An array of People URL Resources that this starship has been piloted by\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"starship_class\":{\"description\":\"The class of this starship\",\"type\":\"string\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/starships",
-                  "segments": [
-                    {
-                      "lit": "starships"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/starships",
+                  "q": {
                     "exist": [
                       "page",
                       "search"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "starships"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -1165,29 +1301,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /starships/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /starships/{id}",
-                    "json": "{\"operationId\":\"getStarshipById\",\"parameters\":[{\"description\":\"ID of the starship to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"MGLT\":{\"description\":\"The Maximum number of Megalights this starship can travel in a standard hour\",\"type\":\"string\"},\"cargo_capacity\":{\"description\":\"The maximum number of kilograms that this starship can transport\",\"type\":\"string\"},\"consumables\":{\"description\":\"The maximum length of time that this starship can provide consumables for its entire crew without having to resupply\",\"type\":\"string\"},\"cost_in_credits\":{\"description\":\"The cost of this starship new, in galactic credits\",\"type\":\"string\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"crew\":{\"description\":\"The number of personnel needed to run or pilot this starship\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"films\":{\"description\":\"An array of Film URL Resources that this starship has appeared in\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"hyperdrive_rating\":{\"description\":\"The class of this starships hyperdrive\",\"type\":\"string\"},\"length\":{\"description\":\"The length of this starship in meters\",\"type\":\"string\"},\"manufacturer\":{\"description\":\"The manufacturer of this starship\",\"type\":\"string\"},\"max_atmosphering_speed\":{\"description\":\"The maximum speed of this starship in atmosphere\",\"type\":\"string\"},\"model\":{\"description\":\"The model or official name of this starship\",\"type\":\"string\"},\"name\":{\"description\":\"The name of this starship\",\"type\":\"string\"},\"passengers\":{\"description\":\"The number of non-essential people this starship can transport\",\"type\":\"string\"},\"pilots\":{\"description\":\"An array of People URL Resources that this starship has been piloted by\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"starship_class\":{\"description\":\"The class of this starship\",\"type\":\"string\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Starship not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/starships/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/starships/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "starships"
                     },
@@ -1195,12 +1336,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1217,128 +1353,145 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "cargo_capacity",
-              "req": false,
-              "short": "The maximum number of kilograms that this vehicle can transport",
-              "type": "`$STRING`"
+          "fields": {
+            "cargo_capacity": {
+              "a": true,
+              "h": "Cargo Capacity",
+              "n": "cargo_capacity",
+              "r": false,
+              "sh": "The maximum number of kilograms that this vehicle can transport",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "consumables",
-              "req": false,
-              "short": "The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply",
-              "type": "`$STRING`"
+            "consumables": {
+              "a": true,
+              "h": "Consumables",
+              "n": "consumables",
+              "r": false,
+              "sh": "The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "cost_in_credits",
-              "req": false,
-              "short": "The cost of this vehicle new, in galactic credits",
-              "type": "`$STRING`"
+            "cost_in_credits": {
+              "a": true,
+              "h": "Cost In Credits",
+              "n": "cost_in_credits",
+              "r": false,
+              "sh": "The cost of this vehicle new, in galactic credits",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "created",
-              "req": false,
-              "short": "The ISO 8601 date format of the time that this resource was created",
-              "type": "`$STRING`"
+            "created": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created",
+              "n": "created",
+              "r": false,
+              "sh": "The ISO 8601 date format of the time that this resource was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "crew",
-              "req": false,
-              "short": "The number of personnel needed to run or pilot this vehicle",
-              "type": "`$STRING`"
+            "crew": {
+              "a": true,
+              "h": "Crew",
+              "n": "crew",
+              "r": false,
+              "sh": "The number of personnel needed to run or pilot this vehicle",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "edited",
-              "req": false,
-              "short": "The ISO 8601 date format of the time that this resource was edited",
-              "type": "`$STRING`"
+            "edited": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Edited",
+              "n": "edited",
+              "r": false,
+              "sh": "The ISO 8601 date format of the time that this resource was edited",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "films",
-              "req": false,
-              "short": "An array of Film URL Resources that this vehicle has appeared in",
-              "type": "`$ARRAY`"
+            "films": {
+              "a": true,
+              "h": "Films",
+              "n": "films",
+              "r": false,
+              "sh": "An array of Film URL Resources that this vehicle has appeared in",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "length",
-              "req": false,
-              "short": "The length of this vehicle in meters",
-              "type": "`$STRING`"
+            "length": {
+              "a": true,
+              "h": "Length",
+              "n": "length",
+              "r": false,
+              "sh": "The length of this vehicle in meters",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "manufacturer",
-              "req": false,
-              "short": "The manufacturer of this vehicle",
-              "type": "`$STRING`"
+            "manufacturer": {
+              "a": true,
+              "h": "Manufacturer",
+              "n": "manufacturer",
+              "r": false,
+              "sh": "The manufacturer of this vehicle",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "max_atmosphering_speed",
-              "req": false,
-              "short": "The maximum speed of this vehicle in atmosphere",
-              "type": "`$STRING`"
+            "max_atmosphering_speed": {
+              "a": true,
+              "h": "Max Atmosphering Speed",
+              "n": "max_atmosphering_speed",
+              "r": false,
+              "sh": "The maximum speed of this vehicle in atmosphere",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "model",
-              "req": false,
-              "short": "The model or official name of this vehicle",
-              "type": "`$STRING`"
+            "model": {
+              "a": true,
+              "h": "Model",
+              "n": "model",
+              "r": false,
+              "sh": "The model or official name of this vehicle",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of this vehicle",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of this vehicle",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "passengers",
-              "req": false,
-              "short": "The number of non-essential people this vehicle can transport",
-              "type": "`$STRING`"
+            "passengers": {
+              "a": true,
+              "h": "Passengers",
+              "n": "passengers",
+              "r": false,
+              "sh": "The number of non-essential people this vehicle can transport",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "pilots",
-              "req": false,
-              "short": "An array of People URL Resources that this vehicle has been piloted by",
-              "type": "`$ARRAY`"
+            "pilots": {
+              "a": true,
+              "h": "Pilots",
+              "n": "pilots",
+              "r": false,
+              "sh": "An array of People URL Resources that this vehicle has been piloted by",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "url",
-              "req": false,
-              "short": "The hypermedia URL of this resource",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "sh": "The hypermedia URL of this resource",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "vehicle_class",
-              "req": false,
-              "short": "The class of this vehicle",
-              "type": "`$STRING`"
+            "vehicle_class": {
+              "a": true,
+              "h": "Vehicle Class",
+              "n": "vehicle_class",
+              "r": false,
+              "sh": "The class of this vehicle",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1350,49 +1503,49 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /vehicles",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "search",
-                        "orig": "search",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "search",
+                        "or": "search",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /vehicles",
-                    "json": "{\"operationId\":\"getAllVehicles\",\"parameters\":[{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"schema\":{\"default\":1,\"type\":\"integer\"}},{\"description\":\"Search query to filter vehicles by name\",\"in\":\"query\",\"name\":\"search\",\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"The total number of vehicles\",\"type\":\"integer\"},\"next\":{\"description\":\"The URL for the next page of results\",\"nullable\":true,\"type\":\"string\"},\"previous\":{\"description\":\"The URL for the previous page of results\",\"nullable\":true,\"type\":\"string\"},\"results\":{\"items\":{\"properties\":{\"cargo_capacity\":{\"description\":\"The maximum number of kilograms that this vehicle can transport\",\"type\":\"string\"},\"consumables\":{\"description\":\"The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply\",\"type\":\"string\"},\"cost_in_credits\":{\"description\":\"The cost of this vehicle new, in galactic credits\",\"type\":\"string\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"crew\":{\"description\":\"The number of personnel needed to run or pilot this vehicle\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"films\":{\"description\":\"An array of Film URL Resources that this vehicle has appeared in\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"length\":{\"description\":\"The length of this vehicle in meters\",\"type\":\"string\"},\"manufacturer\":{\"description\":\"The manufacturer of this vehicle\",\"type\":\"string\"},\"max_atmosphering_speed\":{\"description\":\"The maximum speed of this vehicle in atmosphere\",\"type\":\"string\"},\"model\":{\"description\":\"The model or official name of this vehicle\",\"type\":\"string\"},\"name\":{\"description\":\"The name of this vehicle\",\"type\":\"string\"},\"passengers\":{\"description\":\"The number of non-essential people this vehicle can transport\",\"type\":\"string\"},\"pilots\":{\"description\":\"An array of People URL Resources that this vehicle has been piloted by\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"},\"vehicle_class\":{\"description\":\"The class of this vehicle\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/vehicles",
-                  "segments": [
-                    {
-                      "lit": "vehicles"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/vehicles",
+                  "q": {
                     "exist": [
                       "page",
                       "search"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "vehicles"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -1404,29 +1557,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /vehicles/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /vehicles/{id}",
-                    "json": "{\"operationId\":\"getVehicleById\",\"parameters\":[{\"description\":\"ID of the vehicle to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"cargo_capacity\":{\"description\":\"The maximum number of kilograms that this vehicle can transport\",\"type\":\"string\"},\"consumables\":{\"description\":\"The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply\",\"type\":\"string\"},\"cost_in_credits\":{\"description\":\"The cost of this vehicle new, in galactic credits\",\"type\":\"string\"},\"created\":{\"description\":\"The ISO 8601 date format of the time that this resource was created\",\"format\":\"date-time\",\"type\":\"string\"},\"crew\":{\"description\":\"The number of personnel needed to run or pilot this vehicle\",\"type\":\"string\"},\"edited\":{\"description\":\"The ISO 8601 date format of the time that this resource was edited\",\"format\":\"date-time\",\"type\":\"string\"},\"films\":{\"description\":\"An array of Film URL Resources that this vehicle has appeared in\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"length\":{\"description\":\"The length of this vehicle in meters\",\"type\":\"string\"},\"manufacturer\":{\"description\":\"The manufacturer of this vehicle\",\"type\":\"string\"},\"max_atmosphering_speed\":{\"description\":\"The maximum speed of this vehicle in atmosphere\",\"type\":\"string\"},\"model\":{\"description\":\"The model or official name of this vehicle\",\"type\":\"string\"},\"name\":{\"description\":\"The name of this vehicle\",\"type\":\"string\"},\"passengers\":{\"description\":\"The number of non-essential people this vehicle can transport\",\"type\":\"string\"},\"pilots\":{\"description\":\"An array of People URL Resources that this vehicle has been piloted by\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"url\":{\"description\":\"The hypermedia URL of this resource\",\"type\":\"string\"},\"vehicle_class\":{\"description\":\"The class of this vehicle\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Vehicle not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/vehicles/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/vehicles/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "vehicles"
                     },
@@ -1434,12 +1592,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1868,13 +2021,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1884,19 +2037,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "film_ref01",
                 "srcdatavar": "film_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "film01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1907,15 +2060,6 @@
             }
           ]
         },
-        "BasicPeopleListFlow": {
-          "active": true,
-          "entity": "people_list",
-          "key$": "BasicPeopleListFlow",
-          "kind": "basic",
-          "name": "BasicPeopleListFlow",
-          "param": {},
-          "step": []
-        },
         "BasicPersonFlow": {
           "active": true,
           "entity": "person",
@@ -1925,13 +2069,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1941,19 +2085,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "person_ref01",
                 "srcdatavar": "person_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "person01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1973,13 +2117,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1989,19 +2133,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "planet_ref01",
                 "srcdatavar": "planet_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "planet01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2021,13 +2165,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2037,19 +2181,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "species_ref01",
                 "srcdatavar": "species_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "species01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2069,13 +2213,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2085,19 +2229,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "starship_ref01",
                 "srcdatavar": "starship_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "starship01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2117,13 +2261,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2133,19 +2277,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "vehicle_ref01",
                 "srcdatavar": "vehicle_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "vehicle01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

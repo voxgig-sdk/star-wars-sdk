@@ -106,7 +106,6 @@ class StarWarsConfig
         ],
                 "entity" => [
                     "film" => [],
-                    "people_list" => [],
                     "person" => [],
                     "planet" => [],
                     "species" => [],
@@ -119,80 +118,95 @@ class StarWarsConfig
           'fields' => [
             [
               'name' => 'characters',
-              'short' => 'An array of people resource URLs that are in this film',
+              'title' => 'Characters',
               'type' => '`$ARRAY`',
+              'short' => 'An array of people resource URLs that are in this film',
             ],
             [
-              'format' => 'date-time',
               'name' => 'created',
-              'short' => 'The ISO 8601 date format of the time that this resource was created',
+              'title' => 'Created',
               'type' => '`$STRING`',
+              'short' => 'The ISO 8601 date format of the time that this resource was created',
+              'format' => 'date-time',
             ],
             [
               'name' => 'director',
-              'short' => 'The name of the director of this film',
+              'title' => 'Director',
               'type' => '`$STRING`',
+              'short' => 'The name of the director of this film',
             ],
             [
-              'format' => 'date-time',
               'name' => 'edited',
-              'short' => 'The ISO 8601 date format of the time that this resource was edited',
+              'title' => 'Edited',
               'type' => '`$STRING`',
+              'short' => 'The ISO 8601 date format of the time that this resource was edited',
+              'format' => 'date-time',
             ],
             [
               'name' => 'episode_id',
-              'short' => 'The episode number of this film',
+              'title' => 'Episode Id',
               'type' => '`$INTEGER`',
+              'short' => 'The episode number of this film',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'opening_crawl',
-              'short' => 'The opening paragraphs at the beginning of this film',
+              'title' => 'Opening Crawl',
               'type' => '`$STRING`',
+              'short' => 'The opening paragraphs at the beginning of this film',
             ],
             [
               'name' => 'planets',
-              'short' => 'An array of planet resource URLs that are in this film',
+              'title' => 'Planets',
               'type' => '`$ARRAY`',
+              'short' => 'An array of planet resource URLs that are in this film',
             ],
             [
               'name' => 'producer',
-              'short' => 'The name(s) of the producer(s) of this film',
+              'title' => 'Producer',
               'type' => '`$STRING`',
+              'short' => 'The name(s) of the producer(s) of this film',
             ],
             [
-              'format' => 'date',
               'name' => 'release_date',
-              'short' => 'The release date of this film',
+              'title' => 'Release Date',
               'type' => '`$STRING`',
+              'short' => 'The release date of this film',
+              'format' => 'date',
             ],
             [
               'name' => 'species',
-              'short' => 'An array of species resource URLs that are in this film',
+              'title' => 'Species',
               'type' => '`$ARRAY`',
+              'short' => 'An array of species resource URLs that are in this film',
             ],
             [
               'name' => 'starships',
-              'short' => 'An array of starship resource URLs that are in this film',
+              'title' => 'Starships',
               'type' => '`$ARRAY`',
+              'short' => 'An array of starship resource URLs that are in this film',
             ],
             [
               'name' => 'title',
-              'short' => 'The title of this film',
+              'title' => 'Title',
               'type' => '`$STRING`',
+              'short' => 'The title of this film',
             ],
             [
               'name' => 'url',
-              'short' => 'The hypermedia URL of this resource',
+              'title' => 'Url',
               'type' => '`$STRING`',
+              'short' => 'The hypermedia URL of this resource',
             ],
             [
               'name' => 'vehicles',
-              'short' => 'An array of vehicle resource URLs that are in this film',
+              'title' => 'Vehicles',
               'type' => '`$ARRAY`',
+              'short' => 'An array of vehicle resource URLs that are in this film',
             ],
           ],
           'id' => [
@@ -206,23 +220,6 @@ class StarWarsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/films',
@@ -231,18 +228,36 @@ class StarWarsConfig
                       'lit' => 'films',
                     ],
                   ],
+                  'parts' => [
+                    'films',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.results`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'page',
                       'search',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.results`',
-                  ],
-                  'parts' => [
-                    'films',
                   ],
                 ],
               ],
@@ -252,17 +267,6 @@ class StarWarsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/films/{id}',
@@ -274,18 +278,30 @@ class StarWarsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
+                  'parts' => [
+                    'films',
+                    '{id}',
                   ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'films',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -295,101 +311,110 @@ class StarWarsConfig
             'ancestors' => [],
           ],
         ],
-        'people_list' => [
-          'fields' => [],
-          'name' => 'people_list',
-          'op' => [],
-          'relations' => [
-            'ancestors' => [],
-          ],
-        ],
         'person' => [
           'fields' => [
             [
               'name' => 'birth_year',
+              'title' => 'Birth Year',
+              'type' => '`$STRING`',
               'short' => 'The birth year of the person, using the in-universe standard of BBY or ABY',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'created',
-              'short' => 'The ISO 8601 date format of the time that this resource was created',
+              'title' => 'Created',
               'type' => '`$STRING`',
+              'short' => 'The ISO 8601 date format of the time that this resource was created',
+              'format' => 'date-time',
             ],
             [
-              'format' => 'date-time',
               'name' => 'edited',
-              'short' => 'The ISO 8601 date format of the time that this resource was edited',
+              'title' => 'Edited',
               'type' => '`$STRING`',
+              'short' => 'The ISO 8601 date format of the time that this resource was edited',
+              'format' => 'date-time',
             ],
             [
               'name' => 'eye_color',
-              'short' => 'The eye color of this person',
+              'title' => 'Eye Color',
               'type' => '`$STRING`',
+              'short' => 'The eye color of this person',
             ],
             [
               'name' => 'films',
-              'short' => 'An array of film resource URLs that this person has been in',
+              'title' => 'Films',
               'type' => '`$ARRAY`',
+              'short' => 'An array of film resource URLs that this person has been in',
             ],
             [
               'name' => 'gender',
-              'short' => 'The gender of this person',
+              'title' => 'Gender',
               'type' => '`$STRING`',
+              'short' => 'The gender of this person',
             ],
             [
               'name' => 'hair_color',
-              'short' => 'The hair color of this person',
+              'title' => 'Hair Color',
               'type' => '`$STRING`',
+              'short' => 'The hair color of this person',
             ],
             [
               'name' => 'height',
-              'short' => 'The height of the person in centimeters',
+              'title' => 'Height',
               'type' => '`$STRING`',
+              'short' => 'The height of the person in centimeters',
             ],
             [
               'name' => 'homeworld',
-              'short' => 'The URL of the planet resource that this person was born on',
+              'title' => 'Homeworld',
               'type' => '`$STRING`',
+              'short' => 'The URL of the planet resource that this person was born on',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'mass',
-              'short' => 'The mass of the person in kilograms',
+              'title' => 'Mass',
               'type' => '`$STRING`',
+              'short' => 'The mass of the person in kilograms',
             ],
             [
               'name' => 'name',
-              'short' => 'The name of this person',
+              'title' => 'Name',
               'type' => '`$STRING`',
+              'short' => 'The name of this person',
             ],
             [
               'name' => 'skin_color',
-              'short' => 'The skin color of this person',
+              'title' => 'Skin Color',
               'type' => '`$STRING`',
+              'short' => 'The skin color of this person',
             ],
             [
               'name' => 'species',
-              'short' => 'An array of species resource URLs that this person belongs to',
+              'title' => 'Species',
               'type' => '`$ARRAY`',
+              'short' => 'An array of species resource URLs that this person belongs to',
             ],
             [
               'name' => 'starships',
-              'short' => 'An array of starship resource URLs that this person has piloted',
+              'title' => 'Starships',
               'type' => '`$ARRAY`',
+              'short' => 'An array of starship resource URLs that this person has piloted',
             ],
             [
               'name' => 'url',
-              'short' => 'The hypermedia URL of this resource',
+              'title' => 'Url',
               'type' => '`$STRING`',
+              'short' => 'The hypermedia URL of this resource',
             ],
             [
               'name' => 'vehicles',
-              'short' => 'An array of vehicle resource URLs that this person has piloted',
+              'title' => 'Vehicles',
               'type' => '`$ARRAY`',
+              'short' => 'An array of vehicle resource URLs that this person has piloted',
             ],
           ],
           'id' => [
@@ -403,23 +428,6 @@ class StarWarsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/people',
@@ -428,18 +436,36 @@ class StarWarsConfig
                       'lit' => 'people',
                     ],
                   ],
+                  'parts' => [
+                    'people',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.results`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'page',
                       'search',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.results`',
-                  ],
-                  'parts' => [
-                    'people',
                   ],
                 ],
               ],
@@ -449,17 +475,6 @@ class StarWarsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/people/{id}',
@@ -471,18 +486,30 @@ class StarWarsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
+                  'parts' => [
+                    'people',
+                    '{id}',
                   ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'people',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -496,79 +523,94 @@ class StarWarsConfig
           'fields' => [
             [
               'name' => 'climate',
-              'short' => 'The climate of this planet',
+              'title' => 'Climate',
               'type' => '`$STRING`',
+              'short' => 'The climate of this planet',
             ],
             [
-              'format' => 'date-time',
               'name' => 'created',
-              'short' => 'The ISO 8601 date format of the time that this resource was created',
+              'title' => 'Created',
               'type' => '`$STRING`',
+              'short' => 'The ISO 8601 date format of the time that this resource was created',
+              'format' => 'date-time',
             ],
             [
               'name' => 'diameter',
-              'short' => 'The diameter of this planet in kilometers',
+              'title' => 'Diameter',
               'type' => '`$STRING`',
+              'short' => 'The diameter of this planet in kilometers',
             ],
             [
-              'format' => 'date-time',
               'name' => 'edited',
-              'short' => 'The ISO 8601 date format of the time that this resource was edited',
+              'title' => 'Edited',
               'type' => '`$STRING`',
+              'short' => 'The ISO 8601 date format of the time that this resource was edited',
+              'format' => 'date-time',
             ],
             [
               'name' => 'films',
-              'short' => 'An array of Film URL Resources that this planet has appeared in',
+              'title' => 'Films',
               'type' => '`$ARRAY`',
+              'short' => 'An array of Film URL Resources that this planet has appeared in',
             ],
             [
               'name' => 'gravity',
-              'short' => 'A number denoting the gravity of this planet',
+              'title' => 'Gravity',
               'type' => '`$STRING`',
+              'short' => 'A number denoting the gravity of this planet',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
-              'short' => 'The name of this planet',
+              'title' => 'Name',
               'type' => '`$STRING`',
+              'short' => 'The name of this planet',
             ],
             [
               'name' => 'orbital_period',
-              'short' => 'The number of standard days it takes for this planet to complete a single orbit of its local star',
+              'title' => 'Orbital Period',
               'type' => '`$STRING`',
+              'short' => 'The number of standard days it takes for this planet to complete a single orbit of its local star',
             ],
             [
               'name' => 'population',
-              'short' => 'The average population of sentient beings inhabiting this planet',
+              'title' => 'Population',
               'type' => '`$STRING`',
+              'short' => 'The average population of sentient beings inhabiting this planet',
             ],
             [
               'name' => 'residents',
-              'short' => 'An array of People URL Resources that live on this planet',
+              'title' => 'Residents',
               'type' => '`$ARRAY`',
+              'short' => 'An array of People URL Resources that live on this planet',
             ],
             [
               'name' => 'rotation_period',
-              'short' => 'The number of standard hours it takes for this planet to complete a single rotation on its axis',
+              'title' => 'Rotation Period',
               'type' => '`$STRING`',
+              'short' => 'The number of standard hours it takes for this planet to complete a single rotation on its axis',
             ],
             [
               'name' => 'surface_water',
-              'short' => 'The percentage of the planet surface that is naturally occurring water',
+              'title' => 'Surface Water',
               'type' => '`$STRING`',
+              'short' => 'The percentage of the planet surface that is naturally occurring water',
             ],
             [
               'name' => 'terrain',
-              'short' => 'The terrain of this planet',
+              'title' => 'Terrain',
               'type' => '`$STRING`',
+              'short' => 'The terrain of this planet',
             ],
             [
               'name' => 'url',
-              'short' => 'The hypermedia URL of this resource',
+              'title' => 'Url',
               'type' => '`$STRING`',
+              'short' => 'The hypermedia URL of this resource',
             ],
           ],
           'id' => [
@@ -582,23 +624,6 @@ class StarWarsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/planets',
@@ -607,18 +632,36 @@ class StarWarsConfig
                       'lit' => 'planets',
                     ],
                   ],
+                  'parts' => [
+                    'planets',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.results`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'page',
                       'search',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.results`',
-                  ],
-                  'parts' => [
-                    'planets',
                   ],
                 ],
               ],
@@ -628,17 +671,6 @@ class StarWarsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/planets/{id}',
@@ -650,18 +682,30 @@ class StarWarsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
+                  'parts' => [
+                    'planets',
+                    '{id}',
                   ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'planets',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -675,84 +719,100 @@ class StarWarsConfig
           'fields' => [
             [
               'name' => 'average_height',
-              'short' => 'The average height of this species in centimeters',
+              'title' => 'Average Height',
               'type' => '`$STRING`',
+              'short' => 'The average height of this species in centimeters',
             ],
             [
               'name' => 'average_lifespan',
-              'short' => 'The average lifespan of this species in years',
+              'title' => 'Average Lifespan',
               'type' => '`$STRING`',
+              'short' => 'The average lifespan of this species in years',
             ],
             [
               'name' => 'classification',
-              'short' => 'The classification of this species',
+              'title' => 'Classification',
               'type' => '`$STRING`',
+              'short' => 'The classification of this species',
             ],
             [
-              'format' => 'date-time',
               'name' => 'created',
-              'short' => 'The ISO 8601 date format of the time that this resource was created',
+              'title' => 'Created',
               'type' => '`$STRING`',
+              'short' => 'The ISO 8601 date format of the time that this resource was created',
+              'format' => 'date-time',
             ],
             [
               'name' => 'designation',
-              'short' => 'The designation of this species',
+              'title' => 'Designation',
               'type' => '`$STRING`',
+              'short' => 'The designation of this species',
             ],
             [
-              'format' => 'date-time',
               'name' => 'edited',
-              'short' => 'The ISO 8601 date format of the time that this resource was edited',
+              'title' => 'Edited',
               'type' => '`$STRING`',
+              'short' => 'The ISO 8601 date format of the time that this resource was edited',
+              'format' => 'date-time',
             ],
             [
               'name' => 'eye_colors',
-              'short' => 'A comma-separated string of common eye colors for this species',
+              'title' => 'Eye Colors',
               'type' => '`$STRING`',
+              'short' => 'A comma-separated string of common eye colors for this species',
             ],
             [
               'name' => 'films',
-              'short' => 'An array of Film URL Resources that this species has appeared in',
+              'title' => 'Films',
               'type' => '`$ARRAY`',
+              'short' => 'An array of Film URL Resources that this species has appeared in',
             ],
             [
               'name' => 'hair_colors',
-              'short' => 'A comma-separated string of common hair colors for this species',
+              'title' => 'Hair Colors',
               'type' => '`$STRING`',
+              'short' => 'A comma-separated string of common hair colors for this species',
             ],
             [
               'name' => 'homeworld',
-              'short' => 'The URL of a planet resource that is the homeworld of this species',
+              'title' => 'Homeworld',
               'type' => '`$STRING`',
+              'short' => 'The URL of a planet resource that is the homeworld of this species',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'language',
-              'short' => 'The language commonly spoken by this species',
+              'title' => 'Language',
               'type' => '`$STRING`',
+              'short' => 'The language commonly spoken by this species',
             ],
             [
               'name' => 'name',
-              'short' => 'The name of this species',
+              'title' => 'Name',
               'type' => '`$STRING`',
+              'short' => 'The name of this species',
             ],
             [
               'name' => 'people',
-              'short' => 'An array of People URL Resources that are a part of this species',
+              'title' => 'People',
               'type' => '`$ARRAY`',
+              'short' => 'An array of People URL Resources that are a part of this species',
             ],
             [
               'name' => 'skin_colors',
-              'short' => 'A comma-separated string of common skin colors for this species',
+              'title' => 'Skin Colors',
               'type' => '`$STRING`',
+              'short' => 'A comma-separated string of common skin colors for this species',
             ],
             [
               'name' => 'url',
-              'short' => 'The hypermedia URL of this resource',
+              'title' => 'Url',
               'type' => '`$STRING`',
+              'short' => 'The hypermedia URL of this resource',
             ],
           ],
           'id' => [
@@ -766,23 +826,6 @@ class StarWarsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/species',
@@ -791,18 +834,36 @@ class StarWarsConfig
                       'lit' => 'species',
                     ],
                   ],
+                  'parts' => [
+                    'species',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.results`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'page',
                       'search',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.results`',
-                  ],
-                  'parts' => [
-                    'species',
                   ],
                 ],
               ],
@@ -812,17 +873,6 @@ class StarWarsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/species/{id}',
@@ -834,18 +884,30 @@ class StarWarsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
+                  'parts' => [
+                    'species',
+                    '{id}',
                   ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'species',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -859,99 +921,118 @@ class StarWarsConfig
           'fields' => [
             [
               'name' => 'MGLT',
-              'short' => 'The Maximum number of Megalights this starship can travel in a standard hour',
+              'title' => 'Mglt',
               'type' => '`$STRING`',
+              'short' => 'The Maximum number of Megalights this starship can travel in a standard hour',
             ],
             [
               'name' => 'cargo_capacity',
-              'short' => 'The maximum number of kilograms that this starship can transport',
+              'title' => 'Cargo Capacity',
               'type' => '`$STRING`',
+              'short' => 'The maximum number of kilograms that this starship can transport',
             ],
             [
               'name' => 'consumables',
-              'short' => 'The maximum length of time that this starship can provide consumables for its entire crew without having to resupply',
+              'title' => 'Consumables',
               'type' => '`$STRING`',
+              'short' => 'The maximum length of time that this starship can provide consumables for its entire crew without having to resupply',
             ],
             [
               'name' => 'cost_in_credits',
-              'short' => 'The cost of this starship new, in galactic credits',
+              'title' => 'Cost In Credits',
               'type' => '`$STRING`',
+              'short' => 'The cost of this starship new, in galactic credits',
             ],
             [
-              'format' => 'date-time',
               'name' => 'created',
-              'short' => 'The ISO 8601 date format of the time that this resource was created',
+              'title' => 'Created',
               'type' => '`$STRING`',
+              'short' => 'The ISO 8601 date format of the time that this resource was created',
+              'format' => 'date-time',
             ],
             [
               'name' => 'crew',
-              'short' => 'The number of personnel needed to run or pilot this starship',
+              'title' => 'Crew',
               'type' => '`$STRING`',
+              'short' => 'The number of personnel needed to run or pilot this starship',
             ],
             [
-              'format' => 'date-time',
               'name' => 'edited',
-              'short' => 'The ISO 8601 date format of the time that this resource was edited',
+              'title' => 'Edited',
               'type' => '`$STRING`',
+              'short' => 'The ISO 8601 date format of the time that this resource was edited',
+              'format' => 'date-time',
             ],
             [
               'name' => 'films',
-              'short' => 'An array of Film URL Resources that this starship has appeared in',
+              'title' => 'Films',
               'type' => '`$ARRAY`',
+              'short' => 'An array of Film URL Resources that this starship has appeared in',
             ],
             [
               'name' => 'hyperdrive_rating',
-              'short' => 'The class of this starships hyperdrive',
+              'title' => 'Hyperdrive Rating',
               'type' => '`$STRING`',
+              'short' => 'The class of this starships hyperdrive',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'length',
-              'short' => 'The length of this starship in meters',
+              'title' => 'Length',
               'type' => '`$STRING`',
+              'short' => 'The length of this starship in meters',
             ],
             [
               'name' => 'manufacturer',
-              'short' => 'The manufacturer of this starship',
+              'title' => 'Manufacturer',
               'type' => '`$STRING`',
+              'short' => 'The manufacturer of this starship',
             ],
             [
               'name' => 'max_atmosphering_speed',
-              'short' => 'The maximum speed of this starship in atmosphere',
+              'title' => 'Max Atmosphering Speed',
               'type' => '`$STRING`',
+              'short' => 'The maximum speed of this starship in atmosphere',
             ],
             [
               'name' => 'model',
-              'short' => 'The model or official name of this starship',
+              'title' => 'Model',
               'type' => '`$STRING`',
+              'short' => 'The model or official name of this starship',
             ],
             [
               'name' => 'name',
-              'short' => 'The name of this starship',
+              'title' => 'Name',
               'type' => '`$STRING`',
+              'short' => 'The name of this starship',
             ],
             [
               'name' => 'passengers',
-              'short' => 'The number of non-essential people this starship can transport',
+              'title' => 'Passengers',
               'type' => '`$STRING`',
+              'short' => 'The number of non-essential people this starship can transport',
             ],
             [
               'name' => 'pilots',
-              'short' => 'An array of People URL Resources that this starship has been piloted by',
+              'title' => 'Pilots',
               'type' => '`$ARRAY`',
+              'short' => 'An array of People URL Resources that this starship has been piloted by',
             ],
             [
               'name' => 'starship_class',
-              'short' => 'The class of this starship',
+              'title' => 'Starship Class',
               'type' => '`$STRING`',
+              'short' => 'The class of this starship',
             ],
             [
               'name' => 'url',
-              'short' => 'The hypermedia URL of this resource',
+              'title' => 'Url',
               'type' => '`$STRING`',
+              'short' => 'The hypermedia URL of this resource',
             ],
           ],
           'id' => [
@@ -965,23 +1046,6 @@ class StarWarsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/starships',
@@ -990,18 +1054,36 @@ class StarWarsConfig
                       'lit' => 'starships',
                     ],
                   ],
+                  'parts' => [
+                    'starships',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.results`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'page',
                       'search',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.results`',
-                  ],
-                  'parts' => [
-                    'starships',
                   ],
                 ],
               ],
@@ -1011,17 +1093,6 @@ class StarWarsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/starships/{id}',
@@ -1033,18 +1104,30 @@ class StarWarsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
+                  'parts' => [
+                    'starships',
+                    '{id}',
                   ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'starships',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -1058,89 +1141,106 @@ class StarWarsConfig
           'fields' => [
             [
               'name' => 'cargo_capacity',
-              'short' => 'The maximum number of kilograms that this vehicle can transport',
+              'title' => 'Cargo Capacity',
               'type' => '`$STRING`',
+              'short' => 'The maximum number of kilograms that this vehicle can transport',
             ],
             [
               'name' => 'consumables',
-              'short' => 'The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply',
+              'title' => 'Consumables',
               'type' => '`$STRING`',
+              'short' => 'The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply',
             ],
             [
               'name' => 'cost_in_credits',
-              'short' => 'The cost of this vehicle new, in galactic credits',
+              'title' => 'Cost In Credits',
               'type' => '`$STRING`',
+              'short' => 'The cost of this vehicle new, in galactic credits',
             ],
             [
-              'format' => 'date-time',
               'name' => 'created',
-              'short' => 'The ISO 8601 date format of the time that this resource was created',
+              'title' => 'Created',
               'type' => '`$STRING`',
+              'short' => 'The ISO 8601 date format of the time that this resource was created',
+              'format' => 'date-time',
             ],
             [
               'name' => 'crew',
-              'short' => 'The number of personnel needed to run or pilot this vehicle',
+              'title' => 'Crew',
               'type' => '`$STRING`',
+              'short' => 'The number of personnel needed to run or pilot this vehicle',
             ],
             [
-              'format' => 'date-time',
               'name' => 'edited',
-              'short' => 'The ISO 8601 date format of the time that this resource was edited',
+              'title' => 'Edited',
               'type' => '`$STRING`',
+              'short' => 'The ISO 8601 date format of the time that this resource was edited',
+              'format' => 'date-time',
             ],
             [
               'name' => 'films',
-              'short' => 'An array of Film URL Resources that this vehicle has appeared in',
+              'title' => 'Films',
               'type' => '`$ARRAY`',
+              'short' => 'An array of Film URL Resources that this vehicle has appeared in',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'length',
-              'short' => 'The length of this vehicle in meters',
+              'title' => 'Length',
               'type' => '`$STRING`',
+              'short' => 'The length of this vehicle in meters',
             ],
             [
               'name' => 'manufacturer',
-              'short' => 'The manufacturer of this vehicle',
+              'title' => 'Manufacturer',
               'type' => '`$STRING`',
+              'short' => 'The manufacturer of this vehicle',
             ],
             [
               'name' => 'max_atmosphering_speed',
-              'short' => 'The maximum speed of this vehicle in atmosphere',
+              'title' => 'Max Atmosphering Speed',
               'type' => '`$STRING`',
+              'short' => 'The maximum speed of this vehicle in atmosphere',
             ],
             [
               'name' => 'model',
-              'short' => 'The model or official name of this vehicle',
+              'title' => 'Model',
               'type' => '`$STRING`',
+              'short' => 'The model or official name of this vehicle',
             ],
             [
               'name' => 'name',
-              'short' => 'The name of this vehicle',
+              'title' => 'Name',
               'type' => '`$STRING`',
+              'short' => 'The name of this vehicle',
             ],
             [
               'name' => 'passengers',
-              'short' => 'The number of non-essential people this vehicle can transport',
+              'title' => 'Passengers',
               'type' => '`$STRING`',
+              'short' => 'The number of non-essential people this vehicle can transport',
             ],
             [
               'name' => 'pilots',
-              'short' => 'An array of People URL Resources that this vehicle has been piloted by',
+              'title' => 'Pilots',
               'type' => '`$ARRAY`',
+              'short' => 'An array of People URL Resources that this vehicle has been piloted by',
             ],
             [
               'name' => 'url',
-              'short' => 'The hypermedia URL of this resource',
+              'title' => 'Url',
               'type' => '`$STRING`',
+              'short' => 'The hypermedia URL of this resource',
             ],
             [
               'name' => 'vehicle_class',
-              'short' => 'The class of this vehicle',
+              'title' => 'Vehicle Class',
               'type' => '`$STRING`',
+              'short' => 'The class of this vehicle',
             ],
           ],
           'id' => [
@@ -1154,23 +1254,6 @@ class StarWarsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/vehicles',
@@ -1179,18 +1262,36 @@ class StarWarsConfig
                       'lit' => 'vehicles',
                     ],
                   ],
+                  'parts' => [
+                    'vehicles',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.results`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'page',
                       'search',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.results`',
-                  ],
-                  'parts' => [
-                    'vehicles',
                   ],
                 ],
               ],
@@ -1200,17 +1301,6 @@ class StarWarsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/vehicles/{id}',
@@ -1222,18 +1312,30 @@ class StarWarsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
+                  'parts' => [
+                    'vehicles',
+                    '{id}',
                   ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'vehicles',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],

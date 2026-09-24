@@ -43,7 +43,7 @@ local films, err = client:Film():list()
 if err then error(err) end
 
 for _, item in ipairs(films) do
-  print(item["id"], item["created"])
+  print(item["id"])
 end
 ```
 
@@ -200,7 +200,6 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
 | `Film` | `(data) -> FilmEntity` | Create a Film entity instance. |
-| `PeopleList` | `(data) -> PeopleListEntity` | Create a PeopleList entity instance. |
 | `Person` | `(data) -> PersonEntity` | Create a Person entity instance. |
 | `Planet` | `(data) -> PlanetEntity` | Create a Planet entity instance. |
 | `Species` | `(data) -> SpeciesEntity` | Create a Species entity instance. |
@@ -266,15 +265,6 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 Operations: List, Load.
 
 API path: `/films`
-
-#### PeopleList
-
-| Field | Description |
-| --- | --- |
-
-Operations: .
-
-API path: ``
 
 #### Person
 
@@ -452,11 +442,6 @@ local film, err = client:Film():load({ id = 1 })
 ```lua
 local films, err = client:Film():list()
 ```
-
-
-### PeopleList
-
-Create an instance: `local people_list = client:PeopleList(nil)`
 
 
 ### Person

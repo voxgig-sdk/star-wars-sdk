@@ -1,0 +1,8 @@
+# Entity Models
+
+@"./film.aontu"
+@"./person.aontu"
+@"./planet.aontu"
+@"./species.aontu"
+@"./starship.aontu"
+@"./vehicle.aontu"

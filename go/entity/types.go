@@ -1,7 +1,7 @@
 // Typed models for the StarWars SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,21 +14,6 @@ import (
 
 // Film is the typed data model for the film entity.
 type Film struct {
-	Characters *[]any `json:"characters,omitempty"`
-	Created *string `json:"created,omitempty"`
-	Director *string `json:"director,omitempty"`
-	Edited *string `json:"edited,omitempty"`
-	EpisodeId *int `json:"episode_id,omitempty"`
-	Id *string `json:"id,omitempty"`
-	OpeningCrawl *string `json:"opening_crawl,omitempty"`
-	Planets *[]any `json:"planets,omitempty"`
-	Producer *string `json:"producer,omitempty"`
-	ReleaseDate *string `json:"release_date,omitempty"`
-	Species *[]any `json:"species,omitempty"`
-	Starships *[]any `json:"starships,omitempty"`
-	Title *string `json:"title,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Vehicles *[]any `json:"vehicles,omitempty"`
 }
 
 // FilmLoadMatch is the typed request payload for Film.LoadTyped.
@@ -42,29 +27,8 @@ type FilmListMatch struct {
 	Search *string `json:"search,omitempty"`
 }
 
-// PeopleList is the typed data model for the people_list entity.
-type PeopleList struct {
-}
-
 // Person is the typed data model for the person entity.
 type Person struct {
-	BirthYear *string `json:"birth_year,omitempty"`
-	Created *string `json:"created,omitempty"`
-	Edited *string `json:"edited,omitempty"`
-	EyeColor *string `json:"eye_color,omitempty"`
-	Films *[]any `json:"films,omitempty"`
-	Gender *string `json:"gender,omitempty"`
-	HairColor *string `json:"hair_color,omitempty"`
-	Height *string `json:"height,omitempty"`
-	Homeworld *string `json:"homeworld,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Mass *string `json:"mass,omitempty"`
-	Name *string `json:"name,omitempty"`
-	SkinColor *string `json:"skin_color,omitempty"`
-	Species *[]any `json:"species,omitempty"`
-	Starships *[]any `json:"starships,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Vehicles *[]any `json:"vehicles,omitempty"`
 }
 
 // PersonLoadMatch is the typed request payload for Person.LoadTyped.
@@ -80,21 +44,6 @@ type PersonListMatch struct {
 
 // Planet is the typed data model for the planet entity.
 type Planet struct {
-	Climate *string `json:"climate,omitempty"`
-	Created *string `json:"created,omitempty"`
-	Diameter *string `json:"diameter,omitempty"`
-	Edited *string `json:"edited,omitempty"`
-	Films *[]any `json:"films,omitempty"`
-	Gravity *string `json:"gravity,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	OrbitalPeriod *string `json:"orbital_period,omitempty"`
-	Population *string `json:"population,omitempty"`
-	Residents *[]any `json:"residents,omitempty"`
-	RotationPeriod *string `json:"rotation_period,omitempty"`
-	SurfaceWater *string `json:"surface_water,omitempty"`
-	Terrain *string `json:"terrain,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // PlanetLoadMatch is the typed request payload for Planet.LoadTyped.
@@ -110,22 +59,6 @@ type PlanetListMatch struct {
 
 // Species is the typed data model for the species entity.
 type Species struct {
-	AverageHeight *string `json:"average_height,omitempty"`
-	AverageLifespan *string `json:"average_lifespan,omitempty"`
-	Classification *string `json:"classification,omitempty"`
-	Created *string `json:"created,omitempty"`
-	Designation *string `json:"designation,omitempty"`
-	Edited *string `json:"edited,omitempty"`
-	EyeColors *string `json:"eye_colors,omitempty"`
-	Films *[]any `json:"films,omitempty"`
-	HairColors *string `json:"hair_colors,omitempty"`
-	Homeworld *string `json:"homeworld,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Language *string `json:"language,omitempty"`
-	Name *string `json:"name,omitempty"`
-	People *[]any `json:"people,omitempty"`
-	SkinColors *string `json:"skin_colors,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // SpeciesLoadMatch is the typed request payload for Species.LoadTyped.
@@ -141,25 +74,6 @@ type SpeciesListMatch struct {
 
 // Starship is the typed data model for the starship entity.
 type Starship struct {
-	MGLT *string `json:"MGLT,omitempty"`
-	CargoCapacity *string `json:"cargo_capacity,omitempty"`
-	Consumables *string `json:"consumables,omitempty"`
-	CostInCredits *string `json:"cost_in_credits,omitempty"`
-	Created *string `json:"created,omitempty"`
-	Crew *string `json:"crew,omitempty"`
-	Edited *string `json:"edited,omitempty"`
-	Films *[]any `json:"films,omitempty"`
-	HyperdriveRating *string `json:"hyperdrive_rating,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Length *string `json:"length,omitempty"`
-	Manufacturer *string `json:"manufacturer,omitempty"`
-	MaxAtmospheringSpeed *string `json:"max_atmosphering_speed,omitempty"`
-	Model *string `json:"model,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Passengers *string `json:"passengers,omitempty"`
-	Pilots *[]any `json:"pilots,omitempty"`
-	StarshipClass *string `json:"starship_class,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // StarshipLoadMatch is the typed request payload for Starship.LoadTyped.
@@ -175,23 +89,6 @@ type StarshipListMatch struct {
 
 // Vehicle is the typed data model for the vehicle entity.
 type Vehicle struct {
-	CargoCapacity *string `json:"cargo_capacity,omitempty"`
-	Consumables *string `json:"consumables,omitempty"`
-	CostInCredits *string `json:"cost_in_credits,omitempty"`
-	Created *string `json:"created,omitempty"`
-	Crew *string `json:"crew,omitempty"`
-	Edited *string `json:"edited,omitempty"`
-	Films *[]any `json:"films,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Length *string `json:"length,omitempty"`
-	Manufacturer *string `json:"manufacturer,omitempty"`
-	MaxAtmospheringSpeed *string `json:"max_atmosphering_speed,omitempty"`
-	Model *string `json:"model,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Passengers *string `json:"passengers,omitempty"`
-	Pilots *[]any `json:"pilots,omitempty"`
-	Url *string `json:"url,omitempty"`
-	VehicleClass *string `json:"vehicle_class,omitempty"`
 }
 
 // VehicleLoadMatch is the typed request payload for Vehicle.LoadTyped.

@@ -22,7 +22,7 @@ export STAR_WARS_APIKEY=sk_live_xxx
 ./star-wars-cli list film
 ./star-wars-cli load 1 film            # {id:1} shorthand
 ./star-wars-cli load '{id:1}' film       # explicit match map
-./star-wars-cli list people_list
+./star-wars-cli list person
 
 # 5. Override the API base URL for a single call
 STAR_WARS_BASE=https://api.example.com ./star-wars-cli list film
@@ -118,7 +118,7 @@ make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
 ### Discover the available entities
 
 `/help` in the REPL prints the full entity list, or see [Entities](#entities)
-below — this SDK exposes 7 entities.
+below — this SDK exposes 6 entities.
 
 ## Reference
 
@@ -172,9 +172,9 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 ### Entities
 
-The 7 entities this SDK exposes (any is valid as `<entity>`):
+The 6 entities this SDK exposes (any is valid as `<entity>`):
 
-film people_list person planet species starship vehicle
+film person planet species starship vehicle
 
 ## Explanation
 

@@ -45,10 +45,6 @@ client = StarWarsSDK.test()
 
 Create a new `FilmEntity` instance. Pass `None` for no initial data.
 
-#### `PeopleList(data=None)`
-
-Create a new `PeopleListEntity` instance. Pass `None` for no initial data.
-
 #### `Person(data=None)`
 
 Create a new `PersonEntity` instance. Pass `None` for no initial data.
@@ -168,41 +164,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `FilmEntity` instance with the same options.
-
-#### `get_name() -> str`
-
-Return the entity name.
-
-
----
-
-## PeopleListEntity
-
-```python
-people_list = client.PeopleList()
-```
-
-### Common Methods
-
-#### `data_get() -> dict`
-
-Get the entity data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> dict`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `PeopleListEntity` instance with the same options.
 
 #### `get_name() -> str`
 

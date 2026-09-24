@@ -1,0 +1,231 @@
+# Entity: vehicle
+
+main: kit: entity: vehicle: {
+
+  alias: field: {}
+
+  fields: {
+    cargo_capacity: {
+      h: "Cargo Capacity"
+      n: "cargo_capacity"
+      r: false
+      sh: "The maximum number of kilograms that this vehicle can transport"
+      t: "`$STRING`"
+    }
+    consumables: {
+      h: "Consumables"
+      n: "consumables"
+      r: false
+      sh: "The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply"
+      t: "`$STRING`"
+    }
+    cost_in_credits: {
+      h: "Cost In Credits"
+      n: "cost_in_credits"
+      r: false
+      sh: "The cost of this vehicle new, in galactic credits"
+      t: "`$STRING`"
+    }
+    created: {
+      fo: "date-time"
+      h: "Created"
+      n: "created"
+      r: false
+      sh: "The ISO 8601 date format of the time that this resource was created"
+      t: "`$STRING`"
+    }
+    crew: {
+      h: "Crew"
+      n: "crew"
+      r: false
+      sh: "The number of personnel needed to run or pilot this vehicle"
+      t: "`$STRING`"
+    }
+    edited: {
+      fo: "date-time"
+      h: "Edited"
+      n: "edited"
+      r: false
+      sh: "The ISO 8601 date format of the time that this resource was edited"
+      t: "`$STRING`"
+    }
+    films: {
+      h: "Films"
+      n: "films"
+      r: false
+      sh: "An array of Film URL Resources that this vehicle has appeared in"
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    length: {
+      h: "Length"
+      n: "length"
+      r: false
+      sh: "The length of this vehicle in meters"
+      t: "`$STRING`"
+    }
+    manufacturer: {
+      h: "Manufacturer"
+      n: "manufacturer"
+      r: false
+      sh: "The manufacturer of this vehicle"
+      t: "`$STRING`"
+    }
+    max_atmosphering_speed: {
+      h: "Max Atmosphering Speed"
+      n: "max_atmosphering_speed"
+      r: false
+      sh: "The maximum speed of this vehicle in atmosphere"
+      t: "`$STRING`"
+    }
+    model: {
+      h: "Model"
+      n: "model"
+      r: false
+      sh: "The model or official name of this vehicle"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of this vehicle"
+      t: "`$STRING`"
+    }
+    passengers: {
+      h: "Passengers"
+      n: "passengers"
+      r: false
+      sh: "The number of non-essential people this vehicle can transport"
+      t: "`$STRING`"
+    }
+    pilots: {
+      h: "Pilots"
+      n: "pilots"
+      r: false
+      sh: "An array of People URL Resources that this vehicle has been piloted by"
+      t: "`$ARRAY`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "The hypermedia URL of this resource"
+      t: "`$STRING`"
+    }
+    vehicle_class: {
+      h: "Vehicle Class"
+      n: "vehicle_class"
+      r: false
+      sh: "The class of this vehicle"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "vehicle"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /vehicles"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/vehicles"
+          q: {
+            exist: [
+              "page"
+              "search"
+            ]
+          }
+          s: [
+            {
+              lit: "vehicles"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /vehicles/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/vehicles/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "vehicles"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

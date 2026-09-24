@@ -1,0 +1,8 @@
+# Flows
+
+@"./BasicFilmFlow.aontu"
+@"./BasicPersonFlow.aontu"
+@"./BasicPlanetFlow.aontu"
+@"./BasicSpeciesFlow.aontu"
+@"./BasicStarshipFlow.aontu"
+@"./BasicVehicleFlow.aontu"

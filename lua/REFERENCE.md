@@ -44,10 +44,6 @@ local client = sdk.test()
 
 Create a new `Film` entity instance. Pass `nil` for no initial data.
 
-#### `PeopleList(data)`
-
-Create a new `PeopleList` entity instance. Pass `nil` for no initial data.
-
 #### `Person(data)`
 
 Create a new `Person` entity instance. Pass `nil` for no initial data.
@@ -169,42 +165,6 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `FilmEntity` instance with the same client and
-options.
-
-#### `get_name() -> string`
-
-Return the entity name.
-
-
----
-
-## PeopleListEntity
-
-```lua
-local people_list = client:PeopleList(nil)
-```
-
-### Common Methods
-
-#### `data_get() -> table`
-
-Get the entity data. Returns a copy of the current data.
-
-#### `data_set(data)`
-
-Set the entity data.
-
-#### `match_get() -> table`
-
-Get the entity match criteria.
-
-#### `match_set(match)`
-
-Set the entity match criteria.
-
-#### `make() -> Entity`
-
-Create a new `PeopleListEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

@@ -44,9 +44,6 @@ func init() {
 	core.NewFilmEntityFunc = func(client *core.StarWarsSDK, entopts map[string]any) core.StarWarsEntity {
 		return entity.NewFilmEntity(client, entopts)
 	}
-	core.NewPeopleListEntityFunc = func(client *core.StarWarsSDK, entopts map[string]any) core.StarWarsEntity {
-		return entity.NewPeopleListEntity(client, entopts)
-	}
 	core.NewPersonEntityFunc = func(client *core.StarWarsSDK, entopts map[string]any) core.StarWarsEntity {
 		return entity.NewPersonEntity(client, entopts)
 	}

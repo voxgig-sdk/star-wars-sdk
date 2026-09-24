@@ -1,0 +1,231 @@
+# Entity: person
+
+main: kit: entity: person: {
+
+  alias: field: {}
+
+  fields: {
+    birth_year: {
+      h: "Birth Year"
+      n: "birth_year"
+      r: false
+      sh: "The birth year of the person, using the in-universe standard of BBY or ABY"
+      t: "`$STRING`"
+    }
+    created: {
+      fo: "date-time"
+      h: "Created"
+      n: "created"
+      r: false
+      sh: "The ISO 8601 date format of the time that this resource was created"
+      t: "`$STRING`"
+    }
+    edited: {
+      fo: "date-time"
+      h: "Edited"
+      n: "edited"
+      r: false
+      sh: "The ISO 8601 date format of the time that this resource was edited"
+      t: "`$STRING`"
+    }
+    eye_color: {
+      h: "Eye Color"
+      n: "eye_color"
+      r: false
+      sh: "The eye color of this person"
+      t: "`$STRING`"
+    }
+    films: {
+      h: "Films"
+      n: "films"
+      r: false
+      sh: "An array of film resource URLs that this person has been in"
+      t: "`$ARRAY`"
+    }
+    gender: {
+      h: "Gender"
+      n: "gender"
+      r: false
+      sh: "The gender of this person"
+      t: "`$STRING`"
+    }
+    hair_color: {
+      h: "Hair Color"
+      n: "hair_color"
+      r: false
+      sh: "The hair color of this person"
+      t: "`$STRING`"
+    }
+    height: {
+      h: "Height"
+      n: "height"
+      r: false
+      sh: "The height of the person in centimeters"
+      t: "`$STRING`"
+    }
+    homeworld: {
+      h: "Homeworld"
+      n: "homeworld"
+      r: false
+      sh: "The URL of the planet resource that this person was born on"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    mass: {
+      h: "Mass"
+      n: "mass"
+      r: false
+      sh: "The mass of the person in kilograms"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of this person"
+      t: "`$STRING`"
+    }
+    skin_color: {
+      h: "Skin Color"
+      n: "skin_color"
+      r: false
+      sh: "The skin color of this person"
+      t: "`$STRING`"
+    }
+    species: {
+      h: "Species"
+      n: "species"
+      r: false
+      sh: "An array of species resource URLs that this person belongs to"
+      t: "`$ARRAY`"
+    }
+    starships: {
+      h: "Starships"
+      n: "starships"
+      r: false
+      sh: "An array of starship resource URLs that this person has piloted"
+      t: "`$ARRAY`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "The hypermedia URL of this resource"
+      t: "`$STRING`"
+    }
+    vehicles: {
+      h: "Vehicles"
+      n: "vehicles"
+      r: false
+      sh: "An array of vehicle resource URLs that this person has piloted"
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "person"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /people"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/people"
+          q: {
+            exist: [
+              "page"
+              "search"
+            ]
+          }
+          s: [
+            {
+              lit: "people"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /people/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/people/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "people"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
