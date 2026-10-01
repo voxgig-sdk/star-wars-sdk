@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 StarWarsUtility::setRegistrar(function (StarWarsUtility $u): void {
     $u->clean = [StarWarsClean::class, 'call'];
+    $u->clean_add = [StarWarsClean::class, 'add'];
+    $u->clean_explain = [StarWarsDone::class, 'clean_explain'];
     $u->done = [StarWarsDone::class, 'call'];
     $u->make_error = [StarWarsMakeError::class, 'call'];
     $u->feature_add = [StarWarsFeatureAdd::class, 'call'];

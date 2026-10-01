@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 StarWarsUtility.registrar = ->(u) {
   u.clean = StarWarsUtilities::Clean
+  u.clean_add = StarWarsUtilities::CleanAdd
+  u.clean_explain = StarWarsUtilities::CleanExplain
   u.done = StarWarsUtilities::Done
   u.make_error = StarWarsUtilities::MakeError
   u.feature_add = StarWarsUtilities::FeatureAdd
