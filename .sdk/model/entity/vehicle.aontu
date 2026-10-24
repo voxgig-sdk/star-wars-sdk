@@ -164,11 +164,9 @@ main: kit: entity: vehicle: {
           }
           m: "GET"
           o: "/vehicles"
-          q: {
-            exist: [
-              "page"
-              "search"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -208,6 +206,10 @@ main: kit: entity: vehicle: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

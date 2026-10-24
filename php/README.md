@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/star-wars-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/star-wars-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -241,8 +241,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
+| `load` | `($reqmatch, $ctrl): mixed` | Load a single entity by match criteria, and return it. |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -252,9 +252,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -469,7 +469,7 @@ $film = $client->Film()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Film records (throws on error).
+// list() returns an array of Film entities, one per record (throws on error).
 $films = $client->Film()->list();
 ```
 
@@ -517,7 +517,7 @@ $person = $client->Person()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Person records (throws on error).
+// list() returns an array of Person entities, one per record (throws on error).
 $persons = $client->Person()->list();
 ```
 
@@ -563,7 +563,7 @@ $planet = $client->Planet()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Planet records (throws on error).
+// list() returns an array of Planet entities, one per record (throws on error).
 $planets = $client->Planet()->list();
 ```
 
@@ -610,7 +610,7 @@ $species = $client->Species()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Species records (throws on error).
+// list() returns an array of Species entities, one per record (throws on error).
 $speciess = $client->Species()->list();
 ```
 
@@ -660,7 +660,7 @@ $starship = $client->Starship()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Starship records (throws on error).
+// list() returns an array of Starship entities, one per record (throws on error).
 $starships = $client->Starship()->list();
 ```
 
@@ -708,7 +708,7 @@ $vehicle = $client->Vehicle()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Vehicle records (throws on error).
+// list() returns an array of Vehicle entities, one per record (throws on error).
 $vehicles = $client->Vehicle()->list();
 ```
 

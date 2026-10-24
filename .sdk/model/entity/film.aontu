@@ -151,11 +151,9 @@ main: kit: entity: film: {
           }
           m: "GET"
           o: "/films"
-          q: {
-            exist: [
-              "page"
-              "search"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -195,6 +193,10 @@ main: kit: entity: film: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

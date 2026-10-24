@@ -178,11 +178,9 @@ main: kit: entity: starship: {
           }
           m: "GET"
           o: "/starships"
-          q: {
-            exist: [
-              "page"
-              "search"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -222,6 +220,10 @@ main: kit: entity: starship: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

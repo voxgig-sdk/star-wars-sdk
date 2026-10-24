@@ -79,6 +79,7 @@ module StarWarsConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -239,11 +240,10 @@ module StarWarsConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "page",
-                      "search",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -288,6 +288,10 @@ module StarWarsConfig
                     "exist" => [
                       "id",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -447,11 +451,10 @@ module StarWarsConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "page",
-                      "search",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -496,6 +499,10 @@ module StarWarsConfig
                     "exist" => [
                       "id",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -643,11 +650,10 @@ module StarWarsConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "page",
-                      "search",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -692,6 +698,10 @@ module StarWarsConfig
                     "exist" => [
                       "id",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -845,11 +855,10 @@ module StarWarsConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "page",
-                      "search",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -894,6 +903,10 @@ module StarWarsConfig
                     "exist" => [
                       "id",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -1065,11 +1078,10 @@ module StarWarsConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "page",
-                      "search",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -1114,6 +1126,10 @@ module StarWarsConfig
                     "exist" => [
                       "id",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -1273,11 +1289,10 @@ module StarWarsConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "page",
-                      "search",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -1322,6 +1337,10 @@ module StarWarsConfig
                     "exist" => [
                       "id",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],

@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Film();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('film hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.StarWarsSDK.test(offline).Film().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.StarWarsSDK.test(offline).Film()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.StarWarsSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Film().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.StarWarsSDK.test().Film().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.StarWarsSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Film().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Film().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.StarWarsSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Film().list({ "page": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.STAR_WARS_TEST_LIVE;
         for (const op of ['list', 'load']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "characters": { "a": true, "h": "Characters", "n": "characters", "r": false, "sh": "An array of people resource URLs that are in this film", "t": "`$ARRAY`", "key$": "characters", "index$": 0 }, "created": { "a": true, "fo": "date-time", "h": "Created", "n": "created", "r": false, "sh": "The ISO 8601 date format of the time that this resource was created", "t": "`$STRING`", "key$": "created", "index$": 1 }, "director": { "a": true, "h": "Director", "n": "director", "r": false, "sh": "The name of the director of this film", "t": "`$STRING`", "key$": "director", "index$": 2 }, "edited": { "a": true, "fo": "date-time", "h": "Edited", "n": "edited", "r": false, "sh": "The ISO 8601 date format of the time that this resource was edited", "t": "`$STRING`", "key$": "edited", "index$": 3 }, "episode_id": { "a": true, "h": "Episode Id", "n": "episode_id", "r": false, "sh": "The episode number of this film", "t": "`$INTEGER`", "key$": "episode_id", "index$": 4 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 5 }, "opening_crawl": { "a": true, "h": "Opening Crawl", "n": "opening_crawl", "r": false, "sh": "The opening paragraphs at the beginning of this film", "t": "`$STRING`", "key$": "opening_crawl", "index$": 6 }, "planets": { "a": true, "h": "Planets", "n": "planets", "r": false, "sh": "An array of planet resource URLs that are in this film", "t": "`$ARRAY`", "key$": "planets", "index$": 7 }, "producer": { "a": true, "h": "Producer", "n": "producer", "r": false, "sh": "The name(s) of the producer(s) of this film", "t": "`$STRING`", "key$": "producer", "index$": 8 }, "release_date": { "a": true, "fo": "date", "h": "Release Date", "n": "release_date", "r": false, "sh": "The release date of this film", "t": "`$STRING`", "key$": "release_date", "index$": 9 }, "species": { "a": true, "h": "Species", "n": "species", "r": false, "sh": "An array of species resource URLs that are in this film", "t": "`$ARRAY`", "key$": "species", "index$": 10 }, "starships": { "a": true, "h": "Starships", "n": "starships", "r": false, "sh": "An array of starship resource URLs that are in this film", "t": "`$ARRAY`", "key$": "starships", "index$": 11 }, "title": { "a": true, "h": "Title", "n": "title", "r": false, "sh": "The title of this film", "t": "`$STRING`", "key$": "title", "index$": 12 }, "url": { "a": true, "h": "Url", "n": "url", "r": false, "sh": "The hypermedia URL of this resource", "t": "`$STRING`", "key$": "url", "index$": 13 }, "vehicles": { "a": true, "h": "Vehicles", "n": "vehicles", "r": false, "sh": "An array of vehicle resource URLs that are in this film", "t": "`$ARRAY`", "key$": "vehicles", "index$": 14 } }, "id": { "field": "id", "name": "id" }, "name": "film", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /films", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": 1, "k": "query", "n": "page", "or": "page", "r": false, "t": "`$INTEGER`", "index$": 0 }, { "a": true, "k": "query", "n": "search", "or": "search", "r": false, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/films", "q": { "exist": ["page", "search"] }, "r": {}, "s": [{ "lit": "films" }], "t": { "req": "`reqdata`", "res": "`body.results`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /films/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/films/{id}", "q": { "exist": ["id"] }, "r": {}, "s": [{ "lit": "films" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "film", "name__orig": "film", "Name": "Film", "name_": "film", "name-": "film", "NAME": "FILM", "index$": 0 }, { "active": true, "entity": "film", "key$": "BasicFilmFlow", "kind": "basic", "name": "BasicFilmFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "film_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "film_ref01", "srcdatavar": "film_ref01_data", "suffix": "_dt0" }, "m": { "id": "film01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-film_ref01" } }], "index$": 1 }] }, 'Film', { "GET /films": { "protocol": "http", "parameters": [{ "name": "page", "in": "query", "description": "Page number for pagination", "schema": { "type": "integer", "default": 1 }, "index$": 0 }, { "name": "search", "in": "query", "description": "Search query to filter films by title", "schema": { "type": "string" }, "index$": 1 }] }, "GET /films/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "description": "ID of the film to retrieve", "schema": { "type": "integer" }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "characters": { "a": true, "h": "Characters", "n": "characters", "r": false, "sh": "An array of people resource URLs that are in this film", "t": "`$ARRAY`", "key$": "characters", "index$": 0 }, "created": { "a": true, "fo": "date-time", "h": "Created", "n": "created", "r": false, "sh": "The ISO 8601 date format of the time that this resource was created", "t": "`$STRING`", "key$": "created", "index$": 1 }, "director": { "a": true, "h": "Director", "n": "director", "r": false, "sh": "The name of the director of this film", "t": "`$STRING`", "key$": "director", "index$": 2 }, "edited": { "a": true, "fo": "date-time", "h": "Edited", "n": "edited", "r": false, "sh": "The ISO 8601 date format of the time that this resource was edited", "t": "`$STRING`", "key$": "edited", "index$": 3 }, "episode_id": { "a": true, "h": "Episode Id", "n": "episode_id", "r": false, "sh": "The episode number of this film", "t": "`$INTEGER`", "key$": "episode_id", "index$": 4 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 5 }, "opening_crawl": { "a": true, "h": "Opening Crawl", "n": "opening_crawl", "r": false, "sh": "The opening paragraphs at the beginning of this film", "t": "`$STRING`", "key$": "opening_crawl", "index$": 6 }, "planets": { "a": true, "h": "Planets", "n": "planets", "r": false, "sh": "An array of planet resource URLs that are in this film", "t": "`$ARRAY`", "key$": "planets", "index$": 7 }, "producer": { "a": true, "h": "Producer", "n": "producer", "r": false, "sh": "The name(s) of the producer(s) of this film", "t": "`$STRING`", "key$": "producer", "index$": 8 }, "release_date": { "a": true, "fo": "date", "h": "Release Date", "n": "release_date", "r": false, "sh": "The release date of this film", "t": "`$STRING`", "key$": "release_date", "index$": 9 }, "species": { "a": true, "h": "Species", "n": "species", "r": false, "sh": "An array of species resource URLs that are in this film", "t": "`$ARRAY`", "key$": "species", "index$": 10 }, "starships": { "a": true, "h": "Starships", "n": "starships", "r": false, "sh": "An array of starship resource URLs that are in this film", "t": "`$ARRAY`", "key$": "starships", "index$": 11 }, "title": { "a": true, "h": "Title", "n": "title", "r": false, "sh": "The title of this film", "t": "`$STRING`", "key$": "title", "index$": 12 }, "url": { "a": true, "h": "Url", "n": "url", "r": false, "sh": "The hypermedia URL of this resource", "t": "`$STRING`", "key$": "url", "index$": 13 }, "vehicles": { "a": true, "h": "Vehicles", "n": "vehicles", "r": false, "sh": "An array of vehicle resource URLs that are in this film", "t": "`$ARRAY`", "key$": "vehicles", "index$": 14 } }, "id": { "field": "id", "name": "id" }, "name": "film", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /films", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": 1, "k": "query", "n": "page", "or": "page", "r": false, "t": "`$INTEGER`", "index$": 0 }, { "a": true, "k": "query", "n": "search", "or": "search", "r": false, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/films", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "films" }], "t": { "req": "`reqdata`", "res": "`body.results`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /films/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/films/{id}", "q": { "exist": ["id"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "films" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "film", "name__orig": "film", "Name": "Film", "name_": "film", "name-": "film", "NAME": "FILM", "index$": 0 }, { "active": true, "entity": "film", "key$": "BasicFilmFlow", "kind": "basic", "name": "BasicFilmFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "film_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "film_ref01", "srcdatavar": "film_ref01_data", "suffix": "_dt0" }, "m": { "id": "film01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-film_ref01" } }], "index$": 1 }] }, 'Film', { "GET /films": { "protocol": "http", "parameters": [{ "name": "page", "in": "query", "description": "Page number for pagination", "schema": { "type": "integer", "default": 1 }, "index$": 0 }, { "name": "search", "in": "query", "description": "Search query to filter films by title", "schema": { "type": "string" }, "index$": 1 }] }, "GET /films/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "description": "ID of the film to retrieve", "schema": { "type": "integer" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -80,6 +127,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(film_ref01_data_dt0.id === film_ref01_data.id);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

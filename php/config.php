@@ -93,6 +93,7 @@ class StarWarsConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -253,11 +254,10 @@ class StarWarsConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'page',
-                      'search',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -302,6 +302,10 @@ class StarWarsConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -461,11 +465,10 @@ class StarWarsConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'page',
-                      'search',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -510,6 +513,10 @@ class StarWarsConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -657,11 +664,10 @@ class StarWarsConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'page',
-                      'search',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -706,6 +712,10 @@ class StarWarsConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -859,11 +869,10 @@ class StarWarsConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'page',
-                      'search',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -908,6 +917,10 @@ class StarWarsConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1079,11 +1092,10 @@ class StarWarsConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'page',
-                      'search',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1128,6 +1140,10 @@ class StarWarsConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1287,11 +1303,10 @@ class StarWarsConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'page',
-                      'search',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1336,6 +1351,10 @@ class StarWarsConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

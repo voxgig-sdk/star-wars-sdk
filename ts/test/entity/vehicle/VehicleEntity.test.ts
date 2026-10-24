@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { StarWarsSDK, BaseFeature, stdutil } from '../../..'
+import { StarWarsSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('VehicleEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('vehicle hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of StarWarsSDK.test(offline).Vehicle().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of StarWarsSDK.test(offline).Vehicle()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = StarWarsSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Vehicle().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of StarWarsSDK.test().Vehicle().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new StarWarsSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Vehicle().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Vehicle().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = StarWarsSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Vehicle().list({"page":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.STAR_WARS_TEST_LIVE
@@ -51,7 +109,7 @@ describe('VehicleEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"cargo_capacity":{"a":true,"h":"Cargo Capacity","n":"cargo_capacity","r":false,"sh":"The maximum number of kilograms that this vehicle can transport","t":"`$STRING`","key$":"cargo_capacity","index$":0},"consumables":{"a":true,"h":"Consumables","n":"consumables","r":false,"sh":"The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply","t":"`$STRING`","key$":"consumables","index$":1},"cost_in_credits":{"a":true,"h":"Cost In Credits","n":"cost_in_credits","r":false,"sh":"The cost of this vehicle new, in galactic credits","t":"`$STRING`","key$":"cost_in_credits","index$":2},"created":{"a":true,"fo":"date-time","h":"Created","n":"created","r":false,"sh":"The ISO 8601 date format of the time that this resource was created","t":"`$STRING`","key$":"created","index$":3},"crew":{"a":true,"h":"Crew","n":"crew","r":false,"sh":"The number of personnel needed to run or pilot this vehicle","t":"`$STRING`","key$":"crew","index$":4},"edited":{"a":true,"fo":"date-time","h":"Edited","n":"edited","r":false,"sh":"The ISO 8601 date format of the time that this resource was edited","t":"`$STRING`","key$":"edited","index$":5},"films":{"a":true,"h":"Films","n":"films","r":false,"sh":"An array of Film URL Resources that this vehicle has appeared in","t":"`$ARRAY`","key$":"films","index$":6},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":7},"length":{"a":true,"h":"Length","n":"length","r":false,"sh":"The length of this vehicle in meters","t":"`$STRING`","key$":"length","index$":8},"manufacturer":{"a":true,"h":"Manufacturer","n":"manufacturer","r":false,"sh":"The manufacturer of this vehicle","t":"`$STRING`","key$":"manufacturer","index$":9},"max_atmosphering_speed":{"a":true,"h":"Max Atmosphering Speed","n":"max_atmosphering_speed","r":false,"sh":"The maximum speed of this vehicle in atmosphere","t":"`$STRING`","key$":"max_atmosphering_speed","index$":10},"model":{"a":true,"h":"Model","n":"model","r":false,"sh":"The model or official name of this vehicle","t":"`$STRING`","key$":"model","index$":11},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"The name of this vehicle","t":"`$STRING`","key$":"name","index$":12},"passengers":{"a":true,"h":"Passengers","n":"passengers","r":false,"sh":"The number of non-essential people this vehicle can transport","t":"`$STRING`","key$":"passengers","index$":13},"pilots":{"a":true,"h":"Pilots","n":"pilots","r":false,"sh":"An array of People URL Resources that this vehicle has been piloted by","t":"`$ARRAY`","key$":"pilots","index$":14},"url":{"a":true,"h":"Url","n":"url","r":false,"sh":"The hypermedia URL of this resource","t":"`$STRING`","key$":"url","index$":15},"vehicle_class":{"a":true,"h":"Vehicle Class","n":"vehicle_class","r":false,"sh":"The class of this vehicle","t":"`$STRING`","key$":"vehicle_class","index$":16}},"id":{"field":"id","name":"id"},"name":"vehicle","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /vehicles","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":1,"k":"query","n":"page","or":"page","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"k":"query","n":"search","or":"search","r":false,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/vehicles","q":{"exist":["page","search"]},"r":{},"s":[{"lit":"vehicles"}],"t":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /vehicles/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/vehicles/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"vehicles"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"vehicle","name__orig":"vehicle","Name":"Vehicle","name_":"vehicle","name-":"vehicle","NAME":"VEHICLE","index$":5}, {"active":true,"entity":"vehicle","key$":"BasicVehicleFlow","kind":"basic","name":"BasicVehicleFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"vehicle_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"vehicle_ref01","srcdatavar":"vehicle_ref01_data","suffix":"_dt0"},"m":{"id":"vehicle01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-vehicle_ref01"}}],"index$":1}]}, 'Vehicle', {"GET /vehicles":{"protocol":"http","parameters":[{"name":"page","in":"query","description":"Page number for pagination","schema":{"type":"integer","default":1},"index$":0},{"name":"search","in":"query","description":"Search query to filter vehicles by name","schema":{"type":"string"},"index$":1}]},"GET /vehicles/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"ID of the vehicle to retrieve","schema":{"type":"integer"},"index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"cargo_capacity":{"a":true,"h":"Cargo Capacity","n":"cargo_capacity","r":false,"sh":"The maximum number of kilograms that this vehicle can transport","t":"`$STRING`","key$":"cargo_capacity","index$":0},"consumables":{"a":true,"h":"Consumables","n":"consumables","r":false,"sh":"The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply","t":"`$STRING`","key$":"consumables","index$":1},"cost_in_credits":{"a":true,"h":"Cost In Credits","n":"cost_in_credits","r":false,"sh":"The cost of this vehicle new, in galactic credits","t":"`$STRING`","key$":"cost_in_credits","index$":2},"created":{"a":true,"fo":"date-time","h":"Created","n":"created","r":false,"sh":"The ISO 8601 date format of the time that this resource was created","t":"`$STRING`","key$":"created","index$":3},"crew":{"a":true,"h":"Crew","n":"crew","r":false,"sh":"The number of personnel needed to run or pilot this vehicle","t":"`$STRING`","key$":"crew","index$":4},"edited":{"a":true,"fo":"date-time","h":"Edited","n":"edited","r":false,"sh":"The ISO 8601 date format of the time that this resource was edited","t":"`$STRING`","key$":"edited","index$":5},"films":{"a":true,"h":"Films","n":"films","r":false,"sh":"An array of Film URL Resources that this vehicle has appeared in","t":"`$ARRAY`","key$":"films","index$":6},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":7},"length":{"a":true,"h":"Length","n":"length","r":false,"sh":"The length of this vehicle in meters","t":"`$STRING`","key$":"length","index$":8},"manufacturer":{"a":true,"h":"Manufacturer","n":"manufacturer","r":false,"sh":"The manufacturer of this vehicle","t":"`$STRING`","key$":"manufacturer","index$":9},"max_atmosphering_speed":{"a":true,"h":"Max Atmosphering Speed","n":"max_atmosphering_speed","r":false,"sh":"The maximum speed of this vehicle in atmosphere","t":"`$STRING`","key$":"max_atmosphering_speed","index$":10},"model":{"a":true,"h":"Model","n":"model","r":false,"sh":"The model or official name of this vehicle","t":"`$STRING`","key$":"model","index$":11},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"The name of this vehicle","t":"`$STRING`","key$":"name","index$":12},"passengers":{"a":true,"h":"Passengers","n":"passengers","r":false,"sh":"The number of non-essential people this vehicle can transport","t":"`$STRING`","key$":"passengers","index$":13},"pilots":{"a":true,"h":"Pilots","n":"pilots","r":false,"sh":"An array of People URL Resources that this vehicle has been piloted by","t":"`$ARRAY`","key$":"pilots","index$":14},"url":{"a":true,"h":"Url","n":"url","r":false,"sh":"The hypermedia URL of this resource","t":"`$STRING`","key$":"url","index$":15},"vehicle_class":{"a":true,"h":"Vehicle Class","n":"vehicle_class","r":false,"sh":"The class of this vehicle","t":"`$STRING`","key$":"vehicle_class","index$":16}},"id":{"field":"id","name":"id"},"name":"vehicle","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /vehicles","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":1,"k":"query","n":"page","or":"page","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"k":"query","n":"search","or":"search","r":false,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/vehicles","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"vehicles"}],"t":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /vehicles/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/vehicles/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"vehicles"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"vehicle","name__orig":"vehicle","Name":"Vehicle","name_":"vehicle","name-":"vehicle","NAME":"VEHICLE","index$":5}, {"active":true,"entity":"vehicle","key$":"BasicVehicleFlow","kind":"basic","name":"BasicVehicleFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"vehicle_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"vehicle_ref01","srcdatavar":"vehicle_ref01_data","suffix":"_dt0"},"m":{"id":"vehicle01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-vehicle_ref01"}}],"index$":1}]}, 'Vehicle', {"GET /vehicles":{"protocol":"http","parameters":[{"name":"page","in":"query","description":"Page number for pagination","schema":{"type":"integer","default":1},"index$":0},{"name":"search","in":"query","description":"Search query to filter vehicles by name","schema":{"type":"string"},"index$":1}]},"GET /vehicles/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"ID of the vehicle to retrieve","schema":{"type":"integer"},"index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -79,6 +137,12 @@ describe('VehicleEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

@@ -164,11 +164,9 @@ main: kit: entity: person: {
           }
           m: "GET"
           o: "/people"
-          q: {
-            exist: [
-              "page"
-              "search"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -208,6 +206,10 @@ main: kit: entity: person: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

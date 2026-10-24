@@ -3,5 +3,35 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "An array of Film URL Resources that this planet has appeared in",
+      "An array of film resource URLs that this person has been in",
+      "An array of people resource URLs that are in this film",
+      "Production server",
+      "Provides data from the Star Wars universe including planets, spaceships, vehicles, people, films, and species. Accessible through HTTP web API.",
+      "Successful response",
+      "The ISO 8601 date format of the time that this resource was created",
+      "The ISO 8601 date format of the time that this resource was edited",
+      "The Maximum number of Megalights this starship can travel in a standard hour",
+      "The average height of this species in centimeters",
+      "The average lifespan of this species in years",
+      "The birth year of the person, using the in-universe standard of BBY or ABY",
+      "The classification of this species",
+      "The climate of this planet",
+      "The cost of this starship new, in galactic credits",
+      "The cost of this vehicle new, in galactic credits",
+      "The designation of this species",
+      "The diameter of this planet in kilometers",
+      "The episode number of this film",
+      "The eye color of this person",
+      "The maximum length of time that this starship can provide consumables for its entire crew without having to resupply",
+      "The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply",
+      "The maximum number of kilograms that this starship can transport",
+      "The maximum number of kilograms that this vehicle can transport",
+      "The name of the director of this film",
+      "The number of personnel needed to run or pilot this vehicle"
+    ]
+  }
 }

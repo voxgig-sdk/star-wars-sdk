@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { StarWarsSDK, BaseFeature, stdutil } from '../../..'
+import { StarWarsSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('PlanetEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('planet hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of StarWarsSDK.test(offline).Planet().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of StarWarsSDK.test(offline).Planet()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = StarWarsSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Planet().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of StarWarsSDK.test().Planet().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new StarWarsSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Planet().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Planet().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = StarWarsSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Planet().list({"page":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.STAR_WARS_TEST_LIVE
@@ -51,7 +109,7 @@ describe('PlanetEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"climate":{"a":true,"h":"Climate","n":"climate","r":false,"sh":"The climate of this planet","t":"`$STRING`","key$":"climate","index$":0},"created":{"a":true,"fo":"date-time","h":"Created","n":"created","r":false,"sh":"The ISO 8601 date format of the time that this resource was created","t":"`$STRING`","key$":"created","index$":1},"diameter":{"a":true,"h":"Diameter","n":"diameter","r":false,"sh":"The diameter of this planet in kilometers","t":"`$STRING`","key$":"diameter","index$":2},"edited":{"a":true,"fo":"date-time","h":"Edited","n":"edited","r":false,"sh":"The ISO 8601 date format of the time that this resource was edited","t":"`$STRING`","key$":"edited","index$":3},"films":{"a":true,"h":"Films","n":"films","r":false,"sh":"An array of Film URL Resources that this planet has appeared in","t":"`$ARRAY`","key$":"films","index$":4},"gravity":{"a":true,"h":"Gravity","n":"gravity","r":false,"sh":"A number denoting the gravity of this planet","t":"`$STRING`","key$":"gravity","index$":5},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":6},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"The name of this planet","t":"`$STRING`","key$":"name","index$":7},"orbital_period":{"a":true,"h":"Orbital Period","n":"orbital_period","r":false,"sh":"The number of standard days it takes for this planet to complete a single orbit of its local star","t":"`$STRING`","key$":"orbital_period","index$":8},"population":{"a":true,"h":"Population","n":"population","r":false,"sh":"The average population of sentient beings inhabiting this planet","t":"`$STRING`","key$":"population","index$":9},"residents":{"a":true,"h":"Residents","n":"residents","r":false,"sh":"An array of People URL Resources that live on this planet","t":"`$ARRAY`","key$":"residents","index$":10},"rotation_period":{"a":true,"h":"Rotation Period","n":"rotation_period","r":false,"sh":"The number of standard hours it takes for this planet to complete a single rotation on its axis","t":"`$STRING`","key$":"rotation_period","index$":11},"surface_water":{"a":true,"h":"Surface Water","n":"surface_water","r":false,"sh":"The percentage of the planet surface that is naturally occurring water","t":"`$STRING`","key$":"surface_water","index$":12},"terrain":{"a":true,"h":"Terrain","n":"terrain","r":false,"sh":"The terrain of this planet","t":"`$STRING`","key$":"terrain","index$":13},"url":{"a":true,"h":"Url","n":"url","r":false,"sh":"The hypermedia URL of this resource","t":"`$STRING`","key$":"url","index$":14}},"id":{"field":"id","name":"id"},"name":"planet","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /planets","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":1,"k":"query","n":"page","or":"page","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"k":"query","n":"search","or":"search","r":false,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/planets","q":{"exist":["page","search"]},"r":{},"s":[{"lit":"planets"}],"t":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /planets/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/planets/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"planets"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"planet","name__orig":"planet","Name":"Planet","name_":"planet","name-":"planet","NAME":"PLANET","index$":2}, {"active":true,"entity":"planet","key$":"BasicPlanetFlow","kind":"basic","name":"BasicPlanetFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"planet_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"planet_ref01","srcdatavar":"planet_ref01_data","suffix":"_dt0"},"m":{"id":"planet01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-planet_ref01"}}],"index$":1}]}, 'Planet', {"GET /planets":{"protocol":"http","parameters":[{"name":"page","in":"query","description":"Page number for pagination","schema":{"type":"integer","default":1},"index$":0},{"name":"search","in":"query","description":"Search query to filter planets by name","schema":{"type":"string"},"index$":1}]},"GET /planets/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"ID of the planet to retrieve","schema":{"type":"integer"},"index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"climate":{"a":true,"h":"Climate","n":"climate","r":false,"sh":"The climate of this planet","t":"`$STRING`","key$":"climate","index$":0},"created":{"a":true,"fo":"date-time","h":"Created","n":"created","r":false,"sh":"The ISO 8601 date format of the time that this resource was created","t":"`$STRING`","key$":"created","index$":1},"diameter":{"a":true,"h":"Diameter","n":"diameter","r":false,"sh":"The diameter of this planet in kilometers","t":"`$STRING`","key$":"diameter","index$":2},"edited":{"a":true,"fo":"date-time","h":"Edited","n":"edited","r":false,"sh":"The ISO 8601 date format of the time that this resource was edited","t":"`$STRING`","key$":"edited","index$":3},"films":{"a":true,"h":"Films","n":"films","r":false,"sh":"An array of Film URL Resources that this planet has appeared in","t":"`$ARRAY`","key$":"films","index$":4},"gravity":{"a":true,"h":"Gravity","n":"gravity","r":false,"sh":"A number denoting the gravity of this planet","t":"`$STRING`","key$":"gravity","index$":5},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":6},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"The name of this planet","t":"`$STRING`","key$":"name","index$":7},"orbital_period":{"a":true,"h":"Orbital Period","n":"orbital_period","r":false,"sh":"The number of standard days it takes for this planet to complete a single orbit of its local star","t":"`$STRING`","key$":"orbital_period","index$":8},"population":{"a":true,"h":"Population","n":"population","r":false,"sh":"The average population of sentient beings inhabiting this planet","t":"`$STRING`","key$":"population","index$":9},"residents":{"a":true,"h":"Residents","n":"residents","r":false,"sh":"An array of People URL Resources that live on this planet","t":"`$ARRAY`","key$":"residents","index$":10},"rotation_period":{"a":true,"h":"Rotation Period","n":"rotation_period","r":false,"sh":"The number of standard hours it takes for this planet to complete a single rotation on its axis","t":"`$STRING`","key$":"rotation_period","index$":11},"surface_water":{"a":true,"h":"Surface Water","n":"surface_water","r":false,"sh":"The percentage of the planet surface that is naturally occurring water","t":"`$STRING`","key$":"surface_water","index$":12},"terrain":{"a":true,"h":"Terrain","n":"terrain","r":false,"sh":"The terrain of this planet","t":"`$STRING`","key$":"terrain","index$":13},"url":{"a":true,"h":"Url","n":"url","r":false,"sh":"The hypermedia URL of this resource","t":"`$STRING`","key$":"url","index$":14}},"id":{"field":"id","name":"id"},"name":"planet","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /planets","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":1,"k":"query","n":"page","or":"page","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"k":"query","n":"search","or":"search","r":false,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/planets","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"planets"}],"t":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /planets/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/planets/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"planets"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"planet","name__orig":"planet","Name":"Planet","name_":"planet","name-":"planet","NAME":"PLANET","index$":2}, {"active":true,"entity":"planet","key$":"BasicPlanetFlow","kind":"basic","name":"BasicPlanetFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"planet_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"planet_ref01","srcdatavar":"planet_ref01_data","suffix":"_dt0"},"m":{"id":"planet01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-planet_ref01"}}],"index$":1}]}, 'Planet', {"GET /planets":{"protocol":"http","parameters":[{"name":"page","in":"query","description":"Page number for pagination","schema":{"type":"integer","default":1},"index$":0},{"name":"search","in":"query","description":"Search query to filter planets by name","schema":{"type":"string"},"index$":1}]},"GET /planets/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"ID of the planet to retrieve","schema":{"type":"integer"},"index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -79,6 +137,12 @@ describe('PlanetEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

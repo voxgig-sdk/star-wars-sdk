@@ -16,13 +16,27 @@ const PLAN = [
         "path": "/films",
         "args": [],
         "select": {
-            "page": "v1",
+            "page": 1,
             "search": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "page",
             "search"
+        ],
+        "queryArgs": [
+            {
+                "name": "page",
+                "wire": "page"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -32,30 +46,30 @@ const PLAN = [
             "previous": "x",
             "results": [
                 {
+                    "title": "x",
+                    "episode_id": 1,
+                    "opening_crawl": "x",
+                    "director": "x",
+                    "producer": "x",
+                    "release_date": "2026-01-01",
                     "characters": [
                         "x"
                     ],
-                    "created": "2026-01-01T00:00:00Z",
-                    "director": "x",
-                    "edited": "2026-01-01T00:00:00Z",
-                    "episode_id": 1,
-                    "opening_crawl": "x",
                     "planets": [
-                        "x"
-                    ],
-                    "producer": "x",
-                    "release_date": "2026-01-01",
-                    "species": [
                         "x"
                     ],
                     "starships": [
                         "x"
                     ],
-                    "title": "x",
-                    "url": "x",
                     "vehicles": [
                         "x"
-                    ]
+                    ],
+                    "species": [
+                        "x"
+                    ],
+                    "created": "2026-01-01T00:00:00Z",
+                    "edited": "2026-01-01T00:00:00Z",
+                    "url": "x"
                 }
             ]
         },
@@ -76,7 +90,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
@@ -115,13 +134,27 @@ const PLAN = [
         "path": "/people",
         "args": [],
         "select": {
-            "page": "v1",
+            "page": 1,
             "search": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "page",
             "search"
+        ],
+        "queryArgs": [
+            {
+                "name": "page",
+                "wire": "page"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -131,30 +164,30 @@ const PLAN = [
             "previous": "x",
             "results": [
                 {
-                    "birth_year": "x",
-                    "created": "2026-01-01T00:00:00Z",
-                    "edited": "2026-01-01T00:00:00Z",
+                    "name": "x",
+                    "height": "x",
+                    "mass": "x",
+                    "hair_color": "x",
+                    "skin_color": "x",
                     "eye_color": "x",
+                    "birth_year": "x",
+                    "gender": "x",
+                    "homeworld": "x",
                     "films": [
                         "x"
                     ],
-                    "gender": "x",
-                    "hair_color": "x",
-                    "height": "x",
-                    "homeworld": "x",
-                    "mass": "x",
-                    "name": "x",
-                    "skin_color": "x",
                     "species": [
+                        "x"
+                    ],
+                    "vehicles": [
                         "x"
                     ],
                     "starships": [
                         "x"
                     ],
-                    "url": "x",
-                    "vehicles": [
-                        "x"
-                    ]
+                    "created": "2026-01-01T00:00:00Z",
+                    "edited": "2026-01-01T00:00:00Z",
+                    "url": "x"
                 }
             ]
         },
@@ -175,7 +208,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
@@ -218,13 +256,27 @@ const PLAN = [
         "path": "/planets",
         "args": [],
         "select": {
-            "page": "v1",
+            "page": 1,
             "search": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "page",
             "search"
+        ],
+        "queryArgs": [
+            {
+                "name": "page",
+                "wire": "page"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -234,23 +286,23 @@ const PLAN = [
             "previous": "x",
             "results": [
                 {
-                    "climate": "x",
-                    "created": "2026-01-01T00:00:00Z",
-                    "diameter": "x",
-                    "edited": "2026-01-01T00:00:00Z",
-                    "films": [
-                        "x"
-                    ],
-                    "gravity": "x",
                     "name": "x",
+                    "rotation_period": "x",
                     "orbital_period": "x",
+                    "diameter": "x",
+                    "climate": "x",
+                    "gravity": "x",
+                    "terrain": "x",
+                    "surface_water": "x",
                     "population": "x",
                     "residents": [
                         "x"
                     ],
-                    "rotation_period": "x",
-                    "surface_water": "x",
-                    "terrain": "x",
+                    "films": [
+                        "x"
+                    ],
+                    "created": "2026-01-01T00:00:00Z",
+                    "edited": "2026-01-01T00:00:00Z",
                     "url": "x"
                 }
             ]
@@ -272,7 +324,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
@@ -305,13 +362,27 @@ const PLAN = [
         "path": "/species",
         "args": [],
         "select": {
-            "page": "v1",
+            "page": 1,
             "search": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "page",
             "search"
+        ],
+        "queryArgs": [
+            {
+                "name": "page",
+                "wire": "page"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -321,24 +392,24 @@ const PLAN = [
             "previous": "x",
             "results": [
                 {
-                    "average_height": "x",
-                    "average_lifespan": "x",
+                    "name": "x",
                     "classification": "x",
-                    "created": "2026-01-01T00:00:00Z",
                     "designation": "x",
-                    "edited": "2026-01-01T00:00:00Z",
-                    "eye_colors": "x",
-                    "films": [
-                        "x"
-                    ],
+                    "average_height": "x",
+                    "skin_colors": "x",
                     "hair_colors": "x",
+                    "eye_colors": "x",
+                    "average_lifespan": "x",
                     "homeworld": "x",
                     "language": "x",
-                    "name": "x",
                     "people": [
                         "x"
                     ],
-                    "skin_colors": "x",
+                    "films": [
+                        "x"
+                    ],
+                    "created": "2026-01-01T00:00:00Z",
+                    "edited": "2026-01-01T00:00:00Z",
                     "url": "x"
                 }
             ]
@@ -360,7 +431,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
@@ -394,13 +470,27 @@ const PLAN = [
         "path": "/starships",
         "args": [],
         "select": {
-            "page": "v1",
+            "page": 1,
             "search": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "page",
             "search"
+        ],
+        "queryArgs": [
+            {
+                "name": "page",
+                "wire": "page"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -410,27 +500,27 @@ const PLAN = [
             "previous": "x",
             "results": [
                 {
-                    "MGLT": "x",
+                    "name": "x",
+                    "model": "x",
+                    "manufacturer": "x",
+                    "cost_in_credits": "x",
+                    "length": "x",
+                    "max_atmosphering_speed": "x",
+                    "crew": "x",
+                    "passengers": "x",
                     "cargo_capacity": "x",
                     "consumables": "x",
-                    "cost_in_credits": "x",
-                    "created": "2026-01-01T00:00:00Z",
-                    "crew": "x",
-                    "edited": "2026-01-01T00:00:00Z",
-                    "films": [
-                        "x"
-                    ],
                     "hyperdrive_rating": "x",
-                    "length": "x",
-                    "manufacturer": "x",
-                    "max_atmosphering_speed": "x",
-                    "model": "x",
-                    "name": "x",
-                    "passengers": "x",
+                    "MGLT": "x",
+                    "starship_class": "x",
                     "pilots": [
                         "x"
                     ],
-                    "starship_class": "x",
+                    "films": [
+                        "x"
+                    ],
+                    "created": "2026-01-01T00:00:00Z",
+                    "edited": "2026-01-01T00:00:00Z",
                     "url": "x"
                 }
             ]
@@ -452,7 +542,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
@@ -489,13 +584,27 @@ const PLAN = [
         "path": "/vehicles",
         "args": [],
         "select": {
-            "page": "v1",
+            "page": 1,
             "search": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "page",
             "search"
+        ],
+        "queryArgs": [
+            {
+                "name": "page",
+                "wire": "page"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -505,26 +614,26 @@ const PLAN = [
             "previous": "x",
             "results": [
                 {
+                    "name": "x",
+                    "model": "x",
+                    "manufacturer": "x",
+                    "cost_in_credits": "x",
+                    "length": "x",
+                    "max_atmosphering_speed": "x",
+                    "crew": "x",
+                    "passengers": "x",
                     "cargo_capacity": "x",
                     "consumables": "x",
-                    "cost_in_credits": "x",
-                    "created": "2026-01-01T00:00:00Z",
-                    "crew": "x",
-                    "edited": "2026-01-01T00:00:00Z",
-                    "films": [
-                        "x"
-                    ],
-                    "length": "x",
-                    "manufacturer": "x",
-                    "max_atmosphering_speed": "x",
-                    "model": "x",
-                    "name": "x",
-                    "passengers": "x",
+                    "vehicle_class": "x",
                     "pilots": [
                         "x"
                     ],
-                    "url": "x",
-                    "vehicle_class": "x"
+                    "films": [
+                        "x"
+                    ],
+                    "created": "2026-01-01T00:00:00Z",
+                    "edited": "2026-01-01T00:00:00Z",
+                    "url": "x"
                 }
             ]
         },
@@ -545,7 +654,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {

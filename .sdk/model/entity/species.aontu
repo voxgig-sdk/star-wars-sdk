@@ -157,11 +157,9 @@ main: kit: entity: species: {
           }
           m: "GET"
           o: "/species"
-          q: {
-            exist: [
-              "page"
-              "search"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -201,6 +199,10 @@ main: kit: entity: species: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

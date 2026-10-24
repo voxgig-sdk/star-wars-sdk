@@ -3,11 +3,16 @@ declare(strict_types=1);
 
 // StarWars SDK utility: prepare_body
 
+require_once __DIR__ . '/Media.php';
+
 class StarWarsPrepareBody
 {
     public static function call(StarWarsContext $ctx): mixed
     {
         if ($ctx->op->input === 'data') {
+            if (StarWarsMedia::isRawRequest($ctx->point)) {
+                return StarWarsMedia::rawBody($ctx->reqdata);
+            }
             $body = ($ctx->utility->transform_request)($ctx);
             // PHP cannot tell an empty map from an empty list, and this
             // vendored struct answers [] where the canonical transform
